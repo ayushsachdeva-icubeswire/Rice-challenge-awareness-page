@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Daawat</title>
+    <link rel="shortcut icon" href="https://www.icubeswire.com/daawat/riceyourawareness/img/daawat-l.png"
+        type="image/x-icon">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate.css for fade-in -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+
+    <!-- Tabler Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .image-placeholder img {
+            position: absolute;
+            height: 95%;
+            width: 450px;
+            object-fit: contain;
+            top: 10px;
+            right: -100px;
+        }
+
+        .card1,
+        .card2 {
+            display: block;
+            position: relative;
+            padding-bottom: 0.72em;
+            font-size: 40px;
+            line-height: 0.95;
+            border-radius: 40px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+
+<body>
+
+    <section class="header-bg">
+        <div class="container px-0 flex-wrap ">
+            <!-- Left side: Social icons -->
+            <!-- <div class="social-icons">
+                <a href="https://facebook.com" style="text-decoration: none;" target="_blank"><i
+                        class="ti ti-brand-facebook"></i></a>
+                <a href="https://twitter.com" style="text-decoration: none;" target="_blank"><i
+                        class="ti ti-brand-twitter"></i></a>
+                <a href="https://instagram.com" style="text-decoration: none;" target="_blank"><i
+                        class="ti ti-brand-instagram"></i></a>
+                <a href="https://linkedin.com" style="text-decoration: none;" target="_blank"><i
+                        class="ti ti-brand-linkedin"></i></a>
+            </div> -->
+
+            <div class="py-1">
+                <img src="img/daawat-l.png" width="120" alt="">
+            </div>
+
+            <!-- Right side: Navigation -->
+            <nav class="header-nav">
+                <a href="#share">Share</a>
+                <a href="#myths">Myths</a>
+                <a href="#faqs">FAQs</a>
+            </nav>
+        </div>
+    </section>
+
+
+    <!-- Hero Section -->
+    <section class="hero animate__animated animate__fadeIn w-100">
+        <img class=" logo-img" src="img/new-daawat-logo.png" alt="">
+
+        <div>
+            <!-- HTML -->
+            <!-- <p class="mt-5 corda myths">
+                This November, break the myths and make rice right again
+            </p> -->
+
+
+            <!-- Modal -->
+            <div class="modal fade" id="challengeModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-portrait modal-fullscreen-sm-down">
+                    <div class="modal-content custom-modal">
+
+                        <!-- Close Button -->
+                        <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="ti ti-x"></i></button>
+
+                        <!-- Modal Body -->
+                        <div class="modal-body text-center h-100 d-flex align-items-end justify-content-center">
+                            <!-- Image -->
+                            <!-- <img src="img/food.png" alt="Challenge Image" class="img-fluid rounded mb-4 challenge-img"> -->
+
+                            <div class="d-flex gap-2 justify-content-center align-items-center flex-column mt-4">
+
+                                <!-- Invite Friends Button -->
+                                <button class="animated-button btn" id="shareBtn">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                        </path>
+                                    </svg>
+                                    <span class="text">Share</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                        </path>
+                                    </svg>
+                                </button>
+
+                                <button class="plain-button btn-shine">Invite Friends</button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+    <section class="pb-0 mb-0 mb-md-3">
+        <div class="container py-4">
+            <div class="row w-100 mx-auto" style="position: relative;overflow: visible;">
+                <div class="col-12 col-lg-11  text-start content-section">
+                    <h1 class="title">The Rice Challenge</h1>
+                    <p class="subtitle">This November, break the myths and<br>make <span>Rice Right</span> again</p>
+
+                    <div
+                        class="d-flex gap-5 align-items-end mt-4 flex-wrap justify-content-center justify-content-lg-start">
+
+                        <div class="text-center text-lg-start">
+                            <div class="d-flex gap-2">
+                                <div id="countdown"></div>
+                            </div>
+                            <p class="counter-label mb-0">Challenges Taken</p>
+                            <button class="animated-button animated-button-w btn mt-4 mb-0" id="takeChallengeBtn"
+                                data-bs-toggle="modal" data-bs-target="#dynamicChallengeModal">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                    </path>
+                                </svg>
+                                <span class="text">Take the Challenge</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                    </path>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="counter-placeholder text-center text-md-start p-0 ml-web">
+                            <div>
+                                <div id="countdown1"></div>
+                            </div>
+                            <h5 class="counter-label mb-0">People talking about it</h5>
+                            <div class="actions mb-0 mt-4 justify-content-center justify-content-md-start">
+                                <button class="share-btn blue" id="shareBtn">
+                                    <i class="ti ti-share"></i>
+                                    <span class="btn-text">Share</span>
+                                    <div class="pulse-ring"></div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-1 image-section py-5 d-none d-xl-block">
+                    <div class="image-placeholder">
+                        <img src="img/rice-img.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Choose Your Rice Challenge -->
+    <section class="rice-challenge text-center py-0">
+        <div class="container d-flex flex-column gap-2 align-items-center">
+            <div class="py-2 w-100">
+                <!-- Heading -->
+                <!-- <h1>Rice Your Awareness</h1> -->
+                <div class="d-flex justify-content-center flex-wrap w-100 my-4 heading-gap">
+                    <div class="d-flex gap-3 align-items-center">
+                        <img src="img/badge-icon.png" width="50" alt="">
+                        <h2 class=" text-start">
+                            Get Your <br><span class="challenge-title">Badge of Honour</span>
+                        </h2>
+                    </div>
+                    <div class="d-flex gap-3 align-items-center">
+                        <img src="img/dish-icon.png" width="60" alt="">
+                        <h2 class=" text-start">
+                            Avail Your <br> <span class="challenge-title">Nutritionist-Crafted Rice Meal Plan</span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center g-4 py-3 dynamic-challenge-options w-100">
+                <!-- 1 Week -->
+                <div class="col-6 col-md-3">
+                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week1.jpg"
+                        data-share="https://example.com/week1.jpg">
+                        <h5 class="fw-bold mb-0">7 Days</h5>
+                        <p class="mb-0">Beginner</p>
+                    </div>
+                </div>
+                <!-- 2 Weeks -->
+                <div class="col-6 col-md-3">
+                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week2.jpg"
+                        data-share="https://example.com/week2.jpg">
+                        <h5 class="fw-bold mb-0">1<span style="font-family: sans-serif;">4</span> Days</h5>
+                        <p class="mb-0">Amateur</p>
+                    </div>
+                </div>
+                <!-- 3 Weeks -->
+                <div class="col-6 col-md-3">
+                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week3.jpg"
+                        data-share="https://example.com/week3.jpg">
+                        <h5 class="fw-bold mb-0">21 Days</h5>
+                        <p class="mb-0">Intermediate</p>
+                    </div>
+                </div>
+                <!-- 30 Days -->
+                <div class="col-6 col-md-3">
+                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/30days.jpg"
+                        data-share="https://example.com/30days.jpg">
+                        <h5 class="fw-bold mb-0">30 Days</h5>
+                        <p class="mb-0">Pro</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Myths Busted Button -->
+            <button class="animated-button btn mt-3 mb-5" id="takeChallengeBtn" data-bs-toggle="modal"
+                data-bs-target="#dynamicChallengeModal">
+                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                    </path>
+                </svg>
+                <span class="text">Take the Challenge</span>
+                <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                    </path>
+                </svg>
+            </button>
+
+
+            <!-- Dynamic Modal -->
+            <div class="modal fade" id="dynamicChallengeModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-portrait">
+                    <div class="modal-content custom-modal1">
+
+                        <!-- Close Button -->
+                        <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="ti ti-x"></i>
+                        </button>
+
+                        <!-- Modal Body -->
+                        <div class="modal-body text-center h-100 d-flex align-items-center justify-content-center">
+                            <div class="quiz-card p-5 w-100">
+                                <h5 id="quiz-question" class="mb-4"></h5>
+                                <div id="quiz-options"></div>
+                                <button class="btn btn-dark mt-4 w-100" id="next-btn">Next</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+    <section class="slider-section pb-0 mb-5">
+        <!-- 30 Days Challenge -->
+        <div class="challenge-section animate__animated animate__fadeIn pb-0">
+            <h2 class="30days">People Taking the <span>Rice Challenge</span></h2>
+            <!-- <p class="mb-2 mb-md-0" style="color: #535151;font-size: 24px;">This November, pledge to Rice Your
+                Awareness. <br> A month to
+                consume rice, rise
+                above myths, and turn doubt into discovery.
+            </p> -->
+        </div>
+
+        <!-- Panorama (Tablet & Above) -->
+        <div class="carousel" id="carousel">
+            <div class="ring" id="ring">
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/1.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/2.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/3.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/4.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/5.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/6.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/7.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/8.png">
+                    </a></div>
+
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/1.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/2.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/3.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/4.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/5.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/6.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/7.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/8.png">
+                    </a></div>
+
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/1.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/2.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/3.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/4.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/5.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/6.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/7.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/8.png">
+                    </a></div>
+            </div>
+        </div>
+
+        <!-- Mobile Auto-Scrolling Slider -->
+        <div class="mobile-slider">
+            <div class="mobile-track">
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/1.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/2.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/3.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/4.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/5.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/6.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/7.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/8.png">
+                    </a></div>
+
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/1.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/2.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/3.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/4.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/5.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/6.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/7.png">
+                    </a></div>
+                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                        <div class="overlay">
+                            <i class="ti ti-player-play-filled"></i>
+                        </div>
+                        <img src="img/slider/8.png">
+                    </a></div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <section id="myth-carousel-section">
+        <div class="container">
+            <div class="w-100">
+                <h2 class="myth-carousel-title" id="myths"><span>The Rice Myths</span> End Here</h2>
+                <div class="myth-carousel-wrapper swiper">
+                    <div class="myth-carousel swiper-wrapper py-5">
+
+                        <!-- Card 1 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <h3>Rice makes you sleepy</h3>
+                                    <button class="myth-btn">Bust the Myth »</button>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=1" alt="Rice Myth 1"> -->
+                                    <h3>Rice helps release serotonin and melatonin - nature’s sleep aids. It’s science,
+                                        not sluggishness.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <h3>Rice makes you feel heavy or lazy</h3>
+                                    <button class="myth-btn">Bust the Myth »</button>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=2" alt="Rice Myth 2"> -->
+                                    <h3>Rice digests faster and is naturally gluten-free, making it easy on the stomach
+                                        and feeling light</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <h3>You should avoid rice for dinner.</h3>
+                                    <button class="myth-btn">Bust the Myth »</button>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <h3>Rice is light, easy to digest, and helps relax your system - perfect for calm,
+                                        quality sleep.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <h3>Fitness means cutting out rice.</h3>
+                                    <button class="myth-btn">Bust the Myth »</button>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <h3>Many athletes and trainers rely on rice for sustained energy and muscle
+                                        recovery. Balance builds fitness, not deprivation</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <h3>Rice causes bloating.</h3>
+                                    <button class="myth-btn">Bust the Myth »</button>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <h3>Rice is low in sodium and gluten-free - it actually reduces water retention and
+                                        soothes digestion.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <h3>Rice isn’t suitable for weight loss.</h3>
+                                    <button class="myth-btn">Bust the Myth »</button>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <h3>When portioned and paired right, rice supports clean eating and steady energy -
+                                        gives far better results.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <h3>Rice has empty calories.</h3>
+                                    <button class="myth-btn">Bust the Myth »</button>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <h3>Rice provides complex carbs and essential nutrients that support metabolism and
+                                        brain function - not “empty,” but essential.</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Pagination dots -->
+                    <div class="swiper-pagination mt-4"></div>
+                    <!-- Navigation -->
+                    <!-- <div class="myth-nav-prev">‹</div>
+                    <div class="myth-nav-next">›</div> -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Quiz Modal -->
+    <div class="modal fade" id="quizModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content p-4">
+                <div class="quiz-card">
+                    <h5 id="quiz-question" class="mb-4"></h5>
+                    <div id="quiz-options"></div>
+                    <div class="d-flex justify-content-between align-items-center mt-4">
+                        <button id="arrow" class="btn btn-outline-dark">&larr;</button>
+                        <button id="next-btn" class="btn btn-dark">Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section class="py-5">
+        <div class="container">
+            <div class="w-100 text-center">
+                <h2 class="faq-title text-center mb-5" id="faqs">FAQ's</h2>
+                <div class="accordion faq-accordion" id="faqAccordion">
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                A. What is the Rice Your Awareness Challenge?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Answer about the Rice Your Awareness Challenge goes here.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                B. What is the Rice Your Awareness Challenge?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Answer goes here.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                C. Is this a weight loss or fitness challenge?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Answer goes here.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                C. Is this a weight loss or fitness challenge?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                            data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Answer goes here.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add more items like D, E, F as in your image -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row w-100 gap-4 gap-md-0 mx-auto">
+                <!-- <div class="col-12 col-md-6 col-lg-3 d-flex align-items-center justify-content-center">
+                <img src="img/daawat-l.png" width="160" alt="">
+            </div> -->
+                <div
+                    class="col-12 col-md-6 col-lg-6 d-flex align-items-center flex-wrap justify-content-md-start justify-content-center">
+                    <span class="mb-2">An initiative by Daawat for #riceyourawareness</span>
+                    Copyright 2025 All Rights Reserved by Daawat
+
+                </div>
+                <!-- <div class="col-12 col-md-6 col-lg-4 d-flex align-items-center justify-content-center">
+
+                </div> -->
+
+                <div class="col-12 col-md-6 col-lg-6 d-flex align-items-center align-items-md-end flex-column">
+                    <div class="social-icons1">
+                        <a href="https://facebook.com" style="text-decoration: none;" target="_blank"><i
+                                class="ti ti-brand-facebook"></i></a>
+                        <a href="https://twitter.com" style="text-decoration: none;" target="_blank"><i
+                                class="ti ti-brand-twitter"></i></a>
+                        <a href="https://instagram.com" style="text-decoration: none;" target="_blank"><i
+                                class="ti ti-brand-instagram"></i></a>
+                        <a href="https://linkedin.com" style="text-decoration: none;" target="_blank"><i
+                                class="ti ti-brand-linkedin"></i></a>
+                    </div>
+                    <a href="" style="text-decoration: none;color: white;">
+                        Terms and Conditions
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // 3D rotation (only runs on tablet & above)
+        const ring = document.getElementById('ring');
+        if (ring) {
+            const cards = Array.from(ring.children);
+            const N = cards.length;
+            const radius = 3200;
+            const step = 360 / N;
+
+            // position cards evenly
+            cards.forEach((card, i) => {
+                const angle = step * i;
+                card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+            });
+
+            let angle = 0;
+            let paused = false;
+
+            function rotate() {
+                if (!paused) {
+                    angle += 0.05; // speed control 0.02 means slow // 0.1 means fast
+                    ring.style.transform = `rotateY(${angle}deg)`;
+                }
+                requestAnimationFrame(rotate);
+            }
+            rotate();
+
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', () => paused = true);
+                card.addEventListener('mouseleave', () => paused = false);
+            });
+        }
+    </script>
+
+
+    <script>
+        // Ensure modal comes after backdrop in DOM
+
+        document.querySelectorAll('.modal').forEach(m => {
+            document.body.appendChild(m);
+        });
+
+    </script>
+
+    <!-- share js  -->
+    <script>
+        // Attach listener to a parent element that exists in the DOM
+        document.body.addEventListener('click', async (e) => {
+            const shareBtn = e.target.closest('#shareBtn'); // works even if clicking child elements like <span> or <svg>
+            if (!shareBtn) return; // exit if it's not a share button
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({
+                        title: 'Check this out!',
+                        text: 'Awesome image to share.',
+                        url: 'img/img1.png',
+                    });
+                    console.log('Share successful');
+                } catch (err) {
+                    console.error('Share failed:', err.message);
+                }
+            } else {
+                alert('Your browser does not support the share feature.');
+            }
+        });
+    </script>
+
+
+    <script>
+        let selectedCard = null;
+
+        const dynamicCards = document.querySelectorAll('.dynamic-challenge-options .challenge-card');
+        const takeBtn = document.getElementById('takeChallengeBtn');
+        const dynamicModalEl = document.getElementById('dynamicChallengeModal');
+        const dynamicModalImage = document.getElementById('dynamicModalImage');
+        const dynamicShareBtn = document.getElementById('dynamicShareBtn');
+        const dynamicCloseBtn = dynamicModalEl.querySelector('.custom-close');
+
+        // Initialize modal instance ONCE
+        const dynamicModal = new bootstrap.Modal(dynamicModalEl, {
+            backdrop: true,
+            keyboard: true
+        });
+
+        // Card selection logic
+        dynamicCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Remove previous selection
+                dynamicCards.forEach(c => c.classList.remove('active'));
+                // Highlight current
+                card.classList.add('active');
+                selectedCard = card;
+            });
+        });
+
+        // Take the Challenge button
+        takeBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Prevent default form/button behavior
+
+            if (!selectedCard) {
+                alert('Please select a challenge first!');
+                return; // Stop execution if no card selected
+            }
+
+            // Update modal background image
+            const img = selectedCard.getAttribute('data-image');
+            dynamicModalImage.style.backgroundImage = `url(${img})`;
+
+            // Update share button
+            const shareLink = selectedCard.getAttribute('data-share');
+            dynamicShareBtn.onclick = () => {
+                if (navigator.share) {
+                    navigator.share({
+                        title: 'Check this out!',
+                        url: shareLink
+                    }).catch(err => console.error(err));
+                } else {
+                    alert('Share not supported in this browser.');
+                }
+            };
+
+            // Show modal
+            dynamicModal.show();
+        });
+
+        // Close button explicitly hides modal
+        dynamicCloseBtn.addEventListener('click', () => {
+            dynamicModal.hide();
+        });
+
+        // Ensure overlay/backdrop removed when modal hidden
+        dynamicModalEl.addEventListener('hidden.bs.modal', () => {
+            document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentStep = 0;
+
+            const quizCard = document.querySelector(".quiz-card");
+            const questionEl = document.getElementById("quiz-question");
+            const optionsEl = document.getElementById("quiz-options");
+            const nextBtn = document.getElementById("next-btn");
+
+            function loadStep(index) {
+                optionsEl.innerHTML = "";
+                if (index === 0) {
+                    // Step 1: Form with Name & Mobile
+                    questionEl.textContent = "Ready for the 7 Day Challenge?";
+                    optionsEl.innerHTML = `
+      <form id="userForm" class="d-flex flex-column gap-3">
+          <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+          <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
+
+          <!-- Category -->
+          <div>
+              <select class="form-select" id="category">
+                  <option selected disabled>Select Category</option>
+                  <option value="weight-loss">Weight Loss Diets with Rice</option>
+                  <option value="traditional">Traditional & Ayurvedic Rice Diets</option>
+                  <option value="fitness">Fitness & Muscle Gain Diets</option>
+                  <option value="vegan">Vegan / Plant-Based Rice Diets</option>
+                  <option value="medical">Medical / Therapeutic Rice Diets</option>
+                  <option value="regional">Regional Indian Rice Diet Plans</option>
+              </select>
+          </div>
+
+          <!-- Sub Category -->
+          <div>
+              <select class="form-select" id="subcategory" disabled>
+                  <option selected disabled>Select Sub Category</option>
+              </select>
+          </div>
+
+          <div class="mb-3 d-none">
+              <select class="form-select" id="challenge-days">
+                  <option selected disabled>Select Type</option>
+                  <option value="7-day">7 Days</option>
+                  <option value="14-day">14 Days</option>
+                  <option value="21-day">21 Days</option>
+                  <option value="30-day">30 Days</option>
+              </select>
+          </div>
+
+          <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Send OTP</button>
+
+          <div id="otpSection" style="display:none;">
+              <input type="text" class="form-control mt-3" id="otp" placeholder="Enter OTP" />
+              <button type="button" class="btn btn-success w-100 mt-2" id="verifyOtpBtn">Verify OTP</button>
+          </div>
+      </form>
+  `;
+
+                    // ✅ Subcategory Data
+                    const subcategories = {
+                        "weight-loss": [
+                            "Portion-Controlled Rice Diets",
+                            "Brown Rice Diet",
+                            "Low GI Rice Diet"
+                        ],
+                        "traditional": [
+                            "Satvik Rice Diet"
+                        ],
+                        "fitness": [
+                            "White Rice + Chicken / Paneer Diet",
+                            "Rice + Eggs / Lentils Diet"
+                        ],
+                        "vegan": [
+                            "Rice + Tofu + Vegetables Bowl",
+                            "Coconut Rice with Lentils / Beans",
+                        ],
+                        "medical": [
+                            "Gluten-Free Diet",
+                            "Low-Sodium Diet",
+                        ],
+                        "regional": [
+                            "Maharashtra Rice Diet Plan",
+                            "Punjab Rice Diet Plan",
+                            "Chandigarh Rice Diet Plan",
+                            "Rajasthan Rice Diet Plan",
+                            "Madhya Pradesh Rice Diet Plan",
+                            "Gujarat Rice Diet Plan",
+                            "Andhra Pradesh Rice Diet Plan",
+                            "Telangana Rice Diet Plan",
+                            "Karnataka Rice Diet Plan"
+                        ]
+                    };
+
+                    // ✅ Add dynamic subcategory logic
+                    const categorySelect = document.getElementById("category");
+                    const subcategorySelect = document.getElementById("subcategory");
+
+                    categorySelect.addEventListener("change", (e) => {
+                        const selected = e.target.value;
+                        subcategorySelect.innerHTML = `<option selected disabled>Select Sub Category</option>`;
+                        subcategorySelect.disabled = true; // reset
+
+                        if (subcategories[selected]) {
+                            subcategories[selected].forEach(sub => {
+                                const opt = document.createElement("option");
+                                opt.value = sub.toLowerCase().replace(/\s+/g, "-");
+                                opt.textContent = sub;
+                                subcategorySelect.appendChild(opt);
+                            });
+                            // enable and fade in
+                            subcategorySelect.disabled = false;
+                            subcategorySelect.style.opacity = "0";
+                            setTimeout(() => (subcategorySelect.style.transition = "opacity 0.3s", subcategorySelect.style.opacity = "1"), 50);
+                        }
+                    });
+
+                    // ✅ OTP flow (same as yours)
+                    document.getElementById("sendOtpBtn").addEventListener("click", () => {
+                        alert("📲 OTP Sent to your number!");
+                        document.getElementById("otpSection").style.display = "block";
+                    });
+
+                    document.getElementById("verifyOtpBtn").addEventListener("click", () => {
+                        const otp = document.getElementById("otp").value;
+                        if (otp === "1234") { // dummy OTP
+                            alert("✅ OTP Verified!");
+
+                            // 📥 Automatically download PDF after OTP verification
+                            const dummyPdfUrl = 'img/sample-local-pdf.pdf';
+                            const link = document.createElement('a');
+                            link.href = dummyPdfUrl;
+                            link.download = 'dummy.pdf';
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+
+                            // 🎉 Skip directly to the final step
+                            currentStep = 2;
+                            loadStep(currentStep);
+                        } else {
+                            alert("❌ Invalid OTP, try 1234 for testing.");
+                        }
+                    });
+
+                    nextBtn.style.display = "none"; // hide until OTP verified
+                }
+
+                if (index === 1) {
+                    questionEl.textContent = "Choose your Diet Plan";
+                    optionsEl.innerHTML = `
+                <div class="mb-3">
+                    <select class="form-select" id="dietPlan">
+                        <option selected disabled>-- Select Diet Plan --</option>
+                        <option value="Weight Loss">Weight Loss</option>
+                        <option value="Muscle Gain">Muscle Gain</option>
+                        <option value="Balanced">Balanced Diet</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" id="recipes">
+                        <option selected disabled>-- Choose Recipes --</option>
+                        <option value="Rice Bowl">Rice Bowl</option>
+                        <option value="Brown Rice Salad">Brown Rice Salad</option>
+                        <option value="Vegetable Pulao">Vegetable Pulao</option>
+                    </select>
+                </div>
+                <button class="btn btn-dark w-100" id="downloadBtn">Download PDF</button>
+            `;
+
+                    document.getElementById("downloadBtn").addEventListener("click", () => {
+                        // 1️⃣ Show alert
+                        alert("📥 Your PDF will be downloaded!");
+
+                        // 2️⃣ Trigger download of dummy PDF
+                        const dummyPdfUrl = 'img/sample-local-pdf.pdf'; // tiny empty PDF
+                        const link = document.createElement('a');
+                        link.href = dummyPdfUrl;
+                        link.download = 'dummy.pdf'; // file name
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+
+                        // 3️⃣ Call next step function
+                        if (typeof nextStep === "function") nextStep();
+
+                        // 4️⃣ Hide next button if exists
+                        const nextBtn = document.getElementById("nextBtn");
+                        if (nextBtn) nextBtn.style.display = "none";
+                    });
+
+
+                    nextBtn.style.display = "none"; // hide here too
+                }
+
+                if (index === 2) {
+                    finishQuiz();
+                }
+            }
+
+            function nextStep() {
+                currentStep++;
+                if (currentStep < 3) {
+                    animateQuestionChange(() => loadStep(currentStep));
+                }
+            }
+
+            function animateQuestionChange(callback) {
+                quizCard.classList.add("fade-out");
+                quizCard.addEventListener("animationend", function handler() {
+                    quizCard.classList.remove("fade-out");
+                    callback();
+                    quizCard.classList.add("fade-in");
+
+                    quizCard.addEventListener("animationend", function innerHandler() {
+                        quizCard.classList.remove("fade-in");
+                        quizCard.removeEventListener("animationend", innerHandler);
+                    });
+                    quizCard.removeEventListener("animationend", handler);
+                });
+            }
+
+            function finishQuiz() {
+                animateQuestionChange(() => {
+                    questionEl.textContent = "🎉 Congratulations!";
+                    optionsEl.innerHTML = `
+                <div class="d-flex justify-content-center flex-column align-items-center gap-4">
+                    <img src="img/2badge.png" alt="Congrats Image" class="congrats-image" />
+                    <button class="animated-button btn" id="shareBtn">
+                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                    </path>
+                </svg>
+                        <span class="text">Share</span>
+                        <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                    </path>
+                </svg>
+                    </button>
+                    <!-- Download line -->
+                    <p>
+                    Your diet plan download should start automatically. If it doesn’t, 
+                    <a href="img/sample-local-pdf.pdf" download="MyFile.pdf">click here</a> to download.
+                    </p>
+                </div>
+            `;
+                    nextBtn.style.display = "none";
+                });
+            }
+
+            // Init quiz when modal opens
+            const quizModalEl = document.getElementById('dynamicChallengeModal');
+            quizModalEl.addEventListener('shown.bs.modal', () => {
+                currentStep = 0;
+                loadStep(currentStep);
+            });
+        });
+
+    </script>
+
+    <script>
+        const riceSlider = new Swiper('.riceMythSlider', {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            navigation: {
+                nextEl: '.riceMythNext',
+                prevEl: '.riceMythPrev',
+            },
+            breakpoints: {
+                0: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+            },
+        });
+
+        // Click handling
+        document.querySelectorAll('.riceMythSlide').forEach(slide => {
+            slide.addEventListener('click', () => {
+                const mythType = slide.getAttribute('data-myth');
+                console.log(`Myth clicked: ${mythType}`);
+                // 👇 Add your custom click action here
+                // e.g., open modal, navigate, fetch data, etc.
+            });
+        });
+    </script>
+
+
+    <script>
+
+
+        const counterEl = document.getElementById("smooth-counter");
+        let currentCount = 10986;
+
+        renderCounter(currentCount);
+
+        // simulate backend updates
+        setInterval(() => {
+            const newCount = currentCount + Math.floor(Math.random() * 10 + 1);
+            updateCounter(newCount);
+            currentCount = newCount;
+        }, 3000);
+
+        function renderCounter(number) {
+            counterEl.innerHTML = "";
+            const digits = number.toLocaleString().split("");
+
+            digits.forEach((digit) => {
+                const digitEl = document.createElement("div");
+                digitEl.classList.add("digit");
+
+                if (digit === ",") {
+                    digitEl.innerHTML = `<span style="width:10px;color:#fff;">,</span>`;
+                } else {
+                    digitEl.innerHTML = `
+        <div class="digit-inner">
+          <span>${digit}</span>
+        </div>
+      `;
+                }
+
+                counterEl.appendChild(digitEl);
+            });
+        }
+
+        function updateCounter(newNumber) {
+            const newDigits = newNumber.toLocaleString().split("");
+            const oldDigits = currentCount.toLocaleString().split("");
+
+            if (newDigits.length !== oldDigits.length) {
+                renderCounter(newNumber);
+                return;
+            }
+
+            const digitEls = document.querySelectorAll(".digit-inner");
+
+            newDigits.forEach((digit, i) => {
+                if (digit === ",") return;
+
+                const inner = digitEls[i];
+                const currentDigit = oldDigits[i];
+                const newDigit = digit;
+
+                if (currentDigit !== newDigit) {
+                    const direction = newDigit > currentDigit ? -1 : 1;
+                    const temp = document.createElement("span");
+                    temp.textContent = newDigit;
+
+                    // move up or down depending on direction
+                    if (direction === -1) {
+                        inner.appendChild(temp);
+                        inner.style.transform = "translateY(-40px)";
+                    } else {
+                        inner.insertBefore(temp, inner.firstChild);
+                        inner.style.transform = "translateY(40px)";
+                    }
+
+                    // reset after animation
+                    setTimeout(() => {
+                        inner.style.transition = "none";
+                        inner.innerHTML = `<span>${newDigit}</span>`;
+                        inner.style.transform = "translateY(0)";
+                        setTimeout(() => (inner.style.transition = "transform 0.4s ease-in-out"), 50);
+                    }, 400);
+                }
+            });
+        }
+
+    </script>
+
+    <script>
+        new Swiper(".myth-carousel-wrapper", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false
+            },
+            // navigation: {
+            //     nextEl: ".myth-nav-next",
+            //     prevEl: ".myth-nav-prev",
+            // },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true, // allows clicking on dots
+            },
+            breakpoints: {
+                0: { slidesPerView: 1, spaceBetween: 15 },
+                768: { slidesPerView: 2, spaceBetween: 30 }
+            }
+        });
+
+    </script>
+
+    <script>
+        function FlipDigit1(value) {
+            var el = document.createElement('span');
+            el.className = 'flip-clock__piece';
+            el.innerHTML =
+                '<b class="flip-clock__card card1">' +
+                '<b class="card__top"></b>' +
+                '<b class="card__bottom"></b>' +
+                '<b class="card__back"><b class="card__bottom"></b></b>' +
+                '</b>';
+
+            this.el = el;
+            this.top = el.querySelector('.card__top');
+            this.bottom = el.querySelector('.card__bottom');
+            this.back = el.querySelector('.card__back');
+            this.backBottom = el.querySelector('.card__back .card__bottom');
+            this.currentValue = '';
+            this.update(value);
+        }
+
+        FlipDigit1.prototype.update = function (val) {
+            val = val.toString();
+            if (val !== this.currentValue) {
+                this.back.setAttribute('data-value', this.currentValue);
+                this.bottom.setAttribute('data-value', this.currentValue);
+                this.currentValue = val;
+                this.top.textContent = val;
+                this.backBottom.setAttribute('data-value', val);
+
+                this.el.classList.remove('flip');
+                void this.el.offsetWidth;
+                this.el.classList.add('flip');
+            }
+        };
+
+        function FlipCounter1(container, startValue = 1) {
+            this.container = container;
+            this.value = startValue;
+            this.digits = [];
+            this.render();
+            this.start();
+        }
+
+        FlipCounter1.prototype.render = function () {
+            this.container.innerHTML = '';
+            var str = this.value.toString();
+            this.digits = [];
+            for (var i = 0; i < str.length; i++) {
+                var digit = new FlipDigit1(str[i]);
+                this.container.appendChild(digit.el);
+                this.digits.push(digit);
+            }
+        };
+
+        FlipCounter1.prototype.update = function () {
+            var str = this.value.toString();
+            if (str.length > this.digits.length) {
+                this.render();
+            } else {
+                for (var i = 0; i < this.digits.length; i++) {
+                    var digitIndex = str.length - this.digits.length + i;
+                    var val = digitIndex >= 0 ? str[digitIndex] : '0';
+                    this.digits[i].update(val);
+                }
+            }
+        };
+
+        FlipCounter1.prototype.start = function () {
+            var self = this;
+            setInterval(function () {
+                self.value++;
+                self.update();
+            }, 1000);
+        };
+
+        var counter = new FlipCounter1(document.getElementById('countdown'), 4254);
+    </script>
+
+    <script>
+        function FlipDigit2(value) {
+            // ✅ create the new parent span
+            var parent = document.createElement('span');
+            parent.className = 'flip-clock__wrapper';
+
+            // ✅ create the existing piece span
+            var el = document.createElement('span');
+            el.className = 'flip-clock__piece m-0';
+
+            // inner HTML for the piece
+            el.innerHTML =
+                '<b class="flip-clock__card card2">' +
+                '<b class="card__top2"></b>' +
+                '<b class="card__bottom2"></b>' +
+                '<b class="card__back2"><b class="card__bottom2"></b></b>' +
+                '</b>';
+
+            // append piece inside wrapper
+            parent.appendChild(el);
+
+            // store element references
+            this.el = parent; // ✅ now the main element is the wrapper
+            this.piece = el;
+            this.top = el.querySelector('.card__top2');
+            this.bottom = el.querySelector('.card__bottom2');
+            this.back = el.querySelector('.card__back2');
+            this.backBottom = el.querySelector('.card__back2 .card__bottom2');
+            this.currentValue = '';
+            this.update(value);
+        }
+
+
+        FlipDigit2.prototype.update = function (val) {
+            val = val.toString();
+            if (val !== this.currentValue) {
+                this.back.setAttribute('data-value', this.currentValue);
+                this.bottom.setAttribute('data-value', this.currentValue);
+                this.currentValue = val;
+                this.top.textContent = val;
+                this.backBottom.setAttribute('data-value', val);
+
+                this.el.classList.remove('flip2');
+                void this.el.offsetWidth;
+                this.el.classList.add('flip2');
+            }
+        };
+
+        function FlipCounter2(container, startValue = 1) {
+            this.container = container;
+            this.value = startValue;
+            this.digits = [];
+            this.render();
+            this.start();
+        }
+
+        FlipCounter2.prototype.render = function () {
+            this.container.innerHTML = '';
+            var str = this.value.toString();
+            this.digits = [];
+            for (var i = 0; i < str.length; i++) {
+                var digit = new FlipDigit2(str[i]);
+                this.container.appendChild(digit.el);
+                this.digits.push(digit);
+            }
+        };
+
+        FlipCounter2.prototype.update = function () {
+            var str = this.value.toString();
+            if (str.length > this.digits.length) {
+                this.render();
+            } else {
+                for (var i = 0; i < this.digits.length; i++) {
+                    var digitIndex = str.length - this.digits.length + i;
+                    var val = digitIndex >= 0 ? str[digitIndex] : '0';
+                    this.digits[i].update(val);
+                }
+            }
+        };
+
+        FlipCounter2.prototype.start = function () {
+            var self = this;
+            setInterval(function () {
+                self.value++;
+                self.update();
+            }, 1000);
+        };
+
+        var counter1 = new FlipCounter2(document.getElementById('countdown1'), 6899);
+    </script>
+
+
+
+</body>
+
+</html>
