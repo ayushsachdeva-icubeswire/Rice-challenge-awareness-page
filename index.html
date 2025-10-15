@@ -24,10 +24,10 @@
         .image-placeholder img {
             position: absolute;
             height: 95%;
-            width: 450px;
+            width: 550px;
             object-fit: contain;
             top: 10px;
-            right: -100px;
+            right: 0px;
         }
 
         .card1,
@@ -60,16 +60,34 @@
             </div> -->
 
             <div class="py-1">
-                <img src="img/daawat-l.png" width="120" alt="">
+                <img src="img/1new-daawat-logo.png" width="140" alt="">
             </div>
 
-            <!-- Right side: Navigation -->
-            <nav class="header-nav">
+            <!-- Hamburger (for mobile) -->
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <!-- Navigation (desktop + mobile sliding menu) -->
+            <nav class="header-nav" id="navMenu">
+                <!-- Close button (visible only in mobile menu) -->
+                <div class="close-btn1" onclick="toggleMenu()">
+                    <i class="ti ti-x"></i>
+                </div>
+
+                <div class="py-2 d-block d-md-none">
+                    <img src="img/1new-daawat-logo.png" width="140" alt="">
+                </div>
+                <a href="#share">Know the Movement</a>
                 <a href="#share">Share</a>
                 <a href="#myths">Myths</a>
                 <a href="#faqs">FAQs</a>
             </nav>
         </div>
+        <!-- Overlay (click to close on mobile) -->
+        <div class="menu-overlay" id="menuOverlay" onclick="toggleMenu()"></div>
     </section>
 
 
@@ -77,70 +95,14 @@
     <section class="hero animate__animated animate__fadeIn w-100">
         <img class=" logo-img" src="img/new-daawat-logo.png" alt="">
 
-        <div>
-            <!-- HTML -->
-            <!-- <p class="mt-5 corda myths">
-                This November, break the myths and make rice right again
-            </p> -->
-
-
-            <!-- Modal -->
-            <div class="modal fade" id="challengeModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-portrait modal-fullscreen-sm-down">
-                    <div class="modal-content custom-modal">
-
-                        <!-- Close Button -->
-                        <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close">
-                            <i class="ti ti-x"></i></button>
-
-                        <!-- Modal Body -->
-                        <div class="modal-body text-center h-100 d-flex align-items-end justify-content-center">
-                            <!-- Image -->
-                            <!-- <img src="img/food.png" alt="Challenge Image" class="img-fluid rounded mb-4 challenge-img"> -->
-
-                            <div class="d-flex gap-2 justify-content-center align-items-center flex-column mt-4">
-
-                                <!-- Invite Friends Button -->
-                                <button class="animated-button btn" id="shareBtn">
-                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                    <span class="text">Share</span>
-                                    <span class="circle"></span>
-                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                </button>
-
-                                <button class="plain-button btn-shine">Invite Friends</button>
-
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
-
-
-    </section>
-
-    <section class="pb-0 mb-0 mb-md-3">
-        <div class="container py-4">
+        <div class="container pt-5">
             <div class="row w-100 mx-auto" style="position: relative;overflow: visible;">
                 <div class="col-12 col-lg-11  text-start content-section">
                     <h1 class="title">The Rice Challenge</h1>
                     <p class="subtitle">This November, break the myths and<br>make <span>Rice Right</span> again</p>
 
                     <div
-                        class="d-flex gap-5 align-items-end mt-4 flex-wrap justify-content-center justify-content-lg-start">
+                        class="d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
 
                         <div class="text-center text-lg-start">
                             <div class="d-flex gap-2">
@@ -149,14 +111,16 @@
                             <p class="counter-label mb-0">Challenges Taken</p>
                             <button class="animated-button animated-button-w btn mt-4 mb-0" id="takeChallengeBtn"
                                 data-bs-toggle="modal" data-bs-target="#dynamicChallengeModal">
-                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
+                                    style="fill: #110d85;">
                                     <path
                                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
                                     </path>
                                 </svg>
-                                <span class="text">Take the Challenge</span>
+                                <span class="text btn-text">Take the Challenge</span>
                                 <span class="circle"></span>
-                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
+                                    style="fill: #110d85;">
                                     <path
                                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
                                     </path>
@@ -169,10 +133,26 @@
                             </div>
                             <h5 class="counter-label mb-0">People talking about it</h5>
                             <div class="actions mb-0 mt-4 justify-content-center justify-content-md-start">
-                                <button class="share-btn blue" id="shareBtn">
+                                <!-- <button class="share-btn blue" id="shareBtn">
                                     <i class="ti ti-share"></i>
                                     <span class="btn-text">Share</span>
                                     <div class="pulse-ring"></div>
+                                </button> -->
+                                <button class="animated-button animated-button-w btn mt-0 mb-0" id="shareBtn">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
+                                        style="fill: #110d85;">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                        </path>
+                                    </svg>
+                                    <span class="text btn-text">Share</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
+                                        style="fill: #110d85;">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                        </path>
+                                    </svg>
                                 </button>
                             </div>
                         </div>
@@ -181,12 +161,14 @@
 
                 <div class="col-lg-1 image-section py-5 d-none d-xl-block">
                     <div class="image-placeholder">
-                        <img src="img/rice-img.png" alt="">
+                        <img src="img/new-plate.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
+
     </section>
+
 
     <!-- Choose Your Rice Challenge -->
     <section class="rice-challenge text-center py-0">
@@ -303,158 +285,6 @@
             </p> -->
         </div>
 
-        <!-- Panorama (Tablet & Above) -->
-        <div class="carousel" id="carousel">
-            <div class="ring" id="ring">
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/1.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/2.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/3.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/4.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/5.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/6.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/7.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/8.png">
-                    </a></div>
-
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/1.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/2.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/3.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/4.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/5.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/6.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/7.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/8.png">
-                    </a></div>
-
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/1.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/2.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/3.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/4.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/5.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/6.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/7.png">
-                    </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
-                            <i class="ti ti-player-play-filled"></i>
-                        </div>
-                        <img src="img/slider/8.png">
-                    </a></div>
-            </div>
-        </div>
-
         <!-- Mobile Auto-Scrolling Slider -->
         <div class="mobile-slider">
             <div class="mobile-track">
@@ -560,6 +390,39 @@
         </div>
     </section>
 
+    <!-- FAQ intro: left content + right image -->
+    <section class="py-5 interaction-section">
+        <div class="text-center">
+            <h2 class="faq-title"><span class="text-dark">Know</span> The Movement</h2>
+        </div>
+        <div class="container">
+            <div class="row align-items-center py-4">
+                <div class="col-12 col-lg-6">
+
+                    <p class="p-tag">Through Rice Your Awareness, Daawat encourages people to rediscover the quiet
+                        goodness of rice -
+                        light, balanced, and full of natural nourishment.</p>
+
+                    <p class="p-tag">When embraced in the right way, rice brings comfort, energy, and balance to every
+                        meal, fitting
+                        beautifully into today’s diverse lifestyles.</p>
+
+                    <p class="p-tag">Because the secret to good health isn’t avoiding rice - it’s understanding it.</p>
+
+                    <p class="mb-4 p-tag"><strong>This November, take <span>The Rice Challenge</span> and experience the
+                            truth - <span style="">Rice is Right</span>.</strong></p>
+
+                </div>
+
+                <div class="col-12 col-lg-6 text-center mt-4 mt-lg-0">
+                    <img src="img/rice-img.png" alt="Rice" class="img-fluid mx-auto"
+                        style="max-width:380px; width:100%;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <section id="myth-carousel-section">
         <div class="container">
@@ -572,13 +435,24 @@
                         <div class="myth-card swiper-slide">
                             <div class="myth-card-inner">
                                 <div class="myth-card-front">
-                                    <h3>Rice makes you sleepy</h3>
-                                    <button class="myth-btn">Bust the Myth »</button>
+                                    <div>
+                                        <h3>Rice makes you sleepy</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                                 <div class="myth-card-back">
                                     <!-- <img src="https://picsum.photos/400/250?random=1" alt="Rice Myth 1"> -->
-                                    <h3>Rice helps release serotonin and melatonin - nature’s sleep aids. It’s science,
-                                        not sluggishness.</h3>
+                                    <div>
+                                        <h3>Rice helps release serotonin and melatonin - nature’s sleep aids. It’s
+                                            science,
+                                            not sluggishness.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -587,13 +461,24 @@
                         <div class="myth-card swiper-slide">
                             <div class="myth-card-inner">
                                 <div class="myth-card-front">
-                                    <h3>Rice makes you feel heavy or lazy</h3>
-                                    <button class="myth-btn">Bust the Myth »</button>
+                                    <div>
+                                        <h3>Rice makes you feel heavy or lazy</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                                 <div class="myth-card-back">
                                     <!-- <img src="https://picsum.photos/400/250?random=2" alt="Rice Myth 2"> -->
-                                    <h3>Rice digests faster and is naturally gluten-free, making it easy on the stomach
-                                        and feeling light</h3>
+                                    <div>
+                                        <h3>Rice digests faster and is naturally gluten-free, making it easy on the
+                                            stomach
+                                            and feeling light</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -602,13 +487,24 @@
                         <div class="myth-card swiper-slide">
                             <div class="myth-card-inner">
                                 <div class="myth-card-front">
-                                    <h3>You should avoid rice for dinner.</h3>
-                                    <button class="myth-btn">Bust the Myth »</button>
+                                    <div>
+                                        <h3>You should avoid rice for dinner.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                                 <div class="myth-card-back">
                                     <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <h3>Rice is light, easy to digest, and helps relax your system - perfect for calm,
-                                        quality sleep.</h3>
+                                    <div>
+                                        <h3>Rice is light, easy to digest, and helps relax your system - perfect for
+                                            calm,
+                                            quality sleep.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -617,13 +513,23 @@
                         <div class="myth-card swiper-slide">
                             <div class="myth-card-inner">
                                 <div class="myth-card-front">
-                                    <h3>Fitness means cutting out rice.</h3>
-                                    <button class="myth-btn">Bust the Myth »</button>
+                                    <div>
+                                        <h3>Fitness means cutting out rice.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                                 <div class="myth-card-back">
                                     <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <h3>Many athletes and trainers rely on rice for sustained energy and muscle
-                                        recovery. Balance builds fitness, not deprivation</h3>
+                                    <div>
+                                        <h3>Many athletes and trainers rely on rice for sustained energy and muscle
+                                            recovery. Balance builds fitness, not deprivation</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -632,13 +538,24 @@
                         <div class="myth-card swiper-slide">
                             <div class="myth-card-inner">
                                 <div class="myth-card-front">
-                                    <h3>Rice causes bloating.</h3>
-                                    <button class="myth-btn">Bust the Myth »</button>
+                                    <div>
+                                        <h3>Rice causes bloating.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                                 <div class="myth-card-back">
                                     <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <h3>Rice is low in sodium and gluten-free - it actually reduces water retention and
-                                        soothes digestion.</h3>
+                                    <div>
+                                        <h3>Rice is low in sodium and gluten-free - it actually reduces water retention
+                                            and
+                                            soothes digestion.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -647,13 +564,24 @@
                         <div class="myth-card swiper-slide">
                             <div class="myth-card-inner">
                                 <div class="myth-card-front">
-                                    <h3>Rice isn’t suitable for weight loss.</h3>
-                                    <button class="myth-btn">Bust the Myth »</button>
+                                    <div>
+                                        <h3>Rice isn’t suitable for weight loss.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                                 <div class="myth-card-back">
                                     <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <h3>When portioned and paired right, rice supports clean eating and steady energy -
-                                        gives far better results.</h3>
+                                    <div>
+                                        <h3>When portioned and paired right, rice supports clean eating and steady
+                                            energy -
+                                            gives far better results.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -662,13 +590,24 @@
                         <div class="myth-card swiper-slide">
                             <div class="myth-card-inner">
                                 <div class="myth-card-front">
-                                    <h3>Rice has empty calories.</h3>
-                                    <button class="myth-btn">Bust the Myth »</button>
+                                    <div>
+                                        <h3>Rice has empty calories.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                                 <div class="myth-card-back">
                                     <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <h3>Rice provides complex carbs and essential nutrients that support metabolism and
-                                        brain function - not “empty,” but essential.</h3>
+                                    <div>
+                                        <h3>Rice provides complex carbs and essential nutrients that support metabolism
+                                            and
+                                            brain function - not “empty,” but essential.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -977,20 +916,17 @@
           <!-- Category -->
           <div>
               <select class="form-select" id="category">
-                  <option selected disabled>Select Category</option>
-                  <option value="weight-loss">Weight Loss Diets with Rice</option>
-                  <option value="traditional">Traditional & Ayurvedic Rice Diets</option>
-                  <option value="fitness">Fitness & Muscle Gain Diets</option>
-                  <option value="vegan">Vegan / Plant-Based Rice Diets</option>
-                  <option value="medical">Medical / Therapeutic Rice Diets</option>
-                  <option value="regional">Regional Indian Rice Diet Plans</option>
+                  <option selected disabled>Choose Meal Preference</option>
+                  <option value="veg">Vegetarian</option>
+                  <option value="veg-egg">Veg+ Egg</option>
+                  <option value="veg-meat">Veg+ Meat</option>
               </select>
           </div>
 
           <!-- Sub Category -->
           <div>
               <select class="form-select" id="subcategory" disabled>
-                  <option selected disabled>Select Sub Category</option>
+                  <option selected disabled>Choose Meal Preference</option>
               </select>
           </div>
 
@@ -1015,36 +951,33 @@
 
                     // ✅ Subcategory Data
                     const subcategories = {
-                        "weight-loss": [
-                            "Portion-Controlled Rice Diets",
-                            "Brown Rice Diet",
-                            "Low GI Rice Diet"
+                        "veg": [
+                            "Weight Loss Meal Plan",
+                            "High Protien Meal Plan",
+                            "North Indian Meal Plan",
+                            "South Indian Meal Plan",
+                            "Asian Meal Plan",
+                            "Fusion Meal Plan",
+                            "Maharshtra Meal Plan",
+                            "Sattvikk Meal Plan",
                         ],
-                        "traditional": [
-                            "Satvik Rice Diet"
+                        "veg-egg": [
+                            "Weight Loss Meal Plan",
+                            "High Protien Meal Plan",
+                            "North Indian Meal Plan",
+                            "South Indian Meal Plan",
+                            "Asian Meal Plan",
+                            "Fusion Meal Plan",
+                            "Maharshtra Meal Plan",
                         ],
-                        "fitness": [
-                            "White Rice + Chicken / Paneer Diet",
-                            "Rice + Eggs / Lentils Diet"
-                        ],
-                        "vegan": [
-                            "Rice + Tofu + Vegetables Bowl",
-                            "Coconut Rice with Lentils / Beans",
-                        ],
-                        "medical": [
-                            "Gluten-Free Diet",
-                            "Low-Sodium Diet",
-                        ],
-                        "regional": [
-                            "Maharashtra Rice Diet Plan",
-                            "Punjab Rice Diet Plan",
-                            "Chandigarh Rice Diet Plan",
-                            "Rajasthan Rice Diet Plan",
-                            "Madhya Pradesh Rice Diet Plan",
-                            "Gujarat Rice Diet Plan",
-                            "Andhra Pradesh Rice Diet Plan",
-                            "Telangana Rice Diet Plan",
-                            "Karnataka Rice Diet Plan"
+                        "veg-meat": [
+                            "Weight Loss Meal Plan",
+                            "High Protien Meal Plan",
+                            "North Indian Meal Plan",
+                            "South Indian Meal Plan",
+                            "Asian Meal Plan",
+                            "Fusion Meal Plan",
+                            "Maharshtra Meal Plan",
                         ]
                     };
 
@@ -1357,8 +1290,15 @@
 
     <script>
         function FlipDigit1(value) {
+            // ✅ create the new parent span
+            var parent = document.createElement('span');
+            parent.className = 'flip-clock__wrapper1';
+
+            // ✅ create the existing piece span
             var el = document.createElement('span');
-            el.className = 'flip-clock__piece';
+            el.className = 'flip-clock__piece m-0';
+
+            // inner HTML for the piece
             el.innerHTML =
                 '<b class="flip-clock__card card1">' +
                 '<b class="card__top"></b>' +
@@ -1366,7 +1306,12 @@
                 '<b class="card__back"><b class="card__bottom"></b></b>' +
                 '</b>';
 
-            this.el = el;
+            // append piece inside wrapper
+            parent.appendChild(el);
+
+            // store element references
+            this.el = parent; // ✅ now the main element is the wrapper
+            this.piece = el;
             this.top = el.querySelector('.card__top');
             this.bottom = el.querySelector('.card__bottom');
             this.back = el.querySelector('.card__back');
@@ -1524,8 +1469,13 @@
         var counter1 = new FlipCounter2(document.getElementById('countdown1'), 6899);
     </script>
 
-
-
+    <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+            document.getElementById("menuOverlay").classList.toggle("active");
+            document.querySelector(".hamburger").classList.toggle("open");
+        }
+    </script>
 </body>
 
 </html>
