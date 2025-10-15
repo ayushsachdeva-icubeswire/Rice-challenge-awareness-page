@@ -1717,7 +1717,8 @@ footer {
 .flip-clock__wrapper {
   width: fit-content;
   border: 1px solid white;
-  padding-bottom: 1px;
+  /* padding-bottom: 1px; */
+  padding: 2px;
   height: 100%;
   display: inline-block;
   border-radius: 7px;
