@@ -2372,6 +2372,16 @@ footer {
   color: #d28d00;
 }
 
+.section-title::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: #d28d00;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
 /* Flip-card base */
 .small-card {
   position: relative;
@@ -2465,7 +2475,7 @@ footer {
 .card-logo {
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  top: 10px;
   width: 90px;
   align-self: flex-start;
   margin-top: 4px;
