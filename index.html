@@ -196,7 +196,7 @@
                 <!-- 1 Week -->
                 <div class="col-6 col-md-3">
                     <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week1.jpg"
-                        data-share="https://example.com/week1.jpg">
+                        data-share="https://example.com/week1.jpg" data-duration="7 days">
                         <h5 class="fw-bold mb-0">7 Days</h5>
                         <p class="mb-0">Beginner</p>
                     </div>
@@ -204,7 +204,7 @@
                 <!-- 2 Weeks -->
                 <div class="col-6 col-md-3">
                     <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week2.jpg"
-                        data-share="https://example.com/week2.jpg">
+                        data-share="https://example.com/week2.jpg" data-duration="14 days">
                         <h5 class="fw-bold mb-0">1<span style="font-family: sans-serif;">4</span> Days</h5>
                         <p class="mb-0">Amateur</p>
                     </div>
@@ -212,7 +212,7 @@
                 <!-- 3 Weeks -->
                 <div class="col-6 col-md-3">
                     <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week3.jpg"
-                        data-share="https://example.com/week3.jpg">
+                        data-share="https://example.com/week3.jpg" data-duration="21 days">
                         <h5 class="fw-bold mb-0">21 Days</h5>
                         <p class="mb-0">Intermediate</p>
                     </div>
@@ -220,7 +220,7 @@
                 <!-- 30 Days -->
                 <div class="col-6 col-md-3">
                     <div class="challenge-card py-2 px-3 rounded-3" data-image="img/30days.jpg"
-                        data-share="https://example.com/30days.jpg">
+                        data-share="https://example.com/30days.jpg" data-duration="30 days">
                         <h5 class="fw-bold mb-0">30 Days</h5>
                         <p class="mb-0">Pro</p>
                     </div>
@@ -780,6 +780,32 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // API Configuration - Dynamic Base URL based on environment
+        const API_CONFIG = {
+            // Determine base URL based on current window location
+            BASE_URL: (() => {
+                if (window.location.href.includes('http://13.201.26.19')) {
+                    return 'http://13.201.26.19:8080';
+                } else {
+                    return 'http://localhost:8080';
+                }
+            })(),
+            
+            // API Endpoints
+            ENDPOINTS: {
+                REGISTER_CHALLENGER: '/challenger/register'
+            }
+        };
+
+        // Helper function to build full API URLs
+        function getApiUrl(endpoint) {
+            return API_CONFIG.BASE_URL + endpoint;
+        }
+
+        // Log the selected base URL for debugging
+        console.log('API Base URL:', API_CONFIG.BASE_URL);
+    </script>
+    <script>
         // 3D rotation (only runs on tablet & above)
         const ring = document.getElementById('ring');
         if (ring) {
@@ -929,13 +955,24 @@
 
                 // ✅ STEP 0 — Name & Mobile + OTP
                 if (index === 0) {
-                    questionEl.textContent = "Ready for the 7 Day Challenge?";
+                    // Get selected challenge duration for display
+                    let challengeText = "7 Day Challenge";
+                    if (selectedCard) {
+                        const duration = selectedCard.getAttribute("data-duration") || "7 days";
+                        const level = selectedCard.querySelector("p").textContent.trim();
+                        challengeText = `${duration.replace(" days", "")} Day Challenge (${level})`;
+                    }
+                    
+                    questionEl.textContent = `Ready for the ${challengeText}?`;
                     optionsEl.innerHTML = `
                 <form id="userForm" class="d-flex flex-column gap-3">
+                    ${selectedCard ? `<div class="alert alert-info text-center mb-3">
+                        <small><strong>Selected:</strong> ${challengeText}</small>
+                    </div>` : ''}
                     <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
                     <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
 
-                    <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Send OTP</button>
+                    <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Register & Send OTP</button>
 
                     <div id="otpSection" style="display:none;">
                         <input type="text" class="form-control mt-3" id="otp" placeholder="Enter OTP" />
@@ -944,9 +981,78 @@
                 </form>
             `;
 
-                    document.getElementById("sendOtpBtn").addEventListener("click", () => {
-                        alert("📲 OTP Sent to your number!");
-                        document.getElementById("otpSection").style.display = "block";
+                    document.getElementById("sendOtpBtn").addEventListener("click", async () => {
+                        const name = document.getElementById("name").value.trim();
+                        const mobile = document.getElementById("mobile").value.trim();
+
+                        // Validate inputs
+                        if (!name) {
+                            alert("❌ Please enter your name!");
+                            return;
+                        }
+
+                        if (!mobile) {
+                            alert("❌ Please enter your mobile number!");
+                            return;
+                        }
+
+                        // Validate mobile number (basic validation)
+                        if (!/^\d{10}$/.test(mobile)) {
+                            alert("❌ Please enter a valid 10-digit mobile number!");
+                            return;
+                        }
+
+                        // Check if challenge is selected
+                        if (!selectedCard) {
+                            alert("❌ Please select a challenge duration before proceeding!");
+                            return;
+                        }
+
+                        // Get selected challenge duration
+                        let duration = "7 days"; // default
+                        if (selectedCard) {
+                            duration = selectedCard.getAttribute("data-duration") || "7 days";
+                        }
+
+                        // Show loading state
+                        const sendOtpBtn = document.getElementById("sendOtpBtn");
+                        const originalText = sendOtpBtn.textContent;
+                        sendOtpBtn.textContent = "Registering...";
+                        sendOtpBtn.disabled = true;
+
+                        try {
+                            // Call the registration API using common base URL
+                            const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER), {
+                                method: 'POST',
+                                headers: {
+                                    'accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    duration: duration,
+                                    name: name,
+                                    mobile: mobile
+                                })
+                            });
+
+                            if (response.ok) {
+                                const result = await response.json();
+                                console.log('Registration successful:', result);
+                                alert("✅ Registration successful! OTP sent to your number!");
+                                document.getElementById("otpSection").style.display = "block";
+                            } else {
+                                const errorData = await response.json().catch(() => ({}));
+                                console.error('Registration failed:', errorData);
+                                alert(`❌ Registration failed: ${errorData.message || 'Please try again later'}`);
+                            }
+                        } catch (error) {
+                            console.error('Network error:', error);
+                            alert("❌ Network error! Please check your connection and try again.");
+                        } finally {
+                            // Reset button state
+                            sendOtpBtn.textContent = originalText;
+                            sendOtpBtn.disabled = false;
+                        }
                     });
 
                     document.getElementById("verifyOtpBtn").addEventListener("click", () => {
