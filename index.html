@@ -21,7 +21,14 @@
 
     <link rel="stylesheet" href="style.css">
     <style>
-
+        .image-placeholder img {
+            position: absolute;
+            height: 95%;
+            width: 550px;
+            object-fit: contain;
+            top: 10px;
+            right: 0px;
+        }
 
         .card1,
         .card2 {
@@ -84,15 +91,13 @@
     </section>
 
 
-
-
     <!-- Hero Section -->
     <section class="hero animate__animated animate__fadeIn w-100">
         <img class=" logo-img" src="img/new-full.png" alt="">
 
         <div class="container pt-5">
-            <div class="row w-100 mx-auto content-section" style="position: relative;overflow: visible;">
-                <div class="col-12 col-lg-11  text-start ">
+            <div class="row w-100 mx-auto" style="position: relative;overflow: visible;">
+                <div class="col-12 col-lg-11  text-start content-section">
                     <h1 class="title">The Rice Challenge</h1>
                     <p class="subtitle">This November, break the myths and<br>make <span>Rice Right</span> again</p>
 
@@ -104,8 +109,8 @@
                                 <div id="countdown"></div>
                             </div>
                             <p class="counter-label mb-0">Challenges Taken</p>
-                            <button class="animated-button animated-button-w btn mt-4 mb-0"
-                                onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
+                            <button class="animated-button animated-button-w btn mt-4 mb-0" id="takeChallengeBtn"
+                                data-bs-toggle="modal" data-bs-target="#dynamicChallengeModal">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
                                     style="fill: #110d85;">
                                     <path
@@ -156,7 +161,7 @@
 
                 <div class="col-lg-1 image-section py-5 d-none d-xl-block">
                     <div class="image-placeholder">
-                        <img src="img/srk-img.png" alt="">
+                        <img src="img/new-plate.png" alt="">
                     </div>
                 </div>
             </div>
@@ -186,46 +191,38 @@
                     </div>
                 </div>
             </div>
-            <h4>Select one of these</h4>
-            <div class="row justify-content-center g-4 py-3 dynamic-challenge-options w-100"
-                id="scrolltotakeChallengeBtn">
+
+            <div class="row justify-content-center g-4 py-3 dynamic-challenge-options w-100">
                 <!-- 1 Week -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
-                        data-image="img/week1.jpg" data-share="https://example.com/week1.jpg" data-duration="7 days">
+                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week1.jpg"
+                        data-share="https://example.com/week1.jpg" data-duration="7 days">
                         <h5 class="fw-bold mb-0">7 Days</h5>
-                        <!-- <img src="img/bronze.png" width="36" class="badge-icon-img" alt=""> -->
-                        <i class="ti ti-award badge-icon-i"></i>
+                        <p class="mb-0">Beginner</p>
                     </div>
                 </div>
                 <!-- 2 Weeks -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
-                        data-image="img/week2.jpg" data-share="https://example.com/week2.jpg" data-duration="14 days">
-                        <h5 class="fw-bold mb-0">14 Days</h5>
-                        <!-- <img src="img/silver.png" width="36" class="badge-icon-img" alt=""> -->
-                        <i class="ti ti-award badge-icon-i"></i>
-
+                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week2.jpg"
+                        data-share="https://example.com/week2.jpg" data-duration="14 days">
+                        <h5 class="fw-bold mb-0">1<span style="font-family: sans-serif;">4</span> Days</h5>
+                        <p class="mb-0">Amateur</p>
                     </div>
                 </div>
                 <!-- 3 Weeks -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
-                        data-image="img/week3.jpg" data-share="https://example.com/week3.jpg" data-duration="21 days">
+                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week3.jpg"
+                        data-share="https://example.com/week3.jpg" data-duration="21 days">
                         <h5 class="fw-bold mb-0">21 Days</h5>
-                        <!-- <img src="img/gold.png" width="36" class="badge-icon-img" alt=""> -->
-                        <i class="ti ti-award badge-icon-i"></i>
-
+                        <p class="mb-0">Intermediate</p>
                     </div>
                 </div>
                 <!-- 30 Days -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
-                        data-image="img/30days.jpg" data-share="https://example.com/30days.jpg" data-duration="30 days">
+                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/30days.jpg"
+                        data-share="https://example.com/30days.jpg" data-duration="30 days">
                         <h5 class="fw-bold mb-0">30 Days</h5>
-                        <!-- <img src="img/diamond.png" width="36" class="badge-icon-img" alt=""> -->
-                        <i class="ti ti-award badge-icon-i"></i>
-
+                        <p class="mb-0">Pro</p>
                     </div>
                 </div>
             </div>
@@ -422,176 +419,215 @@
 
                 </div>
 
-                <div class="col-12 col-lg-6 text-center mt-4 mt-lg-0" style="position: relative;">
-                    <img src="img/the-movement.png" alt="Rice" class="img-fluid mx-auto movement-img">
+                <div class="col-12 col-lg-6 text-center mt-4 mt-lg-0">
+                    <img src="img/rice-plate.png" alt="Rice" class="img-fluid mx-auto"
+                        style="max-width:460px; width:100%;">
                 </div>
             </div>
         </div>
     </section>
 
 
-    <section class="small-cards-section">
-        <h2 class="section-title text-center mb-4"><span>Myth Busting</span> Rice Facts</h2>
+
+    <section id="myth-carousel-section">
         <div class="container">
-            <div class="row g-4 w-100 py-4">
+            <div class="w-100">
+                <h2 class="myth-carousel-title" id="myths"><span>The Rice Myths</span> End Here</h2>
+                <div class="myth-carousel-wrapper swiper">
+                    <div class="myth-carousel swiper-wrapper py-5">
 
-                <!-- Card 1 -->
-                <div class="col-12 col-lg-6">
-                    <div class="small-card" tabindex="0">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="card-img">
-                                    <img src="img/slider/1.png" alt="Rice Myth 1">
+                        <!-- Card 1 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <div>
+                                        <h3>Rice makes you sleepy</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
-                                <div class="card-body">
-                                    <div class="card-title">Myth</div>
-                                    <div class="card-text">Rice makes you sleepy</div>
-                                    <div class="card-title">Fact</div>
-                                    <div class="card-text">Rice helps release serotonin and melatonin - nature’s sleep
-                                        aids. It’s science, not sluggishness.</div>
-                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=1" alt="Rice Myth 1"> -->
+                                    <div>
+                                        <h3>Rice helps release serotonin and melatonin - nature’s sleep aids. It’s
+                                            science,
+                                            not sluggishness.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Card 2 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <div>
+                                        <h3>Rice makes you feel heavy or lazy</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=2" alt="Rice Myth 2"> -->
+                                    <div>
+                                        <h3>Rice digests faster and is naturally gluten-free, making it easy on the
+                                            stomach
+                                            and feeling light</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <div>
+                                        <h3>You should avoid rice for dinner.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <div>
+                                        <h3>Rice is light, easy to digest, and helps relax your system - perfect for
+                                            calm,
+                                            quality sleep.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <div>
+                                        <h3>Fitness means cutting out rice.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <div>
+                                        <h3>Many athletes and trainers rely on rice for sustained energy and muscle
+                                            recovery. Balance builds fitness, not deprivation</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <div>
+                                        <h3>Rice causes bloating.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <div>
+                                        <h3>Rice is low in sodium and gluten-free - it actually reduces water retention
+                                            and
+                                            soothes digestion.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <div>
+                                        <h3>Rice isn’t suitable for weight loss.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <div>
+                                        <h3>When portioned and paired right, rice supports clean eating and steady
+                                            energy -
+                                            gives far better results.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 7 -->
+                        <div class="myth-card swiper-slide">
+                            <div class="myth-card-inner">
+                                <div class="myth-card-front">
+                                    <div>
+                                        <h3>Rice has empty calories.</h3>
+                                        <button class="myth-btn">Bust the Myth »</button>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                                <div class="myth-card-back">
+                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
+                                    <div>
+                                        <h3>Rice provides complex carbs and essential nutrients that support metabolism
+                                            and
+                                            brain function - not “empty,” but essential.</h3>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
+
+                    <!-- Pagination dots -->
+                    <div class="swiper-pagination mt-4"></div>
+                    <!-- Navigation -->
+                    <!-- <div class="myth-nav-prev">‹</div>
+                    <div class="myth-nav-next">›</div> -->
                 </div>
-
-                <!-- Card 2 -->
-                <div class="col-12 col-lg-6">
-                    <div class="small-card" tabindex="0">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="card-img">
-                                    <img src="img/slider/2.png" alt="Rice Myth 2">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-title">Myth</div>
-                                    <div class="card-text">Rice makes you feel heavy or lazy</div>
-                                    <div class="card-title">Fact</div>
-                                    <div class="card-text">Rice digests faster and is naturally gluten-free, making it
-                                        easy on the stomach and feeling light.</div>
-                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 3 -->
-                <div class="col-12 col-lg-6">
-                    <div class="small-card" tabindex="0">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="card-img">
-                                    <img src="img/slider/3.png" alt="Rice Myth 3">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-title">Myth</div>
-                                    <div class="card-text">You should avoid rice for dinner</div>
-                                    <div class="card-title">Fact</div>
-                                    <div class="card-text">Rice is light, easy to digest, and helps relax your system -
-                                        perfect for calm, quality sleep.</div>
-                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="col-12 col-lg-6">
-                    <div class="small-card" tabindex="0">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="card-img">
-                                    <img src="img/slider/4.png" alt="Rice Myth 4">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-title">Myth</div>
-                                    <div class="card-text">Fitness means cutting out rice</div>
-                                    <div class="card-title">Fact</div>
-                                    <div class="card-text">Many athletes and trainers rely on rice for sustained energy
-                                        and muscle recovery. Balance builds fitness, not deprivation.</div>
-                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 5 -->
-                <div class="col-12 col-lg-6">
-                    <div class="small-card" tabindex="0">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="card-img">
-                                    <img src="img/slider/5.png" alt="Rice Myth 5">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-title">Myth</div>
-                                    <div class="card-text">Rice causes bloating</div>
-                                    <div class="card-title">Fact</div>
-                                    <div class="card-text">Rice is low in sodium and gluten-free - it actually reduces
-                                        water retention and soothes digestion.</div>
-                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 6 -->
-                <div class="col-12 col-lg-6">
-                    <div class="small-card" tabindex="0">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="card-img">
-                                    <img src="img/slider/6.png" alt="Rice Myth 6">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-title">Myth</div>
-                                    <div class="card-text">Rice isn’t suitable for weight loss</div>
-                                    <div class="card-title">Fact</div>
-                                    <div class="card-text">When portioned and paired right, rice supports clean eating
-                                        and steady energy - gives far better results.</div>
-                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Card 7 -->
-                <!-- <div class="col-12 col-lg-6">
-                    <div class="small-card" tabindex="0">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="card-img">
-                                    <img src="img/slider/7.png" alt="Rice Myth 7">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-title">Rice has empty calories</div>
-                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
-                                </div>
-                            </div>
-                            <div class="card-back" aria-hidden="true">
-                                <div class="card-img">
-                                    <img src="img/slider/7.png" alt="Rice Myth 7">
-                                </div>
-                                <div class="card-body">
-                                    <div class="card-title">Fact</div>
-                                    <div class="card-text">Rice provides complex carbs and essential nutrients that
-                                        support metabolism and brain function - not “empty,” but essential.</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
-
             </div>
         </div>
     </section>
-
 
 
     <!-- Quiz Modal -->
@@ -705,14 +741,14 @@
 
                 <div class="col-12 col-md-6 col-lg-6 d-flex align-items-center align-items-md-end flex-column">
                     <div class="social-icons1">
-                        <a href="https://www.facebook.com/DaawatBasmatiOfficial/" style="text-decoration: none;"
-                            target="_blank"><i class="ti ti-brand-facebook"></i></a>
-                        <!-- <a href="https://twitter.com" style="text-decoration: none;" target="_blank"><i
-                                class="ti ti-brand-twitter"></i></a> -->
-                        <a href="https://instagram.com/daawatofficial" style="text-decoration: none;" target="_blank"><i
+                        <a href="https://facebook.com" style="text-decoration: none;" target="_blank"><i
+                                class="ti ti-brand-facebook"></i></a>
+                        <a href="https://twitter.com" style="text-decoration: none;" target="_blank"><i
+                                class="ti ti-brand-twitter"></i></a>
+                        <a href="https://instagram.com" style="text-decoration: none;" target="_blank"><i
                                 class="ti ti-brand-instagram"></i></a>
-                        <a href="https://www.youtube.com/@DaawatTheFinest" style="text-decoration: none;"
-                            target="_blank"><i class="ti ti-brand-youtube"></i></a>
+                        <a href="https://linkedin.com" style="text-decoration: none;" target="_blank"><i
+                                class="ti ti-brand-linkedin"></i></a>
                     </div>
                     <a href="" style="text-decoration: none;color: white;">
                         Terms and Conditions
@@ -722,31 +758,11 @@
         </div>
     </footer>
 
-
-    <!-- Floating buttons -->
+    <!-- Go to Top + Shop Rice Buttons -->
     <div class="floating-buttons">
-        <div class="scroll-top-container">
-            <svg class="progress-ring" width="56" height="56" viewBox="0 0 56 56" preserveAspectRatio="xMidYMid meet">
-                <defs>
-                    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stop-color="#d28d00" />
-                        <stop offset="50%" stop-color="#b48a2c" />
-                        <stop offset="100%" stop-color="#a5885d" />
-                    </linearGradient>
-                </defs>
-                <!-- background track -->
-                <circle class="progress-ring__track" cx="28" cy="28" r="22" />
-                <!-- animated progress -->
-                <circle class="progress-ring__circle" cx="28" cy="28" r="22" />
-            </svg>
-            <button id="goTopBtn" title="Go to top"><i class="ti ti-chevron-up"></i></button>
-        </div>
-
-        <button id="shopRiceBtn" class="shop-rice-btn" title="Shop Daawat Rice">
-            Shop Rice
-        </button>
+        <button id="goTopBtn" title="Go to top"><i class="ti ti-chevron-up"></i></button>
+        <button id="shopRiceBtn" title="Shop Daawat Rice">Shop Rice</button>
     </div>
-
 
 
     <!-- Bootstrap JS -->
@@ -760,14 +776,16 @@
             BASE_URL: (() => {
                 if (window.location.href.includes('http://13.201.26.19')) {
                     return 'http://13.201.26.19:8080';
-                } else {
+                }  else {
                     return 'http://localhost:8080';
                 }
             })(),
-
+            
             // API Endpoints
             ENDPOINTS: {
-                REGISTER_CHALLENGER: '/challenger/register'
+                REGISTER_CHALLENGER: '/challenger/register',
+                VERIFY_OTP: '/challenger/verify',
+                SUBMIT_CHALLENGE: '/challenger/submit'
             }
         };
 
@@ -778,12 +796,81 @@
 
         // Log the selected base URL for debugging
         console.log('API Base URL:', API_CONFIG.BASE_URL);
+        
+        // Test function for API endpoints (for debugging)
+        window.testAPIs = {
+            testRegister: async function() {
+                try {
+                    const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER), {
+                        method: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            duration: "7 days",
+                            name: "Test User",
+                            mobile: "9999999999"
+                        })
+                    });
+                    const result = await response.json();
+                    console.log('Register Test Result:', result);
+                    return result;
+                } catch (error) {
+                    console.error('Register Test Error:', error);
+                    return null;
+                }
+            },
+            
+            testVerify: async function(userId, otp = "1234") {
+                try {
+                    const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP), {
+                        method: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            userId: userId,
+                            otp: otp
+                        })
+                    });
+                    const result = await response.json();
+                    console.log('Verify Test Result:', result);
+                    return result;
+                } catch (error) {
+                    console.error('Verify Test Error:', error);
+                    return null;
+                }
+            },
+            
+            testSubmit: async function(userId = "68ecf1d723d4ade0dca9be9b") {
+                try {
+                    const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.SUBMIT_CHALLENGE), {
+                        method: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            userId: userId,
+                            category: "Vegetarian",
+                            subcategory: "Beginner",
+                            type: "Weight Loss"
+                        })
+                    });
+                    const result = await response.json();
+                    console.log('Submit Test Result:', result);
+                    return result;
+                } catch (error) {
+                    console.error('Submit Test Error:', error);
+                    return null;
+                }
+            }
+        };
     </script>
-
-
     <script>
         // 3D rotation (only runs on tablet & above)
-
         const ring = document.getElementById('ring');
         if (ring) {
             const cards = Array.from(ring.children);
@@ -918,7 +1005,6 @@
             document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
         });
     </script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let currentStep = 0;
@@ -940,49 +1026,130 @@
                         const level = selectedCard.querySelector("p").textContent.trim();
                         challengeText = `${duration.replace(" days", "")} Day Challenge (${level})`;
                     }
-
-                    questionEl.textContent = `Ready for the ${challengeText}?`;
+                    
+                    questionEl.textContent = `Ready for the Challenge?`;
                     optionsEl.innerHTML = `
                 <form id="userForm" class="d-flex flex-column gap-3">
-                    ${selectedCard ? `<div class="alert alert-info text-center mb-3">
-                        <small><strong>Selected:</strong> ${challengeText}</small>
-                    </div>` : ''}
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
-                    <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
+                    <!-- Challenge Selection Error -->
+                    <div id="challengeError" class="alert alert-danger" style="display:none; font-size: 14px; padding: 8px 12px; margin-bottom: 10px;"></div>
+                    
+                    <!-- Success Messages -->
+                    <div id="successMessage" class="alert alert-success" style="display:none; font-size: 14px; padding: 8px 12px; margin-bottom: 10px;"></div>
+
+                    <!-- Name Field -->
+                    <div class="mb-2">
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+                        <div id="nameError" class="text-danger mt-1" style="font-size: 12px; display: none;"></div>
+                    </div>
+
+                    <!-- Mobile Field -->
+                    <div class="mb-2">
+                        <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required maxlength="10" />
+                        <div id="mobileError" class="text-danger mt-1" style="font-size: 12px; display: none;"></div>
+                    </div>
 
                     <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Register & Send OTP</button>
 
                     <div id="otpSection" style="display:none;">
-                        <input type="text" class="form-control mt-3" id="otp" placeholder="Enter OTP" />
+                        <div class="mb-2 mt-3">
+                            <input type="text" class="form-control" id="otp" placeholder="Enter OTP" maxlength="6" />
+                            <div id="otpError" class="text-danger mt-1" style="font-size: 12px; display: none;"></div>
+                        </div>
                         <button type="button" class="btn btn-success w-100 mt-2" id="verifyOtpBtn">Verify OTP</button>
                     </div>
                 </form>
             `;
 
+                    // Validation helper functions
+                    function showError(elementId, message) {
+                        const errorElement = document.getElementById(elementId);
+                        const inputElement = document.getElementById(elementId.replace('Error', ''));
+                        
+                        if (errorElement) {
+                            errorElement.textContent = message;
+                            errorElement.style.display = 'block';
+                        }
+                        
+                        if (inputElement) {
+                            inputElement.classList.add('is-invalid');
+                            inputElement.style.borderColor = '#dc3545';
+                        }
+                    }
+
+                    function clearError(elementId) {
+                        const errorElement = document.getElementById(elementId);
+                        const inputElement = document.getElementById(elementId.replace('Error', ''));
+                        
+                        if (errorElement) {
+                            errorElement.style.display = 'none';
+                        }
+                        
+                        if (inputElement) {
+                            inputElement.classList.remove('is-invalid');
+                            inputElement.style.borderColor = '';
+                        }
+                    }
+
+                    function showSuccess(message) {
+                        const successElement = document.getElementById('successMessage');
+                        if (successElement) {
+                            successElement.textContent = message;
+                            successElement.style.display = 'block';
+                            setTimeout(() => {
+                                successElement.style.display = 'none';
+                            }, 5000);
+                        }
+                    }
+
+                    function showChallengeError(message) {
+                        const challengeErrorElement = document.getElementById('challengeError');
+                        if (challengeErrorElement) {
+                            challengeErrorElement.textContent = message;
+                            challengeErrorElement.style.display = 'block';
+                            setTimeout(() => {
+                                challengeErrorElement.style.display = 'none';
+                            }, 5000);
+                        }
+                    }
+
+                    // Clear errors on input
+                    document.getElementById("name").addEventListener("input", () => clearError("nameError"));
+                    document.getElementById("mobile").addEventListener("input", () => clearError("mobileError"));
+
                     document.getElementById("sendOtpBtn").addEventListener("click", async () => {
                         const name = document.getElementById("name").value.trim();
                         const mobile = document.getElementById("mobile").value.trim();
+                        let hasErrors = false;
+
+                        // Clear previous errors
+                        clearError("nameError");
+                        clearError("mobileError");
+                        document.getElementById('challengeError').style.display = 'none';
 
                         // Validate inputs
                         if (!name) {
-                            alert("❌ Please enter your name!");
-                            return;
+                            showError("nameError", "Please enter your name");
+                            hasErrors = true;
+                        } else if (name.length < 2) {
+                            showError("nameError", "Name must be at least 2 characters long");
+                            hasErrors = true;
                         }
 
                         if (!mobile) {
-                            alert("❌ Please enter your mobile number!");
-                            return;
-                        }
-
-                        // Validate mobile number (basic validation)
-                        if (!/^\d{10}$/.test(mobile)) {
-                            alert("❌ Please enter a valid 10-digit mobile number!");
-                            return;
+                            showError("mobileError", "Please enter your mobile number");
+                            hasErrors = true;
+                        } else if (!/^\d{10}$/.test(mobile)) {
+                            showError("mobileError", "Please enter a valid 10-digit mobile number");
+                            hasErrors = true;
                         }
 
                         // Check if challenge is selected
                         if (!selectedCard) {
-                            alert("❌ Please select a challenge duration before proceeding!");
+                            showChallengeError("Please select a challenge duration before proceeding!");
+                            hasErrors = true;
+                        }
+
+                        if (hasErrors) {
                             return;
                         }
 
@@ -1016,16 +1183,34 @@
                             if (response.ok) {
                                 const result = await response.json();
                                 console.log('Registration successful:', result);
-                                alert("✅ Registration successful! OTP sent to your number!");
+                                
+                                // Store userId for OTP verification - handle nested data structure
+                                window.challengerUserId = result.data?._id || result._id || result.userId || result.id;
+                                console.log('Stored userId:', window.challengerUserId);
+                                console.log('Full registration result:', result);
+                                
+                                if (!window.challengerUserId) {
+                                    console.warn('No userId found in registration response. Available keys:', Object.keys(result));
+                                    if (result.data) {
+                                        console.warn('Data object keys:', Object.keys(result.data));
+                                    }
+                                    showChallengeError('Registration successful but user ID not found. Please contact support.');
+                                    return;
+                                }
+                                
+                                showSuccess("Registration successful! OTP sent to your number!");
                                 document.getElementById("otpSection").style.display = "block";
+                                // Clear form errors if any
+                                clearError("nameError");
+                                clearError("mobileError");
                             } else {
                                 const errorData = await response.json().catch(() => ({}));
                                 console.error('Registration failed:', errorData);
-                                alert(`❌ Registration failed: ${errorData.message || 'Please try again later'}`);
+                                showChallengeError(`Registration failed: ${errorData.message || 'Please try again later'}`);
                             }
                         } catch (error) {
                             console.error('Network error:', error);
-                            alert("❌ Network error! Please check your connection and try again.");
+                            showChallengeError("Network error! Please check your connection and try again.");
                         } finally {
                             // Reset button state
                             sendOtpBtn.textContent = originalText;
@@ -1033,14 +1218,76 @@
                         }
                     });
 
-                    document.getElementById("verifyOtpBtn").addEventListener("click", () => {
-                        const otp = document.getElementById("otp").value;
-                        if (otp === "1234") { // dummy OTP
-                            alert("✅ OTP Verified!");
-                            currentStep = 1;
-                            loadStep(currentStep);
-                        } else {
-                            alert("❌ Invalid OTP, try 1234 for testing.");
+                    // Clear OTP errors on input
+                    document.getElementById("otp").addEventListener("input", () => clearError("otpError"));
+
+                    document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
+                        const otp = document.getElementById("otp").value.trim();
+                        
+                        // Clear previous errors
+                        clearError("otpError");
+                        
+                        if (!otp) {
+                            showError("otpError", "Please enter the OTP");
+                            return;
+                        }
+                        
+                        if (otp.length < 4) {
+                            showError("otpError", "OTP must be at least 4 digits");
+                            return;
+                        }
+
+                        // Check if userId is available
+                        if (!window.challengerUserId) {
+                            showError("otpError", "User ID not found. Please register again.");
+                            return;
+                        }
+
+                        // Show loading state
+                        const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+                        const originalText = verifyOtpBtn.textContent;
+                        verifyOtpBtn.textContent = "Verifying...";
+                        verifyOtpBtn.disabled = true;
+
+                        try {
+                            // Call the OTP verification API
+                            const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP), {
+                                method: 'POST',
+                                headers: {
+                                    'accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    userId: window.challengerUserId,
+                                    otp: otp
+                                })
+                            });
+
+                            if (response.ok) {
+                                const result = await response.json();
+                                console.log('OTP verification successful:', result);
+                                showSuccess("OTP Verified successfully!");
+                                clearError("otpError");
+                                
+                                // Store verification result if needed
+                                window.otpVerified = true;
+                                
+                                setTimeout(() => {
+                                    currentStep = 1;
+                                    loadStep(currentStep);
+                                }, 1000);
+                            } else {
+                                const errorData = await response.json().catch(() => ({}));
+                                console.error('OTP verification failed:', errorData);
+                                showError("otpError", `Verification failed: ${errorData.message || 'Invalid OTP. Please try again.'}`);
+                            }
+                        } catch (error) {
+                            console.error('Network error during OTP verification:', error);
+                            showError("otpError", "Network error! Please check your connection and try again.");
+                        } finally {
+                            // Reset button state
+                            verifyOtpBtn.textContent = originalText;
+                            verifyOtpBtn.disabled = false;
                         }
                     });
 
@@ -1051,6 +1298,9 @@
                 if (index === 1) {
                     questionEl.textContent = "Choose Your Meal Preference";
                     optionsEl.innerHTML = `
+                <!-- Error Message for Step 1 -->
+                <div id="step1Error" class="alert alert-danger" style="display:none; font-size: 14px; padding: 8px 12px; margin-bottom: 15px;"></div>
+                
                 <div class="mb-3">
                     <select class="form-select" id="category">
                         <option selected disabled>Choose Meal Preference</option>
@@ -1058,11 +1308,13 @@
                         <option value="veg-egg">Veg + Egg</option>
                         <option value="veg-meat">Veg + Meat</option>
                     </select>
+                    <div id="categoryError" class="text-danger mt-1" style="font-size: 12px; display: none;"></div>
                 </div>
                 <div class="mb-3">
                     <select class="form-select" id="subcategory" disabled>
-                        <option selected disabled>Choose Sub Category</option>
+                        <option selected disabled>Choose Sub Category (Optional)</option>
                     </select>
+                    <div id="subcategoryError" class="text-danger mt-1" style="font-size: 12px; display: none;"></div>
                 </div>
                 <button class="btn btn-dark w-100" id="continueBtn">Continue</button>
             `;
@@ -1104,7 +1356,7 @@
 
                     categorySelect.addEventListener("change", (e) => {
                         const selected = e.target.value;
-                        subcategorySelect.innerHTML = `<option selected disabled>Select Sub Category</option>`;
+                        subcategorySelect.innerHTML = `<option selected disabled>Select Sub Category (Optional)</option>`;
                         subcategorySelect.disabled = true;
 
                         if (subcategories[selected]) {
@@ -1123,13 +1375,118 @@
                         }
                     });
 
-                    document.getElementById("continueBtn").addEventListener("click", () => {
-                        if (!categorySelect.value || subcategorySelect.disabled || !subcategorySelect.value) {
-                            alert("⚠️ Please select both category and subcategory!");
+                    // Clear errors on change
+                    categorySelect.addEventListener("change", () => {
+                        document.getElementById('categoryError').style.display = 'none';
+                        document.getElementById('step1Error').style.display = 'none';
+                        categorySelect.style.borderColor = '';
+                    });
+
+                    subcategorySelect.addEventListener("change", () => {
+                        document.getElementById('subcategoryError').style.display = 'none';
+                        document.getElementById('step1Error').style.display = 'none';
+                        subcategorySelect.style.borderColor = '';
+                    });
+
+                    document.getElementById("continueBtn").addEventListener("click", async () => {
+                        let hasErrors = false;
+                        
+                        // Clear previous errors
+                        document.getElementById('categoryError').style.display = 'none';
+                        document.getElementById('subcategoryError').style.display = 'none';
+                        document.getElementById('step1Error').style.display = 'none';
+                        categorySelect.style.borderColor = '';
+                        subcategorySelect.style.borderColor = '';
+
+                        // Validate category (required)
+                        if (!categorySelect.value || categorySelect.value === 'Choose Meal Preference') {
+                            document.getElementById('categoryError').textContent = 'Please select a meal preference';
+                            document.getElementById('categoryError').style.display = 'block';
+                            categorySelect.style.borderColor = '#dc3545';
+                            hasErrors = true;
+                        }
+
+                        // Subcategory is optional, no validation needed
+
+                        if (hasErrors) {
+                            document.getElementById('step1Error').textContent = 'Please complete all required selections before continuing';
+                            document.getElementById('step1Error').style.display = 'block';
                             return;
                         }
-                        currentStep = 2;
-                        loadStep(currentStep);
+
+                        // Check if userId is available from previous registration
+                        if (!window.challengerUserId) {
+                            document.getElementById('step1Error').textContent = 'User ID not found. Please restart the process.';
+                            document.getElementById('step1Error').style.display = 'block';
+                            return;
+                        }
+
+                        // Show loading state
+                        const continueBtn = document.getElementById("continueBtn");
+                        const originalText = continueBtn.textContent;
+                        continueBtn.textContent = "Submitting...";
+                        continueBtn.disabled = true;
+
+                        try {
+                            // Map category values to API expected format
+                            const categoryMapping = {
+                                'veg': 'Vegetarian',
+                                'veg-egg': 'Veg + Egg',
+                                'veg-meat': 'Veg + Meat'
+                            };
+
+                            // Get subcategory value or use "Beginner" as default
+                            const subcategoryValue = subcategorySelect.value && 
+                                subcategorySelect.value !== 'Choose Sub Category (Optional)' && 
+                                !subcategorySelect.disabled
+                                ? subcategorySelect.options[subcategorySelect.selectedIndex].text 
+                                : 'Beginner';
+
+                            // Prepare API payload
+                            const payload = {
+                                userId: window.challengerUserId,
+                                category: categoryMapping[categorySelect.value] || categorySelect.value,
+                                subcategory: subcategoryValue,
+                                type: "Weight Loss" // Fixed type as per the curl example
+                            };
+
+                            console.log('Submitting challenge data:', payload);
+
+                            // Call the submit API
+                            const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.SUBMIT_CHALLENGE), {
+                                method: 'POST',
+                                headers: {
+                                    'accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify(payload)
+                            });
+
+                            if (response.ok) {
+                                const result = await response.json();
+                                console.log('Challenge submission successful:', result);
+                                
+                                // Store submission result if needed
+                                window.challengeSubmitted = true;
+                                
+                                // Proceed to next step
+                                currentStep = 2;
+                                loadStep(currentStep);
+                            } else {
+                                const errorData = await response.json().catch(() => ({}));
+                                console.error('Challenge submission failed:', errorData);
+                                document.getElementById('step1Error').textContent = `Submission failed: ${errorData.message || 'Please try again later'}`;
+                                document.getElementById('step1Error').style.display = 'block';
+                            }
+                        } catch (error) {
+                            console.error('Network error during challenge submission:', error);
+                            document.getElementById('step1Error').textContent = "Network error! Please check your connection and try again.";
+                            document.getElementById('step1Error').style.display = 'block';
+                        } finally {
+                            // Reset button state
+                            continueBtn.textContent = originalText;
+                            continueBtn.disabled = false;
+                        }
                     });
 
                     nextBtn.style.display = "none";
@@ -1301,7 +1658,30 @@
 
     </script>
 
+    <script>
+        new Swiper(".myth-carousel-wrapper", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false
+            },
+            // navigation: {
+            //     nextEl: ".myth-nav-next",
+            //     prevEl: ".myth-nav-prev",
+            // },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true, // allows clicking on dots
+            },
+            breakpoints: {
+                0: { slidesPerView: 1, spaceBetween: 15 },
+                768: { slidesPerView: 2, spaceBetween: 30 }
+            }
+        });
 
+    </script>
 
     <script>
         function FlipDigit1(value) {
@@ -1493,48 +1873,16 @@
     </script>
 
     <script>
-        const goTopBtn = document.getElementById("goTopBtn");
-        const circle = document.querySelector(".progress-ring__circle");
-        const radius = circle.r.baseVal.value;
-        const circumference = 2 * Math.PI * radius;
-
-        circle.style.strokeDasharray = `${circumference} ${circumference}`;
-        circle.style.strokeDashoffset = circumference;
-
-        // Scroll progress update
-        window.addEventListener("scroll", () => {
-            const scrollTop = window.scrollY;
-            const docHeight = document.body.scrollHeight - window.innerHeight;
-            const scrollPercent = scrollTop / docHeight;
-            const offset = circumference - scrollPercent * circumference;
-            circle.style.strokeDashoffset = offset;
+        // Go to top functionality
+        document.getElementById("goTopBtn").addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
         });
 
-        // Scroll to top animation
-        goTopBtn.addEventListener("click", () => {
-            const scrollDuration = 700;
-            const start = window.scrollY;
-            const startTime = performance.now();
-
-            function scrollAnimation(currentTime) {
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(elapsed / scrollDuration, 1);
-                window.scrollTo(0, start * (1 - progress));
-                // reverse circle as we scroll up
-                const offset = circumference * progress;
-                circle.style.strokeDashoffset = offset;
-                if (progress < 1) requestAnimationFrame(scrollAnimation);
-            }
-
-            requestAnimationFrame(scrollAnimation);
-        });
-
-        // Shop Rice button → Amazon Daawat search
-        document.getElementById("shopRiceBtn").addEventListener("click", () => {
+        // Shop rice button
+        document.getElementById("shopRiceBtn").addEventListener("click", function () {
             window.open("https://www.amazon.in/s?k=daawat+rice", "_blank");
         });
     </script>
-
 
 </body>
 

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - Rice Challenge</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .result { margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 3px; }
+        .error { background: #ffe6e6; color: #cc0000; }
+        .success { background: #e6ffe6; color: #006600; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+        input { padding: 8px; margin: 5px; width: 200px; }
+    </style>
+</head>
+<body>
+    <h1>Rice Challenge API Test</h1>
+    
+    <!-- API Configuration Display -->
+    <div class="test-section">
+        <h3>API Configuration</h3>
+        <div id="apiConfig"></div>
+    </div>
+
+    <!-- Registration Test -->
+    <div class="test-section">
+        <h3>1. Test Registration API</h3>
+        <div>
+            <input type="text" id="testName" placeholder="Name" value="Test User">
+            <input type="text" id="testMobile" placeholder="Mobile" value="9999999999">
+            <select id="testDuration">
+                <option value="7 days">7 days</option>
+                <option value="14 days">14 days</option>
+                <option value="21 days">21 days</option>
+                <option value="30 days">30 days</option>
+            </select>
+        </div>
+        <button onclick="testRegistration()">Test Registration</button>
+        <div id="registerResult" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- OTP Verification Test -->
+    <div class="test-section">
+        <h3>2. Test OTP Verification API</h3>
+        <div>
+            <input type="text" id="testUserId" placeholder="User ID (from registration response)">
+            <input type="text" id="testOtp" placeholder="OTP" value="1234">
+        </div>
+        <button onclick="testOtpVerification()">Test OTP Verification</button>
+        <div id="verifyResult" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- Full Flow Test -->
+    <div class="test-section">
+        <h3>3. Test Full Flow</h3>
+        <button onclick="testFullFlow()">Test Complete Registration + Verification</button>
+        <div id="fullFlowResult" class="result" style="display:none;"></div>
+    </div>
+
+    <script>
+        // API Configuration - Same as main page
+        const API_CONFIG = {
+            BASE_URL: (() => {
+                if (window.location.href.includes('http://13.201.26.19')) {
+                    return 'http://13.201.26.19:8080';
+                } else if (window.location.href.includes('192.168.1.203')) {
+                    return 'http://192.168.1.203:8080';
+                } else {
+                    return 'http://192.168.1.203:8080'; // Default to test server
+                }
+            })(),
+            
+            ENDPOINTS: {
+                REGISTER_CHALLENGER: '/challenger/register',
+                VERIFY_OTP: '/challenger/verify'
+            }
+        };
+
+        function getApiUrl(endpoint) {
+            return API_CONFIG.BASE_URL + endpoint;
+        }
+
+        // Display API config
+        document.getElementById('apiConfig').innerHTML = `
+            <strong>Base URL:</strong> ${API_CONFIG.BASE_URL}<br>
+            <strong>Register Endpoint:</strong> ${getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER)}<br>
+            <strong>Verify Endpoint:</strong> ${getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP)}
+        `;
+
+        function showResult(elementId, message, isError = false) {
+            const element = document.getElementById(elementId);
+            element.style.display = 'block';
+            element.className = `result ${isError ? 'error' : 'success'}`;
+            element.innerHTML = message;
+        }
+
+        async function testRegistration() {
+            const name = document.getElementById('testName').value;
+            const mobile = document.getElementById('testMobile').value;
+            const duration = document.getElementById('testDuration').value;
+
+            try {
+                showResult('registerResult', 'Testing registration...', false);
+                
+                const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER), {
+                    method: 'POST',
+                    headers: {
+                        'accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        duration: duration,
+                        name: name,
+                        mobile: mobile
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    const userId = result._id || result.userId || result.id;
+                    document.getElementById('testUserId').value = userId || 'Not found';
+                    
+                    showResult('registerResult', 
+                        `✅ Registration Successful!<br>
+                         <strong>Status:</strong> ${response.status}<br>
+                         <strong>User ID:</strong> ${userId}<br>
+                         <strong>Response:</strong> <pre>${JSON.stringify(result, null, 2)}</pre>`, 
+                        false);
+                } else {
+                    showResult('registerResult', 
+                        `❌ Registration Failed!<br>
+                         <strong>Status:</strong> ${response.status}<br>
+                         <strong>Error:</strong> <pre>${JSON.stringify(result, null, 2)}</pre>`, 
+                        true);
+                }
+            } catch (error) {
+                showResult('registerResult', 
+                    `❌ Network Error!<br>
+                     <strong>Error:</strong> ${error.message}`, 
+                    true);
+            }
+        }
+
+        async function testOtpVerification() {
+            const userId = document.getElementById('testUserId').value;
+            const otp = document.getElementById('testOtp').value;
+
+            if (!userId) {
+                showResult('verifyResult', '❌ Please provide User ID', true);
+                return;
+            }
+
+            try {
+                showResult('verifyResult', 'Testing OTP verification...', false);
+                
+                const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP), {
+                    method: 'POST',
+                    headers: {
+                        'accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userId: userId,
+                        otp: otp
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (response.ok) {
+                    showResult('verifyResult', 
+                        `✅ OTP Verification Successful!<br>
+                         <strong>Status:</strong> ${response.status}<br>
+                         <strong>Response:</strong> <pre>${JSON.stringify(result, null, 2)}</pre>`, 
+                        false);
+                } else {
+                    showResult('verifyResult', 
+                        `❌ OTP Verification Failed!<br>
+                         <strong>Status:</strong> ${response.status}<br>
+                         <strong>Error:</strong> <pre>${JSON.stringify(result, null, 2)}</pre>`, 
+                        true);
+                }
+            } catch (error) {
+                showResult('verifyResult', 
+                    `❌ Network Error!<br>
+                     <strong>Error:</strong> ${error.message}`, 
+                    true);
+            }
+        }
+
+        async function testFullFlow() {
+            showResult('fullFlowResult', 'Testing full registration + verification flow...', false);
+            
+            try {
+                // Step 1: Register
+                const registerResponse = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER), {
+                    method: 'POST',
+                    headers: {
+                        'accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        duration: "7 days",
+                        name: "Full Flow Test User",
+                        mobile: "8888888888"
+                    })
+                });
+
+                const registerResult = await registerResponse.json();
+                
+                if (!registerResponse.ok) {
+                    throw new Error(`Registration failed: ${JSON.stringify(registerResult)}`);
+                }
+
+                const userId = registerResult._id || registerResult.userId || registerResult.id;
+                if (!userId) {
+                    throw new Error(`No userId found in registration response: ${JSON.stringify(registerResult)}`);
+                }
+
+                // Step 2: Verify OTP
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+                
+                const verifyResponse = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP), {
+                    method: 'POST',
+                    headers: {
+                        'accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userId: userId,
+                        otp: "1234"
+                    })
+                });
+
+                const verifyResult = await verifyResponse.json();
+                
+                if (verifyResponse.ok) {
+                    showResult('fullFlowResult', 
+                        `✅ Full Flow Test Successful!<br>
+                         <strong>Registration:</strong> ${registerResponse.status} - User ID: ${userId}<br>
+                         <strong>Verification:</strong> ${verifyResponse.status}<br>
+                         <strong>Final Result:</strong> <pre>${JSON.stringify(verifyResult, null, 2)}</pre>`, 
+                        false);
+                } else {
+                    showResult('fullFlowResult', 
+                        `❌ OTP Verification Failed in Full Flow!<br>
+                         <strong>Registration:</strong> ✅ Success (User ID: ${userId})<br>
+                         <strong>Verification:</strong> ❌ ${verifyResponse.status}<br>
+                         <strong>Error:</strong> <pre>${JSON.stringify(verifyResult, null, 2)}</pre>`, 
+                        true);
+                }
+                
+            } catch (error) {
+                showResult('fullFlowResult', 
+                    `❌ Full Flow Test Failed!<br>
+                     <strong>Error:</strong> ${error.message}`, 
+                    true);
+            }
+        }
+    </script>
+</body>
+</html>
