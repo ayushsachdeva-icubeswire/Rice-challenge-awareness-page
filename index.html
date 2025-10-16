@@ -758,11 +758,21 @@
         </div>
     </footer>
 
-    <!-- Go to Top + Shop Rice Buttons -->
+
+    <!-- Floating buttons -->
     <div class="floating-buttons">
-        <button id="goTopBtn" title="Go to top"><i class="ti ti-chevron-up"></i></button>
-        <button id="shopRiceBtn" title="Shop Daawat Rice">Shop Rice</button>
+        <div class="scroll-top-container">
+            <svg class="progress-ring" width="50" height="50">
+                <circle class="progress-ring__circle" cx="25" cy="25" r="20" />
+            </svg>
+            <button id="goTopBtn" title="Go to top"><i class="ti ti-chevron-up"></i></button>
+        </div>
+
+        <button id="shopRiceBtn" class="shop-rice-btn" title="Shop Daawat Rice">
+            Shop Rice
+        </button>
     </div>
+
 
 
     <!-- Bootstrap JS -->
@@ -1422,16 +1432,48 @@
     </script>
 
     <script>
-        // Go to top functionality
-        document.getElementById("goTopBtn").addEventListener("click", function () {
-            window.scrollTo({ top: 0, behavior: "smooth" });
+        const goTopBtn = document.getElementById("goTopBtn");
+        const circle = document.querySelector(".progress-ring__circle");
+        const radius = circle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = circumference;
+
+        // Scroll progress update
+        window.addEventListener("scroll", () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = scrollTop / docHeight;
+            const offset = circumference - scrollPercent * circumference;
+            circle.style.strokeDashoffset = offset;
         });
 
-        // Shop rice button
-        document.getElementById("shopRiceBtn").addEventListener("click", function () {
+        // Scroll to top animation
+        goTopBtn.addEventListener("click", () => {
+            const scrollDuration = 700;
+            const start = window.scrollY;
+            const startTime = performance.now();
+
+            function scrollAnimation(currentTime) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / scrollDuration, 1);
+                window.scrollTo(0, start * (1 - progress));
+                // reverse circle as we scroll up
+                const offset = circumference * progress;
+                circle.style.strokeDashoffset = offset;
+                if (progress < 1) requestAnimationFrame(scrollAnimation);
+            }
+
+            requestAnimationFrame(scrollAnimation);
+        });
+
+        // Shop Rice button → Amazon Daawat search
+        document.getElementById("shopRiceBtn").addEventListener("click", () => {
             window.open("https://www.amazon.in/s?k=daawat+rice", "_blank");
         });
     </script>
+
 
 </body>
 
