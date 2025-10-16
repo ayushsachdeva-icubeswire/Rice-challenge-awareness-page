@@ -1797,9 +1797,10 @@ footer {
 .image-placeholder img {
   position: absolute;
   height: 125%;
-  width: 650px;
+  width: 440px;
   object-fit: contain;
-  top: -52px;
+  /* top: -52px; */
+  bottom: 0;
   right: -2px;
 }
 
@@ -2289,6 +2290,12 @@ footer {
   z-index: 1000;
 }
 
+@media (max-width: 576px) {
+  .floating-buttons {
+    flex-direction: column;
+  }
+}
+
 /* Scroll-to-top circular progress button */
 .scroll-top-container {
   position: relative;
@@ -2537,4 +2544,20 @@ footer {
   /* position: absolute;
   right: 8px; */
   font-size: 40px;
+}
+
+.movement-img {
+  max-width: 500px;
+  width: 100%;
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+@media (max-width: 991px) {
+  .movement-img {
+    max-width: 450px;
+    position: static;
+    transform: none;
+  }
 }
