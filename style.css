@@ -128,10 +128,17 @@ body {
   margin-left: 20px;
   text-decoration: none;
   color: white;
-  transition: color 0.2s;
+  padding: 8px 16px; /* Adds button padding */
+  border-radius: 5px; /* Rounded corners */
+  transition: all 0.3s ease; /* Smooth transition for hover */
+  display: inline-block; /* Makes padding and background work properly */
 }
+
 .header-nav a:hover {
-  color: #333;
+  color: white; /* Keep text white */
+  background-color: #333; /* Dark background on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Soft shadow */
 }
 
 /* Hamburger icon */
@@ -171,27 +178,26 @@ body {
 }
 
 .close-btn1 {
-  display: none;
   position: absolute;
-  top: 20px;
-  right: 20px;
-  font-size: 28px;
-  color: white;
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(223, 178, 94, 0.35) 0%,
+    rgba(255, 215, 140, 0.6) 100%
+  );
+  opacity: 0;
+  z-index: 0;
+}
+.close-btn1 {
+  display: block;
 }
 
-.close-btn1:hover {
-  transform: rotate(90deg);
-  color: #333;
-}
-
-/* Mobile styles */
-@media (max-width: 768px) {
-  .close-btn1 {
-    display: block;
-  }
-
+/* Mobile: hamburger and off-canvas nav */
+@media (max-width: 991px) {
   .hamburger {
     display: flex;
   }
@@ -222,17 +228,17 @@ body {
     width: 100%;
     border-bottom: 1px solid white;
   }
+}
 
-  /* Animate hamburger into an “X” */
-  .hamburger.open span:nth-child(1) {
-    transform: rotate(45deg) translateY(7px);
-  }
-  .hamburger.open span:nth-child(2) {
-    opacity: 0;
-  }
-  .hamburger.open span:nth-child(3) {
-    transform: rotate(-45deg) translateY(-7px);
-  }
+/* Animate hamburger into an “X” */
+.hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(7px);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-7px);
 }
 
 .hero {
@@ -2121,11 +2127,53 @@ footer {
     rgba(223, 178, 94, 0.4) 0%,
     rgba(255, 215, 140, 0.8) 100%
   );
-  transform: translate(-50%, -50%);
+  stroke: url(#ringGrad);
+  stroke-width: 6;
   opacity: 0;
   z-index: 0;
 }
 
+.progress-ring__track {
+  fill: none;
+  stroke: rgba(12, 12, 92, 0.05);
+  stroke-width: 10;
+}
+
+/* Glow + pulse */
+.scroll-top-container {
+  will-change: transform;
+}
+
+@keyframes ringPulse {
+  0% {
+    filter: drop-shadow(0 6px 12px rgba(165, 132, 73, 0.06));
+  }
+  50% {
+    filter: drop-shadow(0 12px 26px rgba(165, 132, 73, 0.1));
+  }
+  100% {
+    filter: drop-shadow(0 6px 12px rgba(165, 132, 73, 0.06));
+  }
+}
+
+.scroll-top-container .progress-ring {
+  animation: ringPulse 3s ease-in-out infinite;
+}
+
+#goTopBtn i {
+  /* keep chevron color subtle */
+  color: #a5885d;
+}
+
+#goTopBtn:hover + .progress-ring .progress-ring__circle,
+#goTopBtn:focus + .progress-ring .progress-ring__circle {
+  stroke-width: 10;
+}
+
+/* Hover glow on container to emphasize CTA */
+.floating-buttons .scroll-top-container:hover #goTopBtn {
+  box-shadow: 0 18px 40px rgba(165, 132, 73, 0.12);
+}
 .share-btn:hover {
   box-shadow: 0 10px 30px rgba(223, 178, 94, 0.4);
   transform: translateY(-3px);
@@ -2210,31 +2258,7 @@ footer {
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Pagination container */
-.swiper-pagination {
-  text-align: center;
-  margin-top: 15px; /* space between slides and dots */
-}
 
-/* Each dot */
-.swiper-pagination-bullet {
-  width: 12px;
-  height: 12px;
-  background-color: #ccc; /* inactive dot color */
-  opacity: 1; /* remove default transparency */
-  border-radius: 50%;
-  margin: 0 6px; /* spacing between dots */
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
-
-/* Active dot */
-.swiper-pagination-bullet-active {
-  background-color: #a5885d; /* active dot color */
-  width: 12px; /* slightly bigger */
-  height: 12px;
-  box-shadow: 0 0 8px rgba(240, 192, 64, 0.6);
-}
 
 .ml-web {
   margin-left: 80px;
@@ -2270,34 +2294,46 @@ footer {
 /* Scroll-to-top circular progress button */
 .scroll-top-container {
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 #goTopBtn {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: none;
-  /* background-color: #a5885d; */
-  color: #a5885d;
+  background: #ffffff;
+  color: #a5885d; /* keep chevron color */
   font-size: 20px;
   cursor: pointer;
   z-index: 2;
-  transition: transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 8px 18px rgba(12, 12, 92, 0.06);
 }
 
 #goTopBtn:hover {
-  transform: scale(1.1);
+  transform: translate(-50%, -50%) scale(1.06);
 }
 
 /* Circular progress border */
 .progress-ring {
   position: absolute;
-  top: 0;
-  left: 0;
-  transform: rotate(-90deg);
+  top: 50%;
+  left: 50%;
+  width: 56px;
+  height: 56px;
+  transform: translate(-50%, -50%) rotate(-90deg);
 }
 
 .progress-ring__circle {
@@ -2327,4 +2363,162 @@ footer {
 .shop-rice-btn:hover {
   background-color: #8c724c;
   transform: translateY(-3px);
+}
+
+
+/* 🌾 Small Cards Section */
+.small-cards-section {
+  padding: 60px 0;
+}
+
+.section-title span {
+  color: #d28d00;
+}
+
+/* Flip-card base */
+.small-card {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  perspective: 1000px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+/* Inner flip container */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+  border-radius: 12px;
+}
+
+.small-card:hover .card-inner,
+.small-card:focus .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back Faces */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(245, 240, 232, 0.9), #fff);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid #8c724c;
+  box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  backface-visibility: hidden;
+  gap: 16px;
+  padding: 18px;
+}
+
+.card-front:hover,
+.card-back:hover {
+  box-shadow: 0 20px 40px rgba(16, 24, 40, 0.12);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Image Section */
+.card-img {
+  flex: 0 0 160px;
+  height: 160px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Body Content */
+.card-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+}
+
+.card-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 6px;
+  color: #0c0c5c;
+}
+
+.card-text {
+  color: #475467;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+/* Daawat Logo */
+.card-logo {
+  width: 90px;
+  align-self: flex-start;
+  margin-top: 4px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card-logo:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
+
+/* Optional chip (if used elsewhere) */
+.small-card .chip {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(178, 138, 44, 0.12);
+  color: #b48a2c;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin-top: 8px;
+}
+
+/* Responsiveness */
+@media (max-width: 991px) {
+  .card-front,
+  .card-back {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .small-card {
+    height: 180px;
+  }
+  .card-img {
+    flex: 0 0 130px;
+    height: 150px;
+  }
+  .card-title {
+    font-size: 16px;
+  }
+  .card-text {
+    font-size: 13px;
+  }
+  .card-logo {
+    width: 70px;
+  }
+}
+
+.badge-icon-img {
+  position: absolute;
+  right: 8px;
 }

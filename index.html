@@ -91,13 +91,15 @@
     </section>
 
 
+
+
     <!-- Hero Section -->
     <section class="hero animate__animated animate__fadeIn w-100">
         <img class=" logo-img" src="img/new-full.png" alt="">
 
         <div class="container pt-5">
             <div class="row w-100 mx-auto" style="position: relative;overflow: visible;">
-                <div class="col-12 col-lg-11  text-start content-section">
+                <div class="col-12 col-lg-12  text-start content-section">
                     <h1 class="title">The Rice Challenge</h1>
                     <p class="subtitle">This November, break the myths and<br>make <span>Rice Right</span> again</p>
 
@@ -109,8 +111,8 @@
                                 <div id="countdown"></div>
                             </div>
                             <p class="counter-label mb-0">Challenges Taken</p>
-                            <button class="animated-button animated-button-w btn mt-4 mb-0" id="takeChallengeBtn"
-                                data-bs-toggle="modal" data-bs-target="#dynamicChallengeModal">
+                            <button class="animated-button animated-button-w btn mt-4 mb-0"
+                                onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
                                     style="fill: #110d85;">
                                     <path
@@ -191,38 +193,39 @@
                     </div>
                 </div>
             </div>
-
-            <div class="row justify-content-center g-4 py-3 dynamic-challenge-options w-100">
+            <h4>Lorem ipsum dolor sit amet.</h4>
+            <div class="row justify-content-center g-4 py-3 dynamic-challenge-options w-100"
+                id="scrolltotakeChallengeBtn">
                 <!-- 1 Week -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week1.jpg"
-                        data-share="https://example.com/week1.jpg" data-duration="7 days">
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
+                        data-image="img/week1.jpg" data-share="https://example.com/week1.jpg" data-duration="7 days">
                         <h5 class="fw-bold mb-0">7 Days</h5>
-                        <p class="mb-0">Beginner</p>
+                        <img src="img/bronze.png" width="36" class="badge-icon-img" alt="">
                     </div>
                 </div>
                 <!-- 2 Weeks -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week2.jpg"
-                        data-share="https://example.com/week2.jpg" data-duration="14 days">
-                        <h5 class="fw-bold mb-0">1<span style="font-family: sans-serif;">4</span> Days</h5>
-                        <p class="mb-0">Amateur</p>
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
+                        data-image="img/week2.jpg" data-share="https://example.com/week2.jpg" data-duration="14 days">
+                        <h5 class="fw-bold mb-0">14 Days</h5>
+                        <img src="img/silver.png" width="36" class="badge-icon-img" alt="">
                     </div>
                 </div>
                 <!-- 3 Weeks -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/week3.jpg"
-                        data-share="https://example.com/week3.jpg" data-duration="21 days">
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
+                        data-image="img/week3.jpg" data-share="https://example.com/week3.jpg" data-duration="21 days">
                         <h5 class="fw-bold mb-0">21 Days</h5>
-                        <p class="mb-0">Intermediate</p>
+                        <img src="img/gold.png" width="36" class="badge-icon-img" alt="">
                     </div>
                 </div>
                 <!-- 30 Days -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-2 px-3 rounded-3" data-image="img/30days.jpg"
-                        data-share="https://example.com/30days.jpg" data-duration="30 days">
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
+                        data-image="img/30days.jpg" data-share="https://example.com/30days.jpg" data-duration="30 days">
                         <h5 class="fw-bold mb-0">30 Days</h5>
-                        <p class="mb-0">Pro</p>
+                        <img src="img/diamond.png" width="36" class="badge-icon-img" alt="">
                     </div>
                 </div>
             </div>
@@ -428,206 +431,204 @@
     </section>
 
 
-
-    <section id="myth-carousel-section">
+    <section class="small-cards-section">
+        <h2 class="section-title text-center mb-4"><span>Myth Busting</span> Rice Facts</h2>
         <div class="container">
-            <div class="w-100">
-                <h2 class="myth-carousel-title" id="myths"><span>The Rice Myths</span> End Here</h2>
-                <div class="myth-carousel-wrapper swiper">
-                    <div class="myth-carousel swiper-wrapper py-5">
+            <div class="row g-4 w-100">
 
-                        <!-- Card 1 -->
-                        <div class="myth-card swiper-slide">
-                            <div class="myth-card-inner">
-                                <div class="myth-card-front">
-                                    <div>
-                                        <h3>Rice makes you sleepy</h3>
-                                        <button class="myth-btn">Bust the Myth »</button>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
+                <!-- Card 1 -->
+                <div class="col-12 col-lg-6">
+                    <div class="small-card" tabindex="0">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-img">
+                                    <img src="img/slider/1.png" alt="Rice Myth 1">
                                 </div>
-                                <div class="myth-card-back">
-                                    <!-- <img src="https://picsum.photos/400/250?random=1" alt="Rice Myth 1"> -->
-                                    <div>
-                                        <h3>Rice helps release serotonin and melatonin - nature’s sleep aids. It’s
-                                            science,
-                                            not sluggishness.</h3>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
+                                <div class="card-body">
+                                    <div class="card-title">Rice makes you sleepy</div>
+                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
+                                </div>
+                            </div>
+                            <div class="card-back" aria-hidden="true">
+                                <div class="card-img">
+                                    <img src="img/slider/1.png" alt="Rice Myth 1">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Fact</div>
+                                    <div class="card-text">Rice helps release serotonin and melatonin - nature’s sleep
+                                        aids. It’s science, not sluggishness.</div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Card 2 -->
-                        <div class="myth-card swiper-slide">
-                            <div class="myth-card-inner">
-                                <div class="myth-card-front">
-                                    <div>
-                                        <h3>Rice makes you feel heavy or lazy</h3>
-                                        <button class="myth-btn">Bust the Myth »</button>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                                <div class="myth-card-back">
-                                    <!-- <img src="https://picsum.photos/400/250?random=2" alt="Rice Myth 2"> -->
-                                    <div>
-                                        <h3>Rice digests faster and is naturally gluten-free, making it easy on the
-                                            stomach
-                                            and feeling light</h3>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="myth-card swiper-slide">
-                            <div class="myth-card-inner">
-                                <div class="myth-card-front">
-                                    <div>
-                                        <h3>You should avoid rice for dinner.</h3>
-                                        <button class="myth-btn">Bust the Myth »</button>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                                <div class="myth-card-back">
-                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <div>
-                                        <h3>Rice is light, easy to digest, and helps relax your system - perfect for
-                                            calm,
-                                            quality sleep.</h3>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="myth-card swiper-slide">
-                            <div class="myth-card-inner">
-                                <div class="myth-card-front">
-                                    <div>
-                                        <h3>Fitness means cutting out rice.</h3>
-                                        <button class="myth-btn">Bust the Myth »</button>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                                <div class="myth-card-back">
-                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <div>
-                                        <h3>Many athletes and trainers rely on rice for sustained energy and muscle
-                                            recovery. Balance builds fitness, not deprivation</h3>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 5 -->
-                        <div class="myth-card swiper-slide">
-                            <div class="myth-card-inner">
-                                <div class="myth-card-front">
-                                    <div>
-                                        <h3>Rice causes bloating.</h3>
-                                        <button class="myth-btn">Bust the Myth »</button>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                                <div class="myth-card-back">
-                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <div>
-                                        <h3>Rice is low in sodium and gluten-free - it actually reduces water retention
-                                            and
-                                            soothes digestion.</h3>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 6 -->
-                        <div class="myth-card swiper-slide">
-                            <div class="myth-card-inner">
-                                <div class="myth-card-front">
-                                    <div>
-                                        <h3>Rice isn’t suitable for weight loss.</h3>
-                                        <button class="myth-btn">Bust the Myth »</button>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                                <div class="myth-card-back">
-                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <div>
-                                        <h3>When portioned and paired right, rice supports clean eating and steady
-                                            energy -
-                                            gives far better results.</h3>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 7 -->
-                        <div class="myth-card swiper-slide">
-                            <div class="myth-card-inner">
-                                <div class="myth-card-front">
-                                    <div>
-                                        <h3>Rice has empty calories.</h3>
-                                        <button class="myth-btn">Bust the Myth »</button>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                                <div class="myth-card-back">
-                                    <!-- <img src="https://picsum.photos/400/250?random=3" alt="Rice Myth 3"> -->
-                                    <div>
-                                        <h3>Rice provides complex carbs and essential nutrients that support metabolism
-                                            and
-                                            brain function - not “empty,” but essential.</h3>
-                                    </div>
-                                    <div class="text-center">
-                                        <img src="img/1new-daawat-logo.png" width="120" alt="">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-
-                    <!-- Pagination dots -->
-                    <div class="swiper-pagination mt-4"></div>
-                    <!-- Navigation -->
-                    <!-- <div class="myth-nav-prev">‹</div>
-                    <div class="myth-nav-next">›</div> -->
                 </div>
+
+                <!-- Card 2 -->
+                <div class="col-12 col-lg-6">
+                    <div class="small-card" tabindex="0">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-img">
+                                    <img src="img/slider/2.png" alt="Rice Myth 2">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Rice makes you feel heavy or lazy</div>
+                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
+                                </div>
+                            </div>
+                            <div class="card-back" aria-hidden="true">
+                                <div class="card-img">
+                                    <img src="img/slider/2.png" alt="Rice Myth 2">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Fact</div>
+                                    <div class="card-text">Rice digests faster and is naturally gluten-free, making it
+                                        easy on the stomach and feeling light.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-lg-6">
+                    <div class="small-card" tabindex="0">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-img">
+                                    <img src="img/slider/3.png" alt="Rice Myth 3">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">You should avoid rice for dinner</div>
+                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
+                                </div>
+                            </div>
+                            <div class="card-back" aria-hidden="true">
+                                <div class="card-img">
+                                    <img src="img/slider/3.png" alt="Rice Myth 3">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Fact</div>
+                                    <div class="card-text">Rice is light, easy to digest, and helps relax your system -
+                                        perfect for calm, quality sleep.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-12 col-lg-6">
+                    <div class="small-card" tabindex="0">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-img">
+                                    <img src="img/slider/4.png" alt="Rice Myth 4">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Fitness means cutting out rice</div>
+                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
+                                </div>
+                            </div>
+                            <div class="card-back" aria-hidden="true">
+                                <div class="card-img">
+                                    <img src="img/slider/4.png" alt="Rice Myth 4">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Fact</div>
+                                    <div class="card-text">Many athletes and trainers rely on rice for sustained energy
+                                        and muscle recovery. Balance builds fitness, not deprivation.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="col-12 col-lg-6">
+                    <div class="small-card" tabindex="0">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-img">
+                                    <img src="img/slider/5.png" alt="Rice Myth 5">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Rice causes bloating</div>
+                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
+                                </div>
+                            </div>
+                            <div class="card-back" aria-hidden="true">
+                                <div class="card-img">
+                                    <img src="img/slider/5.png" alt="Rice Myth 5">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Fact</div>
+                                    <div class="card-text">Rice is low in sodium and gluten-free - it actually reduces
+                                        water retention and soothes digestion.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="col-12 col-lg-6">
+                    <div class="small-card" tabindex="0">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-img">
+                                    <img src="img/slider/6.png" alt="Rice Myth 6">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Rice isn’t suitable for weight loss</div>
+                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
+                                </div>
+                            </div>
+                            <div class="card-back" aria-hidden="true">
+                                <div class="card-img">
+                                    <img src="img/slider/6.png" alt="Rice Myth 6">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Fact</div>
+                                    <div class="card-text">When portioned and paired right, rice supports clean eating
+                                        and steady energy - gives far better results.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 7 -->
+                <div class="col-12 col-lg-6">
+                    <div class="small-card" tabindex="0">
+                        <div class="card-inner">
+                            <div class="card-front">
+                                <div class="card-img">
+                                    <img src="img/slider/7.png" alt="Rice Myth 7">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Rice has empty calories</div>
+                                    <img src="img/1new-daawat-logo.png" alt="Daawat Logo" class="card-logo">
+                                </div>
+                            </div>
+                            <div class="card-back" aria-hidden="true">
+                                <div class="card-img">
+                                    <img src="img/slider/7.png" alt="Rice Myth 7">
+                                </div>
+                                <div class="card-body">
+                                    <div class="card-title">Fact</div>
+                                    <div class="card-text">Rice provides complex carbs and essential nutrients that
+                                        support metabolism and brain function - not “empty,” but essential.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
+
 
 
     <!-- Quiz Modal -->
@@ -741,14 +742,14 @@
 
                 <div class="col-12 col-md-6 col-lg-6 d-flex align-items-center align-items-md-end flex-column">
                     <div class="social-icons1">
-                        <a href="https://facebook.com" style="text-decoration: none;" target="_blank"><i
+                        <a href="https://www.facebook.com/DaawatBasmatiOfficial/" style="text-decoration: none;" target="_blank"><i
                                 class="ti ti-brand-facebook"></i></a>
-                        <a href="https://twitter.com" style="text-decoration: none;" target="_blank"><i
-                                class="ti ti-brand-twitter"></i></a>
-                        <a href="https://instagram.com" style="text-decoration: none;" target="_blank"><i
+                        <!-- <a href="https://twitter.com" style="text-decoration: none;" target="_blank"><i
+                                class="ti ti-brand-twitter"></i></a> -->
+                        <a href="https://instagram.com/daawatofficial" style="text-decoration: none;" target="_blank"><i
                                 class="ti ti-brand-instagram"></i></a>
-                        <a href="https://linkedin.com" style="text-decoration: none;" target="_blank"><i
-                                class="ti ti-brand-linkedin"></i></a>
+                        <a href="https://www.youtube.com/@DaawatTheFinest" style="text-decoration: none;"
+                            target="_blank"><i class="ti ti-brand-youtube"></i></a>
                     </div>
                     <a href="" style="text-decoration: none;color: white;">
                         Terms and Conditions
@@ -762,8 +763,18 @@
     <!-- Floating buttons -->
     <div class="floating-buttons">
         <div class="scroll-top-container">
-            <svg class="progress-ring" width="50" height="50">
-                <circle class="progress-ring__circle" cx="25" cy="25" r="20" />
+            <svg class="progress-ring" width="56" height="56" viewBox="0 0 56 56" preserveAspectRatio="xMidYMid meet">
+                <defs>
+                    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#d28d00" />
+                        <stop offset="50%" stop-color="#b48a2c" />
+                        <stop offset="100%" stop-color="#a5885d" />
+                    </linearGradient>
+                </defs>
+                <!-- background track -->
+                <circle class="progress-ring__track" cx="28" cy="28" r="22" />
+                <!-- animated progress -->
+                <circle class="progress-ring__circle" cx="28" cy="28" r="22" />
             </svg>
             <button id="goTopBtn" title="Go to top"><i class="ti ti-chevron-up"></i></button>
         </div>
@@ -790,7 +801,7 @@
                     return 'http://localhost:8080';
                 }
             })(),
-            
+
             // API Endpoints
             ENDPOINTS: {
                 REGISTER_CHALLENGER: '/challenger/register'
@@ -805,8 +816,38 @@
         // Log the selected base URL for debugging
         console.log('API Base URL:', API_CONFIG.BASE_URL);
     </script>
+
+    <script>
+        (function () {
+            const cards = document.querySelectorAll('.small-card');
+            if (!cards.length) return;
+
+            cards.forEach(card => {
+                // toggle on click/tap
+                card.addEventListener('click', function (e) {
+                    if (e.target.closest('a') || e.target.closest('button')) return;
+                    this.classList.toggle('is-flipped');
+                    const back = this.querySelector('.card-back');
+                    if (back) back.setAttribute('aria-hidden', !this.classList.contains('is-flipped'));
+                });
+
+                // allow keyboard toggling
+                card.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.classList.toggle('is-flipped');
+                        const back = this.querySelector('.card-back');
+                        if (back) back.setAttribute('aria-hidden', !this.classList.contains('is-flipped'));
+                    }
+                });
+            });
+        })();
+
+    </script>
+
     <script>
         // 3D rotation (only runs on tablet & above)
+
         const ring = document.getElementById('ring');
         if (ring) {
             const cards = Array.from(ring.children);
@@ -962,7 +1003,7 @@
                         const level = selectedCard.querySelector("p").textContent.trim();
                         challengeText = `${duration.replace(" days", "")} Day Challenge (${level})`;
                     }
-                    
+
                     questionEl.textContent = `Ready for the ${challengeText}?`;
                     optionsEl.innerHTML = `
                 <form id="userForm" class="d-flex flex-column gap-3">
@@ -1323,30 +1364,7 @@
 
     </script>
 
-    <script>
-        new Swiper(".myth-carousel-wrapper", {
-            slidesPerView: 2,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false
-            },
-            // navigation: {
-            //     nextEl: ".myth-nav-next",
-            //     prevEl: ".myth-nav-prev",
-            // },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true, // allows clicking on dots
-            },
-            breakpoints: {
-                0: { slidesPerView: 1, spaceBetween: 15 },
-                768: { slidesPerView: 2, spaceBetween: 30 }
-            }
-        });
 
-    </script>
 
     <script>
         function FlipDigit1(value) {
