@@ -2258,8 +2258,6 @@ footer {
   color: rgba(255, 255, 255, 0.8);
 }
 
-
-
 .ml-web {
   margin-left: 80px;
 }
@@ -2365,7 +2363,6 @@ footer {
   transform: translateY(-3px);
 }
 
-
 /* 🌾 Small Cards Section */
 .small-cards-section {
   padding: 60px 0;
@@ -2395,10 +2392,10 @@ footer {
   border-radius: 12px;
 }
 
-.small-card:hover .card-inner,
+/* .small-card:hover .card-inner,
 .small-card:focus .card-inner {
   transform: rotateY(180deg);
-}
+} */
 
 /* Front & Back Faces */
 .card-front,
@@ -2414,7 +2411,7 @@ footer {
   border: 1px solid #8c724c;
   box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
-  backface-visibility: hidden;
+  /* backface-visibility: hidden; */
   gap: 16px;
   padding: 18px;
 }
@@ -2424,9 +2421,9 @@ footer {
   box-shadow: 0 20px 40px rgba(16, 24, 40, 0.12);
 }
 
-.card-back {
+/* .card-back {
   transform: rotateY(180deg);
-}
+} */
 
 /* Image Section */
 .card-img {
@@ -2454,7 +2451,7 @@ footer {
 .card-title {
   font-weight: 700;
   font-size: 18px;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
   color: #0c0c5c;
 }
 
@@ -2466,6 +2463,9 @@ footer {
 
 /* Daawat Logo */
 .card-logo {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
   width: 90px;
   align-self: flex-start;
   margin-top: 4px;
@@ -2521,4 +2521,10 @@ footer {
 .badge-icon-img {
   position: absolute;
   right: 8px;
+}
+
+.badge-icon-i {
+  /* position: absolute;
+  right: 8px; */
+  font-size: 40px;
 }
