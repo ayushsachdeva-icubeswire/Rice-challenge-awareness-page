@@ -80,8 +80,8 @@
                 <div class="py-2 d-block d-md-none">
                     <img src="img/1new-daawat-logo.png" width="140" alt="">
                 </div>
-                <a href="#share">Know the Movement</a>
-                <a href="#share">Share</a>
+                <a href="#movement">The Movement</a>
+                <a href="#" id="shareBtn">Share</a>
                 <a href="#myths">Myths</a>
                 <a href="#faqs">FAQs</a>
             </nav>
@@ -93,7 +93,7 @@
 
     <!-- Hero Section -->
     <section class="hero animate__animated animate__fadeIn w-100">
-        <img class=" logo-img" src="img/new-daawat-logo.png" alt="">
+        <img class=" logo-img" src="img/new-full.png" alt="">
 
         <div class="container pt-5">
             <div class="row w-100 mx-auto" style="position: relative;overflow: visible;">
@@ -391,32 +391,37 @@
     </section>
 
     <!-- FAQ intro: left content + right image -->
-    <section class="py-5 interaction-section">
+    <section class="py-5 interaction-section" id="movement">
         <div class="text-center">
-            <h2 class="faq-title"><span class="text-dark">Know</span> The Movement</h2>
+            <h2 class="faq-title">The Movement</h2>
         </div>
         <div class="container">
             <div class="row align-items-center py-4">
                 <div class="col-12 col-lg-6">
 
-                    <p class="p-tag">Through Rice Your Awareness, Daawat encourages people to rediscover the quiet
-                        goodness of rice -
-                        light, balanced, and full of natural nourishment.</p>
 
-                    <p class="p-tag">When embraced in the right way, rice brings comfort, energy, and balance to every
-                        meal, fitting
-                        beautifully into today’s diverse lifestyles.</p>
+                    <p class="p-tag">Rice Your Awareness by Daawat is a movement to help people understand rice the
+                        right way - as a food
+                        that brings balance, nourishment, and energy to everyday life.</p>
 
-                    <p class="p-tag">Because the secret to good health isn’t avoiding rice - it’s understanding it.</p>
+                    <p class="p-tag">At the heart of this initiative lies The Rice Challenge - an experience that
+                        invites you to eat
+                        mindfully and discover how rice can make you feel lighter, more active, and truly refreshed.</p>
 
-                    <p class="mb-4 p-tag"><strong>This November, take <span>The Rice Challenge</span> and experience the
-                            truth - <span style="">Rice is Right</span>.</strong></p>
+                    <p class="p-tag">Rich in natural carbohydrates, easy to digest, and naturally gluten-free, rice
+                        supports gut health, sustained energy, and overall well-being - making it a perfect fit for
+                        every lifestyle.</p>
+                    <p class="p-tag">Because good health doesn’t come from cutting food out - it comes from
+                        understanding it.</p>
+
+                    <p class="mb-4 p-tag">This November, take <span>The Rice Challenge</span> and experience the
+                        truth - <span style="">Rice is Right</span>.</p>
 
                 </div>
 
                 <div class="col-12 col-lg-6 text-center mt-4 mt-lg-0">
-                    <img src="img/rice-img.png" alt="Rice" class="img-fluid mx-auto"
-                        style="max-width:380px; width:100%;">
+                    <img src="img/rice-plate.png" alt="Rice" class="img-fluid mx-auto"
+                        style="max-width:460px; width:100%;">
                 </div>
             </div>
         </div>
@@ -753,6 +758,13 @@
         </div>
     </footer>
 
+    <!-- Go to Top + Shop Rice Buttons -->
+    <div class="floating-buttons">
+        <button id="goTopBtn" title="Go to top"><i class="ti ti-chevron-up"></i></button>
+        <button id="shopRiceBtn" title="Shop Daawat Rice">Shop Rice</button>
+    </div>
+
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -893,7 +905,6 @@
             document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
         });
     </script>
-
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             let currentStep = 0;
@@ -905,51 +916,64 @@
 
             function loadStep(index) {
                 optionsEl.innerHTML = "";
+
+                // ✅ STEP 0 — Name & Mobile + OTP
                 if (index === 0) {
-                    // Step 1: Form with Name & Mobile
                     questionEl.textContent = "Ready for the 7 Day Challenge?";
                     optionsEl.innerHTML = `
-      <form id="userForm" class="d-flex flex-column gap-3">
-          <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
-          <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
+                <form id="userForm" class="d-flex flex-column gap-3">
+                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+                    <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
 
-          <!-- Category -->
-          <div>
-              <select class="form-select" id="category">
-                  <option selected disabled>Choose Meal Preference</option>
-                  <option value="veg">Vegetarian</option>
-                  <option value="veg-egg">Veg+ Egg</option>
-                  <option value="veg-meat">Veg+ Meat</option>
-              </select>
-          </div>
+                    <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Send OTP</button>
 
-          <!-- Sub Category -->
-          <div>
-              <select class="form-select" id="subcategory" disabled>
-                  <option selected disabled>Choose Meal Preference</option>
-              </select>
-          </div>
+                    <div id="otpSection" style="display:none;">
+                        <input type="text" class="form-control mt-3" id="otp" placeholder="Enter OTP" />
+                        <button type="button" class="btn btn-success w-100 mt-2" id="verifyOtpBtn">Verify OTP</button>
+                    </div>
+                </form>
+            `;
 
-          <div class="mb-3 d-none">
-              <select class="form-select" id="challenge-days">
-                  <option selected disabled>Select Type</option>
-                  <option value="7-day">7 Days</option>
-                  <option value="14-day">14 Days</option>
-                  <option value="21-day">21 Days</option>
-                  <option value="30-day">30 Days</option>
-              </select>
-          </div>
+                    document.getElementById("sendOtpBtn").addEventListener("click", () => {
+                        alert("📲 OTP Sent to your number!");
+                        document.getElementById("otpSection").style.display = "block";
+                    });
 
-          <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Send OTP</button>
+                    document.getElementById("verifyOtpBtn").addEventListener("click", () => {
+                        const otp = document.getElementById("otp").value;
+                        if (otp === "1234") { // dummy OTP
+                            alert("✅ OTP Verified!");
+                            currentStep = 1;
+                            loadStep(currentStep);
+                        } else {
+                            alert("❌ Invalid OTP, try 1234 for testing.");
+                        }
+                    });
 
-          <div id="otpSection" style="display:none;">
-              <input type="text" class="form-control mt-3" id="otp" placeholder="Enter OTP" />
-              <button type="button" class="btn btn-success w-100 mt-2" id="verifyOtpBtn">Verify OTP</button>
-          </div>
-      </form>
-  `;
+                    nextBtn.style.display = "none";
+                }
 
-                    // ✅ Subcategory Data
+                // ✅ STEP 1 — Category & Subcategory
+                if (index === 1) {
+                    questionEl.textContent = "Choose Your Meal Preference";
+                    optionsEl.innerHTML = `
+                <div class="mb-3">
+                    <select class="form-select" id="category">
+                        <option selected disabled>Choose Meal Preference</option>
+                        <option value="veg">Vegetarian</option>
+                        <option value="veg-egg">Veg + Egg</option>
+                        <option value="veg-meat">Veg + Meat</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <select class="form-select" id="subcategory" disabled>
+                        <option selected disabled>Choose Sub Category</option>
+                    </select>
+                </div>
+                <button class="btn btn-dark w-100" id="continueBtn">Continue</button>
+            `;
+
+                    // Subcategories Data
                     const subcategories = {
                         "veg": [
                             "Weight Loss Meal Plan",
@@ -981,14 +1005,13 @@
                         ]
                     };
 
-                    // ✅ Add dynamic subcategory logic
                     const categorySelect = document.getElementById("category");
                     const subcategorySelect = document.getElementById("subcategory");
 
                     categorySelect.addEventListener("change", (e) => {
                         const selected = e.target.value;
                         subcategorySelect.innerHTML = `<option selected disabled>Select Sub Category</option>`;
-                        subcategorySelect.disabled = true; // reset
+                        subcategorySelect.disabled = true;
 
                         if (subcategories[selected]) {
                             subcategories[selected].forEach(sub => {
@@ -997,100 +1020,30 @@
                                 opt.textContent = sub;
                                 subcategorySelect.appendChild(opt);
                             });
-                            // enable and fade in
                             subcategorySelect.disabled = false;
                             subcategorySelect.style.opacity = "0";
-                            setTimeout(() => (subcategorySelect.style.transition = "opacity 0.3s", subcategorySelect.style.opacity = "1"), 50);
+                            setTimeout(() => {
+                                subcategorySelect.style.transition = "opacity 0.3s";
+                                subcategorySelect.style.opacity = "1";
+                            }, 50);
                         }
                     });
 
-                    // ✅ OTP flow (same as yours)
-                    document.getElementById("sendOtpBtn").addEventListener("click", () => {
-                        alert("📲 OTP Sent to your number!");
-                        document.getElementById("otpSection").style.display = "block";
-                    });
-
-                    document.getElementById("verifyOtpBtn").addEventListener("click", () => {
-                        const otp = document.getElementById("otp").value;
-                        if (otp === "1234") { // dummy OTP
-                            alert("✅ OTP Verified!");
-
-                            // 📥 Automatically download PDF after OTP verification
-                            const dummyPdfUrl = 'img/sample-local-pdf.pdf';
-                            const link = document.createElement('a');
-                            link.href = dummyPdfUrl;
-                            link.download = 'dummy.pdf';
-                            document.body.appendChild(link);
-                            link.click();
-                            document.body.removeChild(link);
-
-                            // 🎉 Skip directly to the final step
-                            currentStep = 2;
-                            loadStep(currentStep);
-                        } else {
-                            alert("❌ Invalid OTP, try 1234 for testing.");
+                    document.getElementById("continueBtn").addEventListener("click", () => {
+                        if (!categorySelect.value || subcategorySelect.disabled || !subcategorySelect.value) {
+                            alert("⚠️ Please select both category and subcategory!");
+                            return;
                         }
+                        currentStep = 2;
+                        loadStep(currentStep);
                     });
 
-                    nextBtn.style.display = "none"; // hide until OTP verified
+                    nextBtn.style.display = "none";
                 }
 
-                if (index === 1) {
-                    questionEl.textContent = "Choose your Diet Plan";
-                    optionsEl.innerHTML = `
-                <div class="mb-3">
-                    <select class="form-select" id="dietPlan">
-                        <option selected disabled>-- Select Diet Plan --</option>
-                        <option value="Weight Loss">Weight Loss</option>
-                        <option value="Muscle Gain">Muscle Gain</option>
-                        <option value="Balanced">Balanced Diet</option>
-                    </select>
-                </div>
-                <div class="mb-3">
-                    <select class="form-select" id="recipes">
-                        <option selected disabled>-- Choose Recipes --</option>
-                        <option value="Rice Bowl">Rice Bowl</option>
-                        <option value="Brown Rice Salad">Brown Rice Salad</option>
-                        <option value="Vegetable Pulao">Vegetable Pulao</option>
-                    </select>
-                </div>
-                <button class="btn btn-dark w-100" id="downloadBtn">Download PDF</button>
-            `;
-
-                    document.getElementById("downloadBtn").addEventListener("click", () => {
-                        // 1️⃣ Show alert
-                        alert("📥 Your PDF will be downloaded!");
-
-                        // 2️⃣ Trigger download of dummy PDF
-                        const dummyPdfUrl = 'img/sample-local-pdf.pdf'; // tiny empty PDF
-                        const link = document.createElement('a');
-                        link.href = dummyPdfUrl;
-                        link.download = 'dummy.pdf'; // file name
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-
-                        // 3️⃣ Call next step function
-                        if (typeof nextStep === "function") nextStep();
-
-                        // 4️⃣ Hide next button if exists
-                        const nextBtn = document.getElementById("nextBtn");
-                        if (nextBtn) nextBtn.style.display = "none";
-                    });
-
-
-                    nextBtn.style.display = "none"; // hide here too
-                }
-
+                // ✅ STEP 3 — Final Congratulations
                 if (index === 2) {
                     finishQuiz();
-                }
-            }
-
-            function nextStep() {
-                currentStep++;
-                if (currentStep < 3) {
-                    animateQuestionChange(() => loadStep(currentStep));
                 }
             }
 
@@ -1100,7 +1053,6 @@
                     quizCard.classList.remove("fade-out");
                     callback();
                     quizCard.classList.add("fade-in");
-
                     quizCard.addEventListener("animationend", function innerHandler() {
                         quizCard.classList.remove("fade-in");
                         quizCard.removeEventListener("animationend", innerHandler);
@@ -1117,37 +1069,29 @@
                     <img src="img/2badge.png" alt="Congrats Image" class="congrats-image" />
                     <button class="animated-button btn" id="shareBtn">
                         <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                    </path>
-                </svg>
+                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                        </svg>
                         <span class="text">Share</span>
                         <span class="circle"></span>
-                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                    </path>
-                </svg>
+                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                        </svg>
                     </button>
-                    <!-- Download line -->
-                    <p>
-                    Your diet plan download should start automatically. If it doesn’t, 
-                    <a href="img/sample-local-pdf.pdf" download="MyFile.pdf">click here</a> to download.
-                    </p>
+                    <p>Your diet plan download should start automatically. If it doesn’t, 
+                    <a href="img/sample-local-pdf.pdf" download="MyFile.pdf">click here</a> to download.</p>
                 </div>
             `;
                     nextBtn.style.display = "none";
                 });
             }
 
-            // Init quiz when modal opens
+            // Modal initialization
             const quizModalEl = document.getElementById('dynamicChallengeModal');
             quizModalEl.addEventListener('shown.bs.modal', () => {
                 currentStep = 0;
                 loadStep(currentStep);
             });
         });
-
     </script>
 
     <script>
@@ -1476,6 +1420,19 @@
             document.querySelector(".hamburger").classList.toggle("open");
         }
     </script>
+
+    <script>
+        // Go to top functionality
+        document.getElementById("goTopBtn").addEventListener("click", function () {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+        // Shop rice button
+        document.getElementById("shopRiceBtn").addEventListener("click", function () {
+            window.open("https://www.amazon.in/s?k=daawat+rice", "_blank");
+        });
+    </script>
+
 </body>
 
 </html>

@@ -1,0 +1,255 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let currentStep = 0;
+
+        const quizCard = document.querySelector(".quiz-card");
+        const questionEl = document.getElementById("quiz-question");
+        const optionsEl = document.getElementById("quiz-options");
+        const nextBtn = document.getElementById("next-btn");
+
+        function loadStep(index) {
+            optionsEl.innerHTML = "";
+            if (index === 0) {
+                // Step 1: Form with Name & Mobile
+                questionEl.textContent = "Ready for the 7 Day Challenge?";
+                optionsEl.innerHTML = `
+                        <form id="userForm" class="d-flex flex-column gap-3">
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+                            <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
+
+                            <!-- Category -->
+                            <div>
+                                <select class="form-select" id="category">
+                                    <option selected disabled>Choose Meal Preference</option>
+                                    <option value="veg">Vegetarian</option>
+                                    <option value="veg-egg">Veg+ Egg</option>
+                                    <option value="veg-meat">Veg+ Meat</option>
+                                </select>
+                            </div>
+
+                            <!-- Sub Category -->
+                            <div>
+                                <select class="form-select" id="subcategory" disabled>
+                                    <option selected disabled>Choose Meal Preference</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3 d-none">
+                                <select class="form-select" id="challenge-days">
+                                    <option selected disabled>Select Type</option>
+                                    <option value="7-day">7 Days</option>
+                                    <option value="14-day">14 Days</option>
+                                    <option value="21-day">21 Days</option>
+                                    <option value="30-day">30 Days</option>
+                                </select>
+                            </div>
+
+                            <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Send OTP</button>
+
+                            <div id="otpSection" style="display:none;">
+                                <input type="text" class="form-control mt-3" id="otp" placeholder="Enter OTP" />
+                                <button type="button" class="btn btn-success w-100 mt-2" id="verifyOtpBtn">Verify OTP</button>
+                            </div>
+                        </form>
+                    `;
+
+                // ✅ Subcategory Data
+                const subcategories = {
+                    "veg": [
+                        "Weight Loss Meal Plan",
+                        "High Protien Meal Plan",
+                        "North Indian Meal Plan",
+                        "South Indian Meal Plan",
+                        "Asian Meal Plan",
+                        "Fusion Meal Plan",
+                        "Maharshtra Meal Plan",
+                        "Sattvikk Meal Plan",
+                    ],
+                    "veg-egg": [
+                        "Weight Loss Meal Plan",
+                        "High Protien Meal Plan",
+                        "North Indian Meal Plan",
+                        "South Indian Meal Plan",
+                        "Asian Meal Plan",
+                        "Fusion Meal Plan",
+                        "Maharshtra Meal Plan",
+                    ],
+                    "veg-meat": [
+                        "Weight Loss Meal Plan",
+                        "High Protien Meal Plan",
+                        "North Indian Meal Plan",
+                        "South Indian Meal Plan",
+                        "Asian Meal Plan",
+                        "Fusion Meal Plan",
+                        "Maharshtra Meal Plan",
+                    ]
+                };
+
+                // ✅ Add dynamic subcategory logic
+                const categorySelect = document.getElementById("category");
+                const subcategorySelect = document.getElementById("subcategory");
+
+                categorySelect.addEventListener("change", (e) => {
+                    const selected = e.target.value;
+                    subcategorySelect.innerHTML = `<option selected disabled>Select Sub Category</option>`;
+                    subcategorySelect.disabled = true; // reset
+
+                    if (subcategories[selected]) {
+                        subcategories[selected].forEach(sub => {
+                            const opt = document.createElement("option");
+                            opt.value = sub.toLowerCase().replace(/\s+/g, "-");
+                            opt.textContent = sub;
+                            subcategorySelect.appendChild(opt);
+                        });
+                        // enable and fade in
+                        subcategorySelect.disabled = false;
+                        subcategorySelect.style.opacity = "0";
+                        setTimeout(() => (subcategorySelect.style.transition = "opacity 0.3s", subcategorySelect.style.opacity = "1"), 50);
+                    }
+                });
+
+                // ✅ OTP flow (same as yours)
+                document.getElementById("sendOtpBtn").addEventListener("click", () => {
+                    alert("📲 OTP Sent to your number!");
+                    document.getElementById("otpSection").style.display = "block";
+                });
+
+                document.getElementById("verifyOtpBtn").addEventListener("click", () => {
+                    const otp = document.getElementById("otp").value;
+                    if (otp === "1234") { // dummy OTP
+                        alert("✅ OTP Verified!");
+
+                        // 📥 Automatically download PDF after OTP verification
+                        const dummyPdfUrl = 'img/sample-local-pdf.pdf';
+                        const link = document.createElement('a');
+                        link.href = dummyPdfUrl;
+                        link.download = 'dummy.pdf';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+
+                        // 🎉 Skip directly to the final step
+                        currentStep = 1;
+                        loadStep(currentStep);
+                    } else {
+                        alert("❌ Invalid OTP, try 1234 for testing.");
+                    }
+                });
+
+                nextBtn.style.display = "none"; // hide until OTP verified
+            }
+
+            if (index === 1) {
+                questionEl.textContent = "Choose your Diet Plan";
+                optionsEl.innerHTML = `
+                        <div class="mb-3">
+                            <select class="form-select" id="dietPlan">
+                                <option selected disabled>-- Select Diet Plan --</option>
+                                <option value="Weight Loss">Weight Loss</option>
+                                <option value="Muscle Gain">Muscle Gain</option>
+                                <option value="Balanced">Balanced Diet</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-select" id="recipes">
+                                <option selected disabled>-- Choose Recipes --</option>
+                                <option value="Rice Bowl">Rice Bowl</option>
+                                <option value="Brown Rice Salad">Brown Rice Salad</option>
+                                <option value="Vegetable Pulao">Vegetable Pulao</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-dark w-100" id="downloadBtn">Download PDF</button>
+                        `;
+
+                document.getElementById("downloadBtn").addEventListener("click", () => {
+                    // 1️⃣ Show alert
+                    alert("📥 Your PDF will be downloaded!");
+
+                    // 2️⃣ Trigger download of dummy PDF
+                    const dummyPdfUrl = 'img/sample-local-pdf.pdf'; // tiny empty PDF
+                    const link = document.createElement('a');
+                    link.href = dummyPdfUrl;
+                    link.download = 'dummy.pdf'; // file name
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+
+                    // 3️⃣ Call next step function
+                    if (typeof nextStep === "function") nextStep();
+
+                    // 4️⃣ Hide next button if exists
+                    const nextBtn = document.getElementById("nextBtn");
+                    if (nextBtn) nextBtn.style.display = "none";
+                });
+
+
+                nextBtn.style.display = "none"; // hide here too
+            }
+
+            if (index === 2) {
+                finishQuiz();
+            }
+        }
+
+        function nextStep() {
+            currentStep++;
+            if (currentStep < 3) {
+                animateQuestionChange(() => loadStep(currentStep));
+            }
+        }
+
+        function animateQuestionChange(callback) {
+            quizCard.classList.add("fade-out");
+            quizCard.addEventListener("animationend", function handler() {
+                quizCard.classList.remove("fade-out");
+                callback();
+                quizCard.classList.add("fade-in");
+
+                quizCard.addEventListener("animationend", function innerHandler() {
+                    quizCard.classList.remove("fade-in");
+                    quizCard.removeEventListener("animationend", innerHandler);
+                });
+                quizCard.removeEventListener("animationend", handler);
+            });
+        }
+
+        function finishQuiz() {
+            animateQuestionChange(() => {
+                questionEl.textContent = "🎉 Congratulations!";
+                optionsEl.innerHTML = `
+                <div class="d-flex justify-content-center flex-column align-items-center gap-4">
+                    <img src="img/2badge.png" alt="Congrats Image" class="congrats-image" />
+                    <button class="animated-button btn" id="shareBtn">
+                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                    </path>
+                </svg>
+                        <span class="text">Share</span>
+                        <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                    </path>
+                </svg>
+                    </button>
+                    <!-- Download line -->
+                    <p>
+                    Your diet plan download should start automatically. If it doesn’t, 
+                    <a href="img/sample-local-pdf.pdf" download="MyFile.pdf">click here</a> to download.
+                    </p>
+                </div>
+            `;
+                nextBtn.style.display = "none";
+            });
+        }
+
+        // Init quiz when modal opens
+        const quizModalEl = document.getElementById('dynamicChallengeModal');
+        quizModalEl.addEventListener('shown.bs.modal', () => {
+            currentStep = 0;
+            loadStep(currentStep);
+        });
+    });
+
+</script>
