@@ -90,15 +90,15 @@
 
         <div class="container pt-5">
             <div class="row w-100 mx-auto content-section" style="position: relative;overflow: visible;">
-                <div class="col-12 col-lg-11  text-start ">
+                <div class="col-12 col-lg-11 px-1   text-start ">
                     <h1 class="title">The Rice Challenge</h1>
-                    <p class="subtitle">This November, break the myths and<br>make <span>Rice Right</span> again</p>
+                    <p class="subtitle">This November, break the myths and<br class="d-none d-lg-block">make <span>Rice Right</span> again</p>
 
                     <div
                         class="d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
 
                         <div class="text-center text-lg-start">
-                            <div class="d-flex gap-2">
+                            <div class="d-flex justify-content-center justify-content-lg-center gap-2">
                                 <div id="countdown"></div>
                             </div>
                             <p class="counter-label mb-0">Challenges Taken</p>
@@ -184,45 +184,69 @@
                     </div>
                 </div>
             </div>
-            <h4>Select one of these</h4>
+            <!-- <h4>Select one of these</h4> -->
             <div class="row justify-content-center g-4 py-3 dynamic-challenge-options w-100"
                 id="scrolltotakeChallengeBtn">
                 <!-- 1 Week -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
                         data-image="img/week1.jpg" data-share="https://example.com/week1.jpg" data-duration="7 days">
                         <h5 class="fw-bold mb-0">7 Days</h5>
-                        <!-- <img src="img/bronze.png" width="36" class="badge-icon-img" alt=""> -->
-                        <i class="ti ti-award badge-icon-i"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#cd7f32" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+                            <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
+                            <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
+                        </svg>
                     </div>
                 </div>
                 <!-- 2 Weeks -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
                         data-image="img/week2.jpg" data-share="https://example.com/week2.jpg" data-duration="14 days">
                         <h5 class="fw-bold mb-0">14 Days</h5>
-                        <!-- <img src="img/silver.png" width="36" class="badge-icon-img" alt=""> -->
-                        <i class="ti ti-award badge-icon-i"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#c0c0c0" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+                            <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
+                            <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
+                        </svg>
 
                     </div>
                 </div>
                 <!-- 3 Weeks -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
                         data-image="img/week3.jpg" data-share="https://example.com/week3.jpg" data-duration="21 days">
                         <h5 class="fw-bold mb-0">21 Days</h5>
-                        <!-- <img src="img/gold.png" width="36" class="badge-icon-img" alt=""> -->
-                        <i class="ti ti-award badge-icon-i"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#ffd700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+                            <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
+                            <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
+                        </svg>
 
                     </div>
                 </div>
                 <!-- 30 Days -->
                 <div class="col-6 col-md-3">
-                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex justify-content-center align-items-center"
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
                         data-image="img/30days.jpg" data-share="https://example.com/30days.jpg" data-duration="30 days">
                         <h5 class="fw-bold mb-0">30 Days</h5>
-                        <!-- <img src="img/diamond.png" width="36" class="badge-icon-img" alt=""> -->
-                        <i class="ti ti-award badge-icon-i"></i>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#b9f2ff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+                            <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
+                            <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
+                        </svg>
 
                     </div>
                 </div>
@@ -431,7 +455,7 @@
     <section class="small-cards-section">
         <h2 class="section-title text-center mb-4"><span>Myth Busting</span> Rice Facts</h2>
         <div class="container">
-            <div class="row g-4 w-100 py-4">
+            <div class="row g-4 w-100 py-4 mx-auto">
 
                 <!-- Card 1 -->
                 <div class="col-12 col-lg-6">
@@ -657,7 +681,7 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                Visit <a href="www.daawat.com/RYA" target="_blank">www.daawat.com/RYA</a> , choose your
+                                Visit <a href="https://www.daawat.com/rya" target="_blank">www.daawat.com/rya</a> , choose your
                                 challenge duration (7 / 14 / 21 / 30 days), register with your details, download your
                                 Exclusive Expert Crafted Meal Plan, and get your Digital Badge. Invite friends and
                                 inspire others to join the movement.
@@ -864,10 +888,10 @@
             return API_CONFIG.BASE_URL + endpoint;
         }
 
-        
+
         // Test function for API endpoints (for debugging)
         window.testAPIs = {
-            testRegister: async function() {
+            testRegister: async function () {
                 try {
                     const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER), {
                         method: 'POST',
@@ -889,8 +913,8 @@
                     return null;
                 }
             },
-            
-            testVerify: async function(userId, otp = "1234") {
+
+            testVerify: async function (userId, otp = "1234") {
                 try {
                     const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP), {
                         method: 'POST',
@@ -911,8 +935,8 @@
                     return null;
                 }
             },
-            
-            testSubmit: async function(userId = "68ecf1d723d4ade0dca9be9b") {
+
+            testSubmit: async function (userId = "68ecf1d723d4ade0dca9be9b") {
                 try {
                     const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.SUBMIT_CHALLENGE), {
                         method: 'POST',
@@ -1689,7 +1713,7 @@
 
         // Shop Rice button → Amazon Daawat search
         document.getElementById("shopRiceBtn").addEventListener("click", () => {
-            window.open("https://www.amazon.in/s?k=daawat+rice", "_blank");
+            window.open("https://www.amazon.in/stores/Daawat/page/4F50B176-6702-4AC2-B9A2-0CABE8AE6204", "_blank");
         });
     </script>
 
