@@ -864,8 +864,78 @@
             return API_CONFIG.BASE_URL + endpoint;
         }
 
-        // Log the selected base URL for debugging
-        console.log('API Base URL:', API_CONFIG.BASE_URL);
+        
+        // Test function for API endpoints (for debugging)
+        window.testAPIs = {
+            testRegister: async function() {
+                try {
+                    const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER), {
+                        method: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            duration: "7 days",
+                            name: "Test User",
+                            mobile: "9999999999"
+                        })
+                    });
+                    const result = await response.json();
+                    console.log('Register Test Result:', result);
+                    return result;
+                } catch (error) {
+                    console.error('Register Test Error:', error);
+                    return null;
+                }
+            },
+            
+            testVerify: async function(userId, otp = "1234") {
+                try {
+                    const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP), {
+                        method: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            userId: userId,
+                            otp: otp
+                        })
+                    });
+                    const result = await response.json();
+                    console.log('Verify Test Result:', result);
+                    return result;
+                } catch (error) {
+                    console.error('Verify Test Error:', error);
+                    return null;
+                }
+            },
+            
+            testSubmit: async function(userId = "68ecf1d723d4ade0dca9be9b") {
+                try {
+                    const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.SUBMIT_CHALLENGE), {
+                        method: 'POST',
+                        headers: {
+                            'accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            userId: userId,
+                            category: "Vegetarian",
+                            subcategory: "Beginner",
+                            type: "Weight Loss"
+                        })
+                    });
+                    const result = await response.json();
+                    console.log('Submit Test Result:', result);
+                    return result;
+                } catch (error) {
+                    console.error('Submit Test Error:', error);
+                    return null;
+                }
+            }
+        };
     </script>
 
 

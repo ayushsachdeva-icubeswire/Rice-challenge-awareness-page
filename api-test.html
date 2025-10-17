@@ -64,16 +64,15 @@
             BASE_URL: (() => {
                 if (window.location.href.includes('http://13.201.26.19')) {
                     return 'http://13.201.26.19:8080';
-                } else if (window.location.href.includes('192.168.1.203')) {
-                    return 'http://192.168.1.203:8080';
                 } else {
-                    return 'http://192.168.1.203:8080'; // Default to test server
+                    return 'http://localhost:8080';
                 }
             })(),
             
             ENDPOINTS: {
                 REGISTER_CHALLENGER: '/challenger/register',
-                VERIFY_OTP: '/challenger/verify'
+                VERIFY_OTP: '/challenger/verify',
+                SUBMIT_CHALLENGE: '/challenger/submit'
             }
         };
 
