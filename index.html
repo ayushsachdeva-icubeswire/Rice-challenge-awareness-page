@@ -1562,11 +1562,26 @@
             }
 
             function finishQuiz() {
+                // Determine badge image based on duration
+                let badgeImage = "img/bronze.png"; // default
+                if (window.userRegistrationData && window.userRegistrationData.duration) {
+                    const duration = window.userRegistrationData.duration;
+                    if (duration === "7 days") {
+                        badgeImage = "img/bronze.png";
+                    } else if (duration === "14 days") {
+                        badgeImage = "img/silver.png";
+                    } else if (duration === "21 days") {
+                        badgeImage = "img/gold.png";
+                    } else if (duration === "30 days") {
+                        badgeImage = "img/diamond.png";
+                    }
+                }
+
                 animateQuestionChange(() => {
                     questionEl.textContent = "🎉 Congratulations!";
                     optionsEl.innerHTML = `
                 <div class="d-flex justify-content-center flex-column align-items-center gap-4">
-                    <img src="img/2badge.png" alt="Congrats Image" class="congrats-image" />
+                    <img src="${badgeImage}" alt="Achievement Badge" class="congrats-image" />
                     <button class="animated-button btn" id="shareBtn">
                         <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
