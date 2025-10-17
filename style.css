@@ -1297,7 +1297,7 @@ a {
 }
 
 .logo-img {
-  width: 300px;
+  width: 240px;
 }
 
 /* Mobile view (stacked top/bottom) */
@@ -1771,9 +1771,14 @@ a {
   color: white;
   font-weight: 400;
   font-size: 56px;
+  margin-bottom: 16px;
 }
 
 @media (max-width: 991px) {
+  .content-section {
+    padding: 30px 10px;
+  }
+  
   .content-section .title {
     color: white;
     font-weight: 400;
@@ -1800,6 +1805,7 @@ a {
   color: white;
   font-weight: 200;
   font-size: 26px;
+  margin-bottom: 14px;
 }
 .content-section .subtitle span {
   font-weight: 600;
@@ -1835,7 +1841,7 @@ a {
   height: 100%;
   display: inline-block;
   border-radius: 7px;
-  margin: 0 5px;
+  margin: 5px 5px;
 }
 
 .flip-clock__wrapper1 {
@@ -1868,7 +1874,7 @@ a {
   display: block;
   position: relative;
   padding-bottom: 0.72em;
-  font-size: 60px;
+  font-size: 34px;
   line-height: 0.95;
   border-radius: 40px;
   /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); */
@@ -1876,7 +1882,7 @@ a {
 /* Mobile adjustments */
 @media (max-width: 768px) {
   .card1 {
-    font-size: 30px !important;
+    font-size: 26px !important;
   }
   .card__top,
   .card__bottom,
@@ -1891,7 +1897,7 @@ a {
 .card__back::after {
   display: block;
   height: 0.72em;
-  width: 44.7px;
+  /* width: 44.7px; */
   color: #8f6a32;
   background: #ffffff;
   padding: 0.25em 0.25em;
@@ -1932,14 +1938,14 @@ a {
   overflow: hidden;
 }
 .flip .card__back::before {
-  animation: flipTop 0.3s cubic-bezier(0.37, 0.01, 0.94, 0.35);
+  animation: flipTop 0.6s cubic-bezier(0.37, 0.01, 0.94, 0.35);
   animation-fill-mode: both;
   transform-origin: center bottom;
 }
 .flip .card__back .card__bottom {
   transform-origin: center top;
   animation-fill-mode: both;
-  animation: flipBottom 0.6s cubic-bezier(0.15, 0.45, 0.28, 1);
+  animation: flipBottom 1.2s cubic-bezier(0.15, 0.45, 0.28, 1);
 }
 
 @keyframes flipTop {
@@ -1978,14 +1984,14 @@ a {
   display: block;
   position: relative;
   padding-bottom: 0.72em;
-  font-size: 60px;
+  font-size: 36px;
   line-height: 0.95;
   border-radius: 40px;
   /* box-shadow: 5px 5px 10px rgb(0 0 0 / 30%); */
 }
 @media (max-width: 768px) {
   .card2 {
-    font-size: 30px !important;
+    font-size: 26px !important;
   }
   .card__top2,
   .card__bottom2,
@@ -2003,7 +2009,7 @@ a {
 .card__back2::after {
   display: block;
   height: 0.72em;
-  width: 44.7px;
+  /* width: 44.7px; */
   color: white;
   /* border: 1px solid white; */
   /* border-bottom: 0px; */
@@ -2047,14 +2053,14 @@ a {
   overflow: hidden;
 }
 .flip2 .card__back2::before {
-  animation: flipTop2 0.3s cubic-bezier(0.37, 0.01, 0.94, 0.35);
+  animation: flipTop2 0.6s cubic-bezier(0.37, 0.01, 0.94, 0.35);
   animation-fill-mode: both;
   transform-origin: center bottom;
 }
 .flip2 .card__back2 .card__bottom2 {
   transform-origin: center top;
   animation-fill-mode: both;
-  animation: flipBottom2 0.6s cubic-bezier(0.15, 0.45, 0.28, 1);
+  animation: flipBottom2 1.2s cubic-bezier(0.15, 0.45, 0.28, 1);
 }
 
 @keyframes flipTop2 {
@@ -2279,18 +2285,6 @@ a {
   /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); */
 }
 
-.interaction-section1::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* background: rgba(0, 0, 0, 0.6); */
-  /* backdrop-filter: blur(8px); */
-  z-index: 1;
-}
-
 .interaction-section > .container {
   position: relative;
   z-index: 2;
@@ -2439,7 +2433,7 @@ a {
 .small-card {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 100%;
   perspective: 1000px;
   /* cursor: pointer; */
   border-radius: 12px;
@@ -2463,7 +2457,7 @@ a {
 /* Front & Back Faces */
 .card-front,
 .card-back {
-  position: absolute;
+  /* position: absolute; */
   width: 100%;
   height: 100%;
   display: flex;
@@ -2471,7 +2465,7 @@ a {
   background: linear-gradient(180deg, rgba(245, 240, 232, 0.9), #fff);
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #8c724c;
+  border: 1px solid rgba(201, 123, 61, 0.3);
   box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   /* backface-visibility: hidden; */
@@ -2490,6 +2484,7 @@ a {
 
 /* Image Section */
 .card-img {
+  display: none;
   flex: 0 0 160px;
   height: 160px;
   border-radius: 8px;
@@ -2497,6 +2492,7 @@ a {
 }
 
 .card-img img {
+  display: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -2526,6 +2522,7 @@ a {
 
 /* Daawat Logo */
 .card-logo {
+  display: none;
   position: absolute;
   right: 10px;
   top: 10px;
@@ -2562,9 +2559,9 @@ a {
 }
 
 @media (max-width: 768px) {
-  .small-card {
+  /* .small-card {
     height: 310px;
-  }
+  } */
   .card-front {
     flex-wrap: wrap;
   }
