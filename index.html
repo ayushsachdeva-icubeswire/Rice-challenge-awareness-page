@@ -31,6 +31,25 @@
             border-radius: 40px;
             /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); */
         }
+        
+        .modal-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: inherit;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .custom-modal1 {
+            position: relative;
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -274,10 +293,17 @@
             <div class="modal fade" id="dynamicChallengeModal" tabindex="-1" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered modal-portrait">
                     <div class="modal-content custom-modal1">
+                        <!-- Dynamic Modal Background Image -->
+                        <div id="dynamicModalImage" class="modal-bg-image"></div>
 
                         <!-- Close Button -->
                         <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close">
                             <i class="ti ti-x"></i>
+                        </button>
+
+                        <!-- Share Button -->
+                        <button class="btn btn-light btn-sm position-absolute" id="dynamicShareBtn" style="top: 15px; right: 50px;">
+                            <i class="ti ti-share"></i>
                         </button>
 
                         <!-- Modal Body -->
@@ -636,11 +662,11 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content p-4">
                 <div class="quiz-card">
-                    <h5 id="quiz-question" class="mb-4"></h5>
-                    <div id="quiz-options"></div>
+                    <h5 id="quiz-question-main" class="mb-4"></h5>
+                    <div id="quiz-options-main"></div>
                     <div class="d-flex justify-content-between align-items-center mt-4">
-                        <button id="arrow" class="btn btn-outline-dark">&larr;</button>
-                        <button id="next-btn" class="btn btn-dark">Next</button>
+                        <button id="arrow-main" class="btn btn-outline-dark">&larr;</button>
+                        <button id="next-btn-main" class="btn btn-dark">Next</button>
                     </div>
                 </div>
             </div>
@@ -870,8 +896,8 @@
         const API_CONFIG = {
             // Determine base URL based on current window location
             BASE_URL: (() => {
-                if (window.location.href.includes('http://13.201.26.19')) {
-                    return 'http://13.201.26.19:8080';
+                if (window.location.href.includes('http://13.201.26.193')) {
+                    return 'http://13.201.26.193:8080';
                 } else {
                     return 'http://localhost:8080';
                 }
@@ -879,7 +905,9 @@
 
             // API Endpoints
             ENDPOINTS: {
-                REGISTER_CHALLENGER: '/challenger/register'
+                REGISTER_CHALLENGER: '/challenger/register',
+                VERIFY_OTP: '/challenger/verify',
+                SUBMIT_CHALLENGE: '/challenger/submit'
             }
         };
 
@@ -906,7 +934,6 @@
                         })
                     });
                     const result = await response.json();
-                    console.log('Register Test Result:', result);
                     return result;
                 } catch (error) {
                     console.error('Register Test Error:', error);
@@ -928,7 +955,6 @@
                         })
                     });
                     const result = await response.json();
-                    console.log('Verify Test Result:', result);
                     return result;
                 } catch (error) {
                     console.error('Verify Test Error:', error);
@@ -952,7 +978,6 @@
                         })
                     });
                     const result = await response.json();
-                    console.log('Submit Test Result:', result);
                     return result;
                 } catch (error) {
                     console.error('Submit Test Error:', error);
@@ -1022,12 +1047,11 @@
                         text: 'Awesome image to share.',
                         url: 'img/img1.png',
                     });
-                    console.log('Share successful');
                 } catch (err) {
                     console.error('Share failed:', err.message);
                 }
             } else {
-                alert('Your browser does not support the share feature.');
+                // Browser doesn't support native share
             }
         });
     </script>
@@ -1041,13 +1065,16 @@
         const dynamicModalEl = document.getElementById('dynamicChallengeModal');
         const dynamicModalImage = document.getElementById('dynamicModalImage');
         const dynamicShareBtn = document.getElementById('dynamicShareBtn');
-        const dynamicCloseBtn = dynamicModalEl.querySelector('.custom-close');
+        const dynamicCloseBtn = dynamicModalEl ? dynamicModalEl.querySelector('.custom-close') : null;
 
         // Initialize modal instance ONCE
-        const dynamicModal = new bootstrap.Modal(dynamicModalEl, {
-            backdrop: true,
-            keyboard: true
-        });
+        let dynamicModal = null;
+        if (dynamicModalEl) {
+            dynamicModal = new bootstrap.Modal(dynamicModalEl, {
+                backdrop: true,
+                keyboard: true
+            });
+        }
 
         // Card selection logic
         dynamicCards.forEach(card => {
@@ -1064,29 +1091,28 @@
         takeBtn.addEventListener('click', (e) => {
             e.preventDefault(); // Prevent default form/button behavior
 
-            if (!selectedCard) {
-                alert('Please select a challenge first!');
-                return; // Stop execution if no card selected
-            }
-
             // Update modal background image
-            const img = selectedCard.getAttribute('data-image');
-            dynamicModalImage.style.backgroundImage = `url(${img})`;
+            const img = selectedCard ? selectedCard.getAttribute('data-image') : null;
+            if (dynamicModalImage && img) {
+                dynamicModalImage.style.backgroundImage = `url(${img})`;
+            }
 
             // Update share button
             const shareLink = selectedCard.getAttribute('data-share');
-            dynamicShareBtn.onclick = () => {
-                if (navigator.share) {
-                    navigator.share({
-                        title: 'Check this out!',
-                        url: shareLink
-                    }).catch(err => console.error(err));
-                } else {
-                    alert('Share not supported in this browser.');
-                }
-            };
-
-            // Show modal
+                if (dynamicShareBtn) {
+                    dynamicShareBtn.onclick = () => {
+                        if (navigator.share) {
+                            navigator.share({
+                                title: 'Check this out!',
+                                url: shareLink
+                            }).catch(err => {
+                                // Share failed silently
+                            });
+                        } else {
+                            // Share not supported
+                        }
+                    };
+                }            // Show modal
             dynamicModal.show();
         });
 
@@ -1096,9 +1122,11 @@
         });
 
         // Ensure overlay/backdrop removed when modal hidden
-        dynamicModalEl.addEventListener('hidden.bs.modal', () => {
-            document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
-        });
+        if (dynamicModalEl) {
+            dynamicModalEl.addEventListener('hidden.bs.modal', () => {
+                document.querySelectorAll('.modal-backdrop').forEach(b => b.remove());
+            });
+        }
     </script>
 
     <script>
@@ -1111,6 +1139,8 @@
             const nextBtn = document.getElementById("next-btn");
 
             function loadStep(index) {
+                if (!optionsEl) return;
+                
                 optionsEl.innerHTML = "";
 
                 // ✅ STEP 0 — Name & Mobile + OTP
@@ -1119,52 +1149,75 @@
                     let challengeText = "7 Day Challenge";
                     if (selectedCard) {
                         const duration = selectedCard.getAttribute("data-duration") || "7 days";
-                        const level = selectedCard.querySelector("p").textContent.trim();
+                        const levelElement = selectedCard.querySelector("p");
+                        const level = levelElement ? levelElement.textContent.trim() : "Beginner";
                         challengeText = `${duration.replace(" days", "")} Day Challenge (${level})`;
                     }
 
-                    questionEl.textContent = `Ready for the ${challengeText}?`;
+                    if (questionEl) {
+                        questionEl.textContent = `Ready for the Challenge?`;
+                    }
                     optionsEl.innerHTML = `
                 <form id="userForm" class="d-flex flex-column gap-3">
-                    ${selectedCard ? `<div class="alert alert-info text-center mb-3">
-                        <small><strong>Selected:</strong> ${challengeText}</small>
-                    </div>` : ''}
-                    <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
-                    <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
+                    <div class="mb-2">
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
+                        <div class="text-danger small mt-1" id="nameError" style="display:none;"></div>
+                    </div>
+                    <div class="mb-2">
+                        <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
+                        <div class="text-danger small mt-1" id="mobileError" style="display:none;"></div>
+                    </div>
+                    <div class="text-danger small mt-1" id="challengeError" style="display:none;"></div>
+                    <div class="text-success small mt-1" id="successMessage" style="display:none;"></div>
 
                     <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Register & Send OTP</button>
 
                     <div id="otpSection" style="display:none;">
-                        <input type="text" class="form-control mt-3" id="otp" placeholder="Enter OTP" />
+                        <div class="mb-2">
+                            <input type="text" class="form-control mt-3" id="otp" placeholder="Enter OTP" maxlength="6" />
+                            <div class="text-danger small mt-1" id="otpError" style="display:none;"></div>
+                        </div>
                         <button type="button" class="btn btn-success w-100 mt-2" id="verifyOtpBtn">Verify OTP</button>
                     </div>
                 </form>
             `;
 
                     document.getElementById("sendOtpBtn").addEventListener("click", async () => {
+                        // Clear previous error messages
+                        document.getElementById("nameError").style.display = "none";
+                        document.getElementById("mobileError").style.display = "none";
+                        document.getElementById("challengeError").style.display = "none";
+                        document.getElementById("successMessage").style.display = "none";
+
                         const name = document.getElementById("name").value.trim();
                         const mobile = document.getElementById("mobile").value.trim();
 
-                        // Validate inputs
+                        // Validate inputs with specific error messages
+                        let hasError = false;
+
                         if (!name) {
-                            alert("❌ Please enter your name!");
-                            return;
+                            document.getElementById("nameError").textContent = "Please enter your name";
+                            document.getElementById("nameError").style.display = "block";
+                            hasError = true;
                         }
 
                         if (!mobile) {
-                            alert("❌ Please enter your mobile number!");
-                            return;
+                            document.getElementById("mobileError").textContent = "Please enter your mobile number";
+                            document.getElementById("mobileError").style.display = "block";
+                            hasError = true;
+                        } else if (!/^\d{10}$/.test(mobile)) {
+                            document.getElementById("mobileError").textContent = "Please enter a valid 10-digit mobile number";
+                            document.getElementById("mobileError").style.display = "block";
+                            hasError = true;
                         }
 
-                        // Validate mobile number (basic validation)
-                        if (!/^\d{10}$/.test(mobile)) {
-                            alert("❌ Please enter a valid 10-digit mobile number!");
-                            return;
-                        }
-
-                        // Check if challenge is selected
                         if (!selectedCard) {
-                            alert("❌ Please select a challenge duration before proceeding!");
+                            document.getElementById("challengeError").textContent = "Please select a challenge duration before proceeding";
+                            document.getElementById("challengeError").style.display = "block";
+                            hasError = true;
+                        }
+
+                        if (hasError) {
                             return;
                         }
 
@@ -1197,17 +1250,42 @@
 
                             if (response.ok) {
                                 const result = await response.json();
-                                console.log('Registration successful:', result);
-                                alert("✅ Registration successful! OTP sent to your number!");
+                                
+                                // Store userId globally for OTP verification  
+                                const extractedUserId = result.data?._id || result._id || result.id || result.userId;
+                                
+                                if (!extractedUserId) {
+                                    console.error('No valid userId found in registration response:', result);
+                                    document.getElementById("challengeError").textContent = "Registration successful but missing user ID. Please try again.";
+                                    document.getElementById("challengeError").style.display = "block";
+                                    return;
+                                }
+                                
+                                window.userRegistrationData = {
+                                    userId: extractedUserId,
+                                    name: name,
+                                    mobile: mobile,
+                                    duration: duration
+                                };
+                                
+                                // Also store in localStorage as backup
+                                localStorage.setItem('userRegistrationData', JSON.stringify(window.userRegistrationData));
+                                
+                                // Show success message
+                                document.getElementById("successMessage").textContent = "Registration successful! OTP sent to your number.";
+                                document.getElementById("successMessage").style.display = "block";
+                                
                                 document.getElementById("otpSection").style.display = "block";
                             } else {
                                 const errorData = await response.json().catch(() => ({}));
                                 console.error('Registration failed:', errorData);
-                                alert(`❌ Registration failed: ${errorData.message || 'Please try again later'}`);
+                                document.getElementById("challengeError").textContent = `Registration failed: ${errorData.message || 'Please try again later'}`;
+                                document.getElementById("challengeError").style.display = "block";
                             }
                         } catch (error) {
                             console.error('Network error:', error);
-                            alert("❌ Network error! Please check your connection and try again.");
+                            document.getElementById("challengeError").textContent = "Network error! Please check your connection and try again.";
+                            document.getElementById("challengeError").style.display = "block";
                         } finally {
                             // Reset button state
                             sendOtpBtn.textContent = originalText;
@@ -1215,14 +1293,87 @@
                         }
                     });
 
-                    document.getElementById("verifyOtpBtn").addEventListener("click", () => {
-                        const otp = document.getElementById("otp").value;
-                        if (otp === "1234") { // dummy OTP
-                            alert("✅ OTP Verified!");
-                            currentStep = 1;
-                            loadStep(currentStep);
-                        } else {
-                            alert("❌ Invalid OTP, try 1234 for testing.");
+                    document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
+                        // Clear previous error messages
+                        document.getElementById("otpError").style.display = "none";
+                        
+                        const otp = document.getElementById("otp").value.trim();
+                        
+                        // Validate OTP input
+                        if (!otp) {
+                            document.getElementById("otpError").textContent = "Please enter the OTP";
+                            document.getElementById("otpError").style.display = "block";
+                            return;
+                        }
+
+                        // Try to restore from localStorage if window data is missing
+                        if (!window.userRegistrationData) {
+                            try {
+                                const storedData = localStorage.getItem('userRegistrationData');
+                                if (storedData) {
+                                    window.userRegistrationData = JSON.parse(storedData);
+                                }
+                            } catch (e) {
+                                // Error restoring from localStorage
+                            }
+                        }
+                        
+                        if (!window.userRegistrationData || !window.userRegistrationData.userId) {
+                            document.getElementById("otpError").textContent = "Registration data not found. Please register again.";
+                            document.getElementById("otpError").style.display = "block";
+                            return;
+                        }
+
+                        // Show loading state
+                        const verifyOtpBtn = document.getElementById("verifyOtpBtn");
+                        const originalText = verifyOtpBtn.textContent;
+                        verifyOtpBtn.textContent = "Verifying...";
+                        verifyOtpBtn.disabled = true;
+
+                        try {
+                            // Call the OTP verification API
+                            const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP), {
+                                method: 'POST',
+                                headers: {
+                                    'accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    userId: window.userRegistrationData.userId,
+                                    otp: otp
+                                })
+                            });
+
+                            if (response.ok) {
+                                const result = await response.json();
+                                
+                                // Store verification result
+                                window.userRegistrationData.verified = true;
+                                window.userRegistrationData.verificationResult = result;
+                                
+                                // Show success message briefly
+                                document.getElementById("successMessage").textContent = "OTP verified successfully!";
+                                document.getElementById("successMessage").style.display = "block";
+                                
+                                // Proceed to next step after a short delay
+                                setTimeout(() => {
+                                    currentStep = 1;
+                                    loadStep(currentStep);
+                                }, 1000);
+                            } else {
+                                const errorData = await response.json().catch(() => ({}));
+                                console.error('OTP verification failed:', errorData);
+                                document.getElementById("otpError").textContent = `Invalid OTP. ${errorData.message || 'Please try again.'}`;
+                                document.getElementById("otpError").style.display = "block";
+                            }
+                        } catch (error) {
+                            console.error('Network error during OTP verification:', error);
+                            document.getElementById("otpError").textContent = "Network error! Please check your connection and try again.";
+                            document.getElementById("otpError").style.display = "block";
+                        } finally {
+                            // Reset button state
+                            verifyOtpBtn.textContent = originalText;
+                            verifyOtpBtn.disabled = false;
                         }
                     });
 
@@ -1240,11 +1391,13 @@
                         <option value="veg-egg">Veg + Egg</option>
                         <option value="veg-meat">Veg + Meat</option>
                     </select>
+                    <div class="text-danger small mt-1" id="categoryError" style="display:none;"></div>
                 </div>
                 <div class="mb-3">
                     <select class="form-select" id="subcategory" disabled>
-                        <option selected disabled>Choose Sub Category</option>
+                        <option selected>Choose Sub Category (Optional)</option>
                     </select>
+                    <div class="text-danger small mt-1" id="subcategoryError" style="display:none;"></div>
                 </div>
                 <button class="btn btn-dark w-100" id="continueBtn">Continue</button>
             `;
@@ -1286,7 +1439,7 @@
 
                     categorySelect.addEventListener("change", (e) => {
                         const selected = e.target.value;
-                        subcategorySelect.innerHTML = `<option selected disabled>Select Sub Category</option>`;
+                        subcategorySelect.innerHTML = `<option selected>Select Sub Category (Optional)</option>`;
                         subcategorySelect.disabled = true;
 
                         if (subcategories[selected]) {
@@ -1305,13 +1458,108 @@
                         }
                     });
 
-                    document.getElementById("continueBtn").addEventListener("click", () => {
-                        if (!categorySelect.value || subcategorySelect.disabled || !subcategorySelect.value) {
-                            alert("⚠️ Please select both category and subcategory!");
+                    document.getElementById("continueBtn").addEventListener("click", async () => {
+                        // Clear previous error messages
+                        document.getElementById("categoryError").style.display = "none";
+                        document.getElementById("subcategoryError").style.display = "none";
+
+                        let hasError = false;
+
+                        if (!categorySelect.value || categorySelect.value === "Choose Meal Preference") {
+                            document.getElementById("categoryError").textContent = "Please select a meal preference";
+                            document.getElementById("categoryError").style.display = "block";
+                            hasError = true;
+                        }
+
+                        // Subcategory is now optional - no validation required
+
+                        if (hasError) {
                             return;
                         }
-                        currentStep = 2;
-                        loadStep(currentStep);
+
+                        // Check if user registration data exists
+                        if (!window.userRegistrationData || !window.userRegistrationData.userId) {
+                            document.getElementById("categoryError").textContent = "User registration data missing. Please restart the process.";
+                            document.getElementById("categoryError").style.display = "block";
+                            return;
+                        }
+
+                        // Show loading state
+                        const continueBtn = document.getElementById("continueBtn");
+                        const originalText = continueBtn.textContent;
+                        continueBtn.textContent = "Submitting...";
+                        continueBtn.disabled = true;
+
+                        try {
+                            // Map category values to API format
+                            const categoryMapping = {
+                                "veg": "Vegetarian",
+                                "veg-egg": "Veg + Egg", 
+                                "veg-meat": "Veg + Meat"
+                            };
+
+                            // Extract subcategory type from selected value (optional)
+                            let subcategoryValue = "";
+                            let type = "General"; // default type
+                            
+                            if (subcategorySelect.value && subcategorySelect.selectedIndex > 0) {
+                                subcategoryValue = subcategorySelect.value;
+                                const subcategoryText = subcategorySelect.options[subcategorySelect.selectedIndex].textContent;
+                                
+                                if (subcategoryText.includes("Weight Loss")) {
+                                    type = "Weight Loss";
+                                } else if (subcategoryText.includes("High Protien")) {
+                                    type = "High Protein";
+                                } else {
+                                    type = subcategoryText.replace(" Meal Plan", "");
+                                }
+                            }
+
+                            // Call the submit challenge API
+                            const response = await fetch(getApiUrl(API_CONFIG.ENDPOINTS.SUBMIT_CHALLENGE), {
+                                method: 'POST',
+                                headers: {
+                                    'accept': 'application/json',
+                                    'Content-Type': 'application/json',
+                                },
+                                body: JSON.stringify({
+                                    userId: window.userRegistrationData.userId,
+                                    category: categoryMapping[categorySelect.value] || categorySelect.value,
+                                    subcategory: subcategoryValue,
+                                    // type: type
+                                })
+                            });
+
+                            if (response.ok) {
+                                const result = await response.json();
+                                
+                                // Store meal preferences and submission result
+                                window.userRegistrationData.category = categorySelect.value;
+                                window.userRegistrationData.subcategory = subcategoryValue;
+                                window.userRegistrationData.type = type;
+                                window.userRegistrationData.submissionResult = result;
+                                
+                                // Update localStorage
+                                localStorage.setItem('userRegistrationData', JSON.stringify(window.userRegistrationData));
+                                
+                                // Proceed to next step
+                                currentStep = 2;
+                                loadStep(currentStep);
+                            } else {
+                                const errorData = await response.json().catch(() => ({}));
+                                console.error('Challenge submission failed:', errorData);
+                                document.getElementById("categoryError").textContent = `Submission failed: ${errorData.message || 'Please try again later'}`;
+                                document.getElementById("categoryError").style.display = "block";
+                            }
+                        } catch (error) {
+                            console.error('Network error during challenge submission:', error);
+                            document.getElementById("categoryError").textContent = "Network error! Please check your connection and try again.";
+                            document.getElementById("categoryError").style.display = "block";
+                        } finally {
+                            // Reset button state
+                            continueBtn.textContent = originalText;
+                            continueBtn.disabled = false;
+                        }
                     });
 
                     nextBtn.style.display = "none";
@@ -1393,7 +1641,6 @@
         document.querySelectorAll('.riceMythSlide').forEach(slide => {
             slide.addEventListener('click', () => {
                 const mythType = slide.getAttribute('data-myth');
-                console.log(`Myth clicked: ${mythType}`);
                 // 👇 Add your custom click action here
                 // e.g., open modal, navigate, fetch data, etc.
             });
@@ -1404,10 +1651,12 @@
     <script>
 
 
-        const counterEl = document.getElementById("smooth-counter");
+        const counterEl = document.getElementById("countdown");
         let currentCount = 10986;
 
-        renderCounter(currentCount);
+        if (counterEl) {
+            renderCounter(currentCount);
+        }
 
         // simulate backend updates
         setInterval(() => {
@@ -1417,6 +1666,8 @@
         }, 3000);
 
         function renderCounter(number) {
+            if (!counterEl) return;
+            
             counterEl.innerHTML = "";
             const digits = number.toLocaleString().split("");
 
