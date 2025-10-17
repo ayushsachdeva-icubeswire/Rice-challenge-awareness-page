@@ -191,13 +191,13 @@
                 <!-- <h1>Rice Your Awareness</h1> -->
                 <div class="d-flex justify-content-center flex-wrap w-100 my-4 heading-gap">
                     <div class="d-flex gap-3 align-items-center">
-                        <img src="img/badge-icon.png" width="50" alt="">
+                        <img src="img/2badge.png" width="70" class="rounded" alt="">
                         <h2 class=" text-start">
                             Get Your <br><span class="challenge-title">Badge of Honour</span>
                         </h2>
                     </div>
                     <div class="d-flex gap-3 align-items-center">
-                        <img src="img/dish-icon.png" width="60" alt="">
+                        <img src="img/Leema_Mahajan.jpeg" width="70" class="rounded" alt="">
                         <h2 class=" text-start">
                             Exclusive <br> <span class="challenge-title">Nutritionist-Crafted Meal Plan</span>
                         </h2>
@@ -478,6 +478,7 @@
             </div>
         </div>
     </section>
+
 
 
     <section class="small-cards-section">
@@ -1173,7 +1174,7 @@
                     <div class="text-danger small mt-1" id="challengeError" style="display:none;"></div>
                     <div class="text-success small mt-1" id="successMessage" style="display:none;"></div>
 
-                    <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Register & Send OTP</button>
+                    <button type="button" class="btn btn-dark w-100" id="sendOtpBtn">Submit</button>
 
                     <div id="otpSection" style="display:none;">
                         <div class="mb-2">
@@ -1275,7 +1276,7 @@
                                 localStorage.setItem('userRegistrationData', JSON.stringify(window.userRegistrationData));
 
                                 // Show success message
-                                document.getElementById("successMessage").textContent = "Registration successful! OTP sent to your number.";
+                                document.getElementById("successMessage").textContent = "OTP sent to your number.";
                                 document.getElementById("successMessage").style.display = "block";
 
                                 document.getElementById("otpSection").style.display = "block";

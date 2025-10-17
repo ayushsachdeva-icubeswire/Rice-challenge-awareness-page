@@ -2269,6 +2269,28 @@ a {
   z-index: 1;
 }
 
+.interaction-section1 {
+  background-color: #8f6a32;
+  background-size: cover;
+  background-position: right;
+  position: relative;
+  /* border-radius: 15px; */
+  overflow: hidden;
+  /* box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); */
+}
+
+.interaction-section1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: rgba(0, 0, 0, 0.6); */
+  /* backdrop-filter: blur(8px); */
+  z-index: 1;
+}
+
 .interaction-section > .container {
   position: relative;
   z-index: 2;
@@ -2610,8 +2632,8 @@ a {
     display: none;
   }
   .badge-icon-svg {
-  display: none;
-}
+    display: none;
+  }
 }
 
 .active .badge-icon-svg {
