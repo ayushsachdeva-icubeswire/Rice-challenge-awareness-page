@@ -920,6 +920,42 @@
             return API_CONFIG.BASE_URL + endpoint;
         }
 
+        // Badge download function based on duration
+        function downloadBadgeByDuration(duration) {
+            let badgeFileName = '';
+            
+            // Map duration to badge file
+            switch(duration) {
+                case '7 days':
+                    badgeFileName = 'bronze.png';
+                    break;
+                case '14 days':
+                    badgeFileName = 'silver.png';
+                    break;
+                case '21 days':
+                    badgeFileName = 'gold.png';
+                    break;
+                case '30 days':
+                    badgeFileName = 'diamond.png';
+                    break;
+                default:
+                    console.error('Unknown duration:', duration);
+                    return;
+            }
+
+            // Create download link
+            const link = document.createElement('a');
+            link.href = `img/${badgeFileName}`;
+            link.download = `daawat-${duration.replace(' ', '-')}-challenge-badge.png`;
+            link.style.display = 'none';
+            
+            // Add to DOM, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+        }
+
 
         // Test function for API endpoints (for debugging)
         window.testAPIs = {
@@ -1378,8 +1414,17 @@
                                 window.userRegistrationData.verified = true;
                                 window.userRegistrationData.verificationResult = result;
 
+                                // Download badge based on selected duration
+                                if (selectedCard && selectedCard.dataset.duration) {
+                                    try {
+                                        downloadBadgeByDuration(selectedCard.dataset.duration);
+                                    } catch (badgeError) {
+                                        console.error('Badge download error:', badgeError);
+                                    }
+                                }
+
                                 // Show success message briefly
-                                document.getElementById("successMessage").textContent = "OTP verified successfully!";
+                                document.getElementById("successMessage").textContent = "OTP verified successfully! Your badge is downloading...";
                                 document.getElementById("successMessage").style.display = "block";
 
                                 // Proceed to next step after a short delay
