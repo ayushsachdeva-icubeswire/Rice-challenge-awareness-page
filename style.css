@@ -2614,6 +2614,10 @@ a {
 }
 }
 
+.active .badge-icon-svg {
+  stroke: white;
+}
+
 /* Form Validation Styles */
 .is-invalid {
   border-color: #dc3545 !important;

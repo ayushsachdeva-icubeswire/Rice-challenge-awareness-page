@@ -31,7 +31,7 @@
             border-radius: 40px;
             /* box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3); */
         }
-        
+
         .modal-bg-image {
             position: absolute;
             top: 0;
@@ -45,7 +45,7 @@
             opacity: 0.1;
             z-index: -1;
         }
-        
+
         .custom-modal1 {
             position: relative;
             overflow: hidden;
@@ -111,7 +111,8 @@
             <div class="row w-100 mx-auto content-section" style="position: relative;overflow: visible;">
                 <div class="col-12 col-lg-11 px-1   text-start ">
                     <h1 class="title">The Rice Challenge</h1>
-                    <p class="subtitle">This November, break the myths and<br class="d-none d-lg-block">make <span>Rice Right</span> again</p>
+                    <p class="subtitle">This November, break the myths and<br class="d-none d-lg-block">make <span>Rice
+                            Right</span> again</p>
 
                     <div
                         class="d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
@@ -302,7 +303,8 @@
                         </button>
 
                         <!-- Share Button -->
-                        <button class="btn btn-light btn-sm position-absolute" id="dynamicShareBtn" style="top: 15px; right: 50px;">
+                        <button class="btn btn-light btn-sm position-absolute" id="dynamicShareBtn"
+                            style="top: 15px; right: 50px;">
                             <i class="ti ti-share"></i>
                         </button>
 
@@ -707,7 +709,8 @@
                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                Visit <a href="https://www.daawat.com/rya" target="_blank">www.daawat.com/rya</a> , choose your
+                                Visit <a href="https://www.daawat.com/rya" target="_blank">www.daawat.com/rya</a> ,
+                                choose your
                                 challenge duration (7 / 14 / 21 / 30 days), register with your details, download your
                                 Exclusive Expert Crafted Meal Plan, and get your Digital Badge. Invite friends and
                                 inspire others to join the movement.
@@ -1099,20 +1102,20 @@
 
             // Update share button
             const shareLink = selectedCard.getAttribute('data-share');
-                if (dynamicShareBtn) {
-                    dynamicShareBtn.onclick = () => {
-                        if (navigator.share) {
-                            navigator.share({
-                                title: 'Check this out!',
-                                url: shareLink
-                            }).catch(err => {
-                                // Share failed silently
-                            });
-                        } else {
-                            // Share not supported
-                        }
-                    };
-                }            // Show modal
+            if (dynamicShareBtn) {
+                dynamicShareBtn.onclick = () => {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'Check this out!',
+                            url: shareLink
+                        }).catch(err => {
+                            // Share failed silently
+                        });
+                    } else {
+                        // Share not supported
+                    }
+                };
+            }            // Show modal
             dynamicModal.show();
         });
 
@@ -1140,7 +1143,7 @@
 
             function loadStep(index) {
                 if (!optionsEl) return;
-                
+
                 optionsEl.innerHTML = "";
 
                 // ✅ STEP 0 — Name & Mobile + OTP
@@ -1250,31 +1253,31 @@
 
                             if (response.ok) {
                                 const result = await response.json();
-                                
+
                                 // Store userId globally for OTP verification  
                                 const extractedUserId = result.data?._id || result._id || result.id || result.userId;
-                                
+
                                 if (!extractedUserId) {
                                     console.error('No valid userId found in registration response:', result);
                                     document.getElementById("challengeError").textContent = "Registration successful but missing user ID. Please try again.";
                                     document.getElementById("challengeError").style.display = "block";
                                     return;
                                 }
-                                
+
                                 window.userRegistrationData = {
                                     userId: extractedUserId,
                                     name: name,
                                     mobile: mobile,
                                     duration: duration
                                 };
-                                
+
                                 // Also store in localStorage as backup
                                 localStorage.setItem('userRegistrationData', JSON.stringify(window.userRegistrationData));
-                                
+
                                 // Show success message
                                 document.getElementById("successMessage").textContent = "Registration successful! OTP sent to your number.";
                                 document.getElementById("successMessage").style.display = "block";
-                                
+
                                 document.getElementById("otpSection").style.display = "block";
                             } else {
                                 const errorData = await response.json().catch(() => ({}));
@@ -1296,9 +1299,9 @@
                     document.getElementById("verifyOtpBtn").addEventListener("click", async () => {
                         // Clear previous error messages
                         document.getElementById("otpError").style.display = "none";
-                        
+
                         const otp = document.getElementById("otp").value.trim();
-                        
+
                         // Validate OTP input
                         if (!otp) {
                             document.getElementById("otpError").textContent = "Please enter the OTP";
@@ -1317,7 +1320,7 @@
                                 // Error restoring from localStorage
                             }
                         }
-                        
+
                         if (!window.userRegistrationData || !window.userRegistrationData.userId) {
                             document.getElementById("otpError").textContent = "Registration data not found. Please register again.";
                             document.getElementById("otpError").style.display = "block";
@@ -1346,15 +1349,15 @@
 
                             if (response.ok) {
                                 const result = await response.json();
-                                
+
                                 // Store verification result
                                 window.userRegistrationData.verified = true;
                                 window.userRegistrationData.verificationResult = result;
-                                
+
                                 // Show success message briefly
                                 document.getElementById("successMessage").textContent = "OTP verified successfully!";
                                 document.getElementById("successMessage").style.display = "block";
-                                
+
                                 // Proceed to next step after a short delay
                                 setTimeout(() => {
                                     currentStep = 1;
@@ -1494,18 +1497,18 @@
                             // Map category values to API format
                             const categoryMapping = {
                                 "veg": "Vegetarian",
-                                "veg-egg": "Veg + Egg", 
+                                "veg-egg": "Veg + Egg",
                                 "veg-meat": "Veg + Meat"
                             };
 
                             // Extract subcategory type from selected value (optional)
                             let subcategoryValue = "";
                             let type = "General"; // default type
-                            
+
                             if (subcategorySelect.value && subcategorySelect.selectedIndex > 0) {
                                 subcategoryValue = subcategorySelect.value;
                                 const subcategoryText = subcategorySelect.options[subcategorySelect.selectedIndex].textContent;
-                                
+
                                 if (subcategoryText.includes("Weight Loss")) {
                                     type = "Weight Loss";
                                 } else if (subcategoryText.includes("High Protien")) {
@@ -1532,16 +1535,16 @@
 
                             if (response.ok) {
                                 const result = await response.json();
-                                
+
                                 // Store meal preferences and submission result
                                 window.userRegistrationData.category = categorySelect.value;
                                 window.userRegistrationData.subcategory = subcategoryValue;
                                 window.userRegistrationData.type = type;
                                 window.userRegistrationData.submissionResult = result;
-                                
+
                                 // Update localStorage
                                 localStorage.setItem('userRegistrationData', JSON.stringify(window.userRegistrationData));
-                                
+
                                 // Proceed to next step
                                 currentStep = 2;
                                 loadStep(currentStep);
@@ -1667,7 +1670,7 @@
 
         function renderCounter(number) {
             if (!counterEl) return;
-            
+
             counterEl.innerHTML = "";
             const digits = number.toLocaleString().split("");
 
