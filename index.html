@@ -2075,71 +2075,170 @@
 
         var counter1 = new FlipCounter2(document.getElementById('countdown1'), 0);
 
-        // Global variables to track animation state
+        // Global function to force counter updates (can be called externally)
+        window.forceCounterUpdate = function() {
+            if (animationTimeout) {
+                clearTimeout(animationTimeout);
+                animationTimeout = null;
+            }
+            isAnimating = false;
+            if (isInitialized) {
+                checkForUpdates();
+            } else {
+                initializeCounters();
+            }
+        };
+
+        // Global variables to track animation state and values
         let isAnimating = false;
         let animationTimeout = null;
+        let isInitialized = false;
+        let currentValues = {
+            challengerProgress: 0,
+            erProgress: 0
+        };
 
-        // Function to start the continuous animation cycle
-        async function startAnimationCycle() {
-            if (isAnimating) return; // Prevent multiple cycles
+        // Function to initialize counters with first API call
+        async function initializeCounters() {
+            try {
+                const progressData = await fetchProgressData();
+                
+                if (progressData) {
+                    let completedAnimations = 0;
+                    let totalAnimations = 0;
+                    
+                    // Callback function to track when initial animations complete
+                    function onInitialAnimationComplete() {
+                        completedAnimations++;
+                        if (completedAnimations >= totalAnimations) {
+                            isAnimating = false;
+                            isInitialized = true;
+                            // Start periodic API checking after initial animation
+                            animationTimeout = setTimeout(checkForUpdates, 10000);
+                        }
+                    }
+
+                    // Initialize challengerProgress counter
+                    if (progressData.challengerProgress) {
+                        const prevVal = progressData.challengerProgress.previousValue || 0;
+                        const currVal = progressData.challengerProgress.currentValue || 0;
+                        currentValues.challengerProgress = currVal;
+                        totalAnimations++;
+                        counter.animateFromTo(prevVal, currVal, onInitialAnimationComplete);
+                    }
+                    
+                    // Initialize erProgress counter
+                    if (progressData.erProgress) {
+                        const prevVal = progressData.erProgress.previousValue || 0;
+                        const currVal = progressData.erProgress.currentValue || 0;
+                        currentValues.erProgress = currVal;
+                        totalAnimations++;
+                        counter1.animateFromTo(prevVal, currVal, onInitialAnimationComplete);
+                    }
+
+                    if (totalAnimations > 0) {
+                        isAnimating = true;
+                    } else {
+                        // No animations needed, start checking immediately
+                        isInitialized = true;
+                        animationTimeout = setTimeout(checkForUpdates, 10000);
+                    }
+                } else {
+                    // Fallback values if initial API fails
+                    counter.setValue(27);
+                    counter1.setValue(483408);
+                    currentValues.challengerProgress = 27;
+                    currentValues.erProgress = 483408;
+                    isInitialized = true;
+                    // Start checking for updates
+                    animationTimeout = setTimeout(checkForUpdates, 10000);
+                }
+            } catch (error) {
+                console.error('Error initializing counters:', error);
+                // Fallback values
+                counter.setValue(27);
+                counter1.setValue(483408);
+                currentValues.challengerProgress = 27;
+                currentValues.erProgress = 483408;
+                isInitialized = true;
+                // Start checking for updates
+                animationTimeout = setTimeout(checkForUpdates, 10000);
+            }
+        }
+
+        // Function to periodically check for new values
+        async function checkForUpdates() {
+            if (isAnimating) {
+                // If still animating, check again later
+                animationTimeout = setTimeout(checkForUpdates, 10000);
+                return;
+            }
             
             try {
                 const progressData = await fetchProgressData();
                 
                 if (progressData) {
-                    isAnimating = true;
+                    let hasChanges = false;
                     let completedAnimations = 0;
-                    const totalAnimations = 2;
+                    let totalAnimations = 0;
 
-                    // Callback function to track when both animations complete
+                    // Callback function to track when animations complete
                     function onAnimationComplete() {
                         completedAnimations++;
                         if (completedAnimations >= totalAnimations) {
                             isAnimating = false;
-                            // Schedule next cycle after a brief pause
-                            animationTimeout = setTimeout(startAnimationCycle, 2000); // 2 second pause
+                            // Schedule next check after animations complete
+                            animationTimeout = setTimeout(checkForUpdates, 10000);
                         }
                     }
 
-                    // Animate challengerProgress counter (countdown)
+                    // Check challengerProgress counter
                     if (progressData.challengerProgress) {
-                        const prevVal = progressData.challengerProgress.previousValue || 0;
-                        const currVal = progressData.challengerProgress.currentValue || 0;
-                        counter.animateFromTo(prevVal, currVal, onAnimationComplete);
-                    } else {
-                        onAnimationComplete(); // No data, mark as complete
+                        const newVal = progressData.challengerProgress.currentValue || 0;
+                        if (newVal !== currentValues.challengerProgress) {
+                            hasChanges = true;
+                            totalAnimations++;
+                            // Use current value as previous value for smooth transition
+                            const prevVal = currentValues.challengerProgress;
+                            currentValues.challengerProgress = newVal;
+                            counter.animateFromTo(prevVal, newVal, onAnimationComplete);
+                        }
                     }
                     
-                    // Animate erProgress counter (countdown1)
+                    // Check erProgress counter
                     if (progressData.erProgress) {
-                        const prevVal = progressData.erProgress.previousValue || 0;
-                        const currVal = progressData.erProgress.currentValue || 0;
-                        counter1.animateFromTo(prevVal, currVal, onAnimationComplete);
+                        const newVal = progressData.erProgress.currentValue || 0;
+                        if (newVal !== currentValues.erProgress) {
+                            hasChanges = true;
+                            totalAnimations++;
+                            // Use current value as previous value for smooth transition
+                            const prevVal = currentValues.erProgress;
+                            currentValues.erProgress = newVal;
+                            counter1.animateFromTo(prevVal, newVal, onAnimationComplete);
+                        }
+                    }
+
+                    // If no changes detected, schedule next check
+                    if (!hasChanges) {
+                        animationTimeout = setTimeout(checkForUpdates, 10000);
                     } else {
-                        onAnimationComplete(); // No data, mark as complete
+                        isAnimating = true;
                     }
                 } else {
-                    // Fallback values if API fails
-                    counter.setValue(27);
-                    counter1.setValue(483408);
-                    // Retry after a delay
-                    animationTimeout = setTimeout(startAnimationCycle, 5000);
+                    // API failed, retry after delay
+                    animationTimeout = setTimeout(checkForUpdates, 10000);
                 }
             } catch (error) {
-                console.error('Error in animation cycle:', error);
-                // Fallback values
-                counter.setValue(27);
-                counter1.setValue(483408);
-                isAnimating = false;
-                // Retry after a delay
-                animationTimeout = setTimeout(startAnimationCycle, 5000);
+                console.error('Error checking for updates:', error);
+                // Retry after delay
+                animationTimeout = setTimeout(checkForUpdates, 10000);
             }
         }
 
         // Initialize counters on page load
         document.addEventListener('DOMContentLoaded', function() {
-            // Start the animation cycle
-            startAnimationCycle();
+            // Initialize counters with first API call and start periodic checking
+            initializeCounters();
         });
 
         // Clean up timeout on page unload
