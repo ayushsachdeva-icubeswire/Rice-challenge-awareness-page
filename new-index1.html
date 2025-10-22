@@ -79,6 +79,40 @@
             bottom: 0;
             right: 40px;
         }
+
+        .content-section {
+            padding: 40px 40px;
+            color: #333;
+        }
+
+
+        .card__top,
+        .card__bottom,
+        .card__back::before,
+        .card__back::after {
+            display: block;
+            height: 0.72em;
+            /* width: 44.7px; */
+            color: #fff;
+            background: #8f6a32;
+            padding: 0.25em 0.25em;
+            border-radius: 0.15em 0.15em 0 0;
+            backface-visibility: hidden;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+        }
+
+        .card__bottom {
+            color: #fff;
+            position: absolute;
+            top: 50%;
+            left: 0;
+            /* border-top: solid 1px #000; */
+            background: #8f6a32;
+            border-radius: 0 0 0.15em 0.15em;
+            pointer-events: none;
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -152,44 +186,47 @@
 
 
     <!-- Hero Section -->
-    <section class="hero animate__animated animate__fadeIn w-100" style="padding: 40px 0px 10px 0px;">
+    <section class="hero animate__animated animate__fadeIn w-100">
         <img class=" logo-img" src="img/RYA-unit.png" alt="">
 
         <div class="container pt-4">
             <div class="row w-100 mx-auto content-section" style="position: relative;overflow: visible;">
                 <div class="col-12 col-lg-11 px-1   text-start ">
-                    <h1 class="title">The Rice Challenge</h1>
-                    <p class="subtitle">This November, break the myths and<br class="d-none d-lg-block">make <span>Rice
-                            Right</span> again</p>
+                    <div class="bg-white w-50 rounded px-5 py-3">
+                        <h1 class="title" style="color: #333;">The Rice Challenge</h1>
+                        <p class="subtitle" style="color: #333;">This November, break the myths and<br
+                                class="d-none d-lg-block">make <span>Rice Right</span> again
+                        </p>
 
-                    <div
-                        class="mt-4 d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
+                        <div
+                            class="mt-4 d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
 
-                        <div class="text-center text-lg-start">
-                            <button class="animated-button animated-button-w btn mt-0 mb-0" style="font-size: 26px;"
-                                onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
-                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
-                                    style="fill: #110d85;">
-                                    <path
-                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                    </path>
-                                </svg>
-                                <span class="text btn-text">Take the Challenge</span>
-                                <span class="circle"></span>
-                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
-                                    style="fill: #110d85;">
-                                    <path
-                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                    </path>
-                                </svg>
-                            </button>
+                            <div class="text-center text-lg-start">
+                                <button class="animated-button animated-button-w btn mt-0 mb-0" style="font-size: 26px;"
+                                    onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
+                                        style="fill: #110d85;">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                        </path>
+                                    </svg>
+                                    <span class="text btn-text">Take the Challenge</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
+                                        style="fill: #110d85;">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                        </path>
+                                    </svg>
+                                </button>
 
-                            <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-4">
-                                <div id="countdown"></div>
+                                <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-4">
+                                    <div id="countdown"></div>
+                                </div>
+
+                                <p class="counter-label mb-0" style="color: #333;">Challenges Taken</p>
+
                             </div>
-
-                            <p class="counter-label mb-0">Challenges Taken</p>
-
                         </div>
                     </div>
                 </div>
