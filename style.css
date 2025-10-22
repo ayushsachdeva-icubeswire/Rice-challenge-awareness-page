@@ -76,6 +76,17 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  --gold: #d4af37;
+  --light-gold: #f4e4a6;
+  --dark-gold: #b8941f;
+  --cream: #f8f4e9;
+  --brown: #8b4513;
+  --light-brown: #a67c52;
+  --dark-green: #2f4f2f;
+  --light-green: #90a955;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -1778,7 +1789,7 @@ a {
   .content-section {
     padding: 30px 10px;
   }
-  
+
   .content-section .title {
     color: white;
     font-weight: 400;
@@ -2413,170 +2424,229 @@ a {
 /* 🌾 Small Cards Section */
 .small-cards-section {
   padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title {
+  font-size: 32px;
+  /* font-weight: 700; */
+  /* margin-bottom: 3rem; */
+  position: relative;
+  /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); */
 }
 
 .section-title span {
   color: #d28d00;
+  /* font-size: 36px; */
+  position: relative;
 }
 
 .section-title::after {
   content: "";
   display: block;
-  width: 60px;
+  width: 80px;
   height: 3px;
   background: #d28d00;
   margin: 10px auto 0;
   border-radius: 2px;
 }
 
-/* Flip-card base */
-.small-card {
+/* Rice Pattern Background */
+.rice-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b8941f' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* Card Styling */
+.rice-card {
   position: relative;
   width: 100%;
   height: 100%;
-  perspective: 1000px;
-  /* cursor: pointer; */
-  border-radius: 12px;
-}
-
-/* Inner flip container */
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s ease;
-  /* transform-style: preserve-3d; */
-  border-radius: 12px;
-}
-
-/* .small-card:hover .card-inner,
-.small-card:focus .card-inner {
-  transform: rotateY(180deg);
-} */
-
-/* Front & Back Faces */
-.card-front,
-.card-back {
-  /* position: absolute; */
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(180deg, rgba(245, 240, 232, 0.9), #fff);
-  border-radius: 12px;
+  /* background: linear-gradient(135deg, var(--cream) 0%, #fff 100%); */
+  border-radius: 16px;
   overflow: hidden;
-  border: 1px solid rgba(201, 123, 61, 0.3);
-  box-shadow: 0 12px 30px rgba(16, 24, 40, 0.06);
-  transition: box-shadow 0.3s ease, transform 0.3s ease;
-  /* backface-visibility: hidden; */
-  gap: 16px;
-  padding: 18px;
-}
-
-.card-front:hover,
-.card-back:hover {
-  box-shadow: 0 20px 40px rgba(16, 24, 40, 0.12);
-}
-
-/* .card-back {
-  transform: rotateY(180deg);
-} */
-
-/* Image Section */
-.card-img {
-  display: none;
-  flex: 0 0 160px;
-  height: 160px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.card-img img {
-  display: none;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Body Content */
-.card-body {
-  flex: 1 1 auto;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid var(--light-gold);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  text-align: left;
+  /* min-height: 320px; */
 }
 
-.card-title {
+.rice-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4af37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+  opacity: 0.3;
+}
+
+/* Hover Effects */
+.rice-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  border-color: var(--gold);
+}
+
+.rice-card:hover .card-divider {
+  width: 80%;
+  background: var(--gold);
+}
+
+/* Card Content */
+.card-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.myth-section {
+  margin-bottom: 0px;
+}
+
+.myth-badge {
+  background: #110d85;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
   font-weight: 700;
-  font-size: 18px;
-  margin-bottom: 4px;
-  color: #0c0c5c;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  display: inline-block;
+  transition: all 0.3s ease;
 }
 
-.card-text {
-  color: #475467;
-  font-size: 0.95rem;
+.myth-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
   line-height: 1.4;
 }
 
-/* Daawat Logo */
-.card-logo {
-  display: none;
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  width: 90px;
-  align-self: flex-start;
-  margin-top: 4px;
-  opacity: 0.9;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+.card-divider {
+  height: 3px;
+  width: 60%;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  margin: 15px 0;
+  border-radius: 3px;
+  transition: all 0.4s ease;
 }
 
-.card-logo:hover {
-  opacity: 1;
-  transform: scale(1.05);
+.fact-section {
+  margin: 10px 0px 14px 0px;
 }
 
-/* Optional chip (if used elsewhere) */
-.small-card .chip {
+.fact-badge {
+  background: #a5885d;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 15px;
   display: inline-block;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(178, 138, 44, 0.12);
-  color: #b48a2c;
-  font-weight: 600;
-  font-size: 0.8rem;
-  margin-top: 8px;
+  transition: all 0.3s ease;
 }
 
-/* Responsiveness */
+.fact-text {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+/* Rice Icon */
+.rice-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
+  transition: all 0.4s ease;
+}
+
+.rice-icon-1 {
+  top: 15px;
+  right: 15px;
+}
+
+.rice-icon-2 {
+  bottom: 15px;
+  left: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 1199px) {
+  .rice-card {
+    min-height: 300px;
+  }
+}
+
 @media (max-width: 991px) {
-  .card-front {
-    flex-direction: row;
-    align-items: center;
+  .rice-card {
+    min-height: 280px;
+  }
+
+  .myth-text {
+    font-size: 1.2rem;
+  }
+
+  .fact-text {
+    font-size: 0.95rem;
   }
 }
 
-@media (max-width: 768px) {
-  /* .small-card {
-    height: 310px;
-  } */
-  .card-front {
-    flex-wrap: wrap;
+@media (max-width: 767px) {
+  .rice-card {
+    min-height: 260px;
   }
-  .card-img {
-    flex: 0 0 120px;
-    height: 120px;
+
+  .section-title {
+    font-size: 2rem;
   }
-  .card-title {
-    font-size: 16px;
+
+  .myth-text {
+    font-size: 1.1rem;
   }
-  .card-text {
-    font-size: 13px;
+
+  .fact-text {
+    font-size: 0.9rem;
   }
-  .card-logo {
-    width: 70px;
+}
+
+@media (max-width: 575px) {
+  .rice-card {
+    min-height: 240px;
+    padding: 20px;
+  }
+
+  .myth-text {
+    font-size: 1rem;
+  }
+
+  .fact-text {
+    font-size: 0.85rem;
   }
 }
 
