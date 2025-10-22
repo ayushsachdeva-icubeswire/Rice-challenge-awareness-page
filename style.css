@@ -2794,7 +2794,6 @@ a {
   transition: all 0.2s ease;
   margin: 0px !important;
   text-decoration: none !important;
-
 }
 
 .share-icon:hover {
@@ -2802,4 +2801,11 @@ a {
   transform: scale(1.2);
   background-color: transparent !important;
   box-shadow: none !important;
+}
+
+.instagram-color {
+  background: linear-gradient(115deg, #f9ce34, #ee2a7b, #6228d7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 14px;
 }

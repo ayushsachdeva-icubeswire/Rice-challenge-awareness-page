@@ -79,53 +79,6 @@
             bottom: 0;
             right: 40px;
         }
-
-        .content-section {
-            padding: 40px 40px;
-            color: #333;
-        }
-
-
-        .card__top,
-        .card__bottom,
-        .card__back::before,
-        .card__back::after {
-            display: block;
-            height: 0.72em;
-            /* width: 44.7px; */
-            color: #fff;
-            background: #8f6a32;
-            padding: 0.25em 0.25em;
-            border-radius: 0.15em 0.15em 0 0;
-            backface-visibility: hidden;
-            transform-style: preserve-3d;
-            transform: translateZ(0);
-        }
-
-        .card__bottom {
-            color: #fff;
-            position: absolute;
-            top: 50%;
-            left: 0;
-            /* border-top: solid 1px #000; */
-            background: #8f6a32;
-            border-radius: 0 0 0.15em 0.15em;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .content-section .first .second {
-                width: 50%;
-            }
-
-        @media (max-width: 768px) {
-            .content-section {
-                padding: 20px 20px;
-            }
-            .content-section .first .second {
-                width: 100%;
-            }
-        }
     </style>
 </head>
 
@@ -196,48 +149,47 @@
     </section>
 
 
+
+
     <!-- Hero Section -->
-    <section class="hero animate__animated animate__fadeIn w-100">
+    <section class="hero animate__animated animate__fadeIn w-100" style="padding: 40px 0px 10px 0px;">
         <img class=" logo-img" src="img/RYA-unit.png" alt="">
 
         <div class="container pt-4">
             <div class="row w-100 mx-auto content-section" style="position: relative;overflow: visible;">
-                <div class="col-12 col-lg-11 px-1   text-start first">
-                    <div class="bg-white rounded px-md-5 py-md-3 p-2 second">
-                        <h1 class="title" style="color: #333;">The Rice Challenge</h1>
-                        <p class="subtitle" style="color: #333;">This November, break the myths and<br
-                                class="d-none d-lg-block">make <span>Rice Right</span> again
-                        </p>
+                <div class="col-12 col-lg-11 px-1   text-start ">
+                    <h1 class="title">The Rice Challenge</h1>
+                    <p class="subtitle">This November, break the myths and<br class="d-none d-lg-block">make <span>Rice
+                            Right</span> again</p>
 
-                        <div
-                            class="mt-4 d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
+                    <div
+                        class="mt-4 d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
 
-                            <div class="text-center text-lg-start">
-                                <button class="animated-button animated-button-w btn mt-0 mb-0" style="font-size: 26px;"
-                                    onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
-                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
-                                        style="fill: #110d85;">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                    <span class="text btn-text">Take the Challenge</span>
-                                    <span class="circle"></span>
-                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
-                                        style="fill: #110d85;">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                </button>
+                        <div class="text-center text-lg-start">
+                            <button class="animated-button animated-button-w btn mt-0 mb-0" style="font-size: 24px;"
+                                onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
+                                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
+                                    style="fill: #110d85;">
+                                    <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                    </path>
+                                </svg>
+                                <span class="text btn-text">Take the Challenge</span>
+                                <span class="circle"></span>
+                                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
+                                    style="fill: #110d85;">
+                                    <path
+                                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                    </path>
+                                </svg>
+                            </button>
 
-                                <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-4">
-                                    <div id="countdown"></div>
-                                </div>
-
-                                <p class="counter-label mb-0" style="color: #333;">Challenges Taken</p>
-
+                            <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-4">
+                                <div id="countdown"></div>
                             </div>
+
+                            <p class="counter-label mb-0">Challenges Taken</p>
+
                         </div>
                     </div>
                 </div>
@@ -266,152 +218,167 @@
                             Get Your <br><span class="challenge-title">Badge of Honour</span>
                         </h2>
                     </div>
-                    <div class="d-flex align-items-center flex-wrap gap-4">
+
+                    <div class="d-flex align-items-center flex-wrap gap-4 py-3">
                         <!-- Profile Section -->
                         <div class="d-flex align-items-center">
-                            <img src="img/Leema_Mahajan.jpeg" width="64" height="64"
+                            <img src="img/Leema_Mahajan.jpeg" width="68" height="68"
                                 class="rounded-circle me-3 shadow-sm" alt="Leema Mahajan">
-                            <div class="lh-sm text-center text-md-start ">
+                            <div class="lh-sm py-2 text-start">
                                 <a href="https://www.instagram.com/leemamahajan" target="_blank"
                                     class="fw-semibold text-dark text-decoration-none d-block">
                                     Leema Mahajan
                                 </a>
                                 <a href="https://www.instagram.com/leemamahajan" target="_blank"
-                                    class="text-muted text-decoration-none small">
+                                    class="text-muted text-decoration-none small d-block">
                                     @leemamahajan
                                 </a>
+
+                                <!-- Followers -->
+                                <div class="d-inline-flex align-items-center bg-light rounded-pill px-2 py-1 mt-1">
+                                    <i class="ti ti-brand-instagram me-1 instagram-color"></i>
+                                    <span class="fw-semibold small text-dark">602K</span>
+                                    <span class="text-muted small ms-1">followers</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Title Section -->
-                        <div class="border-start ps-4 ms-2">
-                            <h2 class="mb-0 fw-semibold text-start" style="font-size: 1.75rem; line-height: 1.3;">
+                        <div class="border-start ps-4 ms-2 text-start">
+                            <h2 class="mb-0 fw-semibold" style="font-size: 1.75rem; line-height: 1.3;">
                                 Exclusive <br>
-                                <span class="challenge-title" style="color: #c57a30;">Expert-Crafted Meal Plan</span>
+                                <span class="challenge-title" style="color:#c57a30;">Expert-Crafted Meal Plan</span>
                             </h2>
                         </div>
                     </div>
 
                 </div>
             </div>
-        </div>
-        <!-- <h4>Select one of these</h4> -->
-        <div class="row justify-content-center g-4 py-3 dynamic-challenge-options w-100" id="scrolltotakeChallengeBtn">
-            <!-- 1 Week -->
-            <div class="col-6 col-md-3">
-                <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
-                    data-image="img/week1.jpg" data-share="https://example.com/week1.jpg" data-duration="7 days">
-                    <h5 class="fw-bold mb-0">7 Days</h5>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                        stroke="#cd7f32" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
-                        <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
-                        <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
-                    </svg>
-                </div>
-            </div>
-            <!-- 2 Weeks -->
-            <div class="col-6 col-md-3">
-                <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
-                    data-image="img/week2.jpg" data-share="https://example.com/week2.jpg" data-duration="14 days">
-                    <h5 class="fw-bold mb-0">14 Days</h5>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                        stroke="#c0c0c0" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
-                        <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
-                        <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
-                    </svg>
-
-                </div>
-            </div>
-            <!-- 3 Weeks -->
-            <div class="col-6 col-md-3">
-                <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
-                    data-image="img/week3.jpg" data-share="https://example.com/week3.jpg" data-duration="21 days">
-                    <h5 class="fw-bold mb-0">21 Days</h5>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                        stroke="#ffd700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
-                        <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
-                        <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
-                    </svg>
-
-                </div>
-            </div>
-            <!-- 30 Days -->
-            <div class="col-6 col-md-3">
-                <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
-                    data-image="img/30days.jpg" data-share="https://example.com/30days.jpg" data-duration="30 days">
-                    <h5 class="fw-bold mb-0">30 Days</h5>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                        stroke="#7ac1cc" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
-                        class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
-                        <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
-                        <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
-                    </svg>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Myths Busted Button -->
-        <button class="animated-button btn mt-3 mb-5" id="takeChallengeBtn" data-bs-toggle="modal"
-            data-bs-target="#dynamicChallengeModal">
-            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                </path>
-            </svg>
-            <span class="text">Take the Challenge</span>
-            <span class="circle"></span>
-            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                </path>
-            </svg>
-        </button>
-
-
-        <!-- Dynamic Modal -->
-        <div class="modal fade" id="dynamicChallengeModal" tabindex="-1" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-portrait">
-                <div class="modal-content custom-modal1">
-                    <!-- Dynamic Modal Background Image -->
-                    <div id="dynamicModalImage" class="modal-bg-image"></div>
-
-                    <!-- Close Button -->
-                    <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close">
-                        <i class="ti ti-x"></i>
-                    </button>
-
-                    <!-- Share Button -->
-                    <button class="btn btn-light btn-sm position-absolute" id="dynamicShareBtn"
-                        style="top: 15px; right: 50px;">
-                        <i class="ti ti-share"></i>
-                    </button>
-
-                    <!-- Modal Body -->
-                    <div class="modal-body text-center h-100 d-flex align-items-center justify-content-center">
-                        <div class="quiz-card py-5 px-3 px-lg-5 w-100">
-                            <h5 id="quiz-question" class="mb-4"></h5>
-                            <div id="quiz-options"></div>
-                            <button class="btn btn-dark mt-4 w-100" id="next-btn">Next</button>
-                        </div>
+            <!-- <h4>Select one of these</h4> -->
+            <div class="row justify-content-center g-4 py-3 dynamic-challenge-options w-100"
+                id="scrolltotakeChallengeBtn">
+                <!-- 1 Week -->
+                <div class="col-6 col-md-3">
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
+                        data-image="img/week1.jpg" data-share="https://example.com/week1.jpg" data-duration="7 days">
+                        <h5 class="fw-bold mb-0">7 Days</h5>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#cd7f32" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+                            <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
+                            <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
+                        </svg>
                     </div>
+                </div>
+                <!-- 2 Weeks -->
+                <div class="col-6 col-md-3">
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
+                        data-image="img/week2.jpg" data-share="https://example.com/week2.jpg" data-duration="14 days">
+                        <h5 class="fw-bold mb-0">14 Days</h5>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#c0c0c0" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+                            <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
+                            <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
+                        </svg>
 
+                    </div>
+                </div>
+                <!-- 3 Weeks -->
+                <div class="col-6 col-md-3">
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
+                        data-image="img/week3.jpg" data-share="https://example.com/week3.jpg" data-duration="21 days">
+                        <h5 class="fw-bold mb-0">21 Days</h5>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#ffd700" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+                            <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
+                            <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
+                        </svg>
+
+                    </div>
+                </div>
+                <!-- 30 Days -->
+                <div class="col-6 col-md-3">
+                    <div class="challenge-card py-3 position-relative px-3 rounded-3 d-flex gap-2 justify-content-center align-items-center"
+                        data-image="img/30days.jpg" data-share="https://example.com/30days.jpg" data-duration="30 days">
+                        <h5 class="fw-bold mb-0">30 Days</h5>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="#7ac1cc" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
+                            <path d="M12 15l3.4 5.89l1.598 -3.233l3.598 .232l-3.4 -5.889" />
+                            <path d="M6.802 12l-3.4 5.89l3.598 -.233l1.598 3.232l3.4 -5.889" />
+                        </svg>
+
+                    </div>
                 </div>
             </div>
+
+            <!-- Myths Busted Button -->
+            <button class="animated-button btn mt-3 mb-0" id="takeChallengeBtn" data-bs-toggle="modal"
+                data-bs-target="#dynamicChallengeModal">
+                <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                    </path>
+                </svg>
+                <span class="text">Take the Challenge</span>
+                <span class="circle"></span>
+                <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                    </path>
+                </svg>
+            </button>
+
+
+            <!-- Dynamic Modal -->
+            <div class="modal fade" id="dynamicChallengeModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-portrait">
+                    <div class="modal-content custom-modal1">
+                        <!-- Dynamic Modal Background Image -->
+                        <div id="dynamicModalImage" class="modal-bg-image"></div>
+
+                        <!-- Close Button -->
+                        <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close">
+                            <i class="ti ti-x"></i>
+                        </button>
+
+                        <!-- Share Button -->
+                        <button class="btn btn-light btn-sm position-absolute" id="dynamicShareBtn"
+                            style="top: 15px; right: 50px;">
+                            <i class="ti ti-share"></i>
+                        </button>
+
+                        <!-- Modal Body -->
+                        <div class="modal-body text-center h-100 d-flex align-items-center justify-content-center">
+                            <div class="quiz-card py-5 px-3 px-lg-5 w-100">
+                                <h5 id="quiz-question" class="mb-4"></h5>
+                                <div id="quiz-options"></div>
+                                <button class="btn btn-dark mt-4 w-100" id="next-btn">Next</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+    </section>
 
-
+    <section class="d-block d-xl-none py-4">
+        <div class="container-fluid d-flex justify-content-center">
+            <img src="img/Shahrukh-top-banner.png" alt="Shahrukh Banner" class="img-fluid"
+                style="max-height: 50vh; width: auto;">
         </div>
     </section>
 
