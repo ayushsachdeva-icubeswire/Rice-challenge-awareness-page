@@ -2679,10 +2679,10 @@ a {
 }
 
 .movement-img {
-  max-width: 500px;
+  max-width: 460px;
   width: 100%;
   position: absolute;
-  top: -6px;
+  top: 18px;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
