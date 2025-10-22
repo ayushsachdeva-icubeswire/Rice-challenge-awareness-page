@@ -2682,7 +2682,7 @@ a {
   max-width: 500px;
   width: 100%;
   position: absolute;
-  top: -50px;
+  top: -6px;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
