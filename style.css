@@ -2321,7 +2321,7 @@ a {
 }
 
 .p-tag {
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .p-tag span {
@@ -2682,7 +2682,7 @@ a {
   max-width: 460px;
   width: 100%;
   position: absolute;
-  top: 18px;
+  top: 35px;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
 }
