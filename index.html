@@ -1039,7 +1039,7 @@
                 if (window.location.href.includes('http://13.201.26.193')) {
                     return 'http://13.201.26.193:8080';
                 } else if(window.location.href.includes('https://www.daawat.com')){
-                    return 'https://daawat.com/api';
+                    return 'https://daawat.com/';
                 }else {
                     return 'http://localhost:8080';
                 }
@@ -1131,7 +1131,7 @@
         // Function to fetch progress data from API
         async function fetchProgressData() {
             try {
-                const response = await fetch(getApiUrl('/challenger/progress'), {
+                const response = await fetch(getApiUrl('api/challenger/progress'), {
                     method: 'GET',
                     headers: {
                         'accept': 'application/json',
