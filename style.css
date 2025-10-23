@@ -2843,3 +2843,16 @@ a {
   color: #b9802a;
   font-weight: 600;
 }
+
+
+/* add to your main CSS (loaded after bootstrap) */
+.border-md-start-only {
+  border: none; /* default: no border on mobile/small */
+}
+
+@media (min-width: 768px) { /* md breakpoint */
+  .border-md-start-only {
+    /* use inline-start so it works in RTL too */
+    border-inline-start: 1px solid var(--bs-border-color, #dee2e6);
+  }
+}
