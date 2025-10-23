@@ -4,13 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Rice You Awareness by Daawat</title>
-    <link rel="shortcut icon" href="img/DAAWAT-Logo-01.png" type="image/x-icon">
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Join The Rice Challenge this November!" />
-    <meta property="og:description" content="Break myths, eat mindfully & feel the power of rice." />
-    <meta property="og:image" content="img/RYA-unit.png" />
-
+    <title>Daawat</title>
+    <link rel="shortcut icon" href="img/1new-daawat-logo.png" type="image/x-icon">
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Animate.css for fade-in -->
@@ -21,20 +16,6 @@
 
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-558TRVFF');
-    </script>
-    <!-- End Google Tag Manager -->
 
 
     <link rel="stylesheet" href="style.css">
@@ -68,27 +49,10 @@
             position: relative;
             overflow: hidden;
         }
-
-
-        .image-placeholder img {
-            position: absolute;
-            height: 125%;
-            width: 440px;
-            object-fit: contain;
-            /* top: -52px; */
-            bottom: 0;
-            right: 40px;
-        }
     </style>
 </head>
 
 <body>
-
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-558TRVFF" height="0" width="0"
-            style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-
 
     <section class="header-bg">
         <div class="container px-0 flex-wrap ">
@@ -105,7 +69,7 @@
             </div> -->
 
             <div class="py-1">
-                <img src="img/DAAWAT-Logo-01.png" width="120" alt="">
+                <img src="img/1new-daawat-logo.png" width="140" alt="">
             </div>
 
             <!-- Hamburger (for mobile) -->
@@ -123,23 +87,10 @@
                 </div>
 
                 <div class="py-2 d-block d-md-none">
-                    <img src="img/DAAWAT-Logo-01.png" width="120" alt="">
+                    <img src="img/1new-daawat-logo.png" width="140" alt="">
                 </div>
                 <a href="#movement">The Movement</a>
-
-                <!-- mobile Share Button -->
-                <a href="#" id="shareBtn" class="d-flex d-md-none">Share</a>
-
-                <!-- Desktop Share Button -->
-                <a href="#" id="shareBtnDesktop" class="d-none d-md-flex">Share</a>
-
-                <!-- Share Menu for Desktop -->
-                <div id="shareMenu" class="share-menu">
-                    <a href="#" class="share-icon" id="shareFb"><i class="ti ti-brand-facebook"></i></a>
-                    <a href="#" class="share-icon" id="shareLinkedin"><i class="ti ti-brand-linkedin"></i></a>
-                    <a href="#" class="share-icon" id="shareTwitter"><i class="ti ti-brand-twitter"></i></a>
-                </div>
-
+                <a href="#" id="shareBtn">Share</a>
                 <a href="#myths">Myths</a>
                 <a href="#faqs">FAQs</a>
             </nav>
@@ -152,22 +103,26 @@
 
 
     <!-- Hero Section -->
-    <section class="hero animate__animated animate__fadeIn w-100" style="padding: 40px 0px 10px 0px;">
-        <img class=" logo-img" src="img/RYA-unit.png" alt="">
+    <section class="hero animate__animated animate__fadeIn w-100">
+        <img class=" logo-img" src="img/new-full.png" alt="">
 
-        <div class="container pt-4">
+        <div class="container pt-5">
             <div class="row w-100 mx-auto content-section" style="position: relative;overflow: visible;">
                 <div class="col-12 col-lg-11 px-1   text-start ">
-                    <h1 class="title">Only Rice November</h1>
-                    <!-- <p class="subtitle">This November, break the myths and<br class="d-none d-lg-block">make <span>Rice
-                            Right</span> again</p> -->
+                    <h1 class="title">The Rice Challenge</h1>
+                    <p class="subtitle">This November, break the myths and<br class="d-none d-lg-block">make <span>Rice
+                            Right</span> again</p>
 
                     <div
-                        class="mt-4 d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
+                        class="d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
 
                         <div class="text-center text-lg-start">
-                            <button class="animated-button animated-button-w btn mt-0 mb-0" style="font-size: 26px;"
-                                onclick="openChallengeModal();">
+                            <div class="d-flex justify-content-center justify-content-lg-start gap-2">
+                                <div id="countdown"></div>
+                            </div>
+                            <p class="counter-label mb-0">Challenges Taken</p>
+                            <button class="animated-button animated-button-w btn mt-4 mb-0"
+                                onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
                                     style="fill: #110d85;">
                                     <path
@@ -183,13 +138,35 @@
                                     </path>
                                 </svg>
                             </button>
-
-                            <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-4">
-                                <div id="countdown"></div>
+                        </div>
+                        <div class="counter-placeholder text-center text-md-start p-0 ml-web">
+                            <div>
+                                <div id="countdown1"></div>
                             </div>
-
-                            <p class="counter-label mb-0">Challenges Taken</p>
-
+                            <h5 class="counter-label mb-0">People talking about it</h5>
+                            <div class="actions mb-0 mt-4 justify-content-center justify-content-md-start">
+                                <!-- <button class="share-btn blue" id="shareBtn">
+                                    <i class="ti ti-share"></i>
+                                    <span class="btn-text">Share</span>
+                                    <div class="pulse-ring"></div>
+                                </button> -->
+                                <button class="animated-button animated-button-w btn mt-0 mb-0" id="shareBtn">
+                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
+                                        style="fill: #110d85;">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                        </path>
+                                    </svg>
+                                    <span class="text btn-text">Share</span>
+                                    <span class="circle"></span>
+                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
+                                        style="fill: #110d85;">
+                                        <path
+                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -211,45 +188,18 @@
             <div class="py-2 w-100">
                 <!-- Heading -->
                 <!-- <h1>Rice Your Awareness</h1> -->
-                <div class="d-flex justify-content-md-between flex-wrap w-100 my-4 heading-gap">
+                <div class="d-flex justify-content-center flex-wrap w-100 my-4 heading-gap">
                     <div class="d-flex gap-3 align-items-center">
                         <img src="img/2badge.png" width="70" class="rounded" alt="">
                         <h2 class=" text-start">
-                            Earn Your <br><span class="challenge-title">Badge of Honour</span>
+                            Get Your <br><span class="challenge-title">Badge of Honour</span>
                         </h2>
                     </div>
-
-                    <div class="d-flex align-items-center flex-wrap gap-4 py-3">
-                        <!-- Profile Section -->
-                        <div class="d-flex align-items-center">
-                            <img src="img/Leema_Mahajan.jpeg" width="68" height="68"
-                                class="rounded-circle me-3 shadow-sm" alt="Leema Mahajan">
-                            <div class="lh-sm py-2 text-start">
-                                <a href="https://www.instagram.com/leemamahajan" target="_blank"
-                                    class="fw-semibold text-dark text-decoration-none d-block">
-                                    Leema Mahajan
-                                </a>
-                                <a href="https://www.instagram.com/leemamahajan" target="_blank"
-                                    class="text-muted text-decoration-none small d-block">
-                                    @leemamahajan
-                                </a>
-
-                                <!-- Followers -->
-                                <!-- <div class="d-inline-flex align-items-center bg-light rounded-pill px-2 py-1 mt-1">
-                                    <i class="ti ti-brand-instagram me-1 instagram-color"></i>
-                                    <span class="fw-semibold small text-dark">602K</span>
-                                    <span class="text-muted small ms-1">followers</span>
-                                </div> -->
-                            </div>
-                        </div>
-
-                        <!-- Title Section -->
-                        <div class="border-start ps-4 ms-2 text-start">
-                            <h2 class="mb-0 fw-semibold" style="font-size: 1.75rem; line-height: 1.3;">
-                                Exclusive <br>
-                                <span class="challenge-title" style="color:#c57a30;">Expert-Crafted Meal Plan</span>
-                            </h2>
-                        </div>
+                    <div class="d-flex gap-3 align-items-center">
+                        <img src="img/Leema_Mahajan.jpeg" width="70" class="rounded" alt="">
+                        <h2 class=" text-start">
+                            Exclusive <br> <span class="challenge-title">Expert-Crafted Meal Plan</span>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -309,7 +259,7 @@
                         data-image="img/30days.jpg" data-share="https://example.com/30days.jpg" data-duration="30 days">
                         <h5 class="fw-bold mb-0">30 Days</h5>
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
-                            stroke="#7ac1cc" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
+                            stroke="#b9f2ff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"
                             class="icon icon-tabler icons-tabler-outline icon-tabler-award badge-icon-svg">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M12 9m-6 0a6 6 0 1 0 12 0a6 6 0 1 0 -12 0" />
@@ -321,12 +271,9 @@
                 </div>
             </div>
 
-            <!-- Error message for challenge selection -->
-            <div class="text-danger text-center mb-3" id="challengeSelectionError"
-                style="display:none; font-weight: bold;"></div>
-
             <!-- Myths Busted Button -->
-            <button class="animated-button btn mt-3 mb-5" id="takeChallengeBtn">
+            <button class="animated-button btn mt-3 mb-5" id="takeChallengeBtn" data-bs-toggle="modal"
+                data-bs-target="#dynamicChallengeModal">
                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
@@ -382,7 +329,7 @@
     <section class="slider-section pb-0 mb-5">
         <!-- 30 Days Challenge -->
         <div class="challenge-section animate__animated animate__fadeIn pb-0">
-            <h2 class="30days">People Embracing <span>#OnlyRiceNovember</span></h2>
+            <h2 class="30days">People Taking the <span>Rice Challenge</span></h2>
             <!-- <p class="mb-2 mb-md-0" style="color: #535151;font-size: 24px;">This November, pledge to Rice Your
                 Awareness. <br> A month to
                 consume rice, rise
@@ -497,7 +444,7 @@
 
     <!-- FAQ intro: left content + right image -->
     <section class="py-5 interaction-section" id="movement">
-        <div class="text-center mb-4">
+        <div class="text-center">
             <h2 class="faq-title">The Movement</h2>
         </div>
         <div class="container">
@@ -506,21 +453,21 @@
 
 
                     <p class="p-tag">Rice Your Awareness by Daawat is a movement to help people understand rice the
-                        right way - as a food that brings balance, nourishment, and energy to everyday life.</p>
+                        right way - as a food
+                        that brings balance, nourishment, and energy to everyday life.</p>
 
-                    <p class="p-tag">At the heart of this initiative lies #OnlyRiceNovember - a challenge led experience
-                        that inspires mindful eating and encourages people to discover how rice can make them feel more
-                        active, and truly refreshed.</p>
+                    <p class="p-tag">At the heart of this initiative lies The Rice Challenge - an experience that
+                        invites you to eat
+                        mindfully and discover how rice can make you feel lighter, more active, and truly refreshed.</p>
 
                     <p class="p-tag">Rich in natural carbohydrates, easy to digest, and naturally gluten-free, rice
                         supports gut health, sustained energy, and overall well-being - making it a perfect fit for
                         every lifestyle.</p>
-
                     <p class="p-tag">Because good health doesn’t come from cutting food out - it comes from
                         understanding it.</p>
 
-                    <p class="mb-4 p-tag">This November, be part of <span>#OnlyRiceNovember</span> and rediscover the
-                        real goodness of rice.</p>
+                    <p class="mb-4 p-tag">This November, take <span>The Rice Challenge</span> and experience the
+                        truth - <span style="">Rice is Right</span>.</p>
 
                 </div>
 
@@ -531,97 +478,9 @@
         </div>
     </section>
 
-    <section class="interaction-section1 py-5 mb-4">
-        <h2 class=" text-center mb-4 text-white">People talking about it</h2>
-
-        <div class="container w-100">
-            <div class="row justify-content-center text-center text-white w-100 mx-auto">
-                <div class="col-12 col-md-12">
-                    <!-- Counter placeholder - add your code here -->
-                    <div class="counter-placeholder px-0">
-                        <div>
-                            <div id="countdown1"></div>
-                        </div>
-                        <h5 class="counter-label mb-0">Total interactions so far</h5>
-                        <div class="d-flex gap-4 mt-4 align-items-center justify-content-center flex-wrap">
-                            <div>
-                                <button class="animated-button animated-button-w btn mb-0"
-                                    onclick="openChallengeModal();">
-                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
-                                        style="fill: #110d85;">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                    <span class="text btn-text">Take the Challenge</span>
-                                    <span class="circle"></span>
-                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
-                                        style="fill: #110d85;">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                </button>
-                            </div>
-                            <div class="actions mb-0 justify-content-center justify-content-md-center">
-                                <button class="animated-button animated-button-w btn mt-0 mb-0 d-flex d-md-none"
-                                    id="shareBtn">
-                                    <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
-                                        style="fill: #110d85;">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                    <span class="text btn-text">Share</span>
-                                    <span class="circle"></span>
-                                    <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
-                                        style="fill: #110d85;">
-                                        <path
-                                            d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                        </path>
-                                    </svg>
-                                </button>
-
-                                <div class="position-relative">
-                                    <button class="animated-button animated-button-w btn mt-0 mb-0 d-none d-md-flex"
-                                        id="shareBtnDesktop2">
-                                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
-                                            style="fill: #110d85;">
-                                            <path
-                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                            </path>
-                                        </svg>
-                                        <span class="text btn-text">Share</span>
-                                        <span class="circle"></span>
-                                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg"
-                                            style="fill: #110d85;">
-                                            <path
-                                                d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
-                                            </path>
-                                        </svg>
-                                    </button>
-
-                                    <!-- Share Menu for Desktop -->
-                                    <div id="shareMenu" class="share-menu share-menu1">
-                                        <a href="#" class="share-icon" id="shareFb"><i
-                                                class="ti ti-brand-facebook"></i></a>
-                                        <a href="#" class="share-icon" id="shareLinkedin"><i
-                                                class="ti ti-brand-linkedin"></i></a>
-                                        <a href="#" class="share-icon" id="shareTwitter"><i
-                                                class="ti ti-brand-twitter"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
 
 
-    <section class="small-cards-section" id="myths">
+    <section class="small-cards-section">
         <h2 class="section-title text-center "><span>Myth Busting</span> Rice Facts</h2>
 
         <div class="container">
@@ -791,6 +650,7 @@
     </section>
 
 
+
     <!-- Quiz Modal -->
     <div class="modal fade" id="quizModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -824,9 +684,9 @@
                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                A <strong>30-days awareness and fitness movement by Daawat</strong>, inspiring India to
-                                take part in <strong>#OnlyRiceNovember</strong> challenge - to break myths around rice,
-                                eat mindfully, and experience how it supports health, energy, and balance.
+                                A 30-days awareness and fitness movement by Daawat, inspiring India to take the Rice
+                                Challenge - to break myths, eat mindfully, and experience how Rice is Right for health,
+                                energy, and balance.
                             </div>
                         </div>
                     </div>
@@ -842,12 +702,10 @@
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
                                 Visit <a href="https://www.daawat.com/rya" target="_blank">www.daawat.com/rya</a> ,
-                                choose your challenge duration <strong>(7 / 14 / 21 / 30 days)</strong>, register with
-                                your details,
-                                download your <strong>Exclusive Expert-Crafted Meal Plan</strong>, and get your
-                                <strong>Digital Badge</strong>.
-                                Start your journey, share your meals, and invite friends to join
-                                <strong>#OnlyRiceNovember</strong>.
+                                choose your
+                                challenge duration (7 / 14 / 21 / 30 days), register with your details, download your
+                                Exclusive Expert Crafted Meal Plan, and get your Digital Badge. Invite friends and
+                                inspire others to join the movement.
                             </div>
                         </div>
                     </div>
@@ -862,8 +720,8 @@
                         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                Use <strong>#RiceYourAwareness</strong> and <strong>#OnlyRiceNovember</strong> to share
-                                your experience, motivate others, and be part of this nationwide movement.
+                                Use #RiceYourAwareness, #TheRiceChallenge & #RiceIsRight to share your journey, motivate
+                                others, and be part of the movement.
                             </div>
                         </div>
                     </div>
@@ -878,9 +736,8 @@
                         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                It’s a <strong>fitness-driven awareness movement</strong> designed to help you feel more
-                                energetic, and
-                                confident about including rice as part of a balanced, healthy lifestyle.
+                                It’s a fitness-driven awareness challenge that helps you feel lighter, more energetic,
+                                and confident about including rice as part of a healthy, active lifestyle
                             </div>
                         </div>
                     </div>
@@ -895,9 +752,8 @@
                         <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                No problem - <strong>#OnlyRiceNovember</strong> challenge is flexible.
-                                Pick a shorter duration or include rice mindfully whenever you can; every step counts
-                                toward a healthier, more balanced you.
+                                The challenge is flexible - pick a shorter duration or simply include rice mindfully
+                                whenever you can. Every effort counts toward a fitter, more balanced you.
                             </div>
                         </div>
                     </div>
@@ -912,9 +768,8 @@
                         <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                Not at all. There are <strong>multiple Rice Diet Plans</strong> tailored to different
-                                regions, preferences, and lifestyles - so everyone can experience the goodness of rice
-                                in their own way.
+                                No, there are multiple plans based on regions, preferences, and lifestyles - so everyone
+                                can enjoy rice their way.
                             </div>
                         </div>
                     </div>
@@ -929,8 +784,8 @@
                         <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                Better energy, improved digestion, and a renewed sense of comfort and balance through
-                                mindful eating.
+                                Better energy, improved digestion, a lighter body, and the simple joy of knowing that
+                                eating right with rice feels good - inside and out
                             </div>
                         </div>
                     </div>
@@ -945,9 +800,9 @@
                         <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                The real reward is the <strong>feeling of well-being, energy, and positivity</strong>
-                                that comes from reconnecting with rice and joining a nationwide movement built on
-                                balance and awareness.
+                                The real gratification is the feeling of lightness, energy, and confidence that comes
+                                from building trust in rice and being part of a movement that celebrates mindful,
+                                balanced eating.
                             </div>
                         </div>
                     </div>
@@ -1056,6 +911,77 @@
             return API_CONFIG.BASE_URL + endpoint;
         }
 
+        // Function to download PDF from URL
+        function downloadPdfFromUrl(pdfUrl, fileName) {
+            try {
+                
+                // Create a hidden link with download attribute
+                const link = document.createElement('a');
+                link.href = pdfUrl;
+                link.download = fileName || 'Daawat-Rice-Challenge-Meal-Plan.pdf';
+                link.style.display = 'none';
+                
+                // Add link to document
+                document.body.appendChild(link);
+                
+                // Trigger download
+                link.click();
+                
+                // Remove link
+                document.body.removeChild(link);
+                
+                
+                // If download attribute doesn't work with external URLs, 
+                // show user message and provide manual download option
+                setTimeout(function() {
+                    // This will be shown in the congratulations screen anyway
+                }, 1000);
+                
+                return true;
+                
+            } catch (error) {
+                console.error('Error downloading PDF:', error);
+                return false;
+            }
+        }
+
+        // Badge download function based on duration
+        function downloadBadgeByDuration(duration) {
+            let badgeFileName = '';
+
+            // Map duration to badge file
+            switch (duration) {
+                case '7 days':
+                    badgeFileName = 'bronze.png';
+                    break;
+                case '14 days':
+                    badgeFileName = 'silver.png';
+                    break;
+                case '21 days':
+                    badgeFileName = 'gold.png';
+                    break;
+                case '30 days':
+                    badgeFileName = 'diamond.png';
+                    break;
+                default:
+                    console.error('Unknown duration:', duration);
+                    return;
+            }
+
+            // Create download link
+            const link = document.createElement('a');
+            link.href = `img/${badgeFileName}`;
+            link.download = `daawat-${duration.replace(' ', '-')}-challenge-badge.png`;
+            link.style.display = 'none';
+
+            // Add to DOM, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+        }
+
+
         // Test function for API endpoints (for debugging)
         window.testAPIs = {
             testRegister: async function () {
@@ -1113,7 +1039,6 @@
                             userId: userId,
                             category: "Vegetarian",
                             subcategory: "Beginner",
-                            duration: "7 days",
                             type: "Weight Loss"
                         })
                     });
@@ -1219,70 +1144,6 @@
         });
     </script>
 
-    <script>
-        // ===== FUNCTION TO HANDLE EACH MENU SEPARATELY =====
-        function setupShareMenu(buttonId, menuSelector) {
-            const button = document.getElementById(buttonId);
-            const menu = document.querySelector(menuSelector);
-            let hideTimeout;
-
-            if (!button || !menu) return;
-
-            button.addEventListener("mouseenter", () => {
-                clearTimeout(hideTimeout);
-                menu.style.display = "flex";
-            });
-
-            button.addEventListener("mouseleave", () => {
-                hideTimeout = setTimeout(() => {
-                    menu.style.display = "none";
-                }, 500);
-            });
-
-            menu.addEventListener("mouseenter", () => {
-                clearTimeout(hideTimeout);
-                menu.style.display = "flex";
-            });
-
-            menu.addEventListener("mouseleave", () => {
-                hideTimeout = setTimeout(() => {
-                    menu.style.display = "none";
-                }, 500);
-            });
-        }
-
-        // Setup both share buttons separately
-        setupShareMenu("shareBtnDesktop", ".share-menu");
-        setupShareMenu("shareBtnDesktop2", ".share-menu1");
-
-        // ===== SOCIAL SHARE LINKS =====
-        function setupSocialShare(fbId, linkedinId, twitterId) {
-            const fbIcon = document.getElementById(fbId);
-            const linkedinIcon = document.getElementById(linkedinId);
-            const twitterIcon = document.getElementById(twitterId);
-
-            fbIcon?.addEventListener("click", (e) => {
-                e.preventDefault();
-                const url = encodeURIComponent(window.location.href);
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
-            });
-
-            linkedinIcon?.addEventListener("click", (e) => {
-                e.preventDefault();
-                const url = encodeURIComponent(window.location.href);
-                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank");
-            });
-
-            twitterIcon?.addEventListener("click", (e) => {
-                e.preventDefault();
-                const url = encodeURIComponent(window.location.href);
-                window.open(`https://twitter.com/intent/tweet?url=${url}`, "_blank");
-            });
-        }
-
-        setupSocialShare("shareFb", "shareLinkedin", "shareTwitter");
-        setupSocialShare("shareFb2", "shareLinkedin2", "shareTwitter2");
-    </script>
 
     <script>
         let selectedCard = null;
@@ -1303,26 +1164,6 @@
             });
         }
 
-        // Function to open challenge modal directly
-        function openChallengeModal() {
-            // Clear any selected card since we're opening directly
-            selectedCard = null;
-
-            // Clear previous error message
-            const errorElement = document.getElementById('challengeSelectionError');
-            if (errorElement) {
-                errorElement.style.display = 'none';
-            }
-
-            // Clear any active card selections
-            dynamicCards.forEach(c => c.classList.remove('active'));
-
-            // Show modal directly
-            if (dynamicModal) {
-                dynamicModal.show();
-            }
-        }
-
         // Card selection logic
         dynamicCards.forEach(card => {
             card.addEventListener('click', () => {
@@ -1331,36 +1172,12 @@
                 // Highlight current
                 card.classList.add('active');
                 selectedCard = card;
-
-                // Hide error message when a card is selected
-                const errorElement = document.getElementById('challengeSelectionError');
-                if (errorElement) {
-                    errorElement.style.display = 'none';
-                }
             });
         });
 
         // Take the Challenge button
         takeBtn.addEventListener('click', (e) => {
             e.preventDefault(); // Prevent default form/button behavior
-
-            // Clear previous error message
-            const errorElement = document.getElementById('challengeSelectionError');
-            if (errorElement) {
-                errorElement.style.display = 'none';
-            }
-
-            // Validate that a challenge duration is selected
-            if (!selectedCard) {
-                if (errorElement) {
-                    errorElement.textContent = "Please select a challenge duration before proceeding";
-                    errorElement.style.display = "block";
-
-                    // Scroll to the error message to make it visible
-                    errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                return; // Don't open modal if no card is selected
-            }
 
             // Update modal background image
             const img = selectedCard ? selectedCard.getAttribute('data-image') : null;
@@ -1417,12 +1234,9 @@
                 // ✅ STEP 0 — Name & Mobile + OTP
                 if (index === 0) {
                     // Get selected challenge duration for display
-                    let challengeText = "Challenge";
-                    let selectedDuration = null; // No default selection
-
+                    let challengeText = "7 Day Challenge";
                     if (selectedCard) {
-                        const duration = selectedCard.getAttribute("data-duration");
-                        selectedDuration = duration;
+                        const duration = selectedCard.getAttribute("data-duration") || "7 days";
                         const levelElement = selectedCard.querySelector("p");
                         const level = levelElement ? levelElement.textContent.trim() : "Beginner";
                         challengeText = `${duration.replace(" days", "")} Day Challenge (${level})`;
@@ -1440,16 +1254,6 @@
                     <div class="mb-2">
                         <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
                         <div class="text-danger small mt-1" id="mobileError" style="display:none;"></div>
-                    </div>
-                    <div class="mb-2">
-                        <select class="form-select" id="duration" required>
-                            <option value="" selected disabled>Select Challenge Duration</option>
-                            <option value="7 days" ${selectedDuration === "7 days" ? "selected" : ""}>7 Days Challenge</option>
-                            <option value="14 days" ${selectedDuration === "14 days" ? "selected" : ""}>14 Days Challenge</option>
-                            <option value="21 days" ${selectedDuration === "21 days" ? "selected" : ""}>21 Days Challenge</option>
-                            <option value="30 days" ${selectedDuration === "30 days" ? "selected" : ""}>30 Days Challenge</option>
-                        </select>
-                        <div class="text-danger small mt-1" id="durationError" style="display:none;"></div>
                     </div>
                     <div class="text-danger small mt-1" id="challengeError" style="display:none;"></div>
                     <div class="text-success small mt-1" id="successMessage" style="display:none;"></div>
@@ -1470,13 +1274,11 @@
                         // Clear previous error messages
                         document.getElementById("nameError").style.display = "none";
                         document.getElementById("mobileError").style.display = "none";
-                        document.getElementById("durationError").style.display = "none";
                         document.getElementById("challengeError").style.display = "none";
                         document.getElementById("successMessage").style.display = "none";
 
                         const name = document.getElementById("name").value.trim();
                         const mobile = document.getElementById("mobile").value.trim();
-                        const duration = document.getElementById("duration").value;
 
                         // Validate inputs with specific error messages
                         let hasError = false;
@@ -1497,9 +1299,9 @@
                             hasError = true;
                         }
 
-                        if (!duration) {
-                            document.getElementById("durationError").textContent = "Please select a challenge duration";
-                            document.getElementById("durationError").style.display = "block";
+                        if (!selectedCard) {
+                            document.getElementById("challengeError").textContent = "Please select a challenge duration before proceeding";
+                            document.getElementById("challengeError").style.display = "block";
                             hasError = true;
                         }
 
@@ -1507,9 +1309,11 @@
                             return;
                         }
 
-                        // Use the selected duration from the form instead of selectedCard
                         // Get selected challenge duration
-                        let durationValue = duration; // Use form value directly
+                        let duration = "7 days"; // default
+                        if (selectedCard) {
+                            duration = selectedCard.getAttribute("data-duration") || "7 days";
+                        }
 
                         // Show loading state
                         const sendOtpBtn = document.getElementById("sendOtpBtn");
@@ -1526,7 +1330,7 @@
                                     'Content-Type': 'application/json',
                                 },
                                 body: JSON.stringify({
-                                    duration: durationValue,
+                                    duration: duration,
                                     name: name,
                                     mobile: mobile
                                 })
@@ -1549,7 +1353,7 @@
                                     userId: extractedUserId,
                                     name: name,
                                     mobile: mobile,
-                                    duration: durationValue
+                                    duration: duration
                                 };
 
                                 // Also store in localStorage as backup
@@ -1635,8 +1439,17 @@
                                 window.userRegistrationData.verified = true;
                                 window.userRegistrationData.verificationResult = result;
 
+                                // Download badge based on selected duration
+                                if (selectedCard && selectedCard.dataset.duration) {
+                                    try {
+                                        downloadBadgeByDuration(selectedCard.dataset.duration);
+                                    } catch (badgeError) {
+                                        console.error('Badge download error:', badgeError);
+                                    }
+                                }
+
                                 // Show success message briefly
-                                document.getElementById("successMessage").textContent = "OTP verified successfully!";
+                                document.getElementById("successMessage").textContent = "OTP verified successfully! Your badge is downloading...";
                                 document.getElementById("successMessage").style.display = "block";
 
                                 // Proceed to next step after a short delay
@@ -1802,14 +1615,13 @@
                                     userId: window.userRegistrationData.userId,
                                     category: categoryMapping[categorySelect.value] || categorySelect.value,
                                     subcategory: subcategoryValue,
-                                    duration: window.userRegistrationData.duration,
                                     // type: type
                                 })
                             });
 
                             if (response.ok) {
                                 const result = await response.json();
-
+                                
 
                                 // Store meal preferences and submission result
                                 window.userRegistrationData.category = categorySelect.value;
@@ -1821,13 +1633,13 @@
                                     const pdfUrl = result.data;
                                     const fileName = `Daawat-${window.userRegistrationData.duration.replace(' ', '-')}-Challenge-Meal-Plan.pdf`;
 
-
+                              
 
                                     // Store PDF URL for later use
                                     window.userRegistrationData.pdfUrl = pdfUrl;
 
                                     // Add a short delay to ensure UI updates, then start download
-                                    setTimeout(() => {
+                                    setTimeout(() => {                                        
                                         // Create a hidden <a> tag to trigger the download
                                         const link = document.createElement('a');
                                         link.href = pdfUrl;
@@ -1836,7 +1648,7 @@
                                         document.body.appendChild(link);
                                         link.click();
                                         document.body.removeChild(link);
-
+                                        
                                     }, 1000);
                                 } else {
                                     console.warn('No PDF URL found in response data:', result.data);
@@ -1904,64 +1716,30 @@
                     }
                 }
 
-
                 animateQuestionChange(() => {
                     questionEl.textContent = "🎉 Congratulations!";
                     optionsEl.innerHTML = `
-                        <div class="d-flex justify-content-center flex-column align-items-center text-center gap-4 position-relative">
-                        
-                        <!-- Thank You Message -->
-                        <div class="thank-you-message">
-                            <h4 class="fw-bold mb-2">Thank You for Taking the Challenge!</h4>
-                            <p class="mb-0">
-                                We’re thrilled to have you on this journey. <br />
-                                You’ll receive your badge once the challenge is complete - share your achievement with friends! 
-                            </p>
-                        </div>
-
-                        <!-- MOBILE SHARE BUTTON -->
-                        <button class="animated-button btn d-flex d-md-none" id="shareBtn">
-                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                <div class="d-flex justify-content-center flex-column align-items-center gap-4">
+                    <img src="${badgeImage}" alt="Achievement Badge" class="congrats-image" />
+                    <button class="animated-button btn" id="shareBtn">
+                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                            </svg>
-                            <span class="text">Share</span>
-                            <span class="circle"></span>
-                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                        </svg>
+                        <span class="text">Share</span>
+                        <span class="circle"></span>
+                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                            </svg>
-                        </button>
-
-                        <!-- DESKTOP SHARE BUTTON #2 (Optional) -->
-                        <button class="animated-button btn d-none d-md-flex modal-btn" id="shareBtnDesktop2">
-                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                            </svg>
-                            <span class="text">Share</span>
-                            <span class="circle"></span>
-                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                            </svg>
-                        </button>
-                        
-                            <div class="share-menu share-menu2">
-                            <a href="#" class="share-icon"><i class="ti ti-brand-instagram"></i></a>
-                            <a href="#" class="share-icon"><i class="ti ti-brand-whatsapp"></i></a>
-                            <a href="#" class="share-icon"><i class="ti ti-brand-youtube"></i></a>
-                            </div>
-
-                        <p class="mt-3">
-                            Your diet plan download should start automatically. If it doesn’t,
-                            <a href="${window.userRegistrationData?.pdfUrl || 'img/sample-local-pdf.pdf'
-                        }" 
-                            download="Daawat-${window.userRegistrationData?.duration?.replace(' ', '-') || 'Rice'
-                        }-Challenge-Meal-Plan.pdf"
-                            target="_blank" id="manualDownloadLink"
-                            style="color:#e74c3c;font-weight:bold;text-decoration:underline;">
-                            click here
-                            </a> to download.
-                        </p>
-                        </div>
-                    `;
+                        </svg>
+                    </button>
+                    <p>Your diet plan download should start automatically. If it doesn’t, 
+                    <a href="${window.userRegistrationData?.pdfUrl || 'img/sample-local-pdf.pdf'}" 
+                       download="Daawat-${window.userRegistrationData?.duration?.replace(' ', '-') || 'Rice'}-Challenge-Meal-Plan.pdf" 
+                       target="_blank" id="manualDownloadLink" 
+                       style="color: #e74c3c; font-weight: bold; text-decoration: underline;">
+                       click here
+                    </a> to download.</p>
+                </div>
+            `;
                     nextBtn.style.display = "none";
                 });
             }
@@ -2464,6 +2242,7 @@
 
                     // Check challengerProgress counter
                     if (progressData.challengerProgress) {
+                        
                         const newVal = progressData.challengerProgress.currentValue || 0;
                         if (newVal !== currentValues.challengerProgress) {
                             hasChanges = true;
@@ -2575,38 +2354,6 @@
             window.open("https://www.amazon.in/stores/Daawat/page/4F50B176-6702-4AC2-B9A2-0CABE8AE6204", "_blank");
         });
     </script>
-
-
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9SF15VYGN"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-C9SF15VYGN');
-    </script>
-
-    <!-- Meta Pixel Code -->
-    <script>
-        !function (f, b, e, v, n, t, s) {
-            if (f.fbq) return; n = f.fbq = function () {
-                n.callMethod ?
-                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-            };
-            if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-            n.queue = []; t = b.createElement(e); t.async = !0;
-            t.src = v; s = b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t, s)
-        }(window, document, 'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '1379815800530745');
-        fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-            src="https://www.facebook.com/tr?id=1379815800530745&ev=PageView&noscript=1" /></noscript>
-    <!-- End Meta Pixel Code -->
 
 
 </body>
