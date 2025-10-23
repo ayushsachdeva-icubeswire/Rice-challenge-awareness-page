@@ -167,7 +167,7 @@
 
                         <div class="text-center text-lg-start">
                             <button class="animated-button animated-button-w btn mt-0 mb-0" style="font-size: 26px;"
-                                onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
+                                onclick="openChallengeModal();">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
                                     style="fill: #110d85;">
                                     <path
@@ -545,7 +545,7 @@
                         <div class="d-flex gap-4 mt-4 align-items-center justify-content-center flex-wrap">
                             <div>
                                 <button class="animated-button animated-button-w btn mb-0"
-                                    onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
+                                    onclick="openChallengeModal();">
                                     <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
                                         style="fill: #110d85;">
                                         <path
@@ -1318,6 +1318,26 @@
             });
         }
 
+        // Function to open challenge modal directly
+        function openChallengeModal() {
+            // Clear any selected card since we're opening directly
+            selectedCard = null;
+            
+            // Clear previous error message
+            const errorElement = document.getElementById('challengeSelectionError');
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+
+            // Clear any active card selections
+            dynamicCards.forEach(c => c.classList.remove('active'));
+
+            // Show modal directly
+            if (dynamicModal) {
+                dynamicModal.show();
+            }
+        }
+
         // Card selection logic
         dynamicCards.forEach(card => {
             card.addEventListener('click', () => {
@@ -1412,9 +1432,12 @@
                 // ✅ STEP 0 — Name & Mobile + OTP
                 if (index === 0) {
                     // Get selected challenge duration for display
-                    let challengeText = "7 Day Challenge";
+                    let challengeText = "Challenge";
+                    let selectedDuration = null; // No default selection
+                    
                     if (selectedCard) {
-                        const duration = selectedCard.getAttribute("data-duration") || "7 days";
+                        const duration = selectedCard.getAttribute("data-duration");
+                        selectedDuration = duration;
                         const levelElement = selectedCard.querySelector("p");
                         const level = levelElement ? levelElement.textContent.trim() : "Beginner";
                         challengeText = `${duration.replace(" days", "")} Day Challenge (${level})`;
@@ -1432,6 +1455,16 @@
                     <div class="mb-2">
                         <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
                         <div class="text-danger small mt-1" id="mobileError" style="display:none;"></div>
+                    </div>
+                    <div class="mb-2">
+                        <select class="form-select" id="duration" required>
+                            <option value="" selected disabled>Select Challenge Duration</option>
+                            <option value="7 days" ${selectedDuration === "7 days" ? "selected" : ""}>7 Days Challenge</option>
+                            <option value="14 days" ${selectedDuration === "14 days" ? "selected" : ""}>14 Days Challenge</option>
+                            <option value="21 days" ${selectedDuration === "21 days" ? "selected" : ""}>21 Days Challenge</option>
+                            <option value="30 days" ${selectedDuration === "30 days" ? "selected" : ""}>30 Days Challenge</option>
+                        </select>
+                        <div class="text-danger small mt-1" id="durationError" style="display:none;"></div>
                     </div>
                     <div class="text-danger small mt-1" id="challengeError" style="display:none;"></div>
                     <div class="text-success small mt-1" id="successMessage" style="display:none;"></div>
@@ -1452,11 +1485,13 @@
                         // Clear previous error messages
                         document.getElementById("nameError").style.display = "none";
                         document.getElementById("mobileError").style.display = "none";
+                        document.getElementById("durationError").style.display = "none";
                         document.getElementById("challengeError").style.display = "none";
                         document.getElementById("successMessage").style.display = "none";
 
                         const name = document.getElementById("name").value.trim();
                         const mobile = document.getElementById("mobile").value.trim();
+                        const duration = document.getElementById("duration").value;
 
                         // Validate inputs with specific error messages
                         let hasError = false;
@@ -1477,15 +1512,19 @@
                             hasError = true;
                         }
 
+                        if (!duration) {
+                            document.getElementById("durationError").textContent = "Please select a challenge duration";
+                            document.getElementById("durationError").style.display = "block";
+                            hasError = true;
+                        }
+
                         if (hasError) {
                             return;
                         }
 
+                        // Use the selected duration from the form instead of selectedCard
                         // Get selected challenge duration
-                        let duration = "7 days"; // default
-                        if (selectedCard) {
-                            duration = selectedCard.getAttribute("data-duration") || "7 days";
-                        }
+                        let durationValue = duration; // Use form value directly
 
                         // Show loading state
                         const sendOtpBtn = document.getElementById("sendOtpBtn");
@@ -1502,7 +1541,7 @@
                                     'Content-Type': 'application/json',
                                 },
                                 body: JSON.stringify({
-                                    duration: duration,
+                                    duration: durationValue,
                                     name: name,
                                     mobile: mobile
                                 })
@@ -1525,7 +1564,7 @@
                                     userId: extractedUserId,
                                     name: name,
                                     mobile: mobile,
-                                    duration: duration
+                                    duration: durationValue
                                 };
 
                                 // Also store in localStorage as backup
