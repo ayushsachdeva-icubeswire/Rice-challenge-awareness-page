@@ -257,9 +257,11 @@
                 </div>
             </div>
 
+            <!-- Error message for challenge selection -->
+            <div class="text-danger text-center mb-3" id="challengeSelectionError" style="display:none; font-weight: bold;"></div>
+
             <!-- Myths Busted Button -->
-            <button class="animated-button btn mt-3 mb-5" id="takeChallengeBtn" data-bs-toggle="modal"
-                data-bs-target="#dynamicChallengeModal">
+            <button class="animated-button btn mt-3 mb-5" id="takeChallengeBtn">
                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
@@ -953,43 +955,6 @@
             return API_CONFIG.BASE_URL + endpoint;
         }
 
-        // Badge download function based on duration
-        function downloadBadgeByDuration(duration) {
-            let badgeFileName = '';
-
-            // Map duration to badge file
-            switch (duration) {
-                case '7 days':
-                    badgeFileName = 'bronze.png';
-                    break;
-                case '14 days':
-                    badgeFileName = 'silver.png';
-                    break;
-                case '21 days':
-                    badgeFileName = 'gold.png';
-                    break;
-                case '30 days':
-                    badgeFileName = 'diamond.png';
-                    break;
-                default:
-                    console.error('Unknown duration:', duration);
-                    return;
-            }
-
-            // Create download link
-            const link = document.createElement('a');
-            link.href = `img/${badgeFileName}`;
-            link.download = `daawat-${duration.replace(' ', '-')}-challenge-badge.png`;
-            link.style.display = 'none';
-
-            // Add to DOM, click, and remove
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-
-        }
-
-
         // Test function for API endpoints (for debugging)
         window.testAPIs = {
             testRegister: async function () {
@@ -1180,12 +1145,36 @@
                 // Highlight current
                 card.classList.add('active');
                 selectedCard = card;
+                
+                // Hide error message when a card is selected
+                const errorElement = document.getElementById('challengeSelectionError');
+                if (errorElement) {
+                    errorElement.style.display = 'none';
+                }
             });
         });
 
         // Take the Challenge button
         takeBtn.addEventListener('click', (e) => {
             e.preventDefault(); // Prevent default form/button behavior
+
+            // Clear previous error message
+            const errorElement = document.getElementById('challengeSelectionError');
+            if (errorElement) {
+                errorElement.style.display = 'none';
+            }
+
+            // Validate that a challenge duration is selected
+            if (!selectedCard) {
+                if (errorElement) {
+                    errorElement.textContent = "Please select a challenge duration before proceeding";
+                    errorElement.style.display = "block";
+                    
+                    // Scroll to the error message to make it visible
+                    errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return; // Don't open modal if no card is selected
+            }
 
             // Update modal background image
             const img = selectedCard ? selectedCard.getAttribute('data-image') : null;
@@ -1304,12 +1293,6 @@
                         } else if (!/^\d{10}$/.test(mobile)) {
                             document.getElementById("mobileError").textContent = "Please enter a valid 10-digit mobile number";
                             document.getElementById("mobileError").style.display = "block";
-                            hasError = true;
-                        }
-
-                        if (!selectedCard) {
-                            document.getElementById("challengeError").textContent = "Please select a challenge duration before proceeding";
-                            document.getElementById("challengeError").style.display = "block";
                             hasError = true;
                         }
 
@@ -1447,17 +1430,8 @@
                                 window.userRegistrationData.verified = true;
                                 window.userRegistrationData.verificationResult = result;
 
-                                // Download badge based on selected duration
-                                if (selectedCard && selectedCard.dataset.duration) {
-                                    try {
-                                        downloadBadgeByDuration(selectedCard.dataset.duration);
-                                    } catch (badgeError) {
-                                        console.error('Badge download error:', badgeError);
-                                    }
-                                }
-
                                 // Show success message briefly
-                                document.getElementById("successMessage").textContent = "OTP verified successfully! Your badge is downloading...";
+                                document.getElementById("successMessage").textContent = "OTP verified successfully!";
                                 document.getElementById("successMessage").style.display = "block";
 
                                 // Proceed to next step after a short delay
