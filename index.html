@@ -196,7 +196,7 @@
 
                 <div class="col-lg-1 image-section py-5 d-none d-xl-block">
                     <div class="image-placeholder">
-                        <img src="img/Shahrukh-top-banner.png" alt="">
+                        <img src="img/heart1.png" alt="">
                     </div>
                 </div>
             </div>
@@ -502,7 +502,7 @@
         </div>
         <div class="container">
             <div class="row align-items-center py-4">
-                <div class="col-12 col-lg-6">
+                <div class="col-12 col-lg-6 text-center text-lg-start">
 
 
                     <p class="p-tag">Rice Your Awareness by Daawat is a movement to help people understand rice the
@@ -1038,9 +1038,9 @@
             BASE_URL: (() => {
                 if (window.location.href.includes('http://13.201.26.193')) {
                     return 'http://13.201.26.193:8080';
-                } else if(window.location.href.includes('https://www.daawat.com')){
+                } else if (window.location.href.includes('https://www.daawat.com')) {
                     return 'https://daawat.com';
-                }else {
+                } else {
                     return 'http://localhost:8080';
                 }
             })(),
@@ -1908,16 +1908,17 @@
 
 
                 animateQuestionChange(() => {
-                    questionEl.textContent = "🎉 Congratulations!";
+                    questionEl.textContent = "";
                     optionsEl.innerHTML = `
                         <div class="d-flex justify-content-center flex-column align-items-center text-center gap-4 position-relative">
                         
                         <!-- Thank You Message -->
                         <div class="thank-you-message">
-                            <h4 class="fw-bold mb-2">Thank You for Taking the Challenge!</h4>
+                            <h4 class="mb-3">Congratulations on joining <strong>#OnlyRiceNovember</strong> challenge.</h4>
                             <p class="mb-0">
-                                We’re thrilled to have you on this journey. <br />
-                                You’ll receive your badge once the challenge is complete - share your achievement with friends! 
+                                Your meal plan has been sent to your registered WhatsApp number.</p>
+                            <p class="mb-0">
+                                Complete your {{7}}-days journey to earn your Badge of Honour.
                             </p>
                         </div>
 
