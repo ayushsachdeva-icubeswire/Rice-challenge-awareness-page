@@ -105,7 +105,7 @@
             </div> -->
 
             <div class="py-1">
-                <img src="img/DAAWAT-Logo-01.png" width="140" alt="">
+                <img src="img/DAAWAT-Logo-01.png" width="120" alt="">
             </div>
 
             <!-- Hamburger (for mobile) -->
@@ -123,7 +123,7 @@
                 </div>
 
                 <div class="py-2 d-block d-md-none">
-                    <img src="img/1new-daawat-logo.png" width="140" alt="">
+                    <img src="img/DAAWAT-Logo-01.png" width="120" alt="">
                 </div>
                 <a href="#movement">The Movement</a>
 
@@ -322,7 +322,8 @@
             </div>
 
             <!-- Error message for challenge selection -->
-            <div class="text-danger text-center mb-3" id="challengeSelectionError" style="display:none; font-weight: bold;"></div>
+            <div class="text-danger text-center mb-3" id="challengeSelectionError"
+                style="display:none; font-weight: bold;"></div>
 
             <!-- Myths Busted Button -->
             <button class="animated-button btn mt-3 mb-5" id="takeChallengeBtn">
@@ -944,7 +945,9 @@
                         <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight"
                             data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                The real reward is the <strong>feeling of well-being, energy, and positivity</strong> that comes from reconnecting with rice and joining a nationwide movement built on balance and awareness.
+                                The real reward is the <strong>feeling of well-being, energy, and positivity</strong>
+                                that comes from reconnecting with rice and joining a nationwide movement built on
+                                balance and awareness.
                             </div>
                         </div>
                     </div>
@@ -1217,86 +1220,68 @@
     </script>
 
     <script>
-        // ======== SHARE MENU #1 =========
-        const desktopShareButton1 = document.getElementById("shareBtnDesktop");
-        const desktopShareMenu1 = document.querySelector(".share-menu");
-        let hideTimeout1;
+        // ===== FUNCTION TO HANDLE EACH MENU SEPARATELY =====
+        function setupShareMenu(buttonId, menuSelector) {
+            const button = document.getElementById(buttonId);
+            const menu = document.querySelector(menuSelector);
+            let hideTimeout;
 
-        desktopShareButton1.addEventListener("mouseenter", () => {
-            clearTimeout(hideTimeout1);
-            desktopShareMenu1.style.display = "flex";
-        });
+            if (!button || !menu) return;
 
-        desktopShareButton1.addEventListener("mouseleave", () => {
-            hideTimeout1 = setTimeout(() => {
-                desktopShareMenu1.style.display = "none";
-            }, 2000);
-        });
-
-        desktopShareMenu1.addEventListener("mouseenter", () => {
-            clearTimeout(hideTimeout1);
-            desktopShareMenu1.style.display = "flex";
-        });
-
-        desktopShareMenu1.addEventListener("mouseleave", () => {
-            hideTimeout1 = setTimeout(() => {
-                desktopShareMenu1.style.display = "none";
-            }, 2000);
-        });
-
-        // ======== SHARE MENU #2 =========
-        const desktopShareButton2 = document.getElementById("shareBtnDesktop2");
-        const desktopShareMenu2 = document.querySelector(".share-menu1");
-        let hideTimeout2;
-
-        if (desktopShareButton2 && desktopShareMenu2) {
-            desktopShareButton2.addEventListener("mouseenter", () => {
-                clearTimeout(hideTimeout2);
-                desktopShareMenu2.style.display = "flex";
+            button.addEventListener("mouseenter", () => {
+                clearTimeout(hideTimeout);
+                menu.style.display = "flex";
             });
 
-            desktopShareButton2.addEventListener("mouseleave", () => {
-                hideTimeout2 = setTimeout(() => {
-                    desktopShareMenu2.style.display = "none";
-                }, 2000);
+            button.addEventListener("mouseleave", () => {
+                hideTimeout = setTimeout(() => {
+                    menu.style.display = "none";
+                }, 500);
             });
 
-            desktopShareMenu2.addEventListener("mouseenter", () => {
-                clearTimeout(hideTimeout2);
-                desktopShareMenu2.style.display = "flex";
+            menu.addEventListener("mouseenter", () => {
+                clearTimeout(hideTimeout);
+                menu.style.display = "flex";
             });
 
-            desktopShareMenu2.addEventListener("mouseleave", () => {
-                hideTimeout2 = setTimeout(() => {
-                    desktopShareMenu2.style.display = "none";
-                }, 2000);
+            menu.addEventListener("mouseleave", () => {
+                hideTimeout = setTimeout(() => {
+                    menu.style.display = "none";
+                }, 500);
             });
         }
 
-        // ======== SOCIAL SHARE FUNCTIONALITY =========
-        const fbIcon = document.getElementById("shareFb");
-        const linkedinIcon = document.getElementById("shareLinkedin");
-        const twitterIcon = document.getElementById("shareTwitter");
+        // Setup both share buttons separately
+        setupShareMenu("shareBtnDesktop", ".share-menu");
+        setupShareMenu("shareBtnDesktop2", ".share-menu1");
 
-        fbIcon?.addEventListener("click", (e) => {
-            e.preventDefault();
-            const currentURL = encodeURIComponent(window.location.href);
-            const message = encodeURIComponent("Check this out!");
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${currentURL}&quote=${message}`, "_blank");
-        });
+        // ===== SOCIAL SHARE LINKS =====
+        function setupSocialShare(fbId, linkedinId, twitterId) {
+            const fbIcon = document.getElementById(fbId);
+            const linkedinIcon = document.getElementById(linkedinId);
+            const twitterIcon = document.getElementById(twitterId);
 
-        linkedinIcon?.addEventListener("click", (e) => {
-            e.preventDefault();
-            const currentURL = encodeURIComponent(window.location.href);
-            window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${currentURL}`, "_blank");
-        });
+            fbIcon?.addEventListener("click", (e) => {
+                e.preventDefault();
+                const url = encodeURIComponent(window.location.href);
+                window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
+            });
 
-        twitterIcon?.addEventListener("click", (e) => {
-            e.preventDefault();
-            const currentURL = encodeURIComponent(window.location.href);
-            const message = encodeURIComponent("Check this out!");
-            window.open(`https://twitter.com/intent/tweet?url=${currentURL}&text=${message}`, "_blank");
-        });
+            linkedinIcon?.addEventListener("click", (e) => {
+                e.preventDefault();
+                const url = encodeURIComponent(window.location.href);
+                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank");
+            });
+
+            twitterIcon?.addEventListener("click", (e) => {
+                e.preventDefault();
+                const url = encodeURIComponent(window.location.href);
+                window.open(`https://twitter.com/intent/tweet?url=${url}`, "_blank");
+            });
+        }
+
+        setupSocialShare("shareFb", "shareLinkedin", "shareTwitter");
+        setupSocialShare("shareFb2", "shareLinkedin2", "shareTwitter2");
     </script>
 
     <script>
@@ -1322,7 +1307,7 @@
         function openChallengeModal() {
             // Clear any selected card since we're opening directly
             selectedCard = null;
-            
+
             // Clear previous error message
             const errorElement = document.getElementById('challengeSelectionError');
             if (errorElement) {
@@ -1346,7 +1331,7 @@
                 // Highlight current
                 card.classList.add('active');
                 selectedCard = card;
-                
+
                 // Hide error message when a card is selected
                 const errorElement = document.getElementById('challengeSelectionError');
                 if (errorElement) {
@@ -1370,7 +1355,7 @@
                 if (errorElement) {
                     errorElement.textContent = "Please select a challenge duration before proceeding";
                     errorElement.style.display = "block";
-                    
+
                     // Scroll to the error message to make it visible
                     errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
@@ -1434,7 +1419,7 @@
                     // Get selected challenge duration for display
                     let challengeText = "Challenge";
                     let selectedDuration = null; // No default selection
-                    
+
                     if (selectedCard) {
                         const duration = selectedCard.getAttribute("data-duration");
                         selectedDuration = duration;
@@ -1923,27 +1908,60 @@
                 animateQuestionChange(() => {
                     questionEl.textContent = "🎉 Congratulations!";
                     optionsEl.innerHTML = `
-                <div class="d-flex justify-content-center flex-column align-items-center gap-4">
-                    <img src="${badgeImage}" alt="Achievement Badge" class="congrats-image" />
-                    <button class="animated-button btn" id="shareBtn">
-                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                        <div class="d-flex justify-content-center flex-column align-items-center text-center gap-4 position-relative">
+                        
+                        <!-- Thank You Message -->
+                        <div class="thank-you-message">
+                            <h4 class="fw-bold mb-2">Thank You for Taking the Challenge!</h4>
+                            <p class="mb-0">
+                                We’re thrilled to have you on this journey. <br />
+                                You’ll receive your badge once the challenge is complete - share your achievement with friends! 
+                            </p>
+                        </div>
+
+                        <!-- MOBILE SHARE BUTTON -->
+                        <button class="animated-button btn d-flex d-md-none" id="shareBtn">
+                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                        </svg>
-                        <span class="text">Share</span>
-                        <span class="circle"></span>
-                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                            </svg>
+                            <span class="text">Share</span>
+                            <span class="circle"></span>
+                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
                             <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
-                        </svg>
-                    </button>
-                    <p>Your diet plan download should start automatically. If it doesn’t, 
-                    <a href="${window.userRegistrationData?.pdfUrl || 'img/sample-local-pdf.pdf'}" 
-                       download="Daawat-${window.userRegistrationData?.duration?.replace(' ', '-') || 'Rice'}-Challenge-Meal-Plan.pdf" 
-                       target="_blank" id="manualDownloadLink" 
-                       style="color: #e74c3c; font-weight: bold; text-decoration: underline;">
-                       click here
-                    </a> to download.</p>
-                </div>
-            `;
+                            </svg>
+                        </button>
+
+                        <!-- DESKTOP SHARE BUTTON #2 (Optional) -->
+                        <button class="animated-button btn d-none d-md-flex modal-btn" id="shareBtnDesktop2">
+                            <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                            </svg>
+                            <span class="text">Share</span>
+                            <span class="circle"></span>
+                            <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"></path>
+                            </svg>
+                        </button>
+                        
+                            <div class="share-menu share-menu2">
+                            <a href="#" class="share-icon"><i class="ti ti-brand-instagram"></i></a>
+                            <a href="#" class="share-icon"><i class="ti ti-brand-whatsapp"></i></a>
+                            <a href="#" class="share-icon"><i class="ti ti-brand-youtube"></i></a>
+                            </div>
+
+                        <p class="mt-3">
+                            Your diet plan download should start automatically. If it doesn’t,
+                            <a href="${window.userRegistrationData?.pdfUrl || 'img/sample-local-pdf.pdf'
+                        }" 
+                            download="Daawat-${window.userRegistrationData?.duration?.replace(' ', '-') || 'Rice'
+                        }-Challenge-Meal-Plan.pdf"
+                            target="_blank" id="manualDownloadLink"
+                            style="color:#e74c3c;font-weight:bold;text-decoration:underline;">
+                            click here
+                            </a> to download.
+                        </p>
+                        </div>
+                    `;
                     nextBtn.style.display = "none";
                 });
             }
