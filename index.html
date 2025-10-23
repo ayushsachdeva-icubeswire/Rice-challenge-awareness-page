@@ -1038,7 +1038,9 @@
             BASE_URL: (() => {
                 if (window.location.href.includes('http://13.201.26.193')) {
                     return 'http://13.201.26.193:8080';
-                } else {
+                } else if(window.location.href.includes('http://daawat.com')){
+                    return 'https://daawat.com/api';
+                }else {
                     return 'http://localhost:8080';
                 }
             })(),
