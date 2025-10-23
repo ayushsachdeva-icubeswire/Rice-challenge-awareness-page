@@ -2830,3 +2830,16 @@ a {
   -webkit-text-fill-color: transparent;
   font-size: 14px;
 }
+
+
+.thank-you-divider {
+  width: 90%;
+  height: 1px;
+  background: #a5885d;
+  margin: 0;
+}
+
+.highlight-line {
+  color: #b9802a;
+  font-weight: 600;
+}
