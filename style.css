@@ -2784,6 +2784,27 @@ a {
   text-decoration: none;
 }
 
+/* Share Menu (modal desktop) */
+.share-menu2 {
+  position: absolute;
+  background: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  gap: 30px;
+  z-index: 99999;
+  /* top: 322px; */
+  right: 128px;
+  text-decoration: none;
+  bottom: 62px;
+}
+
+/* Hover effect to show the menu when hovering over button or menu */
+.modal-btn:hover + .share-menu2,
+.share-menu2:hover {
+  display: flex;
+}
+
 #shareBtnDesktop:hover + .share-menu {
   display: flex;
 }
