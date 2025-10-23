@@ -166,7 +166,7 @@
                         class="mt-4 d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
 
                         <div class="text-center text-lg-start">
-                            <button class="animated-button animated-button-w btn mt-0 mb-0" style="font-size: 26px;"
+                            <button class="animated-button animated-button-w btn mt-0 mb-0" style="font-size: 24px;"
                                 onclick="document.getElementById('scrolltotakeChallengeBtn').scrollIntoView({ behavior: 'smooth', block: 'center' });">
                                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg"
                                     style="fill: #110d85;">
@@ -251,6 +251,7 @@
                             </h2>
                         </div>
                     </div>
+
                 </div>
             </div>
             <!-- <h4>Select one of these</h4> -->
@@ -321,11 +322,9 @@
                 </div>
             </div>
 
-            <!-- Error message for challenge selection -->
-            <div class="text-danger text-center mb-3" id="challengeSelectionError" style="display:none; font-weight: bold;"></div>
-
             <!-- Myths Busted Button -->
-            <button class="animated-button btn mt-3 mb-5" id="takeChallengeBtn">
+            <button class="animated-button btn mt-3 mb-0" id="takeChallengeBtn" data-bs-toggle="modal"
+                data-bs-target="#dynamicChallengeModal">
                 <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z">
@@ -376,12 +375,19 @@
         </div>
     </section>
 
+    <section class="d-block d-xl-none py-4">
+        <div class="container-fluid d-flex justify-content-center">
+            <img src="img/Shahrukh-top-banner.png" alt="Shahrukh Banner" class="img-fluid"
+                style="max-height: 50vh; width: auto;">
+        </div>
+    </section>
+
 
 
     <section class="slider-section pb-0 mb-5">
         <!-- 30 Days Challenge -->
         <div class="challenge-section animate__animated animate__fadeIn pb-0">
-            <h2 class="30days">People Embracing <span>#OnlyRiceNovember</span></h2>
+            <h2 class="30days">People Taking the <span>Rice Challenge</span></h2>
             <!-- <p class="mb-2 mb-md-0" style="color: #535151;font-size: 24px;">This November, pledge to Rice Your
                 Awareness. <br> A month to
                 consume rice, rise
@@ -505,21 +511,21 @@
 
 
                     <p class="p-tag">Rice Your Awareness by Daawat is a movement to help people understand rice the
-                        right way - as a food that brings balance, nourishment, and energy to everyday life.</p>
+                        right way - as a food
+                        that brings balance, nourishment, and energy to everyday life.</p>
 
-                    <p class="p-tag">At the heart of this initiative lies #OnlyRiceNovember - a challenge led experience
-                        that inspires mindful eating and encourages people to discover how rice can make them feel more
-                        active, and truly refreshed.</p>
+                    <p class="p-tag">At the heart of this initiative lies The Rice Challenge - an experience that
+                        invites you to eat
+                        mindfully and discover how rice can make you feel lighter, more active, and truly refreshed.</p>
 
                     <p class="p-tag">Rich in natural carbohydrates, easy to digest, and naturally gluten-free, rice
                         supports gut health, sustained energy, and overall well-being - making it a perfect fit for
                         every lifestyle.</p>
-
                     <p class="p-tag">Because good health doesn’t come from cutting food out - it comes from
                         understanding it.</p>
 
-                    <p class="mb-4 p-tag">This November, be part of <span>#OnlyRiceNovember</span> and rediscover the
-                        real goodness of rice.</p>
+                    <p class="mb-4 p-tag">This November, take <span>The Rice Challenge</span> and experience the
+                        truth - <span style="">Rice is Right</span>.</p>
 
                 </div>
 
@@ -1053,6 +1059,43 @@
             return API_CONFIG.BASE_URL + endpoint;
         }
 
+        // Badge download function based on duration
+        function downloadBadgeByDuration(duration) {
+            let badgeFileName = '';
+
+            // Map duration to badge file
+            switch (duration) {
+                case '7 days':
+                    badgeFileName = 'bronze.png';
+                    break;
+                case '14 days':
+                    badgeFileName = 'silver.png';
+                    break;
+                case '21 days':
+                    badgeFileName = 'gold.png';
+                    break;
+                case '30 days':
+                    badgeFileName = 'diamond.png';
+                    break;
+                default:
+                    console.error('Unknown duration:', duration);
+                    return;
+            }
+
+            // Create download link
+            const link = document.createElement('a');
+            link.href = `img/${badgeFileName}`;
+            link.download = `daawat-${duration.replace(' ', '-')}-challenge-badge.png`;
+            link.style.display = 'none';
+
+            // Add to DOM, click, and remove
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+        }
+
+
         // Test function for API endpoints (for debugging)
         window.testAPIs = {
             testRegister: async function () {
@@ -1325,36 +1368,12 @@
                 // Highlight current
                 card.classList.add('active');
                 selectedCard = card;
-                
-                // Hide error message when a card is selected
-                const errorElement = document.getElementById('challengeSelectionError');
-                if (errorElement) {
-                    errorElement.style.display = 'none';
-                }
             });
         });
 
         // Take the Challenge button
         takeBtn.addEventListener('click', (e) => {
             e.preventDefault(); // Prevent default form/button behavior
-
-            // Clear previous error message
-            const errorElement = document.getElementById('challengeSelectionError');
-            if (errorElement) {
-                errorElement.style.display = 'none';
-            }
-
-            // Validate that a challenge duration is selected
-            if (!selectedCard) {
-                if (errorElement) {
-                    errorElement.textContent = "Please select a challenge duration before proceeding";
-                    errorElement.style.display = "block";
-                    
-                    // Scroll to the error message to make it visible
-                    errorElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-                return; // Don't open modal if no card is selected
-            }
 
             // Update modal background image
             const img = selectedCard ? selectedCard.getAttribute('data-image') : null;
@@ -1473,6 +1492,12 @@
                         } else if (!/^\d{10}$/.test(mobile)) {
                             document.getElementById("mobileError").textContent = "Please enter a valid 10-digit mobile number";
                             document.getElementById("mobileError").style.display = "block";
+                            hasError = true;
+                        }
+
+                        if (!selectedCard) {
+                            document.getElementById("challengeError").textContent = "Please select a challenge duration before proceeding";
+                            document.getElementById("challengeError").style.display = "block";
                             hasError = true;
                         }
 
@@ -1610,8 +1635,17 @@
                                 window.userRegistrationData.verified = true;
                                 window.userRegistrationData.verificationResult = result;
 
+                                // Download badge based on selected duration
+                                if (selectedCard && selectedCard.dataset.duration) {
+                                    try {
+                                        downloadBadgeByDuration(selectedCard.dataset.duration);
+                                    } catch (badgeError) {
+                                        console.error('Badge download error:', badgeError);
+                                    }
+                                }
+
                                 // Show success message briefly
-                                document.getElementById("successMessage").textContent = "OTP verified successfully!";
+                                document.getElementById("successMessage").textContent = "OTP verified successfully! Your badge is downloading...";
                                 document.getElementById("successMessage").style.display = "block";
 
                                 // Proceed to next step after a short delay
