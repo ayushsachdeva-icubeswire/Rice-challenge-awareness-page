@@ -1131,7 +1131,7 @@
         // Function to fetch progress data from API
         async function fetchProgressData() {
             try {
-                const response = await fetch(getApiUrl('/challenger/progress'), {
+                const response = await fetch(getApiUrl('api/challenger/progress'), {
                     method: 'GET',
                     headers: {
                         'accept': 'application/json',
