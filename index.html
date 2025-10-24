@@ -400,51 +400,51 @@
         <div class="mobile-slider">
             <div class="mobile-track">
                 <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
+                        <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
-                        </div>
+                        </div> -->
                         <img src="img/slider/1.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
+                <div class="card"><a href="https://www.instagram.com/nehadhupia" target="_blank">
+                        <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
-                        </div>
+                        </div> -->
                         <img src="img/slider/2.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
+                <div class="card"><a href="https://www.instagram.com/dr.mananvora/" target="_blank">
+                        <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
-                        </div>
+                        </div> -->
                         <img src="img/slider/3.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
+                <div class="card"><a href="https://www.instagram.com/rohitkhatrifitness/" target="_blank">
+                        <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
-                        </div>
+                        </div> -->
                         <img src="img/slider/4.jpeg">
                     </a></div>
                 <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
+                        <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
-                        </div>
+                        </div> -->
                         <img src="img/slider/1.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
+                <div class="card"><a href="https://www.instagram.com/nehadhupia" target="_blank">
+                        <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
-                        </div>
+                        </div> -->
                         <img src="img/slider/2.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
+                <div class="card"><a href="https://www.instagram.com/dr.mananvora/" target="_blank">
+                        <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
-                        </div>
+                        </div> -->
                         <img src="img/slider/3.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
-                        <div class="overlay">
+                <div class="card"><a href="https://www.instagram.com/rohitkhatrifitness/" target="_blank">
+                        <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
-                        </div>
+                        </div> -->
                         <img src="img/slider/4.jpeg">
                     </a></div>
 
@@ -2289,97 +2289,9 @@
         var counter = new FlipCounter1(document.getElementById('countdown'), 0);
     </script>
 
+
+
     <script>
-        function FlipDigit2(value) {
-            var parent = document.createElement('span');
-            parent.className = 'flip-clock__wrapper';
-
-            var el = document.createElement('span');
-            el.className = 'flip-clock__piece m-0';
-
-            el.innerHTML =
-                '<b class="flip-clock__card card2">' +
-                '<b class="card__top2"></b>' +
-                '<b class="card__bottom2"></b>' +
-                '<b class="card__back2"><b class="card__bottom2"></b></b>' +
-                '</b>';
-
-            parent.appendChild(el);
-
-            this.el = parent;
-            this.piece = el;
-            this.top = el.querySelector('.card__top2');
-            this.bottom = el.querySelector('.card__bottom2');
-            this.back = el.querySelector('.card__back2');
-            this.backBottom = el.querySelector('.card__back2 .card__bottom2');
-            this.currentValue = '';
-            this.update(value);
-        }
-
-        FlipDigit2.prototype.update = function (val) {
-            val = val.toString();
-            if (val !== this.currentValue) {
-                this.back.setAttribute('data-value', this.currentValue);
-                this.bottom.setAttribute('data-value', this.currentValue);
-                this.currentValue = val;
-                this.top.textContent = val;
-                this.backBottom.setAttribute('data-value', val);
-
-                this.el.classList.remove('flip2');
-                void this.el.offsetWidth; // force reflow for animation
-                this.el.classList.add('flip2');
-            }
-        };
-
-        function FlipCounter2(container, startValue = 0) {
-            this.container = container;
-            this.value = startValue;
-            this.digits = [];
-            this.render();
-        }
-
-        FlipCounter2.prototype.render = function () {
-            this.container.innerHTML = '';
-            var str = this.value.toString();
-            this.digits = [];
-            for (var i = 0; i < str.length; i++) {
-                var digit = new FlipDigit2(str[i]);
-                this.container.appendChild(digit.el);
-                this.digits.push(digit);
-            }
-        };
-
-        FlipCounter2.prototype.update = function () {
-            var str = this.value.toString();
-            if (str.length > this.digits.length) {
-                this.render();
-            } else {
-                for (var i = 0; i < this.digits.length; i++) {
-                    var digitIndex = str.length - this.digits.length + i;
-                    var val = digitIndex >= 0 ? str[digitIndex] : '0';
-                    this.digits[i].update(val);
-                }
-            }
-        };
-
-        FlipCounter2.prototype.setValue = function (newValue) {
-            this.value = newValue;
-            this.update();
-        };
-
-        // ✅ Initialize and increment one by one
-        document.addEventListener('DOMContentLoaded', function () {
-            const counter1 = new FlipCounter2(document.getElementById('countdown1'), 20456);
-            counter1.setValue(20456);
-
-            setInterval(() => {
-                counter1.setValue(++counter1.value);
-            }, 2000); // every 2 seconds
-        });
-    </script>
-
-
-    <!-- <script>
         function FlipDigit2(value) {
             // ✅ create the new parent span
             var parent = document.createElement('span');
@@ -2683,7 +2595,7 @@
                 clearInterval(counter1.animationInterval);
             }
         });
-    </script> -->
+    </script>
 
     <script>
         function toggleMenu() {
