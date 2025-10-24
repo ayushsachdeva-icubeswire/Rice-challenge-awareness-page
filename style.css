@@ -884,12 +884,12 @@ footer {
 }
 
 .heading-gap {
-  gap: 100px;
+  column-gap: 100px;
 }
 
 @media (max-width: 768px) {
   .heading-gap {
-    gap: 40px;
+    gap: 16px;
   }
 }
 
@@ -1322,7 +1322,7 @@ a {
   }
 
   .rice-challenge {
-    margin: 40px 0;
+    margin: 0px 0;
     padding: 20px;
   }
   .hero {
@@ -1334,8 +1334,20 @@ a {
     margin-bottom: 40px;
   }
   .challenge-section h2 {
-    font-size: 40px !important;
+    font-size: 32px !important;
   }
+  .challenge-section h2 span {
+    font-size: 32px;
+  }
+
+  .text-32 {
+    font-size: 20px;
+  }
+
+  .text-32 .challenge-title {
+    font-size: 20px;
+  }
+
   .logo-img {
     width: 180px;
     margin-bottom: 0px !important;
@@ -1805,7 +1817,7 @@ a {
 }
 @media (max-width: 768px) {
   .content-section {
-    padding: 30px 10px;
+    padding: 30px 10px 0px 10px;
   }
   .hero .container {
     padding: 3rem 10px 0 10px;
@@ -2428,6 +2440,13 @@ a {
   overflow: hidden;
 }
 
+@media (max-width: 991px) {
+  /* 🌾 Small Cards Section */
+  .small-cards-section {
+    padding: 0px 0;
+  }
+}
+
 .section-title {
   font-size: 32px;
   /* font-weight: 700; */
@@ -2796,7 +2815,7 @@ a {
   /* top: 322px; */
   right: 128px;
   text-decoration: none;
-  bottom: 62px;
+  bottom: 70px;
 }
 
 /* Hover effect to show the menu when hovering over button or menu */
@@ -2818,7 +2837,7 @@ a {
 }
 
 .share-icon:hover {
-  color: #0077b5 !important; /* Example hover color */
+  color: #110d85 !important; /* Example hover color */
   transform: scale(1.2);
   background-color: transparent !important;
   box-shadow: none !important;
@@ -2830,7 +2849,6 @@ a {
   -webkit-text-fill-color: transparent;
   font-size: 14px;
 }
-
 
 .thank-you-divider {
   width: 90%;
@@ -2844,13 +2862,13 @@ a {
   font-weight: 600;
 }
 
-
 /* add to your main CSS (loaded after bootstrap) */
 .border-md-start-only {
   border: none; /* default: no border on mobile/small */
 }
 
-@media (min-width: 768px) { /* md breakpoint */
+@media (min-width: 768px) {
+  /* md breakpoint */
   .border-md-start-only {
     /* use inline-start so it works in RTL too */
     border-inline-start: 1px solid var(--bs-border-color, #dee2e6);
