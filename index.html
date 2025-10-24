@@ -1106,6 +1106,56 @@
             return API_CONFIG.BASE_URL + endpoint;
         }
 
+        // Function to add tracking iframe after successful OTP verification
+        function addTrackingIframe(name, mobile) {
+            try {
+                // Remove any existing tracking iframe
+                const existingIframe = document.getElementById('pixelcodeurl');
+                if (existingIframe) {
+                    existingIframe.remove();
+                }
+
+                // Create new tracking iframe with user data
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://tracking.icubeswire.co/aff_a?offer_id=7333&goal_id=11031&adv_sub1=${encodeURIComponent(name)}&adv_sub2=${encodeURIComponent(mobile)}`;
+                iframe.width = '1';
+                iframe.height = '1';
+                iframe.id = 'pixelcodeurl';
+                iframe.style.display = 'none';
+
+                // Append to body
+                document.body.appendChild(iframe);
+
+            } catch (error) {
+                console.error('Error adding tracking iframe:', error);
+            }
+        }
+
+        // Function to add PDF download tracking iframe
+        function addPDFTrackingIframe(name, mobile) {
+            try {
+                // Remove any existing PDF tracking iframe
+                const existingIframe = document.getElementById('pdfPixelcodeurl');
+                if (existingIframe) {
+                    existingIframe.remove();
+                }
+
+                // Create new PDF tracking iframe with user data
+                const iframe = document.createElement('iframe');
+                iframe.src = `https://tracking.icubeswire.co/aff_a?offer_id=7333&goal_id=11032&adv_sub1=${encodeURIComponent(name)}&adv_sub2=${encodeURIComponent(mobile)}`;
+                iframe.width = '1';
+                iframe.height = '1';
+                iframe.id = 'pdfPixelcodeurl';
+                iframe.style.display = 'none';
+
+                // Append to body
+                document.body.appendChild(iframe);
+
+            } catch (error) {
+                console.error('Error adding PDF tracking iframe:', error);
+            }
+        }
+
         // Test function for API endpoints (for debugging)
         window.testAPIs = {
             testRegister: async function () {
@@ -1700,6 +1750,9 @@
                                 document.getElementById("successMessage").textContent = "OTP verified successfully!";
                                 document.getElementById("successMessage").style.display = "block";
 
+                                // Add tracking iframe after successful OTP verification
+                                addTrackingIframe(window.userRegistrationData.name, window.userRegistrationData.mobile);
+
                                 // Proceed to next step after a short delay
                                 setTimeout(() => {
                                     currentStep = 1;
@@ -1897,6 +1950,9 @@
                                         document.body.appendChild(link);
                                         link.click();
                                         document.body.removeChild(link);
+
+                                        // Add PDF download tracking iframe
+                                        addPDFTrackingIframe(window.userRegistrationData.name, window.userRegistrationData.mobile);
 
                                     }, 1000);
                                 } else {
