@@ -884,12 +884,12 @@ footer {
 }
 
 .heading-gap {
-  gap: 100px;
+  column-gap: 100px;
 }
 
 @media (max-width: 768px) {
   .heading-gap {
-    gap: 40px;
+    gap: 16px;
   }
 }
 
@@ -1322,7 +1322,7 @@ a {
   }
 
   .rice-challenge {
-    margin: 40px 0;
+    margin: 0px 0;
     padding: 20px;
   }
   .hero {
@@ -2438,6 +2438,13 @@ a {
   padding: 60px 0;
   position: relative;
   overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  /* 🌾 Small Cards Section */
+  .small-cards-section {
+    padding: 0px 0;
+  }
 }
 
 .section-title {
