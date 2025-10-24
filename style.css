@@ -210,6 +210,7 @@ body {
     right: 20%;
     display: block;
     opacity: 1;
+    cursor: pointer;
   }
   .hamburger {
     display: flex;
@@ -1312,6 +1313,14 @@ a {
   width: 240px;
 }
 
+.text-32 {
+  font-size: clamp(16px, 1.5vw + 8px, 32px) !important;
+}
+
+.text-32 .challenge-title {
+  font-size: clamp(16px, 1.5vw + 8px, 32px) !important;
+}
+
 /* Mobile view (stacked top/bottom) */
 @media (max-width: 767px) {
   .challenge-img {
@@ -1341,13 +1350,13 @@ a {
     font-size: 32px;
   }
 
-  .text-32 {
+  /* .text-32 {
     font-size: 20px;
   }
 
   .text-32 .challenge-title {
     font-size: 20px;
-  }
+  } */
 
   .logo-img {
     width: 180px;
@@ -1800,7 +1809,11 @@ a {
 
 @media (max-width: 991px) {
   .content-section {
-    padding: 30px 10px;
+    padding: 30px 10px 0px 10px;
+  }
+
+  .srk-tablet {
+    height: 50vh;
   }
 
   .content-section .title {
@@ -1816,6 +1829,7 @@ a {
     text-align: center;
   }
 }
+
 @media (max-width: 768px) {
   .content-section {
     padding: 30px 10px 0px 10px;
@@ -2868,10 +2882,18 @@ a {
   border: none; /* default: no border on mobile/small */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   /* md breakpoint */
   .border-md-start-only {
     /* use inline-start so it works in RTL too */
     border-inline-start: 1px solid var(--bs-border-color, #dee2e6);
   }
+}
+
+img {
+  -webkit-user-drag: none; /* Safari/Chrome */
+  -khtml-user-drag: none; /* Konqueror */
+  -moz-user-drag: none; /* Firefox */
+  -o-user-drag: none; /* Older Opera */
+  user-drag: none;
 }
