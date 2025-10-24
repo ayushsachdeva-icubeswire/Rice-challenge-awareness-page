@@ -889,7 +889,7 @@ footer {
 
 @media (max-width: 768px) {
   .heading-gap {
-    gap: 16px;
+    gap: 4px;
   }
 }
 
