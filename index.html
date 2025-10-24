@@ -1209,9 +1209,9 @@
             if (navigator.share) {
                 try {
                     await navigator.share({
-                        title: 'Join #OnlyRiceNovember Challenge',
-                        text: 'Rice Your Awareness and Feel the Power of Rice',
-                        url: 'img/og-logo.png',
+                        title: 'I have taken #OnlyRiceNovember Challenge',
+                        text: 'I have taken #OnlyRiceNovember Challenge. Rice Your Awareness and Feel the Power of Rice',
+                        url: 'https://www.daawat.com/rya/',
                     });
                 } catch (err) {
                     console.error('Share failed:', err.message);
@@ -1260,29 +1260,38 @@
         setupShareMenu("shareBtnDesktop3", ".share-menu2");
 
         // ===== SOCIAL SHARE LINKS =====
+        // ===== SOCIAL SHARE LINKS (with OG tag support) =====
         function setupSocialShare(fbId, linkedinId, twitterId) {
             const fbIcon = document.getElementById(fbId);
             const linkedinIcon = document.getElementById(linkedinId);
             const twitterIcon = document.getElementById(twitterId);
 
+            const shareUrl = "https://www.daawat.com/rya/";
+            const shareText = "Join the RYA movement by Daawat! Explore delicious rice recipes and rediscover your appetite.";
+            const hashtags = "Daawat,RediscoverYourAppetite";
+
+            // ✅ FACEBOOK — will read from OG tags, quote optional
             fbIcon?.addEventListener("click", (e) => {
                 e.preventDefault();
-                const url = encodeURIComponent("https://www.daawat.com/rya/");
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, "_blank");
+                const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`;
+                window.open(fbShareUrl, "_blank", "width=600,height=400");
             });
 
+            // ✅ LINKEDIN — now only reads OG tags from the URL
             linkedinIcon?.addEventListener("click", (e) => {
                 e.preventDefault();
-                const url = encodeURIComponent("https://www.daawat.com/rya/");
-                window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, "_blank");
+                const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
+                window.open(linkedInShareUrl, "_blank", "width=600,height=400");
             });
 
+            // ✅ TWITTER (unchanged)
             twitterIcon?.addEventListener("click", (e) => {
                 e.preventDefault();
-                const url = encodeURIComponent("https://www.daawat.com/rya/");
-                window.open(`https://twitter.com/intent/tweet?url=${url}`, "_blank");
+                const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}&hashtags=${encodeURIComponent(hashtags)}`;
+                window.open(twitterShareUrl, "_blank", "width=600,height=400");
             });
         }
+
 
         setupSocialShare("shareFb", "shareLinkedin", "shareTwitter");
         setupSocialShare("shareFb2", "shareLinkedin2", "shareTwitter2");
