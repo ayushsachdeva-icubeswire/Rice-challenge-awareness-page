@@ -399,49 +399,49 @@
         <!-- Mobile Auto-Scrolling Slider -->
         <div class="mobile-slider">
             <div class="mobile-track">
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                <div class="card"><a href="javascript:void(0)" style="cursor: default;">
                         <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
                         </div> -->
                         <img src="img/slider/1.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/nehadhupia" target="_blank">
+                <div class="card"><a href="javascript:void(0)" style="cursor: default;">
                         <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
                         </div> -->
                         <img src="img/slider/2.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/dr.mananvora/" target="_blank">
+                <div class="card"><a href="javascript:void(0)" style="cursor: default;">
                         <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
                         </div> -->
                         <img src="img/slider/3.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/rohitkhatrifitness/" target="_blank">
+                <div class="card"><a href="javascript:void(0)" style="cursor: default;">
                         <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
                         </div> -->
                         <img src="img/slider/4.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/reel/DJrjKEsPd9f/?hl=en" target="_blank">
+                <div class="card"><a href="javascript:void(0)" style="cursor: default;">
                         <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
                         </div> -->
                         <img src="img/slider/1.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/nehadhupia" target="_blank">
+                <div class="card"><a href="javascript:void(0)" style="cursor: default;">
                         <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
                         </div> -->
                         <img src="img/slider/2.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/dr.mananvora/" target="_blank">
+                <div class="card"><a href="javascript:void(0)" style="cursor: default;">
                         <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
                         </div> -->
                         <img src="img/slider/3.jpeg">
                     </a></div>
-                <div class="card"><a href="https://www.instagram.com/rohitkhatrifitness/" target="_blank">
+                <div class="card"><a href="javascript:void(0)" style="cursor: default;">
                         <!-- <div class="overlay">
                             <i class="ti ti-player-play-filled"></i>
                         </div> -->
@@ -497,7 +497,7 @@
                     <!-- Counter placeholder - add your code here -->
                     <div class="counter-placeholder px-0">
                         <div>
-                            <div id="countdown1"></div>
+                            <div id="countdown2"></div>
                         </div>
                         <h5 class="counter-label mb-0">Total interactions so far</h5>
                         <div class="d-flex gap-4 mt-4 align-items-center justify-content-center flex-wrap">
@@ -2596,6 +2596,100 @@
             }
         });
     </script>
+
+
+    <!-- static starts  -->
+    <script>
+        function FlipDigit3(value) {
+            // ✅ create the new parent span
+            var parent = document.createElement('span');
+            parent.className = 'flip-clock__wrapper';
+
+            // ✅ create the existing piece span
+            var el = document.createElement('span');
+            el.className = 'flip-clock__piece m-0';
+
+            // inner HTML for the piece
+            el.innerHTML =
+                '<b class="flip-clock__card card2">' +
+                '<b class="card__top2"></b>' +
+                '<b class="card__bottom2"></b>' +
+                '<b class="card__back2"><b class="card__bottom2"></b></b>' +
+                '</b>';
+
+            // append piece inside wrapper
+            parent.appendChild(el);
+
+            // store element references
+            this.el = parent; // ✅ now the main element is the wrapper
+            this.piece = el;
+            this.top = el.querySelector('.card__top2');
+            this.bottom = el.querySelector('.card__bottom2');
+            this.back = el.querySelector('.card__back2');
+            this.backBottom = el.querySelector('.card__back2 .card__bottom2');
+            this.currentValue = '';
+            this.update(value);
+        }
+
+        FlipDigit3.prototype.update = function (val) {
+            val = val.toString();
+            if (val !== this.currentValue) {
+                this.back.setAttribute('data-value', this.currentValue);
+                this.bottom.setAttribute('data-value', this.currentValue);
+                this.currentValue = val;
+                this.top.textContent = val;
+                this.backBottom.setAttribute('data-value', val);
+
+                this.el.classList.remove('flip2');
+                void this.el.offsetWidth;
+                this.el.classList.add('flip2');
+            }
+        };
+
+        function FlipCounter3(container, startValue = 1) {
+            this.container = container;
+            this.value = startValue;
+            this.digits = [];
+            this.render();
+            this.start();
+        }
+
+        FlipCounter3.prototype.render = function () {
+            this.container.innerHTML = '';
+            var str = this.value.toString();
+            this.digits = [];
+            for (var i = 0; i < str.length; i++) {
+                var digit = new FlipDigit3(str[i]);
+                this.container.appendChild(digit.el);
+                this.digits.push(digit);
+            }
+        };
+
+        FlipCounter3.prototype.update = function () {
+            var str = this.value.toString();
+            if (str.length > this.digits.length) {
+                this.render();
+            } else {
+                for (var i = 0; i < this.digits.length; i++) {
+                    var digitIndex = str.length - this.digits.length + i;
+                    var val = digitIndex >= 0 ? str[digitIndex] : '0';
+                    this.digits[i].update(val);
+                }
+            }
+        };
+
+        FlipCounter3.prototype.start = function () {
+            var self = this;
+            setInterval(function () {
+                self.value++;
+                self.update();
+            }, 1000);
+        };
+
+        var counter2 = new FlipCounter3(document.getElementById('countdown2'), 24456);
+    </script>
+
+
 
     <script>
         function toggleMenu() {
