@@ -2117,6 +2117,7 @@
                 const name = document.getElementById("name").value.trim();
                 const mobile = document.getElementById("mobile").value.trim();
                 const duration = document.getElementById("duration").value;
+                const countryCode = document.getElementById("countryCode").value;
 
                 // Validate inputs with specific error messages
                 let hasError = false;
@@ -2178,6 +2179,7 @@
                         duration: durationValue,
                         name: name,
                         mobile: mobile,
+                        countryCode: countryCode,
                       }),
                     }
                   );
@@ -2308,6 +2310,7 @@
                       body: JSON.stringify({
                         userId: window.userRegistrationData.userId,
                         otp: otp,
+                        countryCode: document.getElementById("countryCode").value,
                       }),
                     }
                   );
