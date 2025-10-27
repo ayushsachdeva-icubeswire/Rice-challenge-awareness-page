@@ -2030,10 +2030,45 @@
                         <input type="text" class="form-control" id="name" placeholder="Enter your name" required />
                         <div class="text-danger small mt-1" id="nameError" style="display:none;"></div>
                     </div>
-                    <div class="mb-2">
-                        <input type="tel" class="form-control" id="mobile" placeholder="Enter mobile number" required />
+                    <div class="mb-2 phone-group">
+                        <label for="mobile" class="visually-hidden">Mobile Number</label>
+                        <div class="phone-input-wrapper" style="display: flex; gap: 8px;">
+                            <select class="form-select country-code" id="countryCode" required style="max-width: 130px;">
+                            <!-- Priority countries -->
+                            <option value="+971">🇦🇪 +971</option>
+                            <option value="+61">🇦🇺 +61</option>
+                            <option value="+91" selected>🇮🇳 +91</option>
+
+                            <!-- Other major countries -->
+                            <option value="+1">🇺🇸 +1</option>
+                            <option value="+44">🇬🇧 +44</option>
+                            <option value="+1">🇨🇦 +1</option>
+                            <option value="+49">🇩🇪 +49</option>
+                            <option value="+33">🇫🇷 +33</option>
+                            <option value="+81">🇯🇵 +81</option>
+                            <option value="+65">🇸🇬 +65</option>
+                            <option value="+60">🇲🇾 +60</option>
+                            <option value="+62">🇮🇩 +62</option>
+                            <option value="+63">🇵🇭 +63</option>
+                            <option value="+974">🇶🇦 +974</option>
+                            <option value="+966">🇸🇦 +966</option>
+                            <option value="+852">🇭🇰 +852</option>
+                            <option value="+86">🇨🇳 +86</option>
+                            </select>
+
+                            <input
+                            type="tel"
+                            class="form-control"
+                            id="mobile"
+                            placeholder="Enter mobile number"
+                            required
+                            style="flex: 1;"
+                            />
+                        </div>
                         <div class="text-danger small mt-1" id="mobileError" style="display:none;"></div>
                     </div>
+
+
                     <div class="mb-2">
                         <select class="form-select" id="duration" required>
                             <option value="" selected disabled>Select Challenge Duration</option>
