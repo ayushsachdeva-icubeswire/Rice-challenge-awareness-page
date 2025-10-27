@@ -2141,12 +2141,25 @@ setInterval(() => {
                   document.getElementById("mobileError").style.display =
                     "block";
                   hasError = true;
-                } else if (!/^\d{10}$/.test(mobile)) {
-                  document.getElementById("mobileError").textContent =
-                    "Please enter a valid 10-digit mobile number";
-                  document.getElementById("mobileError").style.display =
-                    "block";
-                  hasError = true;
+                  } else {
+                    let validMobile = false;
+                    if (countryCode === "+971" || countryCode === "+61") {
+                      validMobile = /^\d{9,}$/.test(mobile);
+                      if (!validMobile) {
+                        document.getElementById("mobileError").textContent =
+                          "For " + countryCode + ", mobile number must be at least 9 digits";
+                        document.getElementById("mobileError").style.display = "block";
+                        hasError = true;
+                      }
+                    } else {
+                      validMobile = /^\d{10}$/.test(mobile);
+                      if (!validMobile) {
+                        document.getElementById("mobileError").textContent =
+                          "Please enter a valid 10-digit mobile number";
+                        document.getElementById("mobileError").style.display = "block";
+                        hasError = true;
+                      }
+                    }
                 }
 
                 if (!duration) {
