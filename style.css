@@ -2914,7 +2914,6 @@ img {
   user-drag: none;
 }
 
-
 /* 🌾 Fun Facts Section — Playfully Premium 2.0 */
 .fun-facts-section {
   padding: 100px 0;
@@ -2929,7 +2928,7 @@ img {
   left: -60px;
   background: radial-gradient(
     circle,
-    rgba(219, 208, 189, 0.7),
+    rgba(190, 188, 255, 0.5),
     transparent 70%
   );
 }
@@ -2939,7 +2938,7 @@ img {
   right: -70px;
   background: radial-gradient(
     circle,
-    rgba(204, 186, 150, 0.6),
+    rgba(144, 140, 255, 0.5),
     transparent 70%
   );
 }
@@ -2972,7 +2971,7 @@ img {
   display: block;
   width: 80px;
   height: 3px;
-  background: #a5885d;
+  background: #d28d00;
   margin: 10px auto 0;
   border-radius: 2px;
 }
@@ -2980,9 +2979,9 @@ img {
 /* 🎴 Fun Card */
 .fun-facts-section .fun-card {
   position: relative;
-  background: linear-gradient(180deg, #ffffff 0%, #fdfbf6 100%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8f9ff 100%);
   border-radius: 18px;
-  border: 1px solid rgba(165, 136, 93, 0.25);
+  border: 1px solid rgba(17, 13, 133, 0.25);
   overflow: hidden;
   padding: 40px 30px;
   transition: all 0.45s ease;
@@ -2998,7 +2997,7 @@ img {
   inset: 0;
   background: linear-gradient(
     145deg,
-    rgba(236, 229, 218, 0.6),
+    rgba(218, 218, 255, 0.6),
     rgba(255, 255, 255, 0.9)
   );
   opacity: 0;
@@ -3012,8 +3011,8 @@ img {
 
 .fun-facts-section .fun-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 14px 35px rgba(165, 136, 93, 0.15);
-  border-color: rgba(165, 136, 93, 0.6);
+  box-shadow: 0 14px 35px rgba(17, 13, 133, 0.15);
+  border-color: rgba(17, 13, 133, 0.6);
 }
 
 /* Animated gradient accent at bottom */
@@ -3024,7 +3023,7 @@ img {
   left: 50%;
   width: 0%;
   height: 3px;
-  background: linear-gradient(90deg, #a5885d, #d1bea0);
+  background: linear-gradient(90deg, #110d85, #4944d9);
   border-radius: 3px;
   transform: translateX(-50%);
   transition: width 0.45s ease;
@@ -3043,7 +3042,7 @@ img {
 /* Badge */
 .fun-facts-section .fun-badge {
   display: inline-block;
-  background: #a5885d;
+  background: #110d85;
   color: #fff;
   padding: 7px 18px;
   border-radius: 30px;
@@ -3051,7 +3050,7 @@ img {
   font-weight: 700;
   letter-spacing: 0.4px;
   margin-bottom: 16px;
-  box-shadow: 0 4px 10px rgba(165, 136, 93, 0.3);
+  box-shadow: 0 4px 10px rgba(17, 13, 133, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -3090,7 +3089,7 @@ img {
   left: 0;
   width: 40px;
   height: 2px;
-  background: linear-gradient(90deg, #a5885d, transparent);
+  background: linear-gradient(90deg, #110d85, transparent);
   border-radius: 2px;
   opacity: 0.9;
 }
@@ -3110,7 +3109,7 @@ img {
 .fun-facts-section .fun-text em {
   display: block;
   font-style: italic;
-  color: #a5885d;
+  color: #110d85;
   font-weight: 500;
   margin-top: 8px;
   opacity: 0.9;
@@ -3119,7 +3118,7 @@ img {
 }
 
 .fun-facts-section .fun-card:hover .fun-text em {
-  color: #a5885d;
+  color: #4944d9;
   opacity: 1;
 }
 
@@ -3143,19 +3142,19 @@ img {
   padding: 12px 34px;
   border: none;
   border-radius: 30px;
-  background: #a5885d;
+  background: #110d85;
   color: #fff;
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: 0.4px;
-  box-shadow: 0 5px 14px rgba(165, 136, 93, 0.35);
+  box-shadow: 0 5px 14px rgba(17, 13, 133, 0.35);
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .fun-facts-section .fun-load-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(165, 136, 93, 0.5);
+  box-shadow: 0 8px 20px rgba(17, 13, 133, 0.5);
 }
 
 /* Responsive */
