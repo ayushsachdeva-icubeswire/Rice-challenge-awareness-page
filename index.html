@@ -63,9 +63,9 @@
     </script>
 <script>
 // Simple interval to call progress API every 10 seconds for guaranteed execution
-setInterval(() => {
-  fetchProgressData();
-}, 10000);
+// setInterval(() => {
+//   fetchProgressData();
+// }, 10000);
 </script>
     <!-- End Google Tag Manager -->
 
@@ -1391,7 +1391,7 @@ setInterval(() => {
           if (response.ok) {
             const data = await response.json();
             csrfToken = data.csrfToken;
-            console.log("✅ CSRF token fetched successfully");
+            // console.log("✅ CSRF token fetched successfully");
             return csrfToken;
           } else {
             console.error("❌ Failed to fetch CSRF token:", response.status);
