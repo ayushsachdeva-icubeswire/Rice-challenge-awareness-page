@@ -1451,8 +1451,12 @@
 
             <div class="shop-options" role="menu" aria-hidden="true">
                 <button class="shop-option amazon" role="menuitem" title="Buy on Amazon">Amazon</button>
+
                 <button class="shop-option flipkart" role="menuitem" title="Buy on Flipkart">Flipkart</button>
-                <button class="shop-option blinkit" role="menuitem" title="Buy on Blinkit">Blinkit</button>
+
+                <!-- <button class="shop-option blinkit" role="menuitem" title="Buy on Blinkit">Blinkit</button> -->
+
+                <button class="shop-option swiggy" role="menuitem" title="Buy on Swiggy">Swiggy</button>
             </div>
         </div>
 
@@ -3486,20 +3490,24 @@
 
 
     </script>
+
     <script>
         (function () {
             const shopRiceBtn = document.getElementById("shopRiceBtn");
             const shopOptions = document.querySelector(".shop-options");
             const amazonBtn = document.querySelector(".shop-option.amazon");
             const flipkartBtn = document.querySelector(".shop-option.flipkart");
-            const blinkitBtn = document.querySelector(".shop-option.blinkit");
+            // const blinkitBtn = document.querySelector(".shop-option.blinkit");
+            const swiggyBtn = document.querySelector(".shop-option.swiggy");
 
             // Links — replace with exact company pages if you have them
             const AMAZON_URL = "https://www.amazon.in/stores/Daawat/page/4F50B176-6702-4AC2-B9A2-0CABE8AE6204";
 
             const FLIPKART_URL = "https://www.flipkart.com/eat/~cs-4fvhvodnle/pr?sid=eat&marketplace=HYPERLOCAL&collection-tab-name=Daawat&utm_source=fk_dsp&utm_campaign=mintues_Food-Products_fkg91115&utm_adgroup=Facebook&utm_advertiser=FKAds&utm_medium=email";
 
-            const BLINKIT_URL = "https://blinkit.com/s/?q=daawat%20rice";
+            // const BLINKIT_URL = "https://blinkit.com/s/?q=daawat%20rice";
+
+            const SWIGGY_URL = "https://www.swiggy.com/stores/instamart/collection-listing?collectionId=285563&custom_back=true&utm_campaign=IM_Brandverse_Daawat_Meta_Redirect&utm_medium=cpc&utm_source=facebook_ads";
 
             // Desktop click: open Amazon directly (keeps previous behavior)
             shopRiceBtn.addEventListener("click", (e) => {
@@ -3519,7 +3527,8 @@
             // Buttons open respective links
             amazonBtn.addEventListener("click", () => window.open(AMAZON_URL, "_blank"));
             flipkartBtn.addEventListener("click", () => window.open(FLIPKART_URL, "_blank"));
-            blinkitBtn.addEventListener("click", () => window.open(BLINKIT_URL, "_blank"));
+            // blinkitBtn.addEventListener("click", () => window.open(BLINKIT_URL, "_blank"));
+            swiggyBtn.addEventListener("click", () => window.open(SWIGGY_URL, "_blank"));
 
             // Close on outside click (mobile toggle)
             document.addEventListener("click", (e) => {
