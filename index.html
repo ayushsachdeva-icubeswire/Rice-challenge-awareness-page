@@ -2881,30 +2881,27 @@ async function updateCountersFromAPI() {
       const data = result.data;
       // challengerProgress -> countdown1
       // erProgress -> countdown2
-      let totalAnimations = 0;
-      let completedAnimations = 0;
-      function onAnimationComplete() {
-        completedAnimations++;
-        if (completedAnimations >= totalAnimations) {
-          isAnimating = false;
+      if (data.challengerProgress) {
+        const prevVal = currentValues.challengerProgress;
+        const currVal = data.challengerProgress.currentValue || 0;
+        if (currVal !== prevVal) {
+          counter1.animateFromTo(prevVal, currVal, () => {
+            isAnimating = false;
+          });
+          currentValues.challengerProgress = currVal;
+          isAnimating = true;
         }
       }
-      if (data.challengerProgress) {
-        const prevVal = data.challengerProgress.previousValue || 0;
-        const currVal = data.challengerProgress.currentValue || 0;
-        currentValues.challengerProgress = currVal;
-        totalAnimations++;
-        counter1.animateFromTo(prevVal, currVal, onAnimationComplete);
-      }
       if (data.erProgress) {
-        const prevVal = data.erProgress.previousValue || 0;
+        const prevVal = currentValues.erProgress;
         const currVal = data.erProgress.currentValue || 0;
-        currentValues.erProgress = currVal;
-        totalAnimations++;
-        counter2.animateFromTo(prevVal, currVal, onAnimationComplete);
-      }
-      if (totalAnimations > 0) {
-        isAnimating = true;
+        if (currVal !== prevVal) {
+          counter2.animateFromTo(prevVal, currVal, () => {
+            isAnimating = false;
+          });
+          currentValues.erProgress = currVal;
+          isAnimating = true;
+        }
       }
     } else {
       console.error("Failed to fetch progress data:", response.status);
@@ -2914,9 +2911,54 @@ async function updateCountersFromAPI() {
   }
 }
 
+
 function startCounterPolling() {
-  updateCountersFromAPI();
-  animationTimeout = setInterval(updateCountersFromAPI, 30000);
+  (async function () {
+    try {
+      const response = await fetch(getApiUrl("/api/challenger/progress"), {
+        method: "GET",
+        credentials: "include",
+        headers: { Accept: "application/json" },
+      });
+      if (response.ok) {
+        const result = await response.json();
+        const data = result.data;
+        // Set counters to previousValue and animate to currentValue on initial load
+        if (data.challengerProgress) {
+          const prevVal = data.challengerProgress.previousValue || 0;
+          const currVal = data.challengerProgress.currentValue || 0;
+          counter1.setValue(prevVal);
+          if (currVal !== prevVal) {
+            counter1.animateFromTo(prevVal, currVal, () => {
+              currentValues.challengerProgress = currVal;
+            });
+          } else {
+            currentValues.challengerProgress = currVal;
+          }
+        }
+        if (data.erProgress) {
+          const prevVal = data.erProgress.previousValue || 0;
+          const currVal = data.erProgress.currentValue || 0;
+          counter2.setValue(prevVal);
+          if (currVal !== prevVal) {
+            counter2.animateFromTo(prevVal, currVal, () => {
+              currentValues.erProgress = currVal;
+            });
+          } else {
+            currentValues.erProgress = currVal;
+          }
+        }
+      }
+    } catch (error) {
+      // fallback: set counters to 0
+      counter1.setValue(0);
+      counter2.setValue(0);
+      currentValues.challengerProgress = 0;
+      currentValues.erProgress = 0;
+    }
+    // Now start polling for updates
+    animationTimeout = setInterval(updateCountersFromAPI, 30000);
+  })();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -3013,45 +3055,41 @@ window.addEventListener("beforeunload", function () {
 
       FlipCounter3.prototype.setValue = function (newValue) {
         this.value = newValue;
-        this.update();
-      };
-
-      FlipCounter3.prototype.animateFromTo = function (
-        fromValue,
-        toValue,
-        callback
-      ) {
-        var self = this;
-        var currentVal = fromValue;
-        var targetVal = toValue;
-        if (this.animationInterval) {
-          clearInterval(this.animationInterval);
-        }
-        this.setValue(currentVal);
-        if (currentVal === targetVal) {
-          if (callback) callback();
-          return;
-        }
-        var difference = Math.abs(targetVal - currentVal);
-        var increment = currentVal < targetVal ? 1 : -1;
-        var speed = difference > 100 ? 200 : difference > 50 ? 180 : 1000;
-        this.animationInterval = setInterval(function () {
-          currentVal += increment;
-          self.setValue(currentVal);
-          if (currentVal === targetVal) {
-            clearInterval(self.animationInterval);
-            self.animationInterval = null;
-            if (callback) callback();
+        try {
+          const response = await fetch(getApiUrl("/api/challenger/progress"), {
+            method: "GET",
+            credentials: "include",
+            headers: { Accept: "application/json" },
+          });
+          if (response.ok) {
+            const result = await response.json();
+            const data = result.data;
+            // challengerProgress -> countdown1
+            // erProgress -> countdown2
+            if (data.challengerProgress) {
+              const prevVal = currentValues.challengerProgress;
+              const currVal = data.challengerProgress.currentValue || 0;
+              if (currVal !== prevVal) {
+                counter1.animateFromTo(prevVal, currVal, () => {
+                  currentValues.challengerProgress = currVal;
+                });
+              }
+            }
+            if (data.erProgress) {
+              const prevVal = currentValues.erProgress;
+              const currVal = data.erProgress.currentValue || 0;
+              if (currVal !== prevVal) {
+                counter2.animateFromTo(prevVal, currVal, () => {
+                  currentValues.erProgress = currVal;
+                });
+              }
+            }
+          } else {
+            console.error("Failed to fetch progress data:", response.status);
           }
-        }, speed);
-      };
-
-      var counter2 = new FlipCounter3(document.getElementById("countdown2"), 0);
-
-      // Use erProgress from API for countdown2
-      let isAnimating2 = false;
-      let isInitialized2 = false;
-      let animationTimeout2 = null;
+        } catch (error) {
+          console.error("Error fetching progress data:", error);
+        }
       let currentErProgress = 0;
 
       async function initializeCounter2() {
