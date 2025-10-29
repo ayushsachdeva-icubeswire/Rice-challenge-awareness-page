@@ -2068,6 +2068,8 @@
                             sendOtpBtn.disabled = true;
 
                             try {
+                                // Log referrer value to console
+                                console.log('Referrer:', document.referrer);
                                 // Call the registration API using secure CSRF-protected function
                                 const response = await secureApiCall(
                                     getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER),
