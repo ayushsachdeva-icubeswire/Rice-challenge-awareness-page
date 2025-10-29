@@ -86,8 +86,30 @@
 
         @media (max-width: 768px) {
             .content-section {
-                padding: 30px 10px 30px 10px !important;
+                padding: 30px 10px 0px 10px !important;
             }
+
+            .p-tag span {
+                font-size: 22px;
+                font-weight: 600;
+                color: #fff !important;
+            }
+        }
+
+
+        /* Hidden by default */
+        .floating-buttons {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+        }
+
+        /* Show when scrolled past threshold */
+        .floating-buttons.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -165,6 +187,8 @@
                 <div class="col-12 col-lg-11 px-1 text-start">
                     <h1 class="title">Only Rice November</h1>
                     <p class="subtitle">Wake up, Rice Your Awareness & Feel the Power</p>
+                    <!-- <p class="subtitle">This November, break the myths and<br class="d-none d-lg-block">make <span>Rice
+                            Right</span> again</p> -->
 
                     <div
                         class="mt-4 d-flex gap-5 align-items-start mt-4 flex-wrap justify-content-center justify-content-lg-start">
@@ -188,7 +212,7 @@
                             </button>
 
                             <div class="d-flex justify-content-center justify-content-lg-start gap-2 mt-4">
-                                <div id="countdown"></div>
+                                <div id="countdown1"></div>
                             </div>
 
                             <p class="counter-label mb-0">Challenges Taken</p>
@@ -204,13 +228,56 @@
                         <img src="img/heart1.png" alt="Shahrukh Banner" class="img-fluid srk-tablet"
                             style="max-height: 30vh; width: auto" />
                     </div>
+                    <div class="d-block d-md-none pt-4">
+                        <div class="text-center mb-2">
+                            <h2 class="faq-title text-white">The Movement</h2>
+                        </div>
+                        <div class="container pt-0 pb-0">
+                            <div class="row align-items-center py-0 py-md-4">
+                                <div class="col-12 col-lg-6 text-center text-lg-start text-white">
+                                    <p class="p-tag">
+                                        This movement helps people understand rice the right way - as a food that brings
+                                        balance,
+                                        nourishment, and energy to everyday life.
+                                    </p>
+
+                                    <p class="p-tag">
+                                        At the heart of this initiative lies <span>#OnlyRiceNovember</span> - a
+                                        challenge led experience that inspires mindful eating and
+                                        encourages people to discover how rice can make them feel more
+                                        active, and truly energised.
+                                    </p>
+
+                                    <p class="p-tag d-none">
+                                        Rich in natural carbohydrates, easy to digest, and naturally
+                                        gluten-free, rice supports gut health, sustained energy, and
+                                        overall well-being - making it a perfect fit for every lifestyle.
+                                    </p>
+
+                                    <p class="p-tag">
+                                        Because good health doesn’t come from cutting food out - it comes
+                                        from understanding it.
+                                    </p>
+
+                                    <p class="mb-4 p-tag">
+                                        This November, be part of <span>#OnlyRiceNovember</span> and
+                                        rediscover the real goodness of rice.
+                                    </p>
+                                </div>
+
+                                <div class="col-12 col-lg-6 text-center mt-4 mt-lg-0 py-0" style="position: relative">
+                                    <img src="img/the-movement.png" alt="Rice" class="img-fluid mx-auto movement-img" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- FAQ intro: left content + right image -->
-    <section class="d-block d-md-none py-5 interaction-section" style="background: none;" id="movement">
+    <section class="d-none d-md-none py-5 interaction-section" style="background: none;" id="movement">
         <div class="text-center mb-4">
             <h2 class="faq-title">The Movement</h2>
         </div>
@@ -1379,13 +1446,17 @@
 
         <div class="shop-rice-container">
             <button id="shopRiceBtn" class="shop-rice-btn" aria-expanded="false" title="Shop Daawat Rice">
-                Shop Rice
+                Shop Now
             </button>
 
             <div class="shop-options" role="menu" aria-hidden="true">
                 <button class="shop-option amazon" role="menuitem" title="Buy on Amazon">Amazon</button>
+
                 <button class="shop-option flipkart" role="menuitem" title="Buy on Flipkart">Flipkart</button>
-                <button class="shop-option blinkit" role="menuitem" title="Buy on Blinkit">Blinkit</button>
+
+                <!-- <button class="shop-option blinkit" role="menuitem" title="Buy on Blinkit">Blinkit</button> -->
+
+                <button class="shop-option swiggy" role="menuitem" title="Buy on Swiggy">Swiggy</button>
             </div>
         </div>
 
@@ -3419,20 +3490,24 @@
 
 
     </script>
+
     <script>
         (function () {
             const shopRiceBtn = document.getElementById("shopRiceBtn");
             const shopOptions = document.querySelector(".shop-options");
             const amazonBtn = document.querySelector(".shop-option.amazon");
             const flipkartBtn = document.querySelector(".shop-option.flipkart");
-            const blinkitBtn = document.querySelector(".shop-option.blinkit");
+            // const blinkitBtn = document.querySelector(".shop-option.blinkit");
+            const swiggyBtn = document.querySelector(".shop-option.swiggy");
 
             // Links — replace with exact company pages if you have them
             const AMAZON_URL = "https://www.amazon.in/stores/Daawat/page/4F50B176-6702-4AC2-B9A2-0CABE8AE6204";
 
             const FLIPKART_URL = "https://www.flipkart.com/eat/~cs-4fvhvodnle/pr?sid=eat&marketplace=HYPERLOCAL&collection-tab-name=Daawat&utm_source=fk_dsp&utm_campaign=mintues_Food-Products_fkg91115&utm_adgroup=Facebook&utm_advertiser=FKAds&utm_medium=email";
 
-            const BLINKIT_URL = "https://blinkit.com/s/?q=daawat%20rice";
+            // const BLINKIT_URL = "https://blinkit.com/s/?q=daawat%20rice";
+
+            const SWIGGY_URL = "https://www.swiggy.com/stores/instamart/collection-listing?collectionId=285563&custom_back=true&utm_campaign=IM_Brandverse_Daawat_Meta_Redirect&utm_medium=cpc&utm_source=facebook_ads";
 
             // Desktop click: open Amazon directly (keeps previous behavior)
             shopRiceBtn.addEventListener("click", (e) => {
@@ -3452,7 +3527,8 @@
             // Buttons open respective links
             amazonBtn.addEventListener("click", () => window.open(AMAZON_URL, "_blank"));
             flipkartBtn.addEventListener("click", () => window.open(FLIPKART_URL, "_blank"));
-            blinkitBtn.addEventListener("click", () => window.open(BLINKIT_URL, "_blank"));
+            // blinkitBtn.addEventListener("click", () => window.open(BLINKIT_URL, "_blank"));
+            swiggyBtn.addEventListener("click", () => window.open(SWIGGY_URL, "_blank"));
 
             // Close on outside click (mobile toggle)
             document.addEventListener("click", (e) => {
@@ -3481,6 +3557,26 @@
             });
         })();
     </script>
+
+    <script>
+        (function () {
+            const floatingButtons = document.querySelector(".floating-buttons");
+
+            function toggleFloatingButtons() {
+                const scrolledPast40vh = window.scrollY > window.innerHeight * 0.4;
+
+                if (scrolledPast40vh) {
+                    floatingButtons.classList.add("visible");
+                } else {
+                    floatingButtons.classList.remove("visible");
+                }
+            }
+
+            window.addEventListener("scroll", toggleFloatingButtons);
+            toggleFloatingButtons(); // initial check on load
+        })();
+    </script>
+
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9SF15VYGN"></script>
