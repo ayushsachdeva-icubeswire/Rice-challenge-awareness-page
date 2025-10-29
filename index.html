@@ -63,9 +63,9 @@
     </script>
 <script>
 // Simple interval to call progress API every 10 seconds for guaranteed execution
-setInterval(() => {
-  fetchProgressData();
-}, 10000);
+// setInterval(() => {
+//   fetchProgressData();
+// }, 10000);
 </script>
     <!-- End Google Tag Manager -->
 
@@ -242,7 +242,7 @@ setInterval(() => {
                 <div
                   class="d-flex justify-content-center justify-content-lg-start gap-2 mt-4"
                 >
-                  <div id="countdown"></div>
+                  <div id="countdown1"></div>
                 </div>
 
                 <p class="counter-label mb-0">Challenges Taken</p>
@@ -808,131 +808,6 @@ setInterval(() => {
     </section>
 
     <section class="interaction-section1 py-5 mb-4 d-none">
-      <h2 class="text-center mb-4 text-white">People talking about it</h2>
-
-      <div class="container w-100">
-        <div
-          class="row justify-content-center text-center text-white w-100 mx-auto"
-        >
-          <div class="col-12 col-md-12">
-            <!-- Counter placeholder - add your code here -->
-            <div class="counter-placeholder px-0">
-              <div>
-                <div id="countdown1"></div>
-              </div>
-              <h5 class="counter-label mb-0">Total interactions so far</h5>
-              <div
-                class="d-flex gap-4 mt-4 align-items-center justify-content-center flex-wrap"
-              >
-                <div>
-                  <button
-                    class="animated-button animated-button-w btn mb-0"
-                    onclick="openChallengeModal();"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      class="arr-2"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #110d85"
-                    >
-                      <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                      ></path>
-                    </svg>
-                    <span class="text btn-text">Take the Challenge</span>
-                    <span class="circle"></span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      class="arr-1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #110d85"
-                    >
-                      <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                      ></path>
-                    </svg>
-                  </button>
-                </div>
-                <div
-                  class="actions mb-0 justify-content-center justify-content-md-center"
-                >
-                  <button
-                    class="animated-button animated-button-w btn mt-0 mb-0 d-flex d-md-none"
-                    id="shareBtn"
-                  >
-                    <svg
-                      viewBox="0 0 24 24"
-                      class="arr-2"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #110d85"
-                    >
-                      <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                      ></path>
-                    </svg>
-                    <span class="text btn-text">Share</span>
-                    <span class="circle"></span>
-                    <svg
-                      viewBox="0 0 24 24"
-                      class="arr-1"
-                      xmlns="http://www.w3.org/2000/svg"
-                      style="fill: #110d85"
-                    >
-                      <path
-                        d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                      ></path>
-                    </svg>
-                  </button>
-
-                  <div class="position-relative">
-                    <button
-                      class="animated-button animated-button-w btn mt-0 mb-0 d-none d-md-flex"
-                      id="shareBtnDesktop2"
-                    >
-                      <svg
-                        viewBox="0 0 24 24"
-                        class="arr-2"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style="fill: #110d85"
-                      >
-                        <path
-                          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                        ></path>
-                      </svg>
-                      <span class="text btn-text">Share</span>
-                      <span class="circle"></span>
-                      <svg
-                        viewBox="0 0 24 24"
-                        class="arr-1"
-                        xmlns="http://www.w3.org/2000/svg"
-                        style="fill: #110d85"
-                      >
-                        <path
-                          d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z"
-                        ></path>
-                      </svg>
-                    </button>
-
-                    <!-- Share Menu for Desktop -->
-                    <div id="shareMenu" class="share-menu share-menu1">
-                      <a href="#" class="share-icon" id="shareFb2"
-                        ><i class="ti ti-brand-facebook"></i
-                      ></a>
-                      <a href="#" class="share-icon" id="shareLinkedin2"
-                        ><i class="ti ti-brand-linkedin"></i
-                      ></a>
-                      <a href="#" class="share-icon" id="shareTwitter2"
-                        ><i class="ti ti-brand-twitter"></i
-                      ></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <section class="small-cards-section" id="myths">
       <h2 class="section-title text-center">
@@ -1516,7 +1391,7 @@ setInterval(() => {
           if (response.ok) {
             const data = await response.json();
             csrfToken = data.csrfToken;
-            console.log("✅ CSRF token fetched successfully");
+            // console.log("✅ CSRF token fetched successfully");
             return csrfToken;
           } else {
             console.error("❌ Failed to fetch CSRF token:", response.status);
@@ -1681,27 +1556,27 @@ setInterval(() => {
       };
 
       // Function to fetch progress data from API
-      async function fetchProgressData() {
-        try {
-          const response = await fetch(getApiUrl("/api/challenger/progress"), {
-            method: "GET",
-            credentials: "include", // Include cookies for session consistency
-            headers: {
-              accept: "application/json",
-            },
-          });
-          if (response.ok) {
-            const result = await response.json();
-            return result.data;
-          } else {
-            console.error("Failed to fetch progress data:", response.status);
-            return null;
-          }
-        } catch (error) {
-          console.error("Error fetching progress data:", error);
-          return null;
-        }
-      }
+      // async function fetchProgressData() {
+      //   try {
+      //     const response = await fetch(getApiUrl("/api/challenger/progress"), {
+      //       method: "GET",
+      //       credentials: "include", // Include cookies for session consistency
+      //       headers: {
+      //         accept: "application/json",
+      //       },
+      //     });
+      //     if (response.ok) {
+      //       const result = await response.json();
+      //       return result.data;
+      //     } else {
+      //       console.error("Failed to fetch progress data:", response.status);
+      //       return null;
+      //     }
+      //   } catch (error) {
+      //     console.error("Error fetching progress data:", error);
+      //     return null;
+      //   }
+      // }
     </script>
 
     <script>
@@ -1804,8 +1679,7 @@ setInterval(() => {
 
       // Setup both share buttons separately
       setupShareMenu("shareBtnDesktop", ".share-menu");
-      setupShareMenu("shareBtnDesktop2", ".share-menu1");
-      setupShareMenu("shareBtnDesktop3", ".share-menu2");
+    setupShareMenu("shareBtnDesktop3", ".share-menu2");
 
       // ===== SOCIAL SHARE LINKS =====
       // ===== SOCIAL SHARE LINKS (with OG tag support) =====
@@ -1850,8 +1724,7 @@ setInterval(() => {
       }
 
       setupSocialShare("shareFb", "shareLinkedin", "shareTwitter");
-      setupSocialShare("shareFb2", "shareLinkedin2", "shareTwitter2");
-      setupSocialShare("shareFb3", "shareLinkedin3", "shareTwitter3");
+    setupSocialShare("shareFb3", "shareLinkedin3", "shareTwitter3");
     </script>
 
     <script>
@@ -2801,531 +2674,312 @@ setInterval(() => {
     </script>
 
     <script>
-      const counterEl = document.getElementById("countdown");
-      let currentCount = 10986;
+// --- UNIFIED COUNTER LOGIC FOR CHALLENGER & ENGAGEMENT ---
+function FlipDigit1(value) {
+  var parent = document.createElement("span");
+  parent.className = "flip-clock__wrapper1";
+  var el = document.createElement("span");
+  el.className = "flip-clock__piece m-0";
+  el.innerHTML =
+    '<b class="flip-clock__card card1">' +
+    '<b class="card__top"></b>' +
+    '<b class="card__bottom"></b>' +
+    '<b class="card__back"><b class="card__bottom"></b></b>' +
+    "</b>";
+  parent.appendChild(el);
+  this.el = parent;
+  this.piece = el;
+  this.top = el.querySelector(".card__top");
+  this.bottom = el.querySelector(".card__bottom");
+  this.back = el.querySelector(".card__back");
+  this.backBottom = el.querySelector(".card__back .card__bottom");
+  this.currentValue = "";
+  this.update(value);
+}
+FlipDigit1.prototype.update = function (val) {
+  val = val.toString();
+  if (val !== this.currentValue) {
+    this.back.setAttribute("data-value", this.currentValue);
+    this.bottom.setAttribute("data-value", this.currentValue);
+    this.currentValue = val;
+    this.top.textContent = val;
+    this.backBottom.setAttribute("data-value", val);
+    this.el.classList.remove("flip");
+    void this.el.offsetWidth;
+    this.el.classList.add("flip");
+  }
+};
+function FlipCounter1(container, startValue = 1) {
+  this.container = container;
+  this.value = startValue;
+  this.digits = [];
+  this.render();
+}
+FlipCounter1.prototype.render = function () {
+  this.container.innerHTML = "";
+  var str = this.value.toString();
+  this.digits = [];
+  for (var i = 0; i < str.length; i++) {
+    var digit = new FlipDigit1(str[i]);
+    this.container.appendChild(digit.el);
+    this.digits.push(digit);
+  }
+};
+FlipCounter1.prototype.update = function () {
+  var str = this.value.toString();
+  if (str.length > this.digits.length) {
+    this.render();
+  } else {
+    for (var i = 0; i < this.digits.length; i++) {
+      var digitIndex = str.length - this.digits.length + i;
+      var val = digitIndex >= 0 ? str[digitIndex] : "0";
+      this.digits[i].update(val);
+    }
+  }
+};
+FlipCounter1.prototype.setValue = function (newValue) {
+  this.value = newValue;
+  this.update();
+};
+FlipCounter1.prototype.animateFromTo = function (fromValue, toValue, callback) {
+  var self = this;
+  var currentVal = fromValue;
+  var targetVal = toValue;
+  if (this.animationInterval) {
+    clearInterval(this.animationInterval);
+  }
+  this.setValue(currentVal);
+  if (currentVal === targetVal) {
+    if (callback) callback();
+    return;
+  }
+  var difference = Math.abs(targetVal - currentVal);
+  var increment = currentVal < targetVal ? 1 : -1;
+  var speed = difference > 100 ? 20 : difference > 50 ? 40 : 100;
+  this.animationInterval = setInterval(function () {
+    currentVal += increment;
+    self.setValue(currentVal);
+    if (currentVal === targetVal) {
+      clearInterval(self.animationInterval);
+      self.animationInterval = null;
+      if (callback) callback();
+    }
+  }, speed);
+};
 
-      if (counterEl) {
-        renderCounter(currentCount);
+function FlipDigit2(value) {
+  var parent = document.createElement("span");
+  parent.className = "flip-clock__wrapper";
+  var el = document.createElement("span");
+  el.className = "flip-clock__piece m-0";
+  el.innerHTML =
+    '<b class="flip-clock__card card2">' +
+    '<b class="card__top2"></b>' +
+    '<b class="card__bottom2"></b>' +
+    '<b class="card__back2"><b class="card__bottom2"></b></b>' +
+    "</b>";
+  parent.appendChild(el);
+  this.el = parent;
+  this.piece = el;
+  this.top = el.querySelector(".card__top2");
+  this.bottom = el.querySelector(".card__bottom2");
+  this.back = el.querySelector(".card__back2");
+  this.backBottom = el.querySelector(".card__back2 .card__bottom2");
+  this.currentValue = "";
+  this.update(value);
+}
+FlipDigit2.prototype.update = function (val) {
+  val = val.toString();
+  if (val !== this.currentValue) {
+    this.back.setAttribute("data-value", this.currentValue);
+    this.bottom.setAttribute("data-value", this.currentValue);
+    this.currentValue = val;
+    this.top.textContent = val;
+    this.backBottom.setAttribute("data-value", val);
+    this.el.classList.remove("flip2");
+    void this.el.offsetWidth;
+    this.el.classList.add("flip2");
+  }
+};
+function FlipCounter2(container, startValue = 1) {
+  this.container = container;
+  this.value = startValue;
+  this.digits = [];
+  this.render();
+}
+FlipCounter2.prototype.render = function () {
+  this.container.innerHTML = "";
+  var str = this.value.toString();
+  this.digits = [];
+  for (var i = 0; i < str.length; i++) {
+    var digit = new FlipDigit2(str[i]);
+    this.container.appendChild(digit.el);
+    this.digits.push(digit);
+  }
+};
+FlipCounter2.prototype.update = function () {
+  var str = this.value.toString();
+  if (str.length > this.digits.length) {
+    this.render();
+  } else {
+    for (var i = 0; i < this.digits.length; i++) {
+      var digitIndex = str.length - this.digits.length + i;
+      var val = digitIndex >= 0 ? str[digitIndex] : "0";
+      this.digits[i].update(val);
+    }
+  }
+};
+FlipCounter2.prototype.setValue = function (newValue) {
+  this.value = newValue;
+  this.update();
+};
+FlipCounter2.prototype.animateFromTo = function (fromValue, toValue, callback) {
+  var self = this;
+  var currentVal = fromValue;
+  var targetVal = toValue;
+  if (this.animationInterval) {
+    clearInterval(this.animationInterval);
+  }
+  this.setValue(currentVal);
+  if (currentVal === targetVal) {
+    if (callback) callback();
+    return;
+  }
+  var difference = Math.abs(targetVal - currentVal);
+  var increment = currentVal < targetVal ? 1 : -1;
+  var speed = difference > 100 ? 20 : difference > 50 ? 40 : 100;
+  this.animationInterval = setInterval(function () {
+    currentVal += increment;
+    self.setValue(currentVal);
+    if (currentVal === targetVal) {
+      clearInterval(self.animationInterval);
+      self.animationInterval = null;
+      if (callback) callback();
+    }
+  }, speed);
+};
+
+// --- API-driven counter logic ---
+var counter1 = new FlipCounter1(document.getElementById("countdown1"), 0);
+var counter2 = new FlipCounter2(document.getElementById("countdown2"), 0);
+let isAnimating = false;
+let animationTimeout = null;
+let currentValues = {
+  challengerProgress: 0,
+  erProgress: 0,
+};
+
+async function updateCountersFromAPI() {
+  try {
+    const response = await fetch(getApiUrl("/api/challenger/progress"), {
+      method: "GET",
+      credentials: "include",
+      headers: { Accept: "application/json" },
+    });
+    if (response.ok) {
+      const result = await response.json();
+      const data = result.data;
+      // challengerProgress -> countdown1
+      // erProgress -> countdown2
+      if (data.challengerProgress) {
+        const prevVal = currentValues.challengerProgress;
+        const currVal = data.challengerProgress.currentValue || 0;
+        if (currVal !== prevVal) {
+          counter1.animateFromTo(prevVal, currVal, () => {
+            isAnimating = false;
+          });
+          currentValues.challengerProgress = currVal;
+          isAnimating = true;
+        }
       }
-
-      // simulate backend updates
-      setInterval(() => {
-        const newCount = currentCount + Math.floor(Math.random() * 10 + 1);
-        updateCounter(newCount);
-        currentCount = newCount;
-      }, 3000);
-
-      function renderCounter(number) {
-        if (!counterEl) return;
-
-        counterEl.innerHTML = "";
-        const digits = number.toLocaleString().split("");
-
-        digits.forEach((digit) => {
-          const digitEl = document.createElement("div");
-          digitEl.classList.add("digit");
-
-          if (digit === ",") {
-            digitEl.innerHTML = `<span style="width:10px;color:#fff;">,</span>`;
-          } else {
-            digitEl.innerHTML = `
-        <div class="digit-inner">
-          <span>${digit}</span>
-        </div>
-      `;
-          }
-
-          counterEl.appendChild(digitEl);
-        });
+      if (data.erProgress) {
+        const prevVal = currentValues.erProgress;
+        const currVal = data.erProgress.currentValue || 0;
+        if (currVal !== prevVal) {
+          counter2.animateFromTo(prevVal, currVal, () => {
+            isAnimating = false;
+          });
+          currentValues.erProgress = currVal;
+          isAnimating = true;
+        }
       }
+    } else {
+      console.error("Failed to fetch progress data:", response.status);
+    }
+  } catch (error) {
+    console.error("Error fetching progress data:", error);
+  }
+}
 
-      function updateCounter(newNumber) {
-        const newDigits = newNumber.toLocaleString().split("");
-        const oldDigits = currentCount.toLocaleString().split("");
 
-        if (newDigits.length !== oldDigits.length) {
-          renderCounter(newNumber);
-          return;
-        }
-
-        const digitEls = document.querySelectorAll(".digit-inner");
-
-        newDigits.forEach((digit, i) => {
-          if (digit === ",") return;
-
-          const inner = digitEls[i];
-          const currentDigit = oldDigits[i];
-          const newDigit = digit;
-
-          if (currentDigit !== newDigit) {
-            const direction = newDigit > currentDigit ? -1 : 1;
-            const temp = document.createElement("span");
-            temp.textContent = newDigit;
-
-            // move up or down depending on direction
-            if (direction === -1) {
-              inner.appendChild(temp);
-              inner.style.transform = "translateY(-40px)";
-            } else {
-              inner.insertBefore(temp, inner.firstChild);
-              inner.style.transform = "translateY(40px)";
-            }
-
-            // reset after animation
-            setTimeout(() => {
-              inner.style.transition = "none";
-              inner.innerHTML = `<span>${newDigit}</span>`;
-              inner.style.transform = "translateY(0)";
-              setTimeout(
-                () => (inner.style.transition = "transform 0.4s ease-in-out"),
-                50
-              );
-            }, 400);
-          }
-        });
-      }
-    </script>
-
-    <script>
-      function FlipDigit1(value) {
-        // ✅ create the new parent span
-        var parent = document.createElement("span");
-        parent.className = "flip-clock__wrapper1";
-
-        // ✅ create the existing piece span
-        var el = document.createElement("span");
-        el.className = "flip-clock__piece m-0";
-
-        // inner HTML for the piece
-        el.innerHTML =
-          '<b class="flip-clock__card card1">' +
-          '<b class="card__top"></b>' +
-          '<b class="card__bottom"></b>' +
-          '<b class="card__back"><b class="card__bottom"></b></b>' +
-          "</b>";
-
-        // append piece inside wrapper
-        parent.appendChild(el);
-
-        // store element references
-        this.el = parent; // ✅ now the main element is the wrapper
-        this.piece = el;
-        this.top = el.querySelector(".card__top");
-        this.bottom = el.querySelector(".card__bottom");
-        this.back = el.querySelector(".card__back");
-        this.backBottom = el.querySelector(".card__back .card__bottom");
-        this.currentValue = "";
-        this.update(value);
-      }
-
-      FlipDigit1.prototype.update = function (val) {
-        val = val.toString();
-        if (val !== this.currentValue) {
-          this.back.setAttribute("data-value", this.currentValue);
-          this.bottom.setAttribute("data-value", this.currentValue);
-          this.currentValue = val;
-          this.top.textContent = val;
-          this.backBottom.setAttribute("data-value", val);
-
-          this.el.classList.remove("flip");
-          void this.el.offsetWidth;
-          this.el.classList.add("flip");
-        }
-      };
-
-      function FlipCounter1(container, startValue = 1) {
-        this.container = container;
-        this.value = startValue;
-        this.digits = [];
-        this.render();
-        this.start();
-      }
-
-      FlipCounter1.prototype.render = function () {
-        this.container.innerHTML = "";
-        var str = this.value.toString();
-        this.digits = [];
-        for (var i = 0; i < str.length; i++) {
-          var digit = new FlipDigit1(str[i]);
-          this.container.appendChild(digit.el);
-          this.digits.push(digit);
-        }
-      };
-
-      FlipCounter1.prototype.update = function () {
-        var str = this.value.toString();
-        if (str.length > this.digits.length) {
-          this.render();
-        } else {
-          for (var i = 0; i < this.digits.length; i++) {
-            var digitIndex = str.length - this.digits.length + i;
-            var val = digitIndex >= 0 ? str[digitIndex] : "0";
-            this.digits[i].update(val);
-          }
-        }
-      };
-
-      FlipCounter1.prototype.start = function () {
-        // Remove auto-increment - will be updated via API
-      };
-
-      FlipCounter1.prototype.setValue = function (newValue) {
-        this.value = newValue;
-        this.update();
-      };
-
-      FlipCounter1.prototype.animateFromTo = function (
-        fromValue,
-        toValue,
-        callback
-      ) {
-        var self = this;
-        var currentVal = fromValue;
-        var targetVal = toValue;
-
-        // Clear any existing animation
-        if (this.animationInterval) {
-          clearInterval(this.animationInterval);
-        }
-
-        // Set initial value
-        this.setValue(currentVal);
-
-        if (currentVal === targetVal) {
-          if (callback) callback();
-          return;
-        }
-
-        // Calculate animation speed based on difference
-        var difference = Math.abs(targetVal - currentVal);
-        var increment = currentVal < targetVal ? 1 : -1;
-        var speed = difference > 100 ? 200 : difference > 50 ? 180 : 1000; // Faster for larger differences
-
-        this.animationInterval = setInterval(function () {
-          currentVal += increment;
-          self.setValue(currentVal);
-
-          if (currentVal === targetVal) {
-            clearInterval(self.animationInterval);
-            self.animationInterval = null;
-            if (callback) callback();
-          }
-        }, speed);
-      };
-
-      var counter = new FlipCounter1(document.getElementById("countdown"), 0);
-    </script>
-
-    <script>
-      function FlipDigit2(value) {
-        // ✅ create the new parent span
-        var parent = document.createElement("span");
-        parent.className = "flip-clock__wrapper";
-
-        // ✅ create the existing piece span
-        var el = document.createElement("span");
-        el.className = "flip-clock__piece m-0";
-
-        // inner HTML for the piece
-        el.innerHTML =
-          '<b class="flip-clock__card card2">' +
-          '<b class="card__top2"></b>' +
-          '<b class="card__bottom2"></b>' +
-          '<b class="card__back2"><b class="card__bottom2"></b></b>' +
-          "</b>";
-
-        // append piece inside wrapper
-        parent.appendChild(el);
-
-        // store element references
-        this.el = parent; // ✅ now the main element is the wrapper
-        this.piece = el;
-        this.top = el.querySelector(".card__top2");
-        this.bottom = el.querySelector(".card__bottom2");
-        this.back = el.querySelector(".card__back2");
-        this.backBottom = el.querySelector(".card__back2 .card__bottom2");
-        this.currentValue = "";
-        this.update(value);
-      }
-
-      FlipDigit2.prototype.update = function (val) {
-        val = val.toString();
-        if (val !== this.currentValue) {
-          this.back.setAttribute("data-value", this.currentValue);
-          this.bottom.setAttribute("data-value", this.currentValue);
-          this.currentValue = val;
-          this.top.textContent = val;
-          this.backBottom.setAttribute("data-value", val);
-
-          this.el.classList.remove("flip2");
-          void this.el.offsetWidth;
-          this.el.classList.add("flip2");
-        }
-      };
-
-      function FlipCounter2(container, startValue = 1) {
-        this.container = container;
-        this.value = startValue;
-        this.digits = [];
-        this.render();
-        this.start();
-      }
-
-      FlipCounter2.prototype.render = function () {
-        this.container.innerHTML = "";
-        var str = this.value.toString();
-        this.digits = [];
-        for (var i = 0; i < str.length; i++) {
-          var digit = new FlipDigit2(str[i]);
-          this.container.appendChild(digit.el);
-          this.digits.push(digit);
-        }
-      };
-
-      FlipCounter2.prototype.update = function () {
-        var str = this.value.toString();
-        if (str.length > this.digits.length) {
-          this.render();
-        } else {
-          for (var i = 0; i < this.digits.length; i++) {
-            var digitIndex = str.length - this.digits.length + i;
-            var val = digitIndex >= 0 ? str[digitIndex] : "0";
-            this.digits[i].update(val);
-          }
-        }
-      };
-
-      FlipCounter2.prototype.start = function () {
-        // Remove auto-increment - will be updated via API
-      };
-
-      FlipCounter2.prototype.setValue = function (newValue) {
-        this.value = newValue;
-        this.update();
-      };
-
-      FlipCounter2.prototype.animateFromTo = function (
-        fromValue,
-        toValue,
-        callback
-      ) {
-        var self = this;
-        var currentVal = fromValue;
-        var targetVal = toValue;
-
-        // Clear any existing animation
-        if (this.animationInterval) {
-          clearInterval(this.animationInterval);
-        }
-
-        // Set initial value
-        this.setValue(currentVal);
-
-        if (currentVal === targetVal) {
-          if (callback) callback();
-          return;
-        }
-
-        // Calculate animation speed based on difference
-        var difference = Math.abs(targetVal - currentVal);
-        var increment = currentVal < targetVal ? 1 : -1;
-        var speed = difference > 100 ? 200 : difference > 50 ? 180 : 1000; // Faster for larger differences
-
-        this.animationInterval = setInterval(function () {
-          currentVal += increment;
-          self.setValue(currentVal);
-
-          if (currentVal === targetVal) {
-            clearInterval(self.animationInterval);
-            self.animationInterval = null;
-            if (callback) callback();
-          }
-        }, speed);
-      };
-
-      var counter1 = new FlipCounter2(document.getElementById("countdown1"), 0);
-
-      // Global function to force counter updates (can be called externally)
-      window.forceCounterUpdate = function () {
-        if (animationTimeout) {
-          clearTimeout(animationTimeout);
-          animationTimeout = null;
-        }
-        isAnimating = false;
-        if (isInitialized) {
-          checkForUpdates();
-        } else {
-          initializeCounters();
-        }
-      };
-
-      // Global variables to track animation state and values
-      let isAnimating = false;
-      let animationTimeout = null;
-      let isInitialized = false;
-      let currentValues = {
-        challengerProgress: 0,
-        erProgress: 0,
-      };
-
-      // Function to initialize counters with first API call
-      async function initializeCounters() {
-        try {
-          const progressData = await fetchProgressData();
-
-          if (progressData) {
-            let completedAnimations = 0;
-            let totalAnimations = 0;
-
-            // Callback function to track when initial animations complete
-            function onInitialAnimationComplete() {
-              completedAnimations++;
-              if (completedAnimations >= totalAnimations) {
-                isAnimating = false;
-                isInitialized = true;
-                // Start periodic API checking after initial animation
-                animationTimeout = setInterval(checkForUpdates, 10000);
-              }
-            }
-
-            // Initialize challengerProgress counter
-            if (progressData.challengerProgress) {
-              const prevVal =
-                progressData.challengerProgress.previousValue || 0;
-              const currVal = progressData.challengerProgress.currentValue || 0;
+function startCounterPolling() {
+  (async function () {
+    try {
+      const response = await fetch(getApiUrl("/api/challenger/progress"), {
+        method: "GET",
+        credentials: "include",
+        headers: { Accept: "application/json" },
+      });
+      if (response.ok) {
+        const result = await response.json();
+        const data = result.data;
+        // Set counters to previousValue and animate to currentValue on initial load
+        if (data.challengerProgress) {
+          const prevVal = data.challengerProgress.previousValue || 0;
+          const currVal = data.challengerProgress.currentValue || 0;
+          counter1.setValue(prevVal);
+          if (currVal !== prevVal) {
+            counter1.animateFromTo(prevVal, currVal, () => {
               currentValues.challengerProgress = currVal;
-              totalAnimations++;
-              counter.animateFromTo(
-                prevVal,
-                currVal,
-                onInitialAnimationComplete
-              );
-            }
-
-            // Initialize erProgress counter
-            if (progressData.erProgress) {
-              const prevVal = progressData.erProgress.previousValue || 0;
-              const currVal = progressData.erProgress.currentValue || 0;
+            });
+          } else {
+            currentValues.challengerProgress = currVal;
+          }
+        }
+        if (data.erProgress) {
+          const prevVal = data.erProgress.previousValue || 0;
+          const currVal = data.erProgress.currentValue || 0;
+          counter2.setValue(prevVal);
+          if (currVal !== prevVal) {
+            counter2.animateFromTo(prevVal, currVal, () => {
               currentValues.erProgress = currVal;
-              totalAnimations++;
-              counter1.animateFromTo(
-                prevVal,
-                currVal,
-                onInitialAnimationComplete
-              );
-            }
-
-            if (totalAnimations > 0) {
-              isAnimating = true;
-            } else {
-              // No animations needed, start checking immediately
-              isInitialized = true;
-              animationTimeout = setInterval(checkForUpdates, 10000);
-            }
+            });
           } else {
-            // Fallback values if initial API fails
-            counter.setValue(27);
-            counter1.setValue(483408);
-            currentValues.challengerProgress = 27;
-            currentValues.erProgress = 483408;
-            isInitialized = true;
-            // Start checking for updates
-            animationTimeout = setInterval(checkForUpdates, 10000);
+            currentValues.erProgress = currVal;
           }
-        } catch (error) {
-          console.error("Error initializing counters:", error);
-          // Fallback values
-          counter.setValue(27);
-          counter1.setValue(483408);
-          currentValues.challengerProgress = 27;
-          currentValues.erProgress = 483408;
-          isInitialized = true;
-          // Start checking for updates
-          animationTimeout = setInterval(checkForUpdates, 10000);
         }
+        // Now start polling for updates ONLY after successful response
+        animationTimeout = setInterval(updateCountersFromAPI, 30000);
       }
+    } catch (error) {
+      // fallback: set counters to 0
+      counter1.setValue(0);
+      counter2.setValue(0);
+      currentValues.challengerProgress = 0;
+      currentValues.erProgress = 0;
+    }
+  })();
+}
 
-      // Function to periodically check for new values
-      async function checkForUpdates() {
-        if (isAnimating) {
-          // If still animating, skip this interval
-          return;
-        }
+document.addEventListener("DOMContentLoaded", function () {
+  startCounterPolling();
+});
 
-        try {
-          const progressData = await fetchProgressData();
+window.addEventListener("beforeunload", function () {
+  if (animationTimeout) {
+    clearInterval(animationTimeout);
+  }
+  if (counter1.animationInterval) {
+    clearInterval(counter1.animationInterval);
+  }
+  if (counter2.animationInterval) {
+    clearInterval(counter2.animationInterval);
+  }
+});
+    </script>
 
-          if (progressData) {
-            let hasChanges = false;
-            let completedAnimations = 0;
-            let totalAnimations = 0;
+    <script>
 
-            // Callback function to track when animations complete
-            function onAnimationComplete() {
-              completedAnimations++;
-              if (completedAnimations >= totalAnimations) {
-                isAnimating = false;
-                // No need to schedule next check, setInterval handles it
-              }
-            }
-
-            // Check challengerProgress counter
-            if (progressData.challengerProgress) {
-              const newVal = progressData.challengerProgress.currentValue || 0;
-              if (newVal !== currentValues.challengerProgress) {
-                hasChanges = true;
-                totalAnimations++;
-                // Use current value as previous value for smooth transition
-                const prevVal = currentValues.challengerProgress;
-                currentValues.challengerProgress = newVal;
-                counter.animateFromTo(prevVal, newVal, onAnimationComplete);
-              }
-            }
-
-            // Check erProgress counter
-            if (progressData.erProgress) {
-              const newVal = progressData.erProgress.currentValue || 0;
-              if (newVal !== currentValues.erProgress) {
-                hasChanges = true;
-                totalAnimations++;
-                // Use current value as previous value for smooth transition
-                const prevVal = currentValues.erProgress;
-                currentValues.erProgress = newVal;
-                counter1.animateFromTo(prevVal, newVal, onAnimationComplete);
-              }
-            }
-
-            // If no changes detected, do nothing, setInterval will call again
-            if (hasChanges) {
-              isAnimating = true;
-            }
-          } else {
-            // API failed, do nothing, setInterval will call again
-          }
-        } catch (error) {
-          console.error("Error checking for updates:", error);
-          // Retry will happen automatically by setInterval
-        }
-      }
-
-      // Initialize counters on page load
-      document.addEventListener("DOMContentLoaded", function () {
-        // Initialize counters with first API call and start periodic checking
-        initializeCounters();
-      });
-
-      // Clean up timeout on page unload
-      window.addEventListener("beforeunload", function () {
-        if (animationTimeout) {
-          clearInterval(animationTimeout);
-        }
-        if (counter.animationInterval) {
-          clearInterval(counter.animationInterval);
-        }
-        if (counter1.animationInterval) {
-          clearInterval(counter1.animationInterval);
-        }
-      });
     </script>
 
     <!-- static starts  -->
@@ -3401,45 +3055,41 @@ setInterval(() => {
 
       FlipCounter3.prototype.setValue = function (newValue) {
         this.value = newValue;
-        this.update();
-      };
-
-      FlipCounter3.prototype.animateFromTo = function (
-        fromValue,
-        toValue,
-        callback
-      ) {
-        var self = this;
-        var currentVal = fromValue;
-        var targetVal = toValue;
-        if (this.animationInterval) {
-          clearInterval(this.animationInterval);
-        }
-        this.setValue(currentVal);
-        if (currentVal === targetVal) {
-          if (callback) callback();
-          return;
-        }
-        var difference = Math.abs(targetVal - currentVal);
-        var increment = currentVal < targetVal ? 1 : -1;
-        var speed = difference > 100 ? 200 : difference > 50 ? 180 : 1000;
-        this.animationInterval = setInterval(function () {
-          currentVal += increment;
-          self.setValue(currentVal);
-          if (currentVal === targetVal) {
-            clearInterval(self.animationInterval);
-            self.animationInterval = null;
-            if (callback) callback();
+        try {
+          const response = await fetch(getApiUrl("/api/challenger/progress"), {
+            method: "GET",
+            credentials: "include",
+            headers: { Accept: "application/json" },
+          });
+          if (response.ok) {
+            const result = await response.json();
+            const data = result.data;
+            // challengerProgress -> countdown1
+            // erProgress -> countdown2
+            if (data.challengerProgress) {
+              const prevVal = currentValues.challengerProgress;
+              const currVal = data.challengerProgress.currentValue || 0;
+              if (currVal !== prevVal) {
+                counter1.animateFromTo(prevVal, currVal, () => {
+                  currentValues.challengerProgress = currVal;
+                });
+              }
+            }
+            if (data.erProgress) {
+              const prevVal = currentValues.erProgress;
+              const currVal = data.erProgress.currentValue || 0;
+              if (currVal !== prevVal) {
+                counter2.animateFromTo(prevVal, currVal, () => {
+                  currentValues.erProgress = currVal;
+                });
+              }
+            }
+          } else {
+            console.error("Failed to fetch progress data:", response.status);
           }
-        }, speed);
-      };
-
-      var counter2 = new FlipCounter3(document.getElementById("countdown2"), 0);
-
-      // Use erProgress from API for countdown2
-      let isAnimating2 = false;
-      let isInitialized2 = false;
-      let animationTimeout2 = null;
+        } catch (error) {
+          console.error("Error fetching progress data:", error);
+        }
       let currentErProgress = 0;
 
       async function initializeCounter2() {
@@ -3456,14 +3106,14 @@ setInterval(() => {
             });
             isAnimating2 = true;
           } else {
-            counter2.setValue(483408);
-            currentErProgress = 483408;
+            counter2.setValue(0);
+            currentErProgress = 0;
             isInitialized2 = true;
             animationTimeout2 = setInterval(checkForUpdates2, 10000);
           }
         } catch (error) {
-          counter2.setValue(483408);
-          currentErProgress = 483408;
+          counter2.setValue(0);
+          currentErProgress = 0;
           isInitialized2 = true;
           animationTimeout2 = setInterval(checkForUpdates2, 10000);
         }
