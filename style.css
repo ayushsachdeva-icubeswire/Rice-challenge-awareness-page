@@ -1848,7 +1848,7 @@ select.country-code {
 
 @media (max-width: 768px) {
   .content-section {
-    padding: 30px 10px 0px 10px;
+    padding: 30px 10px 30px 10px;
   }
   .hero .container {
     padding: 3rem 10px 0 10px;
@@ -3182,5 +3182,136 @@ img {
   }
   .fun-facts-section .fun-text {
     font-size: 0.9rem;
+  }
+}
+
+/* container */
+.shop-rice-container {
+  position: relative;
+  display: inline-block;
+  /* avoid layout shifts */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* main button */
+.shop-rice-btn {
+  background-color: #a5885d;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transition: transform 0.18s ease, background-color 0.18s ease;
+  position: relative;
+  z-index: 3;
+  /* above page but below dropdown if necessary */
+}
+
+.shop-rice-btn:hover {
+  transform: translateY(-3px);
+  background-color: #8c724c;
+}
+
+/* dropdown (opens above) */
+.shop-options {
+  position: absolute;
+  bottom: 50px;
+  /* distance above the main button */
+  left: 50%;
+  transform: translateX(-50%) translateY(12px);
+  /* start slightly down */
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  /* used to prevent instant clickability */
+  pointer-events: none;
+  transition: opacity 0.22s cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 0.22s cubic-bezier(0.2, 0.9, 0.2, 1), visibility 0s linear 0.22s;
+  /* delay hiding visibility until after fade */
+  z-index: 10;
+  /* above main button */
+  background: transparent;
+  /* keep container transparent — buttons supply bg */
+}
+
+/* the invisible hover buffer — placed below the dropdown because it opens upward */
+.shop-options::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  /* small buffer between dropdown bottom and main button */
+  left: 0;
+  right: 0;
+  height: 12px;
+  /* invisible but receives hover */
+  pointer-events: auto;
+}
+
+/* option buttons */
+.shop-option {
+  background-color: #a5885d;
+  color: #fff;
+  border: 2px solid #a5885d;
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(13, 13, 13, 0.08);
+  transform: translateY(0);
+  transition: transform 0.18s ease, background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.shop-option:hover {
+  background-color: #8c724c;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+/* Reveal on hover (desktop) and keep visible when hovering the dropdown itself */
+@media (hover: hover) {
+  /* container hover shows dropdown */
+  .shop-rice-container:hover .shop-options,
+            /* also allow dropdown hover itself to keep the dropdown open */
+            .shop-options:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    transition-delay: 0s;
+  }
+
+  /* Prevent visibility from snapping off immediately */
+  .shop-rice-container .shop-options {
+    transition: opacity 0.22s cubic-bezier(0.2, 0.9, 0.2, 1),
+      transform 0.22s cubic-bezier(0.2, 0.9, 0.2, 1), visibility 0s linear 0.22s;
+  }
+}
+
+/* Mobile: toggle via .active class from JS */
+@media (hover: none) {
+  .shop-options.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+}
+
+/* small responsive tweak so it doesn't exceed viewport */
+@media (max-width: 420px) {
+  .shop-option {
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 30px;
   }
 }
