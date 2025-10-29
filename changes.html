@@ -92,7 +92,7 @@
             .p-tag span {
                 font-size: 22px;
                 font-weight: 600;
-                color: #110d85 !important;
+                color: #fff !important;
             }
         }
 
@@ -3563,9 +3563,9 @@
             const floatingButtons = document.querySelector(".floating-buttons");
 
             function toggleFloatingButtons() {
-                const scrolledPast80vh = window.scrollY > window.innerHeight * 0.8;
+                const scrolledPast40vh = window.scrollY > window.innerHeight * 0.4;
 
-                if (scrolledPast80vh) {
+                if (scrolledPast40vh) {
                     floatingButtons.classList.add("visible");
                 } else {
                     floatingButtons.classList.remove("visible");
