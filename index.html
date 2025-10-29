@@ -2948,6 +2948,8 @@ function startCounterPolling() {
             currentValues.erProgress = currVal;
           }
         }
+        // Now start polling for updates ONLY after successful response
+        animationTimeout = setInterval(updateCountersFromAPI, 30000);
       }
     } catch (error) {
       // fallback: set counters to 0
@@ -2956,8 +2958,6 @@ function startCounterPolling() {
       currentValues.challengerProgress = 0;
       currentValues.erProgress = 0;
     }
-    // Now start polling for updates
-    animationTimeout = setInterval(updateCountersFromAPI, 30000);
   })();
 }
 
