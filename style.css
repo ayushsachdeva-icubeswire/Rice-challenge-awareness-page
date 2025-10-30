@@ -3315,3 +3315,18 @@ img {
     border-radius: 30px;
   }
 }
+
+/* Hidden by default */
+.floating-buttons {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+/* Show when scrolled past threshold */
+.floating-buttons.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
