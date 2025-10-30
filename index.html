@@ -2962,32 +2962,74 @@
                         const result = await response.json();
                         const data = result.data;
                         // Set counters to previousValue and animate to currentValue on initial load
+                        let prevVal1 = 0, currVal1 = 0, prevVal2 = 0, currVal2 = 0;
                         if (data.challengerProgress) {
-                            const prevVal = data.challengerProgress.previousValue || 0;
-                            const currVal = data.challengerProgress.currentValue || 0;
-                            counter1.setValue(prevVal);
-                            if (currVal !== prevVal) {
-                                counter1.animateFromTo(prevVal, currVal, () => {
-                                    currentValues.challengerProgress = currVal;
+                            prevVal1 = data.challengerProgress.previousValue || 0;
+                            currVal1 = data.challengerProgress.currentValue || 0;
+                            counter1.setValue(prevVal1);
+                            currentValues.challengerProgress = prevVal1;
+                            if (currVal1 !== prevVal1) {
+                                counter1.animateFromTo(prevVal1, currVal1, () => {
+                                    currentValues.challengerProgress = currVal1;
                                 });
-                            } else {
-                                currentValues.challengerProgress = currVal;
                             }
                         }
                         if (data.erProgress) {
-                            const prevVal = data.erProgress.previousValue || 0;
-                            const currVal = data.erProgress.currentValue || 0;
-                            counter2.setValue(prevVal);
-                            if (currVal !== prevVal) {
-                                counter2.animateFromTo(prevVal, currVal, () => {
-                                    currentValues.erProgress = currVal;
+                            prevVal2 = data.erProgress.previousValue || 0;
+                            currVal2 = data.erProgress.currentValue || 0;
+                            counter2.setValue(prevVal2);
+                            currentValues.erProgress = prevVal2;
+                            if (currVal2 !== prevVal2) {
+                                counter2.animateFromTo(prevVal2, currVal2, () => {
+                                    currentValues.erProgress = currVal2;
                                 });
-                            } else {
-                                currentValues.erProgress = currVal;
                             }
                         }
-                        // Now start polling for updates ONLY after successful response
-                        animationTimeout = setInterval(updateCountersFromAPI, 30000);
+                        // Poll every 30s for new previousValue
+                        animationTimeout = setInterval(async () => {
+                            try {
+                                const resp = await fetch(getApiUrl("/api/challenger/progress"), {
+                                    method: "GET",
+                                    credentials: "include",
+                                    headers: { Accept: "application/json" },
+                                });
+                                if (resp.ok) {
+                                    const res = await resp.json();
+                                    const d = res.data;
+                                    // challengerProgress
+                                    if (d.challengerProgress) {
+                                        const newPrevVal1 = d.challengerProgress.previousValue || 0;
+                                        const newCurrVal1 = d.challengerProgress.currentValue || 0;
+                                        // Only update if new previousValue is received
+                                        if (newPrevVal1 !== currentValues.challengerProgress) {
+                                            counter1.setValue(newPrevVal1);
+                                            counter1.animateFromTo(newPrevVal1, newCurrVal1, () => {
+                                                currentValues.challengerProgress = newCurrVal1;
+                                            });
+                                        } else {
+                                            // Do not update, leave as is
+                                        }
+                                    }
+                                    // erProgress
+                                    if (d.erProgress) {
+                                        const newPrevVal2 = d.erProgress.previousValue || 0;
+                                        const newCurrVal2 = d.erProgress.currentValue || 0;
+                                        // Only update if new previousValue is received
+                                        if (newPrevVal2 !== currentValues.erProgress) {
+                                            counter2.setValue(newPrevVal2);
+                                            counter2.animateFromTo(newPrevVal2, newCurrVal2, () => {
+                                                currentValues.erProgress = newCurrVal2;
+                                            });
+                                        } else {
+                                            // Do not update, leave as is
+                                        }
+                                    }
+                                }
+                                // If not ok, do nothing (leave as is)
+                            } catch (err) {
+                                // Network error, leave as is
+                            }
+                        }, 30000);
                     }
                 } catch (error) {
                     // fallback: set counters to 0
