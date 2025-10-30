@@ -2163,12 +2163,19 @@
                             const otp = document.getElementById("otp").value.trim();
 
                             // Validate OTP input
-                            if (!otp) {
-                                document.getElementById("otpError").textContent =
-                                    "Please enter the OTP";
-                                document.getElementById("otpError").style.display = "block";
-                                return;
-                            }
+                                if (!otp) {
+                                    document.getElementById("otpError").textContent =
+                                        "Please enter the OTP";
+                                    document.getElementById("otpError").style.display = "block";
+                                    return;
+                                }
+                                // OTP must be a 6-digit number
+                                if (!/^\d{6}$/.test(otp)) {
+                                    document.getElementById("otpError").textContent =
+                                        "OTP must be a 6-digit number.";
+                                    document.getElementById("otpError").style.display = "block";
+                                    return;
+                                }
 
                             // Try to restore from localStorage if window data is missing
                             if (!window.userRegistrationData) {
