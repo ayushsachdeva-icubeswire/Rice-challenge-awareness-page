@@ -2963,10 +2963,12 @@
                         const data = result.data;
                         // Set counters to previousValue and animate to currentValue on initial load
                         let prevVal1 = 0, currVal1 = 0, prevVal2 = 0, currVal2 = 0;
+                        // Store previousValue for both counters
                         if (data.challengerProgress) {
                             prevVal1 = data.challengerProgress.previousValue || 0;
                             currVal1 = data.challengerProgress.currentValue || 0;
                             counter1.setValue(prevVal1);
+                            currentValues.challengerProgressPrev = prevVal1;
                             currentValues.challengerProgress = prevVal1;
                             if (currVal1 !== prevVal1) {
                                 counter1.animateFromTo(prevVal1, currVal1, () => {
@@ -2978,6 +2980,7 @@
                             prevVal2 = data.erProgress.previousValue || 0;
                             currVal2 = data.erProgress.currentValue || 0;
                             counter2.setValue(prevVal2);
+                            currentValues.erProgressPrev = prevVal2;
                             currentValues.erProgress = prevVal2;
                             if (currVal2 !== prevVal2) {
                                 counter2.animateFromTo(prevVal2, currVal2, () => {
@@ -3000,11 +3003,15 @@
                                     if (d.challengerProgress) {
                                         const newPrevVal1 = d.challengerProgress.previousValue || 0;
                                         const newCurrVal1 = d.challengerProgress.currentValue || 0;
-                                        // Only update if new previousValue is received
-                                        if (newPrevVal1 !== currentValues.challengerProgress) {
+                                        // Only update if new previousValue is different from stored value
+                                        if (typeof currentValues.challengerProgressPrev === "undefined") {
+                                            currentValues.challengerProgressPrev = newPrevVal1;
+                                        }
+                                        if (newPrevVal1 !== currentValues.challengerProgressPrev) {
                                             counter1.setValue(newPrevVal1);
                                             counter1.animateFromTo(newPrevVal1, newCurrVal1, () => {
                                                 currentValues.challengerProgress = newCurrVal1;
+                                                currentValues.challengerProgressPrev = newPrevVal1;
                                             });
                                         } else {
                                             // Do not update, leave as is
@@ -3014,11 +3021,15 @@
                                     if (d.erProgress) {
                                         const newPrevVal2 = d.erProgress.previousValue || 0;
                                         const newCurrVal2 = d.erProgress.currentValue || 0;
-                                        // Only update if new previousValue is received
-                                        if (newPrevVal2 !== currentValues.erProgress) {
+                                        if (typeof currentValues.erProgressPrev === "undefined") {
+                                            currentValues.erProgressPrev = newPrevVal2;
+                                        }
+                                        // Only update if new previousValue is different from stored value
+                                        if (newPrevVal2 !== currentValues.erProgressPrev) {
                                             counter2.setValue(newPrevVal2);
                                             counter2.animateFromTo(newPrevVal2, newCurrVal2, () => {
                                                 currentValues.erProgress = newCurrVal2;
+                                                currentValues.erProgressPrev = newPrevVal2;
                                             });
                                         } else {
                                             // Do not update, leave as is
