@@ -89,6 +89,30 @@
             bottom: 0;
             right: 40px;
         }
+
+        @media (max-width: 768px) {
+            .content-section {
+                padding: 20px 10px 0px 10px !important;
+            }
+
+            .p-tag span {
+                font-size: 22px;
+                font-weight: 600;
+                color: #fff !important;
+            }
+
+            .logo-img {
+                width: 160px;
+                margin-bottom: 0px !important;
+            }
+
+            .content-section .title {
+                color: white;
+                font-weight: 400;
+                font-size: 38px;
+                text-align: center;
+            }
+        }
     </style>
 </head>
 
@@ -206,52 +230,49 @@
                         <img src="img/heart1.png" alt="Shahrukh Banner" class="img-fluid srk-tablet"
                             style="max-height: 30vh; width: auto" />
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <div class="d-block d-md-none pt-4">
+                        <div class="text-center mb-2">
+                            <h2 class="faq-title text-white">The Movement</h2>
+                        </div>
+                        <div class="container pt-0 pb-0">
+                            <div class="row align-items-center py-0 py-md-4">
+                                <div class="col-12 col-lg-6 text-center text-lg-start text-white">
+                                    <p class="p-tag">
+                                        This movement helps people understand rice the right way - as a food that brings
+                                        balance,
+                                        nourishment, and energy to everyday life.
+                                    </p>
 
+                                    <p class="p-tag">
+                                        At the heart of this initiative lies <span>#OnlyRiceNovember</span> - a
+                                        challenge led experience that inspires mindful eating and
+                                        encourages people to discover how rice can make them feel more
+                                        active, and truly energised.
+                                    </p>
 
-    <!-- FAQ intro: left content + right image -->
-    <section class="d-block d-md-none py-5 interaction-section" style="background: none;" id="movement">
-        <div class="text-center mb-4">
-            <h2 class="faq-title">The Movement</h2>
-        </div>
-        <div class="container">
-            <div class="row align-items-center pb-0 py-md-4">
-                <div class="col-12 col-lg-6 text-center text-lg-start">
-                    <p class="p-tag">
-                        This movement helps people understand rice the right way - as a food that brings balance,
-                        nourishment, and energy to everyday life.
-                    </p>
+                                    <p class="p-tag d-none">
+                                        Rich in natural carbohydrates, easy to digest, and naturally
+                                        gluten-free, rice supports gut health, sustained energy, and
+                                        overall well-being - making it a perfect fit for every lifestyle.
+                                    </p>
 
-                    <p class="p-tag">
-                        At the heart of this initiative lies <span>#OnlyRiceNovember</span> - a
-                        challenge led experience that inspires mindful eating and
-                        encourages people to discover how rice can make them feel more
-                        active, and truly energised.
-                    </p>
+                                    <p class="p-tag">
+                                        Because good health doesn’t come from cutting food out - it comes
+                                        from understanding it.
+                                    </p>
 
-                    <p class="p-tag d-none">
-                        Rich in natural carbohydrates, easy to digest, and naturally
-                        gluten-free, rice supports gut health, sustained energy, and
-                        overall well-being - making it a perfect fit for every lifestyle.
-                    </p>
+                                    <p class="mb-4 p-tag">
+                                        This November, be part of <span>#OnlyRiceNovember</span> and
+                                        rediscover the real goodness of rice.
+                                    </p>
+                                </div>
 
-                    <p class="p-tag">
-                        Because good health doesn’t come from cutting food out - it comes
-                        from understanding it.
-                    </p>
-
-                    <p class="mb-4 p-tag">
-                        This November, be part of <span>#OnlyRiceNovember</span> and
-                        rediscover the real goodness of rice.
-                    </p>
-                </div>
-
-                <div class="col-12 col-lg-6 text-center mt-4 mt-lg-0" style="position: relative">
-                    <img src="img/the-movement.png" alt="Rice" class="img-fluid mx-auto movement-img"
-                        style="border-bottom: 2px solid #0c2e49;" />
+                                <div class="col-12 col-lg-6 text-center mt-4 mt-lg-0 py-0" style="position: relative">
+                                    <img src="img/the-movement.png" alt="Rice" class="img-fluid mx-auto movement-img" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -511,12 +532,12 @@
     </section>
 
     <!-- FAQ intro: left content + right image -->
-    <section class="d-none d-md-block pb-0 py-md-5 interaction-section" id="movement">
+    <section class="d-none d-md-block pb-0 py-lg-5 interaction-section" id="movement">
         <div class="text-center mb-4">
             <h2 class="faq-title">The Movement</h2>
         </div>
         <div class="container">
-            <div class="row align-items-center pb-0 py-md-4">
+            <div class="row align-items-center pb-0 py-lg-4">
                 <div class="col-12 col-lg-6 text-center text-lg-start">
                     <p class="p-tag">
                         This movement helps people understand rice the right way - as a food that brings balance,
@@ -1294,7 +1315,7 @@
 
         <div class="shop-rice-container">
             <button id="shopRiceBtn" class="shop-rice-btn" aria-expanded="false" title="Shop Daawat Rice">
-                Shop Rice
+                Shop Now
             </button>
 
             <div class="shop-options" role="menu" aria-hidden="true">
@@ -2991,9 +3012,6 @@
         });
     </script>
 
-    <script>
-
-    </script>
 
     <!-- static starts  -->
     <!-- <script>
@@ -3279,6 +3297,26 @@
             });
         })();
     </script>
+
+    <script>
+        (function () {
+            const floatingButtons = document.querySelector(".floating-buttons");
+
+            function toggleFloatingButtons() {
+                const scrolledPast40vh = window.scrollY > window.innerHeight * 0.4;
+
+                if (scrolledPast40vh) {
+                    floatingButtons.classList.add("visible");
+                } else {
+                    floatingButtons.classList.remove("visible");
+                }
+            }
+
+            window.addEventListener("scroll", toggleFloatingButtons);
+            toggleFloatingButtons(); // initial check on load
+        })();
+    </script>
+
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C9SF15VYGN"></script>
