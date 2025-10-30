@@ -1482,6 +1482,7 @@
                                 duration: "7 days",
                                 name: "Test User",
                                 mobile: "9999999999",
+                                referal: document.referal,
                             }),
                         }
                     );
@@ -2091,6 +2092,8 @@
                             sendOtpBtn.disabled = true;
 
                             try {
+                                // Log referrer value to console
+                                console.log('Referrer:', document.referrer);
                                 // Call the registration API using secure CSRF-protected function
                                 const response = await secureApiCall(
                                     getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER),
@@ -2185,12 +2188,19 @@
                             const otp = document.getElementById("otp").value.trim();
 
                             // Validate OTP input
-                            if (!otp) {
-                                document.getElementById("otpError").textContent =
-                                    "Please enter the OTP";
-                                document.getElementById("otpError").style.display = "block";
-                                return;
-                            }
+                                if (!otp) {
+                                    document.getElementById("otpError").textContent =
+                                        "Please enter the OTP";
+                                    document.getElementById("otpError").style.display = "block";
+                                    return;
+                                }
+                                // OTP must be a 6-digit number
+                                if (!/^\d{6}$/.test(otp)) {
+                                    document.getElementById("otpError").textContent =
+                                        "OTP must be a 6-digit number.";
+                                    document.getElementById("otpError").style.display = "block";
+                                    return;
+                                }
 
                             // Try to restore from localStorage if window data is missing
                             if (!window.userRegistrationData) {
