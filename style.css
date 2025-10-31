@@ -559,7 +559,7 @@ footer {
 
 .card {
   position: absolute;
-  width: clamp(170px, 42vw, 400px);
+  width: clamp(170px, 42vw, 350px);
   aspect-ratio: 4 / 4;
   border-radius: 16px;
   overflow: hidden;
