@@ -1341,7 +1341,7 @@
             // Determine base URL based on current window location
             BASE_URL: (() => {
                 if (window.location.href.includes("http://13.201.26.193")) {
-                    return "http://13.201.26.193:8080";
+                    return "http://13.201.26.193";
                 } else if (window.location.href.includes("daawat.com")) {
                     return "https://www.daawat.com";
                 } else {
@@ -1351,9 +1351,9 @@
 
             // API Endpoints
             ENDPOINTS: {
-                REGISTER_CHALLENGER: "/api/challenger/register",
-                VERIFY_OTP: "/api/challenger/verify",
-                SUBMIT_CHALLENGE: "/api/challenger/submit",
+                REGISTER_CHALLENGER: "/api-stage/challenger/register",
+                VERIFY_OTP: "/api-stage/challenger/verify",
+                SUBMIT_CHALLENGE: "/api-stage/challenger/submit",
             },
         };
 
@@ -1368,7 +1368,7 @@
         // Function to fetch CSRF token
         async function getCsrfToken() {
             try {
-                const response = await fetch(getApiUrl("/api/csrf-token"), {
+                const response = await fetch(getApiUrl("/api-stage/csrf-token"), {
                     method: "GET",
                     credentials: "include", // Important for cookies
                     headers: {
@@ -1547,7 +1547,7 @@
         // Function to fetch progress data from API
         // async function fetchProgressData() {
         //   try {
-        //     const response = await fetch(getApiUrl("/api/challenger/progress"), {
+        //     const response = await fetch(getApiUrl("/api-stage/challenger/progress"), {
         //       method: "GET",
         //       credentials: "include", // Include cookies for session consistency
         //       headers: {
@@ -2907,7 +2907,7 @@
 
         async function updateCountersFromAPI() {
             try {
-                const response = await fetch(getApiUrl("/api/challenger/progress"), {
+                const response = await fetch(getApiUrl("/api-stage/challenger/progress"), {
                     method: "GET",
                     credentials: "include",
                     headers: { Accept: "application/json" },
@@ -2951,7 +2951,7 @@
         function startCounterPolling() {
             (async function () {
                 try {
-                    const response = await fetch(getApiUrl("/api/challenger/progress"), {
+                    const response = await fetch(getApiUrl("/api-stage/challenger/progress"), {
                         method: "GET",
                         credentials: "include",
                         headers: { Accept: "application/json" },
