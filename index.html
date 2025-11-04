@@ -49,7 +49,7 @@
     <!-- End Google Tag Manager -->
 
     <!-- reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le_dwAsAAAAAEA2qXI1R36GkdUFmic7ABVAuibV"></script>
+      <script src="https://www.google.com/recaptcha/enterprise.js?render=6LellQAsAAAAAPBPpvAqxkGcz7ynS3hsdB_yOhBi"></script>
 
     <link rel="stylesheet" href="style.css?v=1" />
     <style>
@@ -1387,7 +1387,7 @@
         let csrfToken = null;
 
         // reCAPTCHA v3 Configuration
-        const RECAPTCHA_SITE_KEY = '6Le_dwAsAAAAAEA2qXI1R36GkdUFmic7ABVAuibV'; // Replace with your actual site key
+        const RECAPTCHA_SITE_KEY = '6LellQAsAAAAAPBPpvAqxkGcz7ynS3hsdB_yOhBi'; // Replace with your actual site key
 
         // Function to get reCAPTCHA token
         async function getRecaptchaToken(action) {
@@ -1396,7 +1396,7 @@
                     console.warn('⚠️ reCAPTCHA not loaded yet');
                     return null;
                 }
-                const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: action });
+                const token = await grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: action });
                 return token;
             } catch (error) {
                 console.error('❌ Error getting reCAPTCHA token:', error);
