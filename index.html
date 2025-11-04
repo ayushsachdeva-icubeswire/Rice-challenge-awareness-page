@@ -56,7 +56,7 @@
     <!-- End Google Tag Manager -->
 
     <!-- reCAPTCHA v3 -->
-      <script src="https://www.google.com/recaptcha/enterprise.js?render=6LellQAsAAAAAPBPpvAqxkGcz7ynS3hsdB_yOhBi"></script>
+      <!-- <script src="https://www.google.com/recaptcha/enterprise.js?render=6LellQAsAAAAAPBPpvAqxkGcz7ynS3hsdB_yOhBi"></script> -->
 
     <link rel="stylesheet" href="style.css?v=1" />
     <style>
@@ -1394,22 +1394,22 @@
         let csrfToken = null;
 
         // reCAPTCHA v3 Configuration
-        const RECAPTCHA_SITE_KEY = '6LellQAsAAAAAPBPpvAqxkGcz7ynS3hsdB_yOhBi'; // Replace with your actual site key
+        // const RECAPTCHA_SITE_KEY = '6LellQAsAAAAAPBPpvAqxkGcz7ynS3hsdB_yOhBi'; // Replace with your actual site key
 
         // Function to get reCAPTCHA token
-        async function getRecaptchaToken(action) {
-            try {
-                if (typeof grecaptcha === 'undefined') {
-                    console.warn('⚠️ reCAPTCHA not loaded yet');
-                    return null;
-                }
-                const token = await grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: action });
-                return token;
-            } catch (error) {
-                console.error('❌ Error getting reCAPTCHA token:', error);
-                return null;
-            }
-        }
+        // async function getRecaptchaToken(action) {
+        //     try {
+        //         if (typeof grecaptcha === 'undefined') {
+        //             console.warn('⚠️ reCAPTCHA not loaded yet');
+        //             return null;
+        //         }
+        //         const token = await grecaptcha.enterprise.execute(RECAPTCHA_SITE_KEY, { action: action });
+        //         return token;
+        //     } catch (error) {
+        //         console.error('❌ Error getting reCAPTCHA token:', error);
+        //         return null;
+        //     }
+        // }
 
         // Function to fetch CSRF token
         async function getCsrfToken() {
@@ -2140,10 +2140,10 @@
                                 console.log('Referrer:', document.referrer);
                                 
                                 // Get reCAPTCHA token for register action
-                                const recaptchaToken = await getRecaptchaToken('register');
-                                if (!recaptchaToken) {
-                                    console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
-                                }
+                                // const recaptchaToken = await getRecaptchaToken('register');
+                                // if (!recaptchaToken) {
+                                //     console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
+                                // }
                                 
                                 // Call the registration API using secure CSRF-protected function
                                 const response = await secureApiCall(
@@ -2160,7 +2160,7 @@
                                             mobile: mobile,
                                             countryCode: countryCode,
                                             referrer: document.referrer,
-                                            recaptchaToken: recaptchaToken, // Add reCAPTCHA token
+                                            // recaptchaToken: recaptchaToken, // Add reCAPTCHA token
                                         }),
                                     }
                                 );
@@ -2286,10 +2286,10 @@
 
                             try {
                                 // Get reCAPTCHA token for verify_otp action
-                                const recaptchaToken = await getRecaptchaToken('verify_otp');
-                                if (!recaptchaToken) {
-                                    console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
-                                }
+                                // const recaptchaToken = await getRecaptchaToken('verify_otp');
+                                // if (!recaptchaToken) {
+                                //     console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
+                                // }
                                 
                                 // Call the OTP verification API with CSRF protection
                                 const response = await secureApiCall(
@@ -2304,7 +2304,7 @@
                                             userId: window.userRegistrationData.userId,
                                             otp: otp,
                                             countryCode: document.getElementById("countryCode").value,
-                                            recaptchaToken: recaptchaToken, // Add reCAPTCHA token
+                                            // recaptchaToken: recaptchaToken, // Add reCAPTCHA token
                                         }),
                                     }
                                 );
@@ -2513,10 +2513,10 @@
                                 }
 
                                 // Get reCAPTCHA token for submit_challenge action
-                                const recaptchaToken = await getRecaptchaToken('submit_challenge');
-                                if (!recaptchaToken) {
-                                    console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
-                                }
+                                // const recaptchaToken = await getRecaptchaToken('submit_challenge');
+                                // if (!recaptchaToken) {
+                                //     console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
+                                // }
 
                                 // Call the submit challenge API with CSRF protection
                                 const response = await secureApiCall(
@@ -2534,7 +2534,7 @@
                                                 categorySelect.value,
                                             subcategory: subcategoryValue,
                                             duration: window.userRegistrationData.duration,
-                                            recaptchaToken: recaptchaToken, // Add reCAPTCHA token
+                                            // recaptchaToken: recaptchaToken, // Add reCAPTCHA token
                                             // type: type
                                         }),
                                     }
