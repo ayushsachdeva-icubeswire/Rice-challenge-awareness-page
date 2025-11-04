@@ -48,6 +48,9 @@
     </script>
     <!-- End Google Tag Manager -->
 
+    <!-- reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le_dwAsAAAAAEA2qXI1R36GkdUFmic7ABVAuibV"></script>
+
     <link rel="stylesheet" href="style.css?v=1" />
     <style>
         /* .card1,
@@ -1383,6 +1386,24 @@
         // CSRF Token Management
         let csrfToken = null;
 
+        // reCAPTCHA v3 Configuration
+        const RECAPTCHA_SITE_KEY = '6Le_dwAsAAAAAEA2qXI1R36GkdUFmic7ABVAuibV'; // Replace with your actual site key
+
+        // Function to get reCAPTCHA token
+        async function getRecaptchaToken(action) {
+            try {
+                if (typeof grecaptcha === 'undefined') {
+                    console.warn('⚠️ reCAPTCHA not loaded yet');
+                    return null;
+                }
+                const token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: action });
+                return token;
+            } catch (error) {
+                console.error('❌ Error getting reCAPTCHA token:', error);
+                return null;
+            }
+        }
+
         // Function to fetch CSRF token
         async function getCsrfToken() {
             try {
@@ -2110,6 +2131,13 @@
                             try {
                                 // Log referrer value to console
                                 console.log('Referrer:', document.referrer);
+                                
+                                // Get reCAPTCHA token for register action
+                                const recaptchaToken = await getRecaptchaToken('register');
+                                if (!recaptchaToken) {
+                                    console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
+                                }
+                                
                                 // Call the registration API using secure CSRF-protected function
                                 const response = await secureApiCall(
                                     getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER),
@@ -2125,6 +2153,7 @@
                                             mobile: mobile,
                                             countryCode: countryCode,
                                             referrer: document.referrer,
+                                            recaptchaToken: recaptchaToken, // Add reCAPTCHA token
                                         }),
                                     }
                                 );
@@ -2249,6 +2278,12 @@
                             verifyOtpBtn.disabled = true;
 
                             try {
+                                // Get reCAPTCHA token for verify_otp action
+                                const recaptchaToken = await getRecaptchaToken('verify_otp');
+                                if (!recaptchaToken) {
+                                    console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
+                                }
+                                
                                 // Call the OTP verification API with CSRF protection
                                 const response = await secureApiCall(
                                     getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP),
@@ -2262,6 +2297,7 @@
                                             userId: window.userRegistrationData.userId,
                                             otp: otp,
                                             countryCode: document.getElementById("countryCode").value,
+                                            recaptchaToken: recaptchaToken, // Add reCAPTCHA token
                                         }),
                                     }
                                 );
@@ -2469,6 +2505,12 @@
                                     subcategoryValue = subcategoryText;
                                 }
 
+                                // Get reCAPTCHA token for submit_challenge action
+                                const recaptchaToken = await getRecaptchaToken('submit_challenge');
+                                if (!recaptchaToken) {
+                                    console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
+                                }
+
                                 // Call the submit challenge API with CSRF protection
                                 const response = await secureApiCall(
                                     getApiUrl(API_CONFIG.ENDPOINTS.SUBMIT_CHALLENGE),
@@ -2485,6 +2527,7 @@
                                                 categorySelect.value,
                                             subcategory: subcategoryValue,
                                             duration: window.userRegistrationData.duration,
+                                            recaptchaToken: recaptchaToken, // Add reCAPTCHA token
                                             // type: type
                                         }),
                                     }
