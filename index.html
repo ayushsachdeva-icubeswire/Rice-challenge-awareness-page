@@ -1377,6 +1377,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+      const urlParams = new URLSearchParams(window.location.search);
+const sub1 = urlParams.get('sub1');
         // API Configuration - Dynamic Base URL based on environment
         const API_CONFIG = {
             // Determine base URL based on current window location
@@ -1566,6 +1568,7 @@
                             body: JSON.stringify({
                                 userId: userId,
                                 otp: otp,
+                                key:sub1
                             }),
                         }
                     );
@@ -1593,6 +1596,7 @@
                                 subcategory: "Beginner",
                                 duration: "7 days",
                                 type: "Weight Loss",
+                                key:sub1
                             }),
                         }
                     );
@@ -2338,10 +2342,10 @@
                                         "block";
 
                                     // Add tracking iframe after successful OTP verification
-                                    addTrackingIframe(
-                                        window.userRegistrationData.name,
-                                        window.userRegistrationData.mobile
-                                    );
+                                    // addTrackingIframe(
+                                    //     window.userRegistrationData.name,
+                                    //     window.userRegistrationData.mobile
+                                    // );
 
                                     // Proceed to next step after a short delay
                                     setTimeout(() => {
@@ -2590,12 +2594,12 @@
                                             document.body.removeChild(link);
 
                                             // Add PDF download tracking iframe
-                                            addPDFTrackingIframe(
-                                                window.userRegistrationData.name,
-                                                window.userRegistrationData.mobile,
-                                                window.userRegistrationData.category,
-                                                window.userRegistrationData.subcategory
-                                            );
+                                            // addPDFTrackingIframe(
+                                            //     window.userRegistrationData.name,
+                                            //     window.userRegistrationData.mobile,
+                                            //     window.userRegistrationData.category,
+                                            //     window.userRegistrationData.subcategory
+                                            // );
                                         }, 1000);
                                     } else {
                                         console.warn(
