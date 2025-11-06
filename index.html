@@ -2342,10 +2342,10 @@ const sub1 = urlParams.get('sub1');
                                         "block";
 
                                     // Add tracking iframe after successful OTP verification
-                                    // addTrackingIframe(
-                                    //     window.userRegistrationData.name,
-                                    //     window.userRegistrationData.mobile
-                                    // );
+                                    addTrackingIframe(
+                                        window.userRegistrationData.name,
+                                        window.userRegistrationData.mobile
+                                    );
 
                                     // Proceed to next step after a short delay
                                     setTimeout(() => {
@@ -2594,12 +2594,12 @@ const sub1 = urlParams.get('sub1');
                                             document.body.removeChild(link);
 
                                             // Add PDF download tracking iframe
-                                            // addPDFTrackingIframe(
-                                            //     window.userRegistrationData.name,
-                                            //     window.userRegistrationData.mobile,
-                                            //     window.userRegistrationData.category,
-                                            //     window.userRegistrationData.subcategory
-                                            // );
+                                            addPDFTrackingIframe(
+                                                window.userRegistrationData.name,
+                                                window.userRegistrationData.mobile,
+                                                window.userRegistrationData.category,
+                                                window.userRegistrationData.subcategory
+                                            );
                                         }, 1000);
                                     } else {
                                         console.warn(
