@@ -24,9 +24,9 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-      .grecaptcha-badge {
-        display: none !important;
-      }
+        .grecaptcha-badge {
+            display: none !important;
+        }
     </style>
     <!-- Google Tag Manager -->
     <script>
@@ -45,11 +45,11 @@
         })(window, document, "script", "dataLayer", "GTM-558TRVFF");
     </script>
     <script type="text/javascript">
-   (function(c,l,a,r,i,t,y){
-       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-   })(window, document, "clarity", "script", "u0q1ck5yv1");
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "u0q1ck5yv1");
     </script>
     <script>
         // Simple interval to call progress API every 10 seconds for guaranteed execution
@@ -60,7 +60,8 @@
     <!-- End Google Tag Manager -->
 
     <!-- reCAPTCHA v3 -->
-      <script src="https://www.google.com/recaptcha/enterprise.js?render=6LellQAsAAAAAPBPpvAqxkGcz7ynS3hsdB_yOhBi"></script>
+    <script
+        src="https://www.google.com/recaptcha/enterprise.js?render=6LellQAsAAAAAPBPpvAqxkGcz7ynS3hsdB_yOhBi"></script>
 
     <link rel="stylesheet" href="style.css?v=1" />
     <style>
@@ -1301,9 +1302,9 @@
                     <span class="mb-2">An initiative by Daawat for #OnlyRiceNovember</span>
                     Copyright 2025 All Rights Reserved by Daawat
 
-                     <div style="text-align: left; margin-top: 10px;">
-                      This site is protected by reCAPTCHA
-                      </div>
+                    <div style="text-align: left; margin-top: 10px;">
+                        This site is protected by reCAPTCHA
+                    </div>
                 </div>
                 <!-- <div class="col-12 col-md-6 col-lg-4 d-flex align-items-center justify-content-center">
 
@@ -1321,13 +1322,15 @@
                             target="_blank"><i class="ti ti-brand-youtube"></i></a>
                     </div>
 
-                    <a style="text-decoration: none; color: white" href="https://policies.google.com/privacy">Privacy Policy</a> <a style="text-decoration: none; color: white" href="https://policies.google.com/terms">Terms of Service</a>
-                     
+                    <a style="text-decoration: none; color: white" href="https://policies.google.com/privacy">Privacy
+                        Policy</a> <a style="text-decoration: none; color: white"
+                        href="https://policies.google.com/terms">Terms of Service</a>
+
                     <!-- <a href="" style="text-decoration: none; color: white">
                         Terms and Conditions
                     </a> -->
 
-                   
+
                 </div>
             </div>
         </div>
@@ -1367,6 +1370,10 @@
                 <!-- <button class="shop-option blinkit" role="menuitem" title="Buy on Blinkit">Blinkit</button> -->
 
                 <button class="shop-option swiggy" role="menuitem" title="Buy on Swiggy">Swiggy</button>
+
+                <button class="shop-option bigbasket" role="menuitem" title="Buy on Big Basket">Big Basket</button>
+
+                <button class="shop-option zepto d-block d-md-none" role="menuitem" title="Buy on Zepto">Zepto</button>
             </div>
         </div>
 
@@ -1377,8 +1384,8 @@
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
-      const urlParams = new URLSearchParams(window.location.search);
-const sub1 = urlParams.get('sub1');
+        const urlParams = new URLSearchParams(window.location.search);
+        const sub1 = urlParams.get('sub1');
         // API Configuration - Dynamic Base URL based on environment
         const API_CONFIG = {
             // Determine base URL based on current window location
@@ -1568,7 +1575,7 @@ const sub1 = urlParams.get('sub1');
                             body: JSON.stringify({
                                 userId: userId,
                                 otp: otp,
-                                key:sub1
+                                key: sub1
                             }),
                         }
                     );
@@ -1596,7 +1603,7 @@ const sub1 = urlParams.get('sub1');
                                 subcategory: "Beginner",
                                 duration: "7 days",
                                 type: "Weight Loss",
-                                key:sub1
+                                key: sub1
                             }),
                         }
                     );
@@ -2157,13 +2164,13 @@ const sub1 = urlParams.get('sub1');
                             try {
                                 // Log referrer value to console
                                 console.log('Referrer:', document.referrer);
-                                
+
                                 // Get reCAPTCHA token for register action
                                 const recaptchaToken = await getRecaptchaToken('register');
                                 if (!recaptchaToken) {
                                     console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
                                 }
-                                
+
                                 // Call the registration API using secure CSRF-protected function
                                 const response = await secureApiCall(
                                     getApiUrl(API_CONFIG.ENDPOINTS.REGISTER_CHALLENGER),
@@ -2309,7 +2316,7 @@ const sub1 = urlParams.get('sub1');
                                 if (!recaptchaToken) {
                                     console.warn('⚠️ reCAPTCHA token not available, proceeding without it');
                                 }
-                                
+
                                 // Call the OTP verification API with CSRF protection
                                 const response = await secureApiCall(
                                     getApiUrl(API_CONFIG.ENDPOINTS.VERIFY_OTP),
@@ -2431,13 +2438,13 @@ const sub1 = urlParams.get('sub1');
                         ],
                     };
 
-                 const categorySelect = document.getElementById("category");
-                 const subcategorySelect = document.getElementById("subcategory");
+                    const categorySelect = document.getElementById("category");
+                    const subcategorySelect = document.getElementById("subcategory");
 
                     categorySelect.addEventListener("change", (e) => {
                         const selected = e.target.value;
-                            subcategorySelect.innerHTML = `<option selected disabled>Choose Sub Category</option>`;
-                            subcategorySelect.disabled = true;
+                        subcategorySelect.innerHTML = `<option selected disabled>Choose Sub Category</option>`;
+                        subcategorySelect.disabled = true;
 
                         if (subcategories[selected]) {
                             subcategories[selected].forEach((sub) => {
@@ -3330,6 +3337,8 @@ const sub1 = urlParams.get('sub1');
             const flipkartBtn = document.querySelector(".shop-option.flipkart");
             // const blinkitBtn = document.querySelector(".shop-option.blinkit");
             const swiggyBtn = document.querySelector(".shop-option.swiggy");
+            const bigbasketBtn = document.querySelector(".shop-option.bigbasket");
+            const zeptoBtn = document.querySelector(".shop-option.zepto");
 
             // Links — replace with exact company pages if you have them
             const AMAZON_URL = "https://www.amazon.in/stores/Daawat/page/4F50B176-6702-4AC2-B9A2-0CABE8AE6204";
@@ -3339,6 +3348,10 @@ const sub1 = urlParams.get('sub1');
             // const BLINKIT_URL = "https://blinkit.com/s/?q=daawat%20rice";
 
             const SWIGGY_URL = "https://www.swiggy.com/stores/instamart/collection-listing?collectionId=285563&custom_back=true&utm_campaign=IM_Brandverse_Daawat_Meta_Redirect&utm_medium=cpc&utm_source=facebook_ads";
+
+            const BIGBASKET_URL = "https://www.bigbasket.com/sp/2505224cm-daawat/?&utm_source=facebook&utm_medium=none&utm_campaign=daawat--rice-campaign";
+
+            const ZEPTO_URL = "https://zepto-prod.onelink.me/tC90/uee20rbo";
 
             // Desktop click: open Amazon directly (keeps previous behavior)
             shopRiceBtn.addEventListener("click", (e) => {
@@ -3360,6 +3373,8 @@ const sub1 = urlParams.get('sub1');
             flipkartBtn.addEventListener("click", () => window.open(FLIPKART_URL, "_blank"));
             // blinkitBtn.addEventListener("click", () => window.open(BLINKIT_URL, "_blank"));
             swiggyBtn.addEventListener("click", () => window.open(SWIGGY_URL, "_blank"));
+            bigbasketBtn.addEventListener("click", () => window.open(BIGBASKET_URL, "_blank"));
+            zeptoBtn.addEventListener("click", () => window.open(ZEPTO_URL, "_blank"));
 
             // Close on outside click (mobile toggle)
             document.addEventListener("click", (e) => {
