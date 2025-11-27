@@ -2380,7 +2380,7 @@ select.country-code {
   right: 20px;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   z-index: 1000;
 }
 
